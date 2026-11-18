@@ -1,0 +1,27 @@
+{
+  "id": "short_002",
+  "title": "\"We have food at home\" | ROBLOX ANIMATION",
+  "format": "short",
+  "scenes": [
+    {
+      "set": "kitchen",
+      "cast": {"noob": "left", "mom": "right"},
+      "shots": [
+        {"speaker": "noob", "line": "Mom, can we PLEASE get pizza tonight?", "face": "happy",
+         "anims": {"noob": "jump"}, "camera": "two:noob,mom"},
+        {"speaker": "mom", "line": "No. We have food at home.", "face": "smug",
+         "camera": "closeup:mom", "sfx": "vine_boom"},
+        {"speaker": "noob", "line": "What food? The fridge is EMPTY.", "face": "angry",
+         "anims": {"noob": "point"}, "camera": "medium:noob"},
+        {"speaker": "mom", "line": "We have... one frozen pea.", "face": "neutral",
+         "anims": {"mom": "think"}, "camera": "closeup:mom", "hold": 0.4},
+        {"duration": 1.0, "camera": "extreme:noob", "move": "zoom",
+         "faces": {"noob": "dead"}, "anims": {"noob": "idle"}, "sfx": "bruh"},
+        {"speaker": "noob", "line": "I'm calling grandma.", "face": "sus",
+         "anims": {"noob": "walk_out_left"}, "camera": "wide", "move": "none"},
+        {"speaker": "mom", "line": "...Okay, fine. Pizza.", "face": "sad",
+         "anims": {"mom": "facepalm", "noob": "hidden"}, "camera": "medium:mom", "hold": 0.6}
+      ]
+    }
+  ]
+}

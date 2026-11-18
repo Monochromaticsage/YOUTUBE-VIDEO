@@ -1,0 +1,27 @@
+{
+  "id": "short_005",
+  "title": "He said he was a PRO... | ROBLOX ANIMATION",
+  "format": "short",
+  "scenes": [
+    {
+      "set": "outdoors",
+      "cast": {"bacon": "left", "noob": "right"},
+      "shots": [
+        {"speaker": "bacon", "line": "Watch this. I'm literally a pro at obbies.", "face": "smug",
+         "anims": {"bacon": "talk"}, "camera": "medium:bacon"},
+        {"speaker": "noob", "line": "Bro, you fell off the first jump three times.", "face": "sus",
+         "camera": "closeup:noob"},
+        {"speaker": "bacon", "line": "That was a warm up. Watch.", "face": "angry",
+         "anims": {"bacon": "jump"}, "camera": "two:bacon,noob"},
+        {"duration": 1.6, "camera": "wide", "move": "none",
+         "anims": {"bacon": "fall"}, "faces": {"bacon": "dead", "noob": "shocked"}, "sfx": "oof"},
+        {"speaker": "noob", "line": "Pro, huh?", "face": "smug",
+         "anims": {"noob": "laugh"}, "camera": "closeup:noob"},
+        {"speaker": "bacon", "line": "My controller disconnected.", "face": "sad",
+         "anims": {"bacon": "lie"}, "camera": "high:bacon"},
+        {"speaker": "noob", "line": "You're on a keyboard.", "face": "neutral",
+         "camera": "two:bacon,noob", "anims": {"bacon": "lie"}, "faces": {"bacon": "dead"}, "hold": 0.6}
+      ]
+    }
+  ]
+}

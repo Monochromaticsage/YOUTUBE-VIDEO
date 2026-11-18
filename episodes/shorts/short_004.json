@@ -1,0 +1,27 @@
+{
+  "id": "short_004",
+  "title": "When mom checks your screen time | ROBLOX ANIMATION",
+  "format": "short",
+  "scenes": [
+    {
+      "set": "bedroom",
+      "cast": {"noob": "center", "mom": "far_left"},
+      "shots": [
+        {"speaker": "noob", "line": "Just one more game and then I'll do my homework.", "face": "happy",
+         "anims": {"noob": "sit", "mom": "hidden"}, "camera": "medium:noob"},
+        {"speaker": "mom", "line": "Let me see your screen time.", "face": "sus",
+         "anims": {"mom": "walk_in_left"}, "camera": "wide", "sfx": "door"},
+        {"duration": 1.0, "camera": "extreme:noob", "move": "zoom",
+         "faces": {"noob": "scared"}, "anims": {"noob": "scared"}},
+        {"speaker": "mom", "line": "FOURTEEN hours?!", "face": "shocked",
+         "anims": {"mom": "shocked"}, "camera": "closeup:mom", "move": "shake", "sfx": "vine_boom"},
+        {"speaker": "noob", "line": "In my defense... the server was lagging.", "face": "smug",
+         "anims": {"noob": "think"}, "camera": "closeup:noob"},
+        {"speaker": "mom", "line": "Give me the Wi-Fi router.", "face": "angry",
+         "anims": {"mom": "point"}, "camera": "low:mom"},
+        {"speaker": "noob", "line": "NOOOOO!", "face": "cry",
+         "anims": {"noob": "fall"}, "camera": "high:noob", "hold": 0.8}
+      ]
+    }
+  ]
+}

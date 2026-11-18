@@ -1,0 +1,27 @@
+{
+  "id": "short_003",
+  "title": "The rich kid tried to flex... | ROBLOX ANIMATION",
+  "format": "short",
+  "scenes": [
+    {
+      "set": "hallway",
+      "cast": {"goldie": "center", "noob": "left", "bacon": "right"},
+      "shots": [
+        {"speaker": "goldie", "line": "Look at my new limited. It cost ten thousand Robux.", "face": "smug",
+         "anims": {"goldie": "dance"}, "camera": "low:goldie"},
+        {"speaker": "bacon", "line": "Bro, that's just a yellow shirt.", "face": "sus",
+         "camera": "closeup:bacon", "faces": {"goldie": "smug"}},
+        {"speaker": "goldie", "line": "It's a DESIGNER yellow shirt.", "face": "angry",
+         "anims": {"goldie": "angry"}, "camera": "medium:goldie"},
+        {"speaker": "noob", "line": "I made the same shirt in Roblox Studio for free.", "face": "happy",
+         "anims": {"noob": "wave"}, "camera": "closeup:noob"},
+        {"duration": 1.2, "camera": "extreme:goldie", "move": "shake",
+         "faces": {"goldie": "shocked"}, "anims": {"goldie": "shocked"}, "sfx": "vine_boom"},
+        {"speaker": "goldie", "line": "Can you make me one too? Please?", "face": "cry",
+         "anims": {"goldie": "cry"}, "camera": "two:goldie,noob", "faces": {"noob": "smug", "bacon": "happy"}},
+        {"speaker": "bacon", "line": "Ten thousand Robux.", "face": "evil",
+         "anims": {"bacon": "laugh"}, "camera": "closeup:bacon", "hold": 0.6}
+      ]
+    }
+  ]
+}

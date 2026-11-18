@@ -1,0 +1,39 @@
+{
+  "id": "short_001",
+  "title": "When the teacher says the test is EASY | ROBLOX ANIMATION",
+  "format": "short",
+  "fps": 30,
+  "scenes": [
+    {
+      "set": "classroom",
+      "cast": {"ms_brick": "teacher", "noob": "left", "bacon": "right"},
+      "shots": [
+        {"speaker": "ms_brick", "line": "Okay class, today's test is SUPER easy.",
+         "face": "happy", "camera": "closeup:ms_brick",
+         "faces": {"noob": "neutral", "bacon": "neutral"}},
+
+        {"speaker": "noob", "line": "Easy? I didn't even study.",
+         "face": "smug", "camera": "closeup:noob"},
+
+        {"speaker": "bacon", "line": "Bro, me neither.",
+         "face": "happy", "anims": {"bacon": "laugh"}, "camera": "two:noob,bacon",
+         "faces": {"noob": "happy"}},
+
+        {"speaker": "ms_brick", "line": "Question one. Explain the meaning of life.",
+         "face": "evil", "anims": {"ms_brick": "point"}, "camera": "medium:ms_brick",
+         "move": "zoom", "sfx": "vine_boom"},
+
+        {"duration": 1.2, "camera": "extreme:noob", "move": "shake",
+         "anims": {"noob": "shocked"}, "faces": {"noob": "shocked", "bacon": "shocked"}, "sfx": "scream"},
+
+        {"speaker": "bacon", "line": "I'm switching schools.",
+         "face": "neutral", "anims": {"bacon": "walk_out_right", "noob": "idle"},
+         "camera": "two:noob,bacon", "faces": {"noob": "shocked"}, "hold": 0.6},
+
+        {"speaker": "noob", "line": "WAIT FOR ME!",
+         "face": "cry", "anims": {"noob": "run_out_right", "bacon": "hidden"},
+         "camera": "medium:noob", "move": "none", "hold": 0.8}
+      ]
+    }
+  ]
+}

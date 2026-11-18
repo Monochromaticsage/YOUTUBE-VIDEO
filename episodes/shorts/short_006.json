@@ -1,0 +1,30 @@
+{
+  "id": "short_006",
+  "title": "When the teacher leaves the room | ROBLOX ANIMATION",
+  "format": "short",
+  "scenes": [
+    {
+      "set": "classroom",
+      "cast": {"ms_brick": "teacher", "noob": "left", "bacon": "right", "goldie": "far_right"},
+      "shots": [
+        {"speaker": "ms_brick", "line": "I'll be right back. Stay quiet.", "face": "neutral",
+         "anims": {"ms_brick": "walk_out_left"}, "camera": "wide"},
+        {"speaker": "bacon", "line": "She's gone. PARTY!", "face": "happy",
+         "anims": {"bacon": "dance", "ms_brick": "hidden"}, "camera": "medium:bacon", "sfx": "airhorn"},
+        {"duration": 2.0, "camera": "wide", "move": "pan",
+         "anims": {"bacon": "dance", "goldie": "dance", "noob": "jump", "ms_brick": "hidden"},
+         "faces": {"bacon": "happy", "goldie": "happy", "noob": "happy"}},
+        {"speaker": "ms_brick", "line": "Forgot my keys.", "face": "neutral",
+         "anims": {"ms_brick": "walk_in_left", "bacon": "dance", "goldie": "dance"}, "camera": "medium:ms_brick"},
+        {"duration": 1.2, "camera": "two:noob,bacon", "move": "zoom",
+         "anims": {"bacon": "shocked", "noob": "shocked", "goldie": "shocked"},
+         "faces": {"bacon": "shocked", "noob": "shocked", "goldie": "shocked", "ms_brick": "evil"},
+         "sfx": "record_scratch"},
+        {"speaker": "noob", "line": "We were... studying dance... for science.", "face": "scared",
+         "anims": {"noob": "scared"}, "camera": "closeup:noob"},
+        {"speaker": "ms_brick", "line": "Pop quiz. Everyone.", "face": "evil",
+         "camera": "low:ms_brick", "sfx": "vine_boom", "hold": 0.6}
+      ]
+    }
+  ]
+}

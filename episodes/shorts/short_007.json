@@ -1,0 +1,26 @@
+{
+  "id": "short_007",
+  "title": "Every group project ever | ROBLOX ANIMATION",
+  "format": "short",
+  "scenes": [
+    {
+      "set": "classroom",
+      "cast": {"noob": "left", "bacon": "center", "goldie": "right"},
+      "shots": [
+        {"speaker": "noob", "line": "Okay team, the project is due tomorrow. Who did their part?", "face": "happy",
+         "camera": "medium:noob"},
+        {"speaker": "goldie", "line": "I was busy. My butler was sick.", "face": "smug",
+         "camera": "closeup:goldie"},
+        {"speaker": "bacon", "line": "I made the title page.", "face": "happy",
+         "anims": {"bacon": "wave"}, "camera": "closeup:bacon"},
+        {"speaker": "noob", "line": "That's it?", "face": "sus", "camera": "closeup:noob"},
+        {"speaker": "bacon", "line": "I spelled it wrong too.", "face": "sad",
+         "camera": "closeup:bacon", "sfx": "bruh"},
+        {"duration": 1.4, "camera": "extreme:noob", "move": "push",
+         "faces": {"noob": "dead"}, "anims": {"noob": "facepalm"}},
+        {"speaker": "goldie", "line": "Don't worry, I'll present it. And take the credit.", "face": "evil",
+         "anims": {"goldie": "laugh"}, "camera": "two:bacon,goldie", "faces": {"noob": "angry"}, "hold": 0.6}
+      ]
+    }
+  ]
+}
