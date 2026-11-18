@@ -26,7 +26,7 @@ import rig as rigmod  # noqa: E402
 def parse():
     argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else sys.argv[1:]
     p = argparse.ArgumentParser()
-    p.add_argument("--name", default="BLOCKTALES")
+    p.add_argument("--name", default="BLOCKTOPIA TALES")
     p.add_argument("--mascot", default="ziggy")
     p.add_argument("--color", default="#6c3ce0", help="brand background colour")
     p.add_argument("--accent", default="#ffd23f", help="title text colour")
@@ -187,8 +187,15 @@ def banner(args, c):
     cam.data.ortho_scale = 38.0           # 38 units across 2560 px -> safe strip ~23 x 6.3 units
     aim(cam, (0, -40, 2.7), (0, 0, 2.7))
     names = [n for n in c if n != args.mascot][:4]
-    text3d("title", args.name, font, args.accent, 2.3, (0, -1.0, 3.5), extrude=0.3)
-    text3d("tag", "NEW STORIES EVERY WEEK!", font, "#ffffff", 0.72, (0, -1.0, 1.5), extrude=0.06,
+    words = args.name.split()
+    if len(args.name) > 11 and len(words) > 1:  # long name -> two lines so it stays phone-safe
+        text3d("title", " ".join(words[:-1]), font, args.accent, 2.0, (0, -1.0, 4.35), extrude=0.3)
+        text3d("title2", words[-1], font, "#ffffff", 1.35, (0, -1.0, 2.55), extrude=0.25)
+        tag_z = 1.15
+    else:
+        text3d("title", args.name, font, args.accent, 2.3, (0, -1.0, 3.5), extrude=0.3)
+        tag_z = 1.5
+    text3d("tag", "NEW STORIES EVERY WEEK!", font, "#ffffff", 0.62, (0, -1.0, tag_z), extrude=0.06,
            outline=False, spacing=1.12)
     character(args.mascot, c[args.mascot], (-9.3, 0, 0.05), 20, "wave", "happy")
     left = [(names[0], -13.6, "laugh", "happy")] if names else []

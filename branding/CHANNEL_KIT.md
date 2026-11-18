@@ -1,14 +1,12 @@
-# Channel kit: BLOCKTALES
+# Channel kit: BLOCKTOPIA TALES
 
 ## Name
-**Main pick: BLOCKTALES** (`@BlocktalesTV` if `@Blocktales` is taken)
-It means "stories from a blocky world," it's easy to say and spell, and it doesn't use the Roblox trademark.
-
-Backups: **Noobville** · **Stud Stories** · **Brickhouse Toons** · **OOF Studios**
+**Blocktopia Tales** · handle **@BlocktopiaTales**
+A whole blocky world full of stories, with no Roblox trademark in the name.
 
 To use a different name, re-render everything with it:
 ```bash
-blender -b -P pipeline/blender/render_branding.py -- --name "STUD STORIES"
+blender -b -P pipeline/blender/render_branding.py -- --name "NEW NAME"
 ```
 
 ## Mascot: Ziggy
@@ -25,7 +23,7 @@ His colours are in `episodes/cast.json` under `ziggy`. Change them to your own a
 
 ## Channel description (paste into Studio → Customization → Basic info)
 ```
-Welcome to BLOCKTALES! 🧱
+Welcome to BLOCKTOPIA TALES! 🧱
 
 Funny, dramatic and sometimes emotional animated stories from a blocky world:
 school chaos, moms who say "we have food at home," rich-kid flexes, and twists
@@ -39,7 +37,7 @@ you won't see coming.
 
 ## Channel keywords (Studio → Settings → Channel)
 ```
-roblox animation, roblox story, roblox funny, roblox shorts, animated stories, roblox school, roblox comedy, blocktales
+roblox animation, roblox story, roblox funny, roblox shorts, animated stories, roblox school, roblox comedy, blocktopia tales
 ```
 
 ## Upload defaults (Studio → Settings → Upload defaults)
@@ -48,7 +46,7 @@ roblox animation, roblox story, roblox funny, roblox shorts, animated stories, r
 ```
 [one-line story summary]
 
-Subscribe for more BLOCKTALES stories! 🧱
+Subscribe for more Blocktopia Tales stories! 🧱
 #roblox #robloxanimation #shorts #funny
 ```
 - **Tags:** the same as the channel keywords
@@ -60,12 +58,12 @@ Subscribe for more BLOCKTALES stories! 🧱
 
 ## Launch checklist
 - [ ] Create a new Gmail for the channel
-- [ ] Create the channel as **BLOCKTALES** and claim the handle
+- [ ] Create the channel as **Blocktopia Tales** with handle **@BlocktopiaTales**
 - [ ] Turn on 2-Step Verification (myaccount.google.com/security)
 - [ ] Verify your phone (youtube.com/verify) to unlock custom thumbnails and long videos
 - [ ] Upload the logo, banner and watermark
 - [ ] Paste the description, keywords and upload defaults
 - [ ] Create the 4 playlists
-- [ ] Claim @BlocktalesTV on TikTok and Instagram too
+- [ ] Claim @BlocktopiaTales on TikTok and Instagram too
 - [ ] Have 7 Shorts finished before posting the first one (a week of buffer)
 - [ ] Post 1 Short a day, around 3–6pm your local time
