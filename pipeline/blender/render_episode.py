@@ -281,8 +281,14 @@ def harden_cuts(cut_frames):
     cut, and stop the big jump from bending the motion inside the shot."""
     ids = list(bpy.data.objects) + list(bpy.data.cameras) + list(bpy.data.materials)
     ids += [m.node_tree for m in bpy.data.materials if m.node_tree]
+    for nt in [m.node_tree for m in bpy.data.materials if m.node_tree]:
+        for fc in fcurves_of(nt):  # face swaps must snap, never slide
+            for kp in fc.keyframe_points:
+                kp.interpolation = "CONSTANT"
     for idb in ids:
         for fc in fcurves_of(idb):
+            if idb in [m.node_tree for m in bpy.data.materials]:
+                continue
             for kp in fc.keyframe_points:
                 f = round(kp.co[0])
                 if f in cut_frames:

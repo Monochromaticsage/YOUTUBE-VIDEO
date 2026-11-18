@@ -250,8 +250,9 @@ def build_character(name, spec, faces_dir):
     torso = add_obj(f"{name}_torso", box_mesh("t", (2, 1, 2), (0, 0, -1)), root, (0, 0, 2), shirt)
     head = add_obj(f"{name}_head", box_mesh("h", (1.25, 1.2, 1.2), (0, 0, -0.6)), torso, (0, 0, 2), skin,
                    bevel=0.22, segments=4)
-    arm_l = add_obj(f"{name}_arm_l", box_mesh("al", (1, 1, 2), (0, 0, 1)), torso, (1.5, 0, 2), arm_mat)
-    arm_r = add_obj(f"{name}_arm_r", box_mesh("ar", (1, 1, 2), (0, 0, 1)), torso, (-1.5, 0, 2), arm_mat)
+    # Shoulder joint like Roblox R6: at the torso edge, 0.5 below the top of the arm
+    arm_l = add_obj(f"{name}_arm_l", box_mesh("al", (1, 1, 2), (-0.5, 0, 0.5)), torso, (1.0, 0, 1.5), arm_mat)
+    arm_r = add_obj(f"{name}_arm_r", box_mesh("ar", (1, 1, 2), (0.5, 0, 0.5)), torso, (-1.0, 0, 1.5), arm_mat)
     leg_l = add_obj(f"{name}_leg_l", box_mesh("ll", (1, 1, 2), (0, 0, 1)), root, (0.5, 0, 2), pants)
     leg_r = add_obj(f"{name}_leg_r", box_mesh("lr", (1, 1, 2), (0, 0, 1)), root, (-0.5, 0, 2), pants)
 

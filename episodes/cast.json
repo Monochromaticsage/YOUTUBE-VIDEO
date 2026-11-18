@@ -1,35 +1,76 @@
 {
+  "ziggy": {
+    "display": "Ziggy",
+    "skin": "#f2c9a0",
+    "shirt": "#ff7a1a",
+    "pants": "#2b2b2b",
+    "sleeves": true,
+    "hair": {
+      "style": "cap",
+      "color": "#1fb5ff"
+    },
+    "caption_color": "#FFB347",
+    "voice_id": "",
+    "_note": "Channel mascot / main character. Replace colours with your own avatar's."
+  },
   "noob": {
     "display": "Noob",
-    "skin": "#f5cd30", "shirt": "#0d69ac", "pants": "#a2c48b",
+    "skin": "#f5cd30",
+    "shirt": "#0d69ac",
+    "pants": "#a2c48b",
     "caption_color": "#FFE14D",
-    "voice_id": "", "pitch": 1.08
+    "voice_id": "",
+    "pitch": 1.08
   },
   "bacon": {
     "display": "Bacon",
-    "skin": "#eac4a0", "shirt": "#2b2b2b", "pants": "#1f3b73",
-    "hair": {"style": "bacon", "color": "#6b3b1d"},
+    "skin": "#eac4a0",
+    "shirt": "#2b2b2b",
+    "pants": "#1f3b73",
+    "hair": {
+      "style": "bacon",
+      "color": "#6b3b1d"
+    },
     "caption_color": "#FF9E5E",
     "voice_id": ""
   },
   "ms_brick": {
     "display": "Ms. Brick",
-    "skin": "#eac4a0", "shirt": "#b5323a", "pants": "#3a3a3a", "sleeves": true,
-    "hair": {"style": "long", "color": "#2a1a10"}, "glasses": true,
+    "skin": "#eac4a0",
+    "shirt": "#b5323a",
+    "pants": "#3a3a3a",
+    "sleeves": true,
+    "hair": {
+      "style": "long",
+      "color": "#2a1a10"
+    },
+    "glasses": true,
     "caption_color": "#FF6B6B",
     "voice_id": ""
   },
   "goldie": {
     "display": "Goldie",
-    "skin": "#eac4a0", "shirt": "#e0b000", "pants": "#ffffff", "sleeves": true,
-    "hair": {"style": "cap", "color": "#111111"},
+    "skin": "#eac4a0",
+    "shirt": "#e0b000",
+    "pants": "#ffffff",
+    "sleeves": true,
+    "hair": {
+      "style": "cap",
+      "color": "#111111"
+    },
     "caption_color": "#FFD700",
     "voice_id": ""
   },
   "mom": {
     "display": "Mom",
-    "skin": "#eac4a0", "shirt": "#7b4fa0", "pants": "#2e2e5e", "sleeves": true,
-    "hair": {"style": "long", "color": "#8a4b20"},
+    "skin": "#eac4a0",
+    "shirt": "#7b4fa0",
+    "pants": "#2e2e5e",
+    "sleeves": true,
+    "hair": {
+      "style": "long",
+      "color": "#8a4b20"
+    },
     "caption_color": "#D7A6FF",
     "voice_id": ""
   }
