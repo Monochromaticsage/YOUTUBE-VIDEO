@@ -1,77 +1,87 @@
-# Batch 01: three Shorts for tomorrow
+# Batch 01: three Shorts for tomorrow (v2, rebuilt from the data study)
 
-Format (learned from studying a top Roblox-story channel, without copying any of its stories):
-first-person "My ___" premise stated in the very first line, a family or school setting, absurd
-escalation, a twist, a one-line punchline, then a comment question. About 35–40 seconds each.
-
----
-
-## S03: "My Grandpa Joined My CLASS!"
-Sets: hallway → classroom · Cast: Sage (narrator), Grandpa Gus, Ms. Brick, Noob, Bacon
-
-| # | Who | Line | On screen |
-|---|-----|------|-----------|
-| 1 | Sage | My grandpa joined my class. | Grandpa walks into the classroom with a backpack, waves |
-| 2 | Sage | He's seventy-four. | Close-up: Grandpa's proud smile |
-| 3 | Grandpa | I never finished fifth grade. Today, I fix that. | He sits at the tiny desk; it creaks |
-| 4 | Sage | At first, everyone laughed. | Noob and Bacon point and laugh |
-| 5 | Sage | Then he answered every question. | Grandpa's hand shoots up again and again |
-| 6 | Ms. Brick | Who knows what year the school was built? | Ms. Brick at the board |
-| 7 | Grandpa | I do. I was here when they built it. | Class gasps (vine boom) |
-| 8 | Sage | By lunch, he was the most popular kid in school. | Crowd follows Grandpa down the hallway |
-| 9 | Sage | By Friday... he got detention. | Grandpa asleep at his desk, snoring (zzz) |
-| 10 | Ms. Brick | Gus! No napping in class! | Ms. Brick slams the ruler down |
-| 11 | Grandpa | Ma'am, I've been napping since 1962. | Deadpan close-up |
-| 12 | Sage | He graduated fifth grade last week. | Grandpa in a cap and gown, everyone cheering |
-| 13 | Sage | Now he says he's going to prom. | Grandpa winks; record scratch |
-
-**Comment question:** Would YOU want your grandpa in your class? 👇
-**Title:** My Grandpa Joined My CLASS! 👴📚
+These are built on the three highest-performing structures from `docs/research/XENOST_STUDY.md`:
+a family member with one impossible trait, an adult embarrassing a kid at school, and "everyone thinks ___".
+All stories are original. About 35–40 seconds each, narrated by Sage.
 
 ---
 
-## S04: "My Mom Turned Off the Wi-Fi FOREVER!"
-Sets: kitchen → bedroom → outdoors · Cast: Sage (narrator), Mom, Ziggy
+## S03: "My Little Sister Can TASTE Lies!"
+Formula: family member + one impossible trait (Xenost's #1 pattern)
+Sets: kitchen → hallway → kitchen · Cast: Sage, Pip, Goldie, Ms. Brick, Mom
 
 | # | Who | Line | On screen |
 |---|-----|------|-----------|
-| 1 | Sage | My mom turned off the Wi-Fi. Forever. | Mom yanks the router plug; sparks fly |
-| 2 | Mom | Screens are rotting your brain! Go touch grass! | Mom points at the door |
-| 3 | Sage | So I went looking for signal. | Sage holds a phone up, walking |
-| 4 | Sage | One bar in the kitchen. | Sage on a chair holding the phone near the ceiling |
-| 5 | Sage | Two bars on the roof. | Sage balancing on the roof in the wind |
-| 6 | Ziggy | Bro... why are you on your roof? | Ziggy below, confused |
-| 7 | Sage | Then I found FULL signal... | Phone screen: five bars, sparkle sound |
-| 8 | Sage | ...coming from my mom's closet. | Sage opens the closet door slowly (heartbeat) |
-| 9 | Sage | She had a secret router. And she was watching cooking videos. | Mom inside with a laptop and snacks, frozen |
-| 10 | Mom | ...This is research. | Mom's guilty face |
-| 11 | Sage | So now we have a deal. | Both at the kitchen table, shaking hands |
-| 12 | Sage | She gets the Wi-Fi in the day. I get it at night. | Split shot: mom on laptop / Sage on phone |
-| 13 | Mom | And neither of us touches grass. | Both look at the window, shrug |
+| 1 | Sage | My little sister can taste lies. | Pip at the table; Sage beside her |
+| 2 | Sage | Every lie tastes like a sour lemon. | Close-up: Pip's face scrunches (sour sting) |
+| 3 | Sage | I said I brushed my teeth. | Sage smiles innocently |
+| 4 | Pip | Bleh! LEMON! | Pip gags, points at Sage (vine boom) |
+| 5 | Sage | So I brought her to school. | Hallway; Pip walks in like a detective |
+| 6 | Goldie | My dad owns a yacht. | Goldie bragging, sunglasses |
+| 7 | Pip | LEMON! | Pip gags; the crowd turns to Goldie |
+| 8 | Ms. Brick | I love grading your homework. | Ms. Brick with a huge stack of papers |
+| 9 | Pip | Double lemon! | Pip falls over (oof thud); class laughs |
+| 10 | Sage | Then we got home... and Mom said... | Kitchen; Mom at the counter |
+| 11 | Mom | I'm not mad. Just tell me who broke the vase. | Broken vase on the floor (heartbeat) |
+| 12 | Pip | ...That tastes like a WHOLE lemon tree. | Pip turns green; Sage slowly backs away |
+| 13 | Sage | I'm grounded until I'm thirty. | Sage in her room, staring out the window |
 
-**Comment question:** How long could YOU survive with no Wi-Fi? 👇
-**Title:** My Mom Turned Off the Wi-Fi FOREVER! 📵
+**Comment question:** What would YOUR lies taste like? 🍋👇
+**Title:** My Little Sister Can TASTE Lies! 🍋
 
 ---
 
-## S05: "My Little Sister SOLD Our House!"
-Sets: outdoors → kitchen · Cast: Sage (narrator), Pip (little sister), Mom, Goldie
+## S04: "My MOM Became Our Substitute Teacher!"
+Formula: adult embarrasses a kid at school (the top category, 6.4M median)
+Sets: classroom → hallway · Cast: Sage, Mom, Goldie, Noob, Bacon
 
 | # | Who | Line | On screen |
 |---|-----|------|-----------|
-| 1 | Sage | My little sister sold our house. For one dollar. | Pip at a lemonade stand; sign reads "HOUSE $1" |
-| 2 | Sage | It started with a lemonade stand. | Pip pours lemonade, nobody comes |
-| 3 | Pip | Nobody wants lemonade. Time to expand. | Pip adds the TV, the couch and a lamp to the stand |
-| 4 | Sage | She sold the TV. Then the couch. Then Mom's car. | Items vanish one by one (cash sound each time) |
-| 5 | Sage | Then Goldie walked by. | Goldie struts in with sunglasses |
-| 6 | Goldie | I'll take the big thing behind you. | Points at the house |
-| 7 | Pip | Deal. | Handshake; the sold sign pops up (cash) |
-| 8 | Mom | PIP! WHERE IS MY HOUSE?! | Mom running out, panicking |
-| 9 | Sage | Goldie moved in that afternoon. | Goldie relaxing on our couch in our kitchen |
-| 10 | Sage | But Pip had a plan. | Pip rubs her hands together |
-| 11 | Pip | That'll be fifty dollars a day. For the Wi-Fi. | Pip hands Goldie a bill |
-| 12 | Sage | Goldie sold it back for two dollars. | Goldie storms out; Pip takes the keys |
-| 13 | Sage | Pip made a profit. Mom made her a bedtime of six. | Pip in bed at sunset, still smug |
+| 1 | Sage | Our teacher was sick. So the school called a substitute. | Empty teacher's desk; door opens |
+| 2 | Sage | It was my mom. | Mom walks in with a coffee mug; Sage slides down in her chair |
+| 3 | Mom | Good morning, class! Good morning, sweetie! | Mom waves right at Sage; class turns (record scratch) |
+| 4 | Sage | Then she took attendance. | Mom with a clipboard |
+| 5 | Mom | Sage... did you wear the underwear I ironed? | Class erupts laughing |
+| 6 | Sage | Then she showed my baby photos. On the projector. | Big screen behind Mom; Noob and Bacon howl |
+| 7 | Goldie | Ha! Baby Sage looks like a potato! | Goldie pointing, laughing |
+| 8 | Sage | And then Mom smiled. The scary smile. | Close-up: Mom's calm smile (heartbeat) |
+| 9 | Mom | Goldie. Pop quiz. Just you. Two hundred questions. | Giant stack of paper lands on Goldie's desk (thud) |
+| 10 | Goldie | ...Can I call my lawyer? | Goldie sweating |
+| 11 | Sage | By lunch, she was the most feared teacher in school. | Hallway; kids flatten against lockers as Mom passes |
+| 12 | Sage | And now? | Next-day classroom |
+| 13 | Sage | The principal hired her full-time. | Mom at the teacher's desk, waving; Sage face-plants |
 
-**Comment question:** What's the craziest thing YOUR sibling ever did? 👇
-**Title:** My Little Sister SOLD Our House! 🏠💵
+**Comment question:** Would YOU want your mom as your teacher? 👇
+**Title:** My MOM Became Our Substitute Teacher! 😳
+
+---
+
+## S05: "Everyone Thinks Noob Is a GENIUS!"
+Formula: "everyone thinks ___" mistaken identity (a 15–23M structure)
+Sets: hallway → classroom → stage · Cast: Sage, Noob, Ms. Brick, Grandpa Gus, Bacon
+
+| # | Who | Line | On screen |
+|---|-----|------|-----------|
+| 1 | Sage | My best friend Noob found my grandpa's glasses. | Noob tries on big glasses; Grandpa in the background patting his pockets |
+| 2 | Sage | Now everyone thinks he's a genius. | Students gather around Noob |
+| 3 | Ms. Brick | Noob, what is two plus two? | Classroom; Ms. Brick at the board |
+| 4 | Noob | ...Fish. | Long silence (crickets) |
+| 5 | Ms. Brick | ...Fish. Of course. Numbers live in the ocean of the mind. | Ms. Brick wipes a tear; class applauds |
+| 6 | Sage | He won the science fair with a potato. | Stage: a plain potato with a gold ribbon |
+| 7 | Bacon | Bro, what does it do? | Bacon squinting |
+| 8 | Noob | It's a potato. | Crowd gasps, "so deep" (vine boom) |
+| 9 | Sage | Then he got elected class president. | Noob on stage, confetti |
+| 10 | Sage | Until Grandpa came to take his glasses back. | Grandpa walks on stage and gently takes them |
+| 11 | Ms. Brick | Quick! Noob! Two plus two? | Everyone leans in |
+| 12 | Noob | Four. | Noob proud |
+| 13 | Ms. Brick | Wrong. Everyone knows it's fish. | Class nods; Noob stares at camera |
+
+**Comment question:** What's the dumbest thing YOU said that people thought was smart? 👇
+**Title:** Everyone Thinks Noob Is a GENIUS! 🤓🐟
+
+---
+
+## Backup stories (from v1, kept for later batches)
+- **"My Mom Turned Off the Wi-Fi FOREVER!"** Mom has a secret router in her closet. ("…This is research.")
+- **"My Grandpa Joined My CLASS!"** Retired: too close to their "My DAD went back to school!"
+- **"My Little Sister SOLD Our House!"** Retired: their "I was bored, so I SOLD my dad!" was a weak performer (0.83M).
