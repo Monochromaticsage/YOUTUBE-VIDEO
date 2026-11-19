@@ -54,24 +54,24 @@ Sets: kitchen → bedroom → outdoors · Cast: Sage (narrator), Mom, Ziggy
 
 ---
 
-## S05: "My Little Brother SOLD Our House!"
-Sets: outdoors → kitchen · Cast: Sage (narrator), Pip (little brother), Mom, Goldie
+## S05: "My Little Sister SOLD Our House!"
+Sets: outdoors → kitchen · Cast: Sage (narrator), Pip (little sister), Mom, Goldie
 
 | # | Who | Line | On screen |
 |---|-----|------|-----------|
-| 1 | Sage | My little brother sold our house. For one dollar. | Pip at a lemonade stand; sign reads "HOUSE $1" |
+| 1 | Sage | My little sister sold our house. For one dollar. | Pip at a lemonade stand; sign reads "HOUSE $1" |
 | 2 | Sage | It started with a lemonade stand. | Pip pours lemonade, nobody comes |
 | 3 | Pip | Nobody wants lemonade. Time to expand. | Pip adds the TV, the couch and a lamp to the stand |
-| 4 | Sage | He sold the TV. Then the couch. Then Mom's car. | Items vanish one by one (cash sound each time) |
+| 4 | Sage | She sold the TV. Then the couch. Then Mom's car. | Items vanish one by one (cash sound each time) |
 | 5 | Sage | Then Goldie walked by. | Goldie struts in with sunglasses |
 | 6 | Goldie | I'll take the big thing behind you. | Points at the house |
 | 7 | Pip | Deal. | Handshake; the sold sign pops up (cash) |
 | 8 | Mom | PIP! WHERE IS MY HOUSE?! | Mom running out, panicking |
 | 9 | Sage | Goldie moved in that afternoon. | Goldie relaxing on our couch in our kitchen |
-| 10 | Sage | But Pip had a plan. | Pip rubs his hands together |
+| 10 | Sage | But Pip had a plan. | Pip rubs her hands together |
 | 11 | Pip | That'll be fifty dollars a day. For the Wi-Fi. | Pip hands Goldie a bill |
 | 12 | Sage | Goldie sold it back for two dollars. | Goldie storms out; Pip takes the keys |
-| 13 | Sage | Pip made a profit. Mom made him a bedtime of six. | Pip in bed at sunset, still smug |
+| 13 | Sage | Pip made a profit. Mom made her a bedtime of six. | Pip in bed at sunset, still smug |
 
 **Comment question:** What's the craziest thing YOUR sibling ever did? 👇
-**Title:** My Little Brother SOLD Our House! 🏠💵
+**Title:** My Little Sister SOLD Our House! 🏠💵
