@@ -51,7 +51,16 @@ Subscribe for more Blocktopia Tales stories! 🧱
 ```
 - **Tags:** the same as the channel keywords
 - **Category:** Film & Animation
-- **Audience:** *Not made for kids*, the usual choice for comedy aimed at a general audience. Choose "made for kids" only if you're deliberately targeting under-13s, because it turns off comments and lowers earnings.
+- **Audience:** this depends on **who the content is really for**. If the stories are aimed mainly at children under 13, YouTube and US law (COPPA) **require** "Made for kids"; it still earns money, but comments are off and ads pay less. Our plan is to write for **teens and a general audience** (mystery, drama, twists, relatable humour), which makes *Not made for kids* the honest choice. If YouTube re-labels a video, or the audience turns out to be mostly young kids, switch it.
+
+## Monetization rules checklist
+- [ ] **Copyright:** only original stories, characters, sounds and music. No movie or TV clips or scenes.
+- [ ] **AI voices:** use a **paid** ElevenLabs plan, since commercial use isn't allowed on the free plan. Never clone a real person's voice.
+- [ ] **AI disclosure:** not needed for clearly animated content.
+- [ ] **Originality test, for every video:** its own idea, recognisably Blocktopia Tales, a person made real creative decisions, and the process is explainable.
+- [ ] **Avoid "template" feel:** vary story types, sets and camera work. Recurring characters and storylines make it a show.
+- [ ] **Advertiser-friendly:** no swearing, gore or suggestive content.
+- [ ] **About section promise:** "Mind-bending stories with twists you never see coming, starring Sage and her friends, in 1-minute animated Shorts."
 
 ## Playlists to create
 🏫 School Stories · 🏠 Family Chaos · 😢 Sad Stories · 🎬 Full Episodes
