@@ -4,54 +4,59 @@
   "format": "short",
   "music": "mystery_loop",
   "music_volume": 0.1,
+  "_pinned_comment": "What secret would YOU tell to unfreeze? 👇",
   "scenes": [
     {
       "set": "outdoors",
       "cast": {"noob": "far_left", "bacon": "left", "sage": "center", "goldie": "right", "nova": "far_right"},
       "shots": [
-        {"_beat": "HOOK", "speaker": "sage", "line": "Noob got tagged... and he actually FROZE.",
+        {"_beat": "HOOK", "speaker": "sage", "line": "Noob just got tagged... and FROZE.",
          "face": "shocked", "camera": "two:noob,sage", "move": "push", "sfx": "freeze",
          "anims": {"noob": "frozen", "sage": "shocked"}, "faces": {"noob": "shocked"}},
 
-        {"_beat": "FLIP", "speaker": "nova", "line": "In my game, tag means freeze. The only way out is to tell a secret you've never told anyone.",
-         "face": "smug", "camera": "low:nova", "sfx": "vine_boom",
+        {"_beat": "FLIP", "speaker": "nova", "line": "Tag means freeze.",
+         "face": "evil", "camera": "low:nova", "move": "zoom", "sfx": "vine_boom",
          "anims": {"noob": "frozen"}, "faces": {"noob": "shocked"}},
 
-        {"_beat": "PROOF 1", "speaker": "noob", "line": "Okay! I still sleep with a night light!",
+        {"speaker": "nova", "line": "Tell a secret you've never told... or stay frozen forever.",
+         "face": "smug", "camera": "medium:nova", "anims": {"noob": "frozen", "nova": "point"},
+         "faces": {"noob": "shocked"}},
+
+        {"_beat": "PROOF 1", "speaker": "noob", "line": "I still sleep with a night light!",
          "face": "scared", "camera": "closeup:noob", "anims": {"noob": "unfreeze"}, "sfx": "pop"},
 
         {"speaker": "bacon", "line": "Bro.", "face": "smug", "camera": "closeup:bacon",
-         "anims": {"bacon": "laugh"}, "hold": 0.3},
+         "anims": {"bacon": "laugh"}},
 
-        {"_beat": "PROOF 2", "duration": 1.0, "camera": "medium:goldie", "move": "shake", "sfx": "freeze",
+        {"_beat": "PROOF 2", "duration": 0.8, "camera": "medium:goldie", "move": "shake", "sfx": "freeze",
          "anims": {"goldie": "frozen"}, "faces": {"goldie": "shocked", "nova": "evil"}},
 
-        {"speaker": "goldie", "line": "I don't have real friends. I pay people to hang out with me.",
-         "face": "sad", "camera": "closeup:goldie", "anims": {"goldie": "sad"}, "hold": 0.4,
+        {"speaker": "goldie", "line": "I pay people to be my friends.",
+         "face": "sad", "camera": "closeup:goldie", "anims": {"goldie": "unfreeze"}, "hold": 0.3,
          "faces": {"sage": "sad", "bacon": "shocked"}},
 
-        {"_beat": "PROOF 3", "duration": 1.0, "camera": "extreme:sage", "move": "zoom", "sfx": "freeze",
+        {"_beat": "PROOF 3", "duration": 0.8, "camera": "extreme:sage", "move": "zoom", "sfx": "freeze",
          "anims": {"sage": "frozen"}, "faces": {"sage": "scared"}},
 
-        {"speaker": "sage", "line": "My secret is... I smile all the time because I'm scared people will leave if I don't.",
+        {"speaker": "sage", "line": "I only smile... so nobody leaves me.",
          "face": "cry", "camera": "closeup:sage", "move": "push", "sfx": "heartbeat",
-         "anims": {"sage": "frozen"}},
+         "anims": {"sage": "unfreeze"}, "hold": 0.3},
 
         {"speaker": "sage", "line": "Wait. Nova... who tagged YOU?", "face": "sus",
          "camera": "two:sage,nova", "anims": {"sage": "point"}, "sfx": "riser"},
 
-        {"_beat": "PUNCH", "speaker": "nova", "line": "Nobody. I've been It for ten years. No one ever stayed long enough to tag me back.",
+        {"_beat": "PUNCH", "speaker": "nova", "line": "Nobody. I've been It for ten years.",
          "face": "cry", "camera": "closeup:nova", "move": "push", "anims": {"nova": "sad"},
-         "faces": {"sage": "sad"}},
+         "faces": {"sage": "sad"}, "hold": 0.4},
 
-        {"speaker": "sage", "line": "Tag. You're not It anymore.", "face": "happy",
+        {"speaker": "sage", "line": "Tag. You're free.", "face": "happy",
          "camera": "two:sage,nova", "anims": {"sage": "point", "nova": "shocked"}, "sfx": "sparkle",
          "faces": {"nova": "shocked"}},
 
-        {"_beat": "OUT", "speaker": "nova", "line": "Then... can I play with you guys?", "face": "happy",
-         "camera": "wide", "move": "pull", "anims": {"nova": "jump", "noob": "wave", "bacon": "dance", "goldie": "wave"},
-         "faces": {"sage": "happy", "noob": "happy", "bacon": "happy", "goldie": "happy"},
-         "caption": "Then... can I play with you guys?", "hold": 1.2}
+        {"_beat": "OUT (loops to start)", "speaker": "nova", "line": "Thanks! ...Noob, you're It.", "face": "evil",
+         "camera": "wide", "anims": {"nova": "point", "noob": "frozen"},
+         "faces": {"noob": "shocked", "sage": "shocked", "bacon": "shocked", "goldie": "shocked"},
+         "sfx": "freeze", "hold": 0.6}
       ]
     }
   ]
