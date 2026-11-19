@@ -2,25 +2,20 @@
   "sage": {
     "display": "Sage",
     "role": "HERO - the main character. Curious, brave, kind, and always smiling. Leads most stories.",
-    "skin": "#a8693f",
+    "skin": "#c8825f",
     "shirt": "#efe6d6",
     "pants": "#2f3e5c",
     "sleeves": true,
     "hair": {
       "style": "sideswept",
-      "color": "#7a1430"
+      "color": "#6d1128"
     },
     "turtleneck": true,
     "knit": "#e2d6c1",
     "necklace": "#d4a62a",
     "earrings": "#d4a62a",
     "face_style": {
-      "lashes": true,
-      "teeth": true,
-      "brows": "arched",
-      "blush": true,
-      "sparkle": true,
-      "lips": "#c2566b"
+      "detailed": {}
     },
     "caption_color": "#FF6F91",
     "voice_id": ""

@@ -223,9 +223,23 @@ def stylize_face(expr, mouth_open, layers, style):
 
 
 def build_face_atlas(name, skin_hex, faces_dir, glasses=False, style=None):
+    skin = np.array(hex_rgba(skin_hex), np.float32)
+    if style and style.get("detailed") is not None:
+        from face_detailed import N as DN, draw_face_detailed
+        px = np.zeros((ATLAS_ROWS * DN, ATLAS_COLS * DN, 4), np.float32)
+        for i, expr in enumerate(FACES):
+            for open_ in (0, 1):
+                idx = i * 2 + open_
+                col, row = idx % ATLAS_COLS, idx // ATLAS_COLS
+                cell = draw_face_detailed(expr, bool(open_), skin, style["detailed"])
+                px[row * DN:(row + 1) * DN, col * DN:(col + 1) * DN] = cell[::-1]
+        img = bpy.data.images.new(f"{name}_faces", px.shape[1], px.shape[0], alpha=True, float_buffer=True)
+        img.colorspace_settings.name = "Non-Color"
+        img.pixels.foreach_set(px.ravel())
+        img.pack()
+        return img
     W, H = ATLAS_COLS * CELL, ATLAS_ROWS * CELL
     px = np.zeros((H, W, 4), np.float32)
-    skin = np.array(hex_rgba(skin_hex), np.float32)
     px[:] = skin
     colors = {"ink": (0.02, 0.02, 0.02, 1), "white": (1, 1, 1, 1), "pink": (0.55, 0.08, 0.12, 1),
               "blue": (0.25, 0.55, 1.0, 1), "red": (0.85, 0.05, 0.08, 1)}
