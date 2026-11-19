@@ -435,6 +435,30 @@ def build_character(name, spec, faces_dir):
         arm_r.data.materials[0] = jk
         add_obj(f"{name}_cuff_l", box_mesh("cf", (1.04, 1.04, 0.25)), arm_l, (0.5, 0, -1.35), jk, bevel=0.04)
         add_obj(f"{name}_cuff_r", box_mesh("cf", (1.04, 1.04, 0.25)), arm_r, (-0.5, 0, -1.35), jk, bevel=0.04)
+    if spec.get("back_star"):  # star patch sewn on the back (upside down with "back_star_flip")
+        star_m = make_material(f"{name}_star", spec["back_star"], roughness=0.5, texture=False)
+        v, f = [], []
+        for i in range(10):
+            a = math.pi / 2 + i * math.pi / 5
+            r = 0.55 if i % 2 == 0 else 0.23
+            v.append((r * math.cos(a), 0, r * math.sin(a)))
+        v_back = [(x, 0.06, z) for x, _, z in v]
+        verts = v + v_back + [(0, 0, 0), (0, 0.06, 0)]
+        for i in range(10):
+            j = (i + 1) % 10
+            f.append((20, j, i))
+            f.append((21, 10 + i, 10 + j))
+            f.append((i, j, 10 + j, 10 + i))
+        me = bpy.data.meshes.new(f"{name}_starmesh")
+        me.from_pydata(verts, [], f)
+        me.update()
+        st = bpy.data.objects.new(f"{name}_backstar", me)
+        bpy.context.scene.collection.objects.link(st)
+        st.parent = torso
+        back_y = 0.56 if spec.get("jacket") else 0.52
+        st.location = (0, back_y, 1.1)
+        st.rotation_euler = (0, math.radians(180 if spec.get("back_star_flip") else 0), 0)
+        me.materials.append(star_m)
     if spec.get("hoodie"):  # closed hoodie with hood resting behind the head, pocket and strings
         hd = make_material(f"{name}_hoodie", spec["hoodie"], roughness=0.85, tex_scale=9)
         add_obj(f"{name}_hdshell", box_mesh("hs", (2.05, 1.05, 2.0)), torso, (0, 0, 1.0), hd, bevel=0.06)

@@ -22,6 +22,7 @@ ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 import anims  # noqa: E402
 import rig as rigmod  # noqa: E402
 import sets  # noqa: E402
+import props  # noqa: E402
 
 SCENE_SPACING = 400.0  # each scene's set is built this far apart on X
 
@@ -75,6 +76,9 @@ MOODS = {
                    fill=0.9, fill_color="#5b78c9", fog="#8a6e9e", fog_start=8, fog_end=70, fog_max=0.8),
     "night":  dict(sky="#26305a", zenith="#0a0e1f", sky_strength=0.35, sun=0.8, sun_color="#9fb4ff", sun_elev=35, sun_az=20,
                    fill=0.35, fill_color="#3a4f8f", fog="#1d2747", fog_start=6, fog_end=55, fog_max=0.85),
+    # clean, bright, high-key look (white light, no haze) like top Roblox-story channels
+    "bright": dict(sky="#f4f9ff", zenith="#a9d4ff", sky_strength=1.55, sun=3.0, sun_color="#ffffff", sun_elev=58,
+                   sun_az=-25, fill=1.5, fill_color="#ffffff", fog="#ffffff", fog_start=200, fog_end=400, fog_max=0.0),
     "indoor": dict(sky="#d9c7a8", sky_strength=0.8, sun=2.6, sun_color="#ffd9a8", sun_elev=35, sun_az=-40,
                    fill=0.9, fill_color="#bcd0ff", fog="#d9c2a0", fog_start=14, fog_end=90, fog_max=0.4),
 }
@@ -213,6 +217,7 @@ def setup_scene(ep, args):
 
 # -------------------------------------------------------------------- camera
 HEAD_Z = 4.6
+PROPS = {}  # id -> {"root": empty, "center": Vector, "objs": [...]} for the current scene
 CHEST_Z = 3.4
 
 
@@ -229,7 +234,8 @@ def camera_pose(spec, rigs, scene_origin, fmt):
     def pos(n):
         if n not in rigs:
             raise ValueError(f"camera target '{n}' is not in this scene's cast")
-        return Vector(rigs[n].base)
+        # aim at where the character really is: smaller kids and seated characters sit lower
+        return Vector(rigs[n].base) + Vector((0, 0, getattr(rigs[n], "cam_dz", 0.0)))
 
     def front(n, off):
         # rotate a camera offset so single-character shots face the character
@@ -270,6 +276,15 @@ def camera_pose(spec, rigs, scene_origin, fmt):
     if kind == "tag":  # head + the price tag floating above it
         p = pos(names[0])
         return p + front(names[0], (0, -8.5, HEAD_Z + 1.2)), p + Vector((0, 0, HEAD_Z + 0.75)), 40
+    if kind == "back":  # behind a character, looking at their back (e.g. a patch on a jacket)
+        p = pos(names[0])
+        return p + Vector((0, 5.2, CHEST_Z + 0.6)), p + Vector((0, 0, CHEST_Z - 0.2)), 45
+    if kind == "prop":  # close on a scene prop: prop:<id>
+        if names[0] not in PROPS:
+            raise ValueError(f"camera prop '{names[0]}' is not in this scene")
+        c = PROPS[names[0]]["center"]
+        d = PROPS[names[0]].get("cam_dist", 4.0)
+        return c + Vector((0, -d, d * 0.55)), c, 45
     if kind == "low":
         p = pos(names[0])
         return p + front(names[0], (0, -7, 0.8)), p + Vector((0, 0, HEAD_Z - 0.5)), 26
@@ -409,6 +424,63 @@ def auto_second_angle(first, speaker, rigs, i):
         options.append(f"ots:{near},{speaker}")
     options += [f"low:{speaker}@-8", f"closeup:{speaker}@10" if kind != "closeup" else f"medium:{speaker}"]
     return options[i % len(options)]
+
+
+def auto_angles(base, speaker, rigs, n, seed):
+    """Xenost-style rapid cutting: split one line into n quick shots that alternate between the
+    speaker and the other characters' reactions, with varied framings."""
+    vis = [k for k in rigs if not getattr(rigs[k], "hidden_now", False)]
+    if not vis:
+        return [base] * n
+    s = speaker if speaker in vis else vis[0]
+    others = [k for k in vis if k != s] or [s]
+    pattern = []
+    for i in range(12):
+        r = others[(seed + i) % len(others)]
+        pattern += [f"closeup:{r}", f"extreme:{s}", "wide", f"medium:{r}@-6", f"closeup:{s}@6",
+                    f"two:{s},{r}" if r != s else f"low:{s}", f"low:{s}@-6", f"ots:{r},{s}" if r != s else f"high:{s}"]
+    pattern = pattern[(seed * 3) % 8:]
+    out = [base]
+    for spec in pattern:
+        if len(out) >= n:
+            break
+        if spec.split("@")[0] != out[-1].split("@")[0]:
+            out.append(spec)
+    return out
+
+
+def _prop_vis(pid, visible, frame):
+    root = PROPS[pid]["root"]
+    if frame > 1:
+        root.keyframe_insert("scale", frame=frame - 1)
+    root.scale = PROPS[pid]["scale"] if visible else (0.0001,) * 3
+    root.keyframe_insert("scale", frame=frame)
+    for fc in fcurves_of(root):
+        for k in fc.keyframe_points:
+            k.interpolation = "CONSTANT"
+
+
+def _prop_move(pid, mv, f0, f1, fps):
+    """{"to": [dx,dy,dz] offset, "rot": [rx,ry,rz] deg, "at": sec, "dur": sec, "pop": bool}"""
+    root = PROPS[pid]["root"]
+    a = f0 + round(float(mv.get("at", 0)) * fps)
+    b = min(f1 - 1, a + max(2, round(float(mv.get("dur", 0.35)) * fps)))
+    root.keyframe_insert("location", frame=a)
+    root.keyframe_insert("rotation_euler", frame=a)
+    start = Vector(root.location)
+    root.location = start + Vector(mv.get("to", (0, 0, 0)))
+    r = mv.get("rot", (0, 0, 0))
+    root.rotation_euler = tuple(math.radians(v) + c for v, c in zip(r, root.rotation_euler))
+    root.keyframe_insert("location", frame=b)
+    root.keyframe_insert("rotation_euler", frame=b)
+    if mv.get("pop"):  # grow in from nothing with a little overshoot
+        sc = Vector(PROPS[pid]["scale"])
+        root.scale = sc * 0.0001
+        root.keyframe_insert("scale", frame=a)
+        root.scale = sc * 1.2
+        root.keyframe_insert("scale", frame=a + max(1, (b - a) * 2 // 3))
+        root.scale = sc
+        root.keyframe_insert("scale", frame=b)
 
 
 def harden_cuts(cut_frames, cam_cuts=()):
@@ -609,6 +681,11 @@ def main():
     for si, sc in enumerate(ep["scenes"]):
         origin = (si * SCENE_SPACING, 0, 0)
         marks = sets.build_set(sc.get("set", "stage"), origin, os.path.join(ROOT, "assets"))
+        PROPS.clear()
+        for pd in sc.get("props", []):
+            PROPS[pd["id"]] = props.scene_prop(pd, origin)
+            if pd.get("hidden"):
+                _prop_vis(pd["id"], False, 1)
         scene_rigs = {}
         for name, mark in sc["cast"].items():
             r = rigs_all[name]
@@ -655,12 +732,19 @@ def main():
                         a0 = f1 - 2
                 anims.ANIMS[anim_name](r, a0, f1, fps)
                 r.hidden_now = anim_name == "hidden"
+                sc_ = float(ep["_chars"].get(name, {}).get("scale", 1.0))
+                r.cam_dz = (sc_ - 1.0) * HEAD_Z + (-0.95 if anim_name.startswith("sit") else 0.0)
 
             cams = shot.get("cameras") or [shot.get("camera", f"medium:{speaker}" if speaker and
                                                     speaker in scene_rigs else "wide")]
             if (len(cams) == 1 and ep.get("auto_cuts") and n_frames > fps * 2.6 and speaker in scene_rigs
                     and not shot.get("vo")):
                 cams = cams + [auto_second_angle(cams[0], speaker, scene_rigs, shot_i)]
+            ce = float(ep.get("cut_every", 0))
+            if ce and len(cams) == 1 and not shot.get("no_cuts"):
+                n_cuts = max(1, round(t["duration"] / ce))
+                cams = auto_angles(cams[0], speaker if speaker in scene_rigs else shot.get("focus"),
+                                   scene_rigs, n_cuts, shot_i)
             seg = n_frames / len(cams)
             for ci, cspec in enumerate(cams):
                 a = f0 + round(ci * seg)
@@ -681,6 +765,12 @@ def main():
                                    name == speaker and bool(shot.get("line")) and not shot.get("vo"),
                                    t.get("mouth"))
             prefs.keyframe_new_interpolation_type = "BEZIER"
+            for pid in shot.get("show", []):
+                _prop_vis(pid, True, f0)
+            for pid in shot.get("hide", []):
+                _prop_vis(pid, False, f0)
+            for pid, mv in shot.get("prop_moves", {}).items():
+                _prop_move(pid, mv, f0, f1, fps)
             key_tags(tags, shot, f0, f1, scene_rigs)
             cut_frames.add(f1 - 1)
             frame = f1

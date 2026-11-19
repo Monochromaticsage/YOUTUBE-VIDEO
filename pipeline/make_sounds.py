@@ -342,12 +342,25 @@ def cash():
     return fade(norm(buf))
 
 
+def glass_crash():
+    """Ceramic/glass smash: a hard noise crack, then scattered bright tinkles."""
+    buf = np.zeros(int(1.4 * SR))
+    crack = hp_fast(noise(0.35), 1800) * env_exp(0.35, 0.06)
+    mix_at(buf, crack * 0.9, 0.0)
+    mix_at(buf, thud(160, 0.25) * 0.5, 0.0)
+    for i in range(22):
+        f = float(rng.uniform(2500, 7500))
+        mix_at(buf, bell_tone(f, 0.25, 0.05) * float(rng.uniform(0.15, 0.4)), float(rng.uniform(0.02, 0.7)))
+    return fade(norm(reverb(buf, 0.6, 0.18)))
+
+
 SFX = {
     "vine_boom": vine_boom, "sting": sting, "sad_trombone": sad_trombone, "record_scratch": record_scratch,
     "airhorn": airhorn, "oof_thud": oof_thud, "door_knock": door_knock, "door_slam": door_slam,
     "whoosh": whoosh, "pop": pop, "boing": boing, "ding": ding, "school_bell": school_bell,
     "sparkle": sparkle, "freeze": freeze, "glitch": glitch, "heartbeat": heartbeat, "tick_tock": tick_tock,
     "riser": riser, "footsteps": footsteps, "notification": notification, "cash": cash,
+    "glass_crash": glass_crash,
 }
 
 

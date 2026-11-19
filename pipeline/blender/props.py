@@ -229,3 +229,96 @@ def scatter(o, fn, n, xr, yr, seed=1, keep_out=None, **kw):
             continue
         fn(o, x, y, seed=r.randint(0, 9999), **kw) if "seed" in fn.__code__.co_varnames else fn(o, x, y, **kw)
         placed += 1
+
+
+# ------------------------------------------------------------- story props
+# Props that a story needs to show, hide or move. scene_prop() builds one under an empty
+# "root" so render_episode can pop it in/out (scale) and animate it (location/rotation).
+def _kid(root, name, mesh, loc, mat, bevel=0.04, rot=(0, 0, 0)):
+    ob = add_obj(name, mesh, root, loc, mat, bevel=bevel)
+    ob.rotation_euler = tuple(math.radians(r) for r in rot)
+    return ob
+
+
+def _vase(root, n):
+    blue = M("#3f7fe0", rough=0.25, tex=False)
+    white = M("#ffffff", rough=0.3, tex=False)
+    _kid(root, f"{n}_body", cyl_mesh("vb", 0.42, 0.9, 16, 0.5), (0, 0, 0), blue, bevel=0)
+    _kid(root, f"{n}_band", cyl_mesh("vband", 0.51, 0.14, 16), (0, 0, 0.62), white, bevel=0)
+    _kid(root, f"{n}_neck", cyl_mesh("vn", 0.26, 0.55, 16, 0.34), (0, 0, 0.9), blue, bevel=0)
+    for i, (dx, dz) in enumerate([(-0.12, 0.25), (0.1, 0.2), (0.0, 0.35)]):  # flowers
+        _kid(root, f"{n}_stem{i}", box_mesh("st", (0.05, 0.05, 0.7)), (dx, 0, 1.3), M("#3e8e41"), bevel=0)
+        _kid(root, f"{n}_fl{i}", box_mesh("fl", (0.28, 0.28, 0.28)), (dx * 1.6, 0, 1.6 + dz),
+             M(("#ff5d8f", "#ffd23f", "#ff8a3d")[i], tex=False), bevel=0.1)
+    return 1.3, 4.5
+
+
+def _shards(root, n):
+    blue = M("#3f7fe0", rough=0.25, tex=False)
+    for i, (x, y, r) in enumerate([(-0.5, 0.1, 20), (0.35, -0.2, -35), (0.1, 0.4, 70), (-0.15, -0.35, 5),
+                                   (0.6, 0.3, 45)]):
+        _kid(root, f"{n}_sh{i}", box_mesh("sh", (0.36, 0.28, 0.08)), (x, y, 0.04), blue, bevel=0.02, rot=(8, -6, r))
+    for i, (x, y) in enumerate([(-0.3, -0.1), (0.45, 0.05)]):
+        _kid(root, f"{n}_fl{i}", box_mesh("fl", (0.25, 0.25, 0.25)), (x, y, 0.12),
+             M(("#ff5d8f", "#ffd23f")[i], tex=False), bevel=0.08)
+    return 0.3, 3.0
+
+
+def _piece(root, n):
+    _kid(root, f"{n}_p", box_mesh("pc", (0.45, 0.32, 0.09)), (0, 0, 0.05), M("#3f7fe0", rough=0.25, tex=False),
+         bevel=0.02, rot=(0, 0, 25))
+    return 0.1, 2.2
+
+
+def _paper_stack(root, n):
+    for i in range(14):
+        _kid(root, f"{n}_pp{i}", box_mesh("pp", (1.6, 1.2, 0.22)), ((i % 3 - 1) * 0.06, (i % 2) * 0.05, 0.11 + i * 0.23),
+             M("#fafafa" if i % 4 else "#ffe9a8", tex=False), bevel=0.02, rot=(0, 0, (i % 5 - 2) * 3))
+    return 1.7, 6.0
+
+
+def _dustpan(root, n):
+    red = M("#e53935", rough=0.4, tex=False)
+    _kid(root, f"{n}_pan", box_mesh("dp", (1.4, 1.0, 0.08)), (0, 0, 0.04), red, bevel=0.02)
+    _kid(root, f"{n}_lip", box_mesh("dl", (1.4, 0.1, 0.35)), (0, 0.5, 0.18), red, bevel=0.02)
+    _kid(root, f"{n}_handle", box_mesh("dh", (0.2, 1.1, 0.15)), (0, 1.05, 0.25), red, bevel=0.04)
+    return 0.2, 3.0
+
+
+def _lemon_tree(root, n):
+    _kid(root, f"{n}_trunk", box_mesh("tt", (0.8, 0.8, 5)), (0, 0, 2.5), M("#7b4a2a"), bevel=0.1)
+    for i, (x, z, s) in enumerate([(0, 6.2, 4.2), (-1.6, 5.4, 2.8), (1.7, 5.5, 2.9), (0, 7.6, 2.6)]):
+        _kid(root, f"{n}_leaf{i}", box_mesh("lf", (s, s * 0.9, s * 0.8)), (x, 0, z), M("#43a047"), bevel=0.4)
+    rnd = random.Random(4)
+    for i in range(14):
+        _kid(root, f"{n}_lemon{i}", box_mesh("lm", (0.55, 0.45, 0.45)),
+             (rnd.uniform(-2.6, 2.6), -1.9, rnd.uniform(4.6, 8.0)), M("#ffe03a", rough=0.35, tex=False), bevel=0.2)
+    return 6.0, 12.0
+
+
+def _plate(root, n):
+    _kid(root, f"{n}_pl", cyl_mesh("pl", 0.75, 0.08, 18), (0, 0, 0), M("#ffffff", rough=0.2, tex=False), bevel=0)
+    _kid(root, f"{n}_food", box_mesh("fd", (0.7, 0.5, 0.22)), (0, 0, 0.18), M("#e8a33d"), bevel=0.12)
+    _kid(root, f"{n}_peas", box_mesh("pe", (0.4, 0.3, 0.14)), (0.25, 0.25, 0.14), M("#5cb85c"), bevel=0.06)
+    return 0.3, 3.0
+
+
+STORY_PROPS = {"vase": _vase, "shards": _shards, "piece": _piece, "paper_stack": _paper_stack,
+               "dustpan": _dustpan, "lemon_tree": _lemon_tree, "plate": _plate}
+
+
+def scene_prop(pd, origin):
+    """pd: {"id": "vase", "type": "vase", "at": [x, y, z], "rot": deg, "scale": 1.0}"""
+    from mathutils import Vector
+    root = bpy.data.objects.new(f"prop_{pd['id']}", None)
+    bpy.context.scene.collection.objects.link(root)
+    at = pd.get("at", (0, 0, 0))
+    root.location = (origin[0] + at[0], origin[1] + at[1], origin[2] + (at[2] if len(at) > 2 else 0))
+    root.rotation_euler = (0, 0, math.radians(pd.get("rot", 0)))
+    s = float(pd.get("scale", 1.0))
+    root.scale = (s, s, s)
+    if pd["type"] not in STORY_PROPS:
+        raise ValueError(f"unknown prop type '{pd['type']}'. Available: {sorted(STORY_PROPS)}")
+    h, dist = STORY_PROPS[pd["type"]](root, pd["id"])
+    center = Vector(root.location) + Vector((0, 0, h * 0.5 * s))
+    return {"root": root, "center": center, "scale": (s, s, s), "cam_dist": pd.get("cam_dist", dist * s)}

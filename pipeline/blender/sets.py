@@ -267,7 +267,160 @@ def playground(o):
     return dict(DEFAULT_MARKS)
 
 
-BUILDERS = {f.__name__: f for f in [classroom, hallway, bedroom, kitchen, outdoors, stage, playground]}
+# ------------------------------------------------------- bright story sets
+def _window(o, P, x, y, z, w=5.0, h=4.2, curtain="#ff8fab", rot=False):
+    size = (0.25, w, h) if rot else (w, 0.25, h)
+    P.put(o, "win_glass", box_mesh("wg", size), (x, y, z), P.glow("#e6f5ff", 1.6), bevel=0)
+    fs = (0.35, w + 0.5, 0.3) if rot else (w + 0.5, 0.35, 0.3)
+    for dz in (-h / 2, h / 2):
+        P.put(o, "win_frame", box_mesh("wf", fs), (x, y, z + dz), P.M("#ffffff", 0.4, tex=False), bevel=0.05)
+    if curtain:
+        for side in (-1, 1):
+            cs = (0.4, 1.3, h + 1.2) if rot else (1.3, 0.4, h + 1.2)
+            cx, cy = (x, y + side * (w / 2 + 0.5)) if rot else (x + side * (w / 2 + 0.5), y - 0.25)
+            if rot:
+                cx += 0.25 if x < 0 else -0.25
+            P.put(o, "curtain", box_mesh("ct", cs), (cx, cy, z - 0.3), P.M(curtain, 0.9, scale=8), bevel=0.15)
+
+
+def _frame_pic(o, P, x, y, z, w, h, color):
+    P.put(o, "pic_frame", box_mesh("pf", (w + 0.3, 0.15, h + 0.3)), (x, y, z), P.M("#3b2a1e", 0.4), bevel=0.04)
+    P.put(o, "pic", box_mesh("pc", (w, 0.17, h)), (x, y - 0.02, z), P.M(color, 0.6, tex=False), bevel=0)
+
+
+def living_room(o):
+    """Bright family living room: sofa, rug, side table (vase spot), TV, window with curtains, plants, photos."""
+    import props as P
+    wall, wy = "#fff1dc", 9.6
+    block(o, "floor", (60, 40, 0.4), (0, 6, -0.2), "#e2b47c", bevel=0)
+    for i in range(-14, 15, 2):  # plank lines
+        block(o, "plank", (0.06, 40, 0.02), (i * 1.0, 6, 0.01), "#c99a62", bevel=0)
+    block(o, "wall_back", (60, 0.6, 16), (0, wy + 0.3, 8), wall, bevel=0)
+    block(o, "wainscot", (60, 0.7, 3.2), (0, wy, 1.6), "#ffffff", bevel=0)
+    block(o, "rail", (60, 0.8, 0.25), (0, wy, 3.25), "#e8d3b0", bevel=0)
+    block(o, "wall_l", (0.6, 30, 16), (-18, 0, 8), wall, bevel=0)
+    block(o, "wall_r", (0.6, 30, 16), (18, 0, 8), wall, bevel=0)
+    block(o, "rug", (13, 7, 0.06), (0, 2.5, 0.04), "#b39ddb", bevel=0)
+    block(o, "rug_border", (13.6, 7.6, 0.04), (0, 2.5, 0.02), "#ffffff", bevel=0)
+    # sofa
+    block(o, "sofa_base", (9, 3.2, 1.7), (0, 7.4, 0.85), "#26a69a", bevel=0.2)
+    block(o, "sofa_back", (9, 1.0, 2.8), (0, 8.7, 2.3), "#26a69a", bevel=0.25)
+    for x in (-4.9, 4.9):
+        block(o, "sofa_arm", (1.0, 3.4, 2.4), (x, 7.4, 1.4), "#1f8f84", bevel=0.25)
+    for i, (x, c) in enumerate([(-2.7, "#ffd166"), (0, "#ff8fab"), (2.7, "#ffd166")]):
+        block(o, f"cushion{i}", (2.2, 0.7, 1.7), (x, 8.0, 2.7), c, bevel=0.3)
+    # coffee table + mug + books
+    block(o, "ctable", (4.5, 2.2, 0.3), (2.5, 4.4, 1.3), "#8d6e63", bevel=0.08)
+    for dx in (-1.9, 1.9):
+        block(o, "ctleg", (0.3, 1.8, 1.15), (2.5 + dx, 4.4, 0.6), "#6d4c41", bevel=0.04)
+    block(o, "book1", (1.4, 1.0, 0.25), (1.6, 4.4, 1.6), "#ef5350", bevel=0.03)
+    block(o, "book2", (1.2, 0.9, 0.22), (1.6, 4.4, 1.85), "#42a5f5", bevel=0.03)
+    block(o, "mug", (0.45, 0.45, 0.55), (3.6, 4.2, 1.72), "#ffffff", bevel=0.1)
+    # side table for the vase (left of centre)
+    block(o, "stable_top", (2.2, 2.2, 0.25), (-4.8, 1.8, 2.5), "#ffffff", bevel=0.06)
+    block(o, "stable_leg", (0.5, 0.5, 2.4), (-4.8, 1.8, 1.2), "#d7ccc8", bevel=0.05)
+    block(o, "stable_foot", (1.4, 1.4, 0.15), (-4.8, 1.8, 0.08), "#d7ccc8", bevel=0.04)
+    # TV unit
+    block(o, "tv_unit", (7, 1.8, 1.8), (11.5, 8.5, 0.9), "#f5f5f5", bevel=0.08)
+    block(o, "tv", (6, 0.3, 3.4), (11.5, 9.0, 3.8), "#151515", bevel=0.06)
+    P.put(o, "tv_screen", box_mesh("ts", (5.6, 0.1, 3.0)), (11.5, 8.83, 3.8), P.glow("#7cc7ff", 0.9), bevel=0)
+    _window(o, P, -9.5, wy - 0.05, 7.6, w=5.5, h=4.5, curtain="#ff8fab")
+    for x, z, w, h, c in [(-1.5, 11.2, 2.2, 1.6, "#81d4fa"), (1.2, 11.6, 1.6, 2.2, "#ffcc80"), (3.8, 11.0, 2.4, 1.6, "#c5e1a5")]:
+        _frame_pic(o, P, x, wy - 0.05, z, w, h, c)
+    for x in (-15, 15.5):
+        P.put(o, "pot", P.cyl_mesh("pot", 0.8, 1.4, 14, 1.0), (x, 7.5, 0), P.M("#ffffff", 0.4, tex=False), bevel=0)
+        P.put(o, "plant", box_mesh("pl", (2.2, 2.2, 3.0)), (x, 7.5, 2.9), P.M("#43a047"), bevel=0.5)
+    block(o, "lamp_pole", (0.2, 0.2, 6), (-13, 8, 3), "#cfcfcf", bevel=0)
+    block(o, "lamp_shade", (1.6, 1.6, 1.2), (-13, 8, 6.4), "#fff8e1", bevel=0.2)
+    block(o, "clock", (1.6, 0.2, 1.6), (7.5, wy - 0.05, 12), "#ffffff", bevel=0.3)
+    return dict(DEFAULT_MARKS, vase_top=(-4.8, 1.8, 2.63))
+
+
+def dining_room(o):
+    """Bright kitchen-diner: cabinets, fridge, window over the sink, long table with seats facing camera."""
+    import props as P
+    wy = 10.0
+    floor = _checker_material("dine_floor", "#ffffff", "#dfe6ea", scale=0.3, rough=0.3)
+    add_obj("floor", box_mesh("df", (60, 40, 0.4)), None, (o[0], o[1] + 6, o[2] - 0.2), floor, bevel=0)
+    block(o, "wall_back", (60, 0.6, 16), (0, wy + 0.3, 8), "#d6f2e6", bevel=0)
+    block(o, "wall_l", (0.6, 30, 16), (-18, 0, 8), "#d6f2e6", bevel=0)
+    block(o, "wall_r", (0.6, 30, 16), (18, 0, 8), "#d6f2e6", bevel=0)
+    for i in range(6):  # lower cabinets + counter
+        x = -11 + i * 3.2
+        block(o, f"cab{i}", (3.1, 2.2, 3.0), (x, wy - 1.3, 1.5), "#ffffff", bevel=0.06)
+        block(o, f"cabh{i}", (0.8, 0.12, 0.18), (x, wy - 2.45, 2.5), "#b0bec5", bevel=0.03)
+        if i not in (2, 3):
+            block(o, f"ucab{i}", (3.1, 1.4, 2.6), (x, wy - 0.4, 10.2), "#ffffff", bevel=0.06)
+    block(o, "counter", (19.5, 2.5, 0.3), (-3, wy - 1.3, 3.15), "#90a4ae", bevel=0.04)
+    block(o, "backsplash", (19.5, 0.2, 3.0), (-3, wy - 0.15, 4.8), "#ffe082", bevel=0)
+    block(o, "sink", (2.4, 1.6, 0.2), (-2.6, wy - 1.3, 3.31), "#cfd8dc", bevel=0.05)
+    block(o, "tap", (0.25, 0.25, 1.2), (-2.6, wy - 0.4, 3.9), "#b0bec5", bevel=0.05)
+    _window(o, P, -2.6, wy - 0.05, 8.2, w=5.0, h=3.4, curtain="#ffd166")
+    block(o, "fridge", (3.4, 2.6, 8.0), (12, wy - 1.4, 4.0), "#eceff1", bevel=0.12)
+    block(o, "fridge_line", (3.42, 0.05, 0.08), (12, wy - 2.72, 5.4), "#b0bec5", bevel=0)
+    for z in (3.4, 7.0):
+        block(o, "fridge_h", (0.15, 0.2, 1.2), (10.6, wy - 2.8, z), "#90a4ae", bevel=0.04)
+    for i, c in enumerate(["#ef5350", "#42a5f5", "#ffca28"]):  # fridge magnets / drawing
+        block(o, f"mag{i}", (0.6, 0.06, 0.6), (11.4 + i * 0.6, wy - 2.75, 6.4 - i * 0.3), c, bevel=0.02)
+    # long dining table between camera and the seats
+    block(o, "table_top", (11, 3.6, 0.3), (0, 2.0, 1.95), "#a1887f", bevel=0.08)
+    block(o, "table_cloth", (11.2, 1.4, 0.06), (0, 2.0, 2.13), "#ffffff", bevel=0)
+    for dx in (-5, 5):
+        for dy in (-1.4, 1.4):
+            block(o, "table_leg", (0.35, 0.35, 1.8), (dx, 2.0 + dy, 0.9), "#6d4c41", bevel=0.04)
+    for x in (-3.4, 0.2, 3.8):  # chairs behind the seats
+        block(o, "chair_seat", (2.0, 2.0, 0.25), (x, 4.3, 1.0), "#ffb74d", bevel=0.06)
+        block(o, "chair_back", (2.0, 0.25, 2.6), (x, 5.25, 2.3), "#ffb74d", bevel=0.06)
+        for dx in (-0.8, 0.8):
+            block(o, "chair_leg", (0.2, 0.2, 1.0), (x + dx, 4.3, 0.5), "#8d6e63", bevel=0)
+    for x in (-3, 3):  # pendant lamps
+        block(o, "pend_cord", (0.06, 0.06, 4), (x, 2.0, 14), "#333333", bevel=0)
+        P.put(o, "pend_shade", P.cyl_mesh("ps", 1.0, 0.9, 14, 0.4), (x, 2.0, 11.4), P.M("#263238", 0.4, tex=False), bevel=0)
+        P.put(o, "pend_bulb", box_mesh("pb", (0.5, 0.5, 0.4)), (x, 2.0, 11.3), P.glow("#fff3c4", 4), bevel=0.1)
+    return dict(DEFAULT_MARKS, seat_l=(-3.4, 3.9, 0), seat_c=(0.2, 3.9, 0), seat_r=(3.8, 3.9, 0),
+                head=(7.2, 3.2, 0), table=(0, 2.0, 2.16))
+
+
+def classroom_bright(o):
+    """Bright classroom: pastel walls, whiteboard, two rows of desks with chairs, teacher's desk, posters."""
+    import props as P
+    wy = 11.8
+    floor = _checker_material("class_floor", "#f4efe4", "#e2dccd", scale=0.22, rough=0.35)
+    add_obj("floor", box_mesh("cf", (60, 40, 0.4)), None, (o[0], o[1] + 6, o[2] - 0.2), floor, bevel=0)
+    block(o, "wall_back", (60, 0.6, 16), (0, wy + 0.3, 8), "#fdf6e3", bevel=0)
+    block(o, "wall_low", (60, 0.7, 3.4), (0, wy, 1.7), "#8fd3c1", bevel=0)
+    block(o, "wall_l", (0.6, 34, 16), (-18, 2, 8), "#fdf6e3", bevel=0)
+    block(o, "wall_r", (0.6, 34, 16), (18, 2, 8), "#fdf6e3", bevel=0)
+    block(o, "board_frame", (15, 0.2, 5.8), (-1, wy - 0.1, 7.8), "#b0bec5", bevel=0.05)
+    block(o, "board", (14.4, 0.25, 5.2), (-1, wy - 0.15, 7.8), "#ffffff", bevel=0)
+    _wall_text(o, "SPELLING TEST FRIDAY!", (-1, wy - 0.32, 8.9), 0.75, "#1e5bd8", extrude=0.02)
+    _wall_text(o, "2 + 2 = ?", (-1, wy - 0.32, 7.3), 1.0, "#e53935", extrude=0.02)
+    block(o, "tray", (14, 0.6, 0.15), (-1, wy - 0.45, 5.15), "#90a4ae", bevel=0.02)
+    for i, (x, c) in enumerate([(-13.5, "#ffd166"), (11.5, "#ff8fab"), (14.5, "#81d4fa")]):
+        _frame_pic(o, P, x, wy - 0.05, 8.5 - (i % 2) * 1.2, 2.4, 3.0, c)
+    block(o, "clock", (1.6, 0.2, 1.6), (9, wy - 0.05, 12.2), "#ffffff", bevel=0.3)
+    _window(o, P, -17.6, 1, 8.0, w=6, h=4.6, curtain=None, rot=True)
+    _window(o, P, 17.6, 1, 8.0, w=6, h=4.6, curtain=None, rot=True)
+    for x in (-8, -3, 3, 8):
+        for y in (0.4, 4.6):
+            block(o, "desk_top", (3.4, 2.0, 0.22), (x, y, 1.85), "#ffcc80", bevel=0.04)
+            block(o, "desk_box", (3.2, 1.8, 0.45), (x, y, 1.55), "#90a4ae", bevel=0.03)
+            for dx in (-1.4, 1.4):
+                block(o, "desk_leg", (0.18, 0.18, 1.35), (x + dx, y, 0.67), "#546e7a", bevel=0)
+            block(o, "chair_seat", (1.8, 1.6, 0.2), (x, y + 2.2, 1.0), "#4fc3f7", bevel=0.04)
+            block(o, "chair_back", (1.8, 0.2, 2.0), (x, y + 3.0, 2.0), "#4fc3f7", bevel=0.04)
+            block(o, "chair_leg", (0.15, 0.15, 1.0), (x, y + 2.2, 0.5), "#546e7a", bevel=0)
+    block(o, "teacher_desk", (6, 2.6, 2.6), (8.5, 9.0, 1.3), "#8d6e63", bevel=0.06)
+    block(o, "apple", (0.5, 0.5, 0.5), (10.6, 8.6, 2.85), "#e53935", bevel=0.2)
+    block(o, "shelf", (5, 1.6, 4), (-13, wy - 1.0, 2), "#a1887f", bevel=0.05)
+    for i in range(8):
+        block(o, f"sbook{i}", (0.45, 1.0, 1.4), (-15 + i * 0.55, wy - 1.1, 4.7), ["#ef5350", "#42a5f5", "#66bb6a", "#ffca28"][i % 4], bevel=0.02)
+    return dict(DEFAULT_MARKS, teacher=(7.0, 10.5, 0), board=(0, 9, 0), desk_fl=(-8, 1.6, 0), desk_fcl=(-3, 1.6, 0),
+                desk_fcr=(3, 1.6, 0), desk_fr=(8, 1.6, 0), teacher_desk=(8.5, 9.0, 2.6))
+
+
+BUILDERS = {f.__name__: f for f in [classroom, hallway, bedroom, kitchen, outdoors, stage, playground,
+                                     living_room, dining_room, classroom_bright]}
 
 
 def build_set(name, origin, assets_dir):

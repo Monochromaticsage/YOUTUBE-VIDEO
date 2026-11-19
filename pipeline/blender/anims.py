@@ -420,11 +420,89 @@ def hidden(rig, f0, f1, fps):
     pose(rig, f1 - 1, offset=(0, 0, -500))
 
 
+def turn_around(rig, f0, f1, fps):
+    """Slowly turns to show their back to the camera (e.g. to reveal a patch), glances over the shoulder."""
+    yaw0 = -rig.base_yaw
+    pose(rig, f0)
+    end = min(f1 - 1, f0 + 14)
+    for i, f in _loop(f0 + 2, end, 3):
+        t = (f - f0) / max(1, end - f0)
+        pose(rig, f, yaw=yaw0 + 180 * t, arm_l=(0, -5, 0), arm_r=(0, 5, 0), offset=(0, 0, 0.04 * (i % 2)))
+    pose(rig, end, yaw=yaw0 + 180, head=(0, 0, 25), arm_l=(0, -5, 0), arm_r=(0, 5, 0))
+    pose(rig, f1 - 1, yaw=yaw0 + 180, head=(0, 0, 35), arm_l=(0, -5, 0), arm_r=(0, 5, 0))
+
+
+def sit_talk(rig, f0, f1, fps):
+    """Seated and talking (dinner table / classroom)."""
+    s = dict(offset=(0, 0.4, -0.95), leg_l=(-90, 0, 0), leg_r=(-90, 0, 0))
+    for i, f in _loop(f0, f1, max(6, fps // 4)):
+        g = ((-40, 10, 20), (-60, 5, 30), (-25, 15, 10))[i % 3]
+        pose(rig, f, head=(5 if i % 2 else -3, 0, 6 * math.sin(i)), arm_r=g, arm_l=(-45, -5, 0), **s)
+    pose(rig, f1 - 1, arm_l=(-40, 0, 0), arm_r=(-40, 0, 0), **s)
+
+
+def sit_shocked(rig, f0, f1, fps):
+    s = dict(offset=(0, 0.4, -0.95), leg_l=(-90, 0, 0), leg_r=(-90, 0, 0))
+    pose(rig, f0, arm_l=(-40, 0, 0), arm_r=(-40, 0, 0), **s)
+    for i, f in _loop(f0 + 3, f1, 4):
+        pose(rig, f, torso=(-8, 0, 0), head=(10, 3 if i % 2 else -3, 0), arm_l=(-150, -20, 0), arm_r=(-150, 20, 0), **s)
+    pose(rig, f1 - 1, torso=(-8, 0, 0), head=(10, 0, 0), arm_l=(-150, -20, 0), arm_r=(-150, 20, 0), **s)
+
+
+def sit_fall(rig, f0, f1, fps):
+    """Sitting, then topples sideways off the chair onto the floor."""
+    s = dict(leg_l=(-90, 0, 0), leg_r=(-90, 0, 0))
+    pose(rig, f0, offset=(0, 0.4, -0.95), **s)
+    pose(rig, min(f0 + 4, f1 - 1), offset=(0.3, 0.4, -0.85), tilt=(0, 30), arm_l=(0, -120, 0), arm_r=(0, 120, 0), **s)
+    pose(rig, min(f0 + 10, f1 - 1), offset=(1.6, 0.4, -1.4), tilt=(0, 88), arm_l=(0, -90, 0), arm_r=(0, 90, 0),
+         leg_l=(-60, 0, 0), leg_r=(-30, 0, 0))
+    pose(rig, f1 - 1, offset=(1.8, 0.4, -1.45), tilt=(0, 90), arm_l=(0, -80, 0), arm_r=(0, 70, 0),
+         leg_l=(-60, 0, 0), leg_r=(-30, 0, 0))
+
+
+def sit_point(rig, f0, f1, fps):
+    s = dict(offset=(0, 0.4, -0.95), leg_l=(-90, 0, 0), leg_r=(-90, 0, 0))
+    look = _glance(rig)
+    for i, f in _loop(f0, f1, 5):
+        pose(rig, f, head=(4, 0, look), arm_r=(-90, 0, 0), arm_l=(-40, 0, 0), torso=(0, 0, 0),
+             **dict(s, offset=(0, 0.4, -0.95 + 0.04 * (i % 2))))
+    pose(rig, f1 - 1, head=(4, 0, look), arm_r=(-90, 0, 0), arm_l=(-40, 0, 0), **s)
+
+
+def slide_object(rig, f0, f1, fps):
+    """Leans forward and pushes something across a table with one hand (seated or standing)."""
+    pose(rig, f0)
+    pose(rig, min(f0 + 6, f1 - 1), torso=(-15, 0, 0), arm_r=(-80, 0, 0), head=(-5, 0, 0))
+    pose(rig, min(f0 + 16, f1 - 1), torso=(-20, 0, 10), arm_r=(-95, 0, 25), head=(-8, 0, 0))
+    pose(rig, f1 - 1, torso=(-5, 0, 0), arm_r=(0, 5, 0), arm_l=(0, -35, -60), head=(8, 0, 0))
+
+
+def film_selfie(rig, f0, f1, fps):
+    """Holds a phone out at arm's length, posing and dancing for a video."""
+    for i, f in _loop(f0, f1, 6):
+        s = 1 if i % 2 else -1
+        pose(rig, f, offset=(0.15 * s, 0, 0.08 * (i % 2)), yaw=10 * s, arm_r=(-120, 0, 0),
+             arm_l=(0, -40 if s > 0 else -15, 30), head=(5, 6 * s, 8 * s), torso=(3, 4 * s, 0))
+    pose(rig, f1 - 1, arm_r=(-120, 0, 0))
+
+
+def back_up_bump(rig, f0, f1, fps):
+    """Steps backwards while filming and bumps into something behind her, then freezes."""
+    for i, f in _loop(f0, min(f1, f0 + 12), 4):
+        t = (f - f0) / 12
+        s = 1 if i % 2 else -1
+        pose(rig, f, offset=(-1.0 * t, 0.6 * t, 0.05 * (i % 2)), arm_r=(-120, 0, 0), leg_l=(-20 * s, 0, 0),
+             leg_r=(20 * s, 0, 0))
+    pose(rig, min(f0 + 14, f1 - 1), offset=(-1.1, 0.65, 0.15), arm_r=(-120, 0, 0), arm_l=(0, -60, 0), head=(10, 0, 30))
+    pose(rig, f1 - 1, offset=(-1.1, 0.65, 0), arm_r=(-60, 0, 0), arm_l=(-30, -30, 0), head=(-15, 0, 40))
+
+
 ANIMS = {f.__name__: f for f in [
     idle, talk, shocked, scared, angry, laugh, sad, cry, wave, point, facepalm, think, dance, jump,
     fall, lie, sit, run_in_place, walk_in_left, walk_in_right, walk_out_left, walk_out_right,
     run_out_left, run_out_right, frozen, unfreeze, hidden, nod, shrug, brag, cross_arms, look_up,
-    point_laugh, whisper, sad_look_down, rip_tag, celebrate, stumble, step_away_right, cut_line, step_right]}
+    point_laugh, whisper, sad_look_down, rip_tag, celebrate, stumble, step_away_right, cut_line, step_right,
+    turn_around, sit_talk, sit_shocked, sit_fall, sit_point, slide_object, film_selfie, back_up_bump]}
 
 
 def walk_to(rig, f0, start, end, fps, speed=6.5, run=False, max_frames=None):

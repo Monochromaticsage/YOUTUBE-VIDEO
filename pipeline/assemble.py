@@ -13,6 +13,7 @@ import subprocess
 import wave
 
 from voice import SAMPLE_RATE
+import fx as fxmod
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
@@ -24,6 +25,7 @@ GRADES = {
                  "colorbalance=rs=-0.10:gs=0.03:bs=0.13:rm=0.0:bm=0.0:rh=0.05:gh=0.02:bh=-0.05",
     "warm": "eq=contrast=1.08:saturation=1.2,colorbalance=rs=0.02:bs=0.04:rm=0.05:bm=-0.04:rh=0.1:bh=-0.08",
     "cool": "eq=contrast=1.1:saturation=1.05,colorbalance=rs=-0.08:bs=0.12:rh=0.02:bh=0.04",
+    "bright": "eq=contrast=1.05:saturation=1.22:brightness=0.015,unsharp=5:5:0.5",
     "night": "eq=contrast=1.15:saturation=0.9:brightness=-0.03,colorbalance=rs=-0.1:bs=0.15:rh=-0.02:bh=0.08",
 }
 
@@ -72,9 +74,12 @@ def captions(ep, timing, cast, out_ass):
              "Shadow, Alignment, MarginL, MarginR, MarginV, Encoding",
              f"Style: Cap,{ep.get('caption_font', 'Arial Black')},{size},&H00FFFFFF,&H00FFFFFF,&H00000000,"
              f"&H80000000,1,0,0,0,100,100,0,0,1,{8 if short else 5},3,2,60,60,{margin_v},1",
-             f"Style: Word,{ep.get('caption_font', 'Arial Black')},{108 if short else 70},&H00FFFFFF,&H00FFFFFF,"
-             f"&H00101010,&H90000000,1,0,0,0,100,100,0,0,1,{9 if short else 6},4,2,60,60,"
-             f"{760 if short else 120},1",
+             (f"Style: Word,{ep.get('caption_font', 'Arial Black')},{88 if short else 64},&H00FFFFFF,&H00FFFFFF,"
+              f"&H00000000,&H90000000,1,0,0,0,100,100,0,0,1,{7 if short else 5},3,8,60,60,"
+              f"{300 if short else 60},1") if ep.get("caption_pos") == "top" else
+             (f"Style: Word,{ep.get('caption_font', 'Arial Black')},{108 if short else 70},&H00FFFFFF,&H00FFFFFF,"
+              f"&H00101010,&H90000000,1,0,0,0,100,100,0,0,1,{9 if short else 6},4,2,60,60,"
+              f"{760 if short else 120},1"),
              "", "[Events]", "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text"]
     style = ep.get("caption_style", "chunk")
     t = 0.0
@@ -205,7 +210,9 @@ def assemble(ep, timing, cast, build_dir, out_mp4):
                f"alimiter=limit=0.95[aout]")
     W, H = (1080, 1920) if ep.get("format", "short") == "short" else (1920, 1080)
     grade = GRADES[ep.get("grade", "none")]
-    if grade:
+    if grade and ep.get("grade") == "bright":
+        vf = f"[0:v]scale={W}:{H}:flags=lanczos,{grade},subtitles=subs.ass,format=yuv420p[vout]"
+    elif grade:
         # colour grade -> soft glow (bloom) -> vignette -> captions
         vf = (f"[0:v]scale={W}:{H}:flags=lanczos,{grade},split[g1][g2];"
               f"[g2]gblur=sigma=22,eq=brightness=-0.06[glow];"
@@ -213,6 +220,43 @@ def assemble(ep, timing, cast, build_dir, out_mp4):
               f"subtitles=subs.ass,format=yuv420p[vout]")
     else:
         vf = f"[0:v]scale={W}:{H}:flags=lanczos,subtitles=subs.ass,format=yuv420p[vout]"
+    # pop-up stickers ("fx" on a shot) and the end sting, each a short PNG sequence overlaid in place
+    overlays = []  # (dir, start_sec, cx, cy)
+    t_acc = 0.0
+    k = 0
+    fx_root = os.path.join(build_dir, "fx")
+    for sc in ep["scenes"]:
+        for shot in sc["shots"]:
+            for j, fx in enumerate(shot.get("fx", [])):
+                d = os.path.join(fx_root, f"{k:02d}_{j}")
+                fxmod.render_sticker(fx, d, W, H)
+                overlays.append((d, t_acc + float(fx.get("at", 0)), fx.get("x", 0.5), fx.get("y", 0.5)))
+            t_acc += timing["shots"][k]["duration"]
+            k += 1
+    if ep.get("sting", False):
+        d = os.path.join(fx_root, "sting")
+        fxmod.render_sting(d, W, H, ep.get("sting_text", "PLUTONEX!"))
+        n = len(glob.glob(os.path.join(d, "*.png")))
+        overlays.append((d, max(0.0, total - n / 30 - 0.05), 0.5, 0.42))
+        p_ = find_asset("sfx", "sparkle")
+        if p_:
+            ms = int(max(0.0, total - n / 30) * 1000)
+            inputs += ["-i", p_]
+            mix.append(f"[{idx}:a]aformat=channel_layouts=mono,volume=0.6,adelay={ms}|{ms}[s{idx}]")
+            labels.append(f"[s{idx}]")
+            idx += 1
+    # (audio inputs must come first: the amix line is already built, so rebuild it)
+    mix = [m for m in mix if "amix=" not in m]
+    mix.append(f"{''.join(labels)}amix=inputs={len(labels)}:duration=first:normalize=0,"
+               f"alimiter=limit=0.95[aout]")
+    if overlays:
+        vf = vf.replace(",format=yuv420p[vout]", "[ov0]")
+        for i, (d, st, cx, cy) in enumerate(overlays):
+            inputs += ["-framerate", "30", "-i", os.path.join(d, "f_%03d.png")]
+            vf += (f";[{idx}:v]setpts=PTS-STARTPTS+{st:.3f}/TB[fx{i}];"
+                   f"[ov{i}][fx{i}]overlay=x={int(cx * W)}-w/2:y={int(cy * H)}-h/2:eof_action=pass[ov{i + 1}]")
+            idx += 1
+        vf += f";[ov{len(overlays)}]null,format=yuv420p[vout]"
     if cta_at is not None:
         inputs += ["-framerate", "30", "-i", os.path.join(cta_dir, "cta_%03d.png")]
         cw = int(W * 0.5)
@@ -220,7 +264,7 @@ def assemble(ep, timing, cast, build_dir, out_mp4):
         T, D = cta_at, cta_n / 30
         x = (f"if(lt(t,{T}+0.25),-w+(w+{m})*(t-{T})/0.25,"
              f"if(gt(t,{T + D}-0.3),{m}-(w+{m})*(t-({T + D}-0.3))/0.3,{m}))")
-        top = int(H * 0.12)  # below the Shorts top bar, clear of the right-side buttons
+        top = int(H * (0.22 if ep.get("caption_pos") == "top" else 0.12))  # clear of the Shorts top bar and captions
         vf = vf.replace(",format=yuv420p[vout]", "[vbase]")
         vf += (f";[{idx}:v]scale={cw}:-1,setpts=PTS-STARTPTS+{T}/TB[cta];"
                f"[vbase][cta]overlay=x='{x}':y={top}:eof_action=pass,format=yuv420p[vout]")
