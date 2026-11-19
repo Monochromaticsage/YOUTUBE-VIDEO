@@ -2,6 +2,7 @@
  "id": "s02_price_tags",
  "title": "Price Tags 🏷️",
  "format": "short",
+ "cta": false,
  "mood": "indoor",
  "grade": "cinematic",
  "caption_style": "word",

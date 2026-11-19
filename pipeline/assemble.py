@@ -166,6 +166,23 @@ def assemble(ep, timing, cast, build_dir, out_mp4):
                 idx += 1
             t += timing["shots"][k]["duration"]
             k += 1
+    # corner "Subscribe / Like / Comment" reminder (on by default; "cta": false turns it off,
+    # "cta": {"at": 20} sets when it shows). Frames come from tools/make_cta_overlay.py.
+    total = sum(sh["duration"] for sh in timing["shots"])
+    cta = ep.get("cta", True)
+    cta_dir = os.path.join(ROOT, "assets", "overlays", "cta")
+    cta_n = len(glob.glob(os.path.join(cta_dir, "cta_*.png")))
+    cta_at = None
+    if cta and cta_n:
+        cta_at = (cta.get("at") if isinstance(cta, dict) else None) or round(total * 0.4, 2)
+        cta_at = max(1.0, min(cta_at, total - cta_n / 30 - 0.5))
+        click = find_asset("sfx", "pop")
+        if click:
+            ms = int((cta_at + 1.3) * 1000)
+            inputs += ["-i", click]
+            mix.append(f"[{idx}:a]aformat=channel_layouts=mono,volume=0.45,adelay={ms}|{ms}[s{idx}]")
+            labels.append(f"[s{idx}]")
+            idx += 1
     music = ep.get("music")
     if music:
         p = find_asset("music", music)
@@ -196,6 +213,18 @@ def assemble(ep, timing, cast, build_dir, out_mp4):
               f"subtitles=subs.ass,format=yuv420p[vout]")
     else:
         vf = f"[0:v]scale={W}:{H}:flags=lanczos,subtitles=subs.ass,format=yuv420p[vout]"
+    if cta_at is not None:
+        inputs += ["-framerate", "30", "-i", os.path.join(cta_dir, "cta_%03d.png")]
+        cw = int(W * 0.5)
+        m = int(W * 0.035)
+        T, D = cta_at, cta_n / 30
+        x = (f"if(lt(t,{T}+0.25),-w+(w+{m})*(t-{T})/0.25,"
+             f"if(gt(t,{T + D}-0.3),{m}-(w+{m})*(t-({T + D}-0.3))/0.3,{m}))")
+        top = int(H * 0.12)  # below the Shorts top bar, clear of the right-side buttons
+        vf = vf.replace(",format=yuv420p[vout]", "[vbase]")
+        vf += (f";[{idx}:v]scale={cw}:-1,setpts=PTS-STARTPTS+{T}/TB[cta];"
+               f"[vbase][cta]overlay=x='{x}':y={top}:eof_action=pass,format=yuv420p[vout]")
+        idx += 1
     cmd = ["ffmpeg", "-y", "-loglevel", "error", *inputs, "-filter_complex", ";".join(mix + [vf]),
            "-map", "[vout]", "-map", "[aout]", "-c:v", "libx264", "-preset", "medium", "-crf", "18",
            "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", "-shortest",

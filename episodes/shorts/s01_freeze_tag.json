@@ -2,6 +2,7 @@
   "id": "s01_freeze_tag",
   "title": "Freeze Tag ❄️",
   "format": "short",
+  "cta": false,
   "mood": "golden",
   "grade": "cinematic",
   "caption_style": "word",
