@@ -223,6 +223,24 @@ def run_out_right(rig, f0, f1, fps):
     _walk(rig, f0, f1, fps, (0, 0, 0), (22, 0, 0), speed_frames=4, run=True)
 
 
+def frozen(rig, f0, f1, fps):
+    """Stuck mid-run like a statue (Freeze Tag)."""
+    ice = dict(leg_l=(35, 0, 0), leg_r=(-35, 0, 0), arm_l=(-60, -10, 0), arm_r=(50, 10, 0),
+               torso=(-8, 0, 0), head=(5, 0, 8))
+    pose(rig, f0, **ice)
+    pose(rig, f1 - 1, **ice)
+
+
+def unfreeze(rig, f0, f1, fps):
+    """Breaks out of the frozen pose with a little shake, then relaxes."""
+    ice = dict(leg_l=(35, 0, 0), leg_r=(-35, 0, 0), arm_l=(-60, -10, 0), arm_r=(50, 10, 0), torso=(-8, 0, 0))
+    pose(rig, f0, **ice)
+    for i, f in _loop(f0 + 3, min(f1, f0 + 15), 3):
+        pose(rig, f, offset=(0.08 if i % 2 else -0.08, 0, 0), **ice)
+    pose(rig, min(f0 + 18, f1 - 1), arm_l=(0, -150, 0), arm_r=(0, 150, 0), offset=(0, 0, 0.6))
+    pose(rig, f1 - 1)
+
+
 def hidden(rig, f0, f1, fps):
     """Character is off-stage for this shot."""
     pose(rig, f0, offset=(0, 0, -500))
@@ -232,4 +250,4 @@ def hidden(rig, f0, f1, fps):
 ANIMS = {f.__name__: f for f in [
     idle, talk, shocked, scared, angry, laugh, sad, cry, wave, point, facepalm, think, dance, jump,
     fall, lie, sit, run_in_place, walk_in_left, walk_in_right, walk_out_left, walk_out_right,
-    run_out_left, run_out_right, hidden]}
+    run_out_left, run_out_right, frozen, unfreeze, hidden]}

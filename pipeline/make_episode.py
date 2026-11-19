@@ -46,7 +46,8 @@ def validate(ep, cast):
     sys.path.insert(0, os.path.join(HERE, "blender"))
     known_anims = {"idle", "talk", "shocked", "scared", "angry", "laugh", "sad", "cry", "wave", "point",
                    "facepalm", "think", "dance", "jump", "fall", "lie", "sit", "run_in_place", "walk_in_left",
-                   "walk_in_right", "walk_out_left", "walk_out_right", "run_out_left", "run_out_right", "hidden"}
+                   "walk_in_right", "walk_out_left", "walk_out_right", "run_out_left", "run_out_right", "frozen",
+                   "unfreeze", "hidden"}
     faces = {"neutral", "happy", "smug", "angry", "sad", "shocked", "scared", "sus", "cry", "dead", "evil", "love"}
     errs = []
     for si, sc in enumerate(ep["scenes"]):
