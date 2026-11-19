@@ -425,3 +425,31 @@ ANIMS = {f.__name__: f for f in [
     fall, lie, sit, run_in_place, walk_in_left, walk_in_right, walk_out_left, walk_out_right,
     run_out_left, run_out_right, frozen, unfreeze, hidden, nod, shrug, brag, cross_arms, look_up,
     point_laugh, whisper, sad_look_down, rip_tag, celebrate, stumble, step_away_right, cut_line, step_right]}
+
+
+def walk_to(rig, f0, start, end, fps, speed=6.5, run=False, max_frames=None):
+    """Walk the character in world space from `start` (x, y) to `end` (x, y), starting at f0.
+    Turns to face the direction of travel, swings arms and legs, bobs, then turns back.
+    Returns the frame the character arrives on. The caller then sets rig.base = end."""
+    dx, dy = end[0] - start[0], end[1] - start[1]
+    dist = math.hypot(dx, dy)
+    if dist < 0.05:
+        return f0
+    n = max(10, round(dist / speed * fps))
+    if max_frames:
+        n = max(6, min(n, max_frames - 4))  # walk faster rather than spill into the next shot
+    face = math.degrees(math.atan2(dx, -dy)) - rig.base_yaw  # yaw that faces the travel direction
+    face = (face + 180) % 360 - 180
+    amp, step = (50, 4) if run else (34, 5)
+    keep = rig.base
+    rig.base = (start[0], start[1], keep[2])
+    for i, f in _loop(f0, f0 + n + 1, step):
+        t = (f - f0) / n
+        turn = min(1.0, (f - f0) / 5.0)
+        s = 1 if i % 2 else -1
+        pose(rig, f, offset=(dx * t, dy * t, (0.14 if run else 0.07) * (i % 2)), yaw=face * turn,
+             leg_l=(amp * s, 0, 0), leg_r=(-amp * s, 0, 0), arm_l=(-amp * s, 0, 0), arm_r=(amp * s, 0, 0),
+             torso=(-8 if run else -2, 0, 0), head=(0, 0, 0))
+    pose(rig, f0 + n, offset=(dx, dy, 0), yaw=face * 0.5, arm_l=(0, -5, 0), arm_r=(0, 5, 0))
+    rig.base = keep
+    return f0 + n + 3

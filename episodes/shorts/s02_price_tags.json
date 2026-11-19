@@ -1,113 +1,561 @@
 {
-  "id": "s02_price_tags",
-  "title": "Price Tags 🏷️",
-  "format": "short",
-  "mood": "indoor",
-  "grade": "cinematic",
-  "caption_style": "word",
-  "auto_cuts": true,
-  "music": "quirky_loop",
-  "music_volume": 0.16,
-  "_pinned_comment": "What would YOUR price tag say? 🏷️👇",
-  "tags": {"noob": "$3", "bacon": "$5", "sage": "$0", "nova": "$0", "ziggy": "$50", "goldie": "$1,000,000"},
-  "scenes": [
+ "id": "s02_price_tags",
+ "title": "Price Tags 🏷️",
+ "format": "short",
+ "mood": "indoor",
+ "grade": "cinematic",
+ "caption_style": "word",
+ "auto_cuts": true,
+ "music": "quirky_loop",
+ "music_volume": 0.16,
+ "_pinned_comment": "What would YOUR price tag say? 🏷️👇",
+ "tags": {
+  "noob": "$3",
+  "bacon": "$5",
+  "sage": "$0",
+  "nova": "$0",
+  "ziggy": "$50",
+  "goldie": "$1,000,000"
+ },
+ "scenes": [
+  {
+   "set": "hallway",
+   "cast": {
+    "noob": [
+     -12,
+     3,
+     0
+    ],
+    "bacon": [
+     -7,
+     0,
+     0
+    ],
+    "sage": [
+     -2,
+     3.5,
+     0
+    ],
+    "nova": [
+     12,
+     2,
+     0
+    ],
+    "ziggy": [
+     5,
+     3,
+     0
+    ],
+    "goldie": [
+     13,
+     4,
+     0
+    ]
+   },
+   "shots": [
     {
-      "set": "hallway",
-      "cast": {"noob": [-11, 0, 0], "bacon": [-7, 0, 0], "sage": [-2, 0, 0], "nova": [2, 0, 0], "ziggy": [6, 0, 0], "goldie": [10, 0, 0]},
-      "shots": [
-        {"_beat": "HOOK", "speaker": "sage", "vo": true, "line": "This morning, everyone woke up with a price tag.",
-         "camera": "tag:sage", "move": "punch", "tags_show": true, "sfx": "pop",
-         "anims": {"sage": "look_up", "nova": "hidden"}, "faces": {"sage": "shocked"}},
-
-        {"speaker": "sage", "vo": true, "line": "Mine said... zero.", "camera": "tag:sage@-6", "move": "zoom",
-         "sfx": {"name": "vine_boom", "at": 0.9}, "anims": {"sage": "sad_look_down", "nova": "hidden"},
-         "faces": {"sage": "sad"}},
-
-        {"_beat": "FLIP", "speaker": "sage", "vo": true, "line": "Goldie's said one million.",
-         "camera": "tag:goldie@8", "move": "punch", "sfx": "cash", "tag_flash": "goldie",
-         "anims": {"goldie": "brag", "nova": "hidden", "ziggy": "shocked"}, "faces": {"goldie": "smug", "ziggy": "shocked"}},
-
-        {"speaker": "goldie", "line": "Finally. The world knows my value.", "face": "smug",
-         "cameras": ["closeup:goldie", "medium:goldie@-6"], "moves": ["push", "whip"],
-         "anims": {"goldie": "brag", "nova": "hidden", "ziggy": "nod"}, "faces": {"ziggy": "happy"}},
-
-        {"_beat": "PROOF", "speaker": "sage", "vo": true, "line": "Noob's said three dollars.",
-         "cameras": ["tag:noob", "wide"], "moves": ["punch", "whip"], "sfx": "boing", "tag_flash": "noob", "focus": "noob",
-         "anims": {"noob": "shocked", "bacon": "point_laugh", "ziggy": "point_laugh", "goldie": "laugh", "nova": "hidden"},
-         "faces": {"noob": "shocked", "bacon": "happy", "ziggy": "happy", "goldie": "happy"}},
-
-        {"speaker": "noob", "line": "Three dollars?! I'm not even worth a sandwich?", "face": "cry",
-         "camera": "closeup:noob", "move": "push",
-         "anims": {"bacon": "laugh", "nova": "hidden"}, "faces": {"bacon": "happy", "sage": "sad"}},
-
-        {"speaker": "bacon", "line": "Bro... sandwiches are like five.", "face": "smug",
-         "camera": "two:noob,bacon", "move": "push",
-         "anims": {"bacon": "shrug", "noob": "sad", "nova": "hidden"}, "faces": {"noob": "sad"}},
-
-        {"speaker": "sage", "vo": true, "line": "But I was worth less than Noob.", "camera": "medium:sage@6",
-         "move": "push", "anims": {"sage": "look_up", "nova": "hidden"}, "faces": {"sage": "sad"}},
-
-        {"speaker": "sage", "vo": true, "line": "Less than a sandwich. Nothing.", "camera": "tag:sage",
-         "move": "push", "sfx": "heartbeat", "anims": {"sage": "sad_look_down", "nova": "hidden"},
-         "faces": {"sage": "sad"}},
-
-        {"speaker": "sage", "vo": true, "line": "All day, people treated us exactly like our tags.", "focus": "sage",
-         "cameras": ["wide", "ots:ziggy,sage@5"], "moves": ["pull", "push"],
-         "anims": {"ziggy": "whisper", "goldie": "point_laugh", "sage": "sad_look_down", "bacon": "cross_arms", "nova": "hidden"},
-         "faces": {"ziggy": "sus", "goldie": "smug", "sage": "sad", "noob": "sad"}},
-
-        {"speaker": "sage", "vo": true, "line": "Goldie skipped every line.", "camera": "wide", "move": "whip",
-         "sfx": "whoosh", "anims": {"goldie": "cut_line", "ziggy": "shocked", "nova": "hidden"},
-         "faces": {"goldie": "smug", "ziggy": "shocked"}},
-
-        {"speaker": "sage", "vo": true, "line": "Noob got pushed aside.", "camera": "medium:noob@-8", "move": "whip",
-         "sfx": {"name": "oof_thud", "at": 0.2}, "anims": {"noob": "stumble", "nova": "hidden"}, "faces": {"noob": "shocked"}},
-
-        {"speaker": "sage", "vo": true, "line": "And people stepped away from me.", "camera": "two:sage,ziggy",
-         "move": "push", "focus": "sage", "anims": {"ziggy": "step_away_right", "sage": "sad", "nova": "hidden"},
-         "faces": {"ziggy": "sus", "sage": "sad"}},
-
-        {"_beat": "TURN", "speaker": "sage", "vo": true, "line": "Then Nova walked up to me.", "camera": "two:sage,nova",
-         "move": "push", "focus": "nova", "sfx": "riser", "anims": {"nova": "walk_in_right", "sage": "idle"},
-         "faces": {"nova": "neutral", "sage": "sad"}},
-
-        {"speaker": "nova", "line": "You know these aren't what you're worth, right?", "face": "smug",
-         "camera": "closeup:nova", "move": "push", "faces": {"sage": "sus"}},
-
-        {"speaker": "sage", "line": "Then what are they?", "face": "sus", "camera": "ots:nova,sage", "move": "push"},
-
-        {"speaker": "nova", "line": "It's the price you'd sell your friends for.", "face": "smug",
-         "camera": "extreme:nova", "move": "zoom", "sfx": [{"name": "vine_boom", "at": 1.9}],
-         "faces": {"sage": "shocked"}, "hold": 0.35},
-
-        {"speaker": "sage", "vo": true, "line": "Goldie would sell us for a million.", "camera": "tag:goldie@7",
-         "move": "push", "focus": "goldie", "sfx": "sting",
-         "anims": {"goldie": "scared", "noob": "cross_arms", "bacon": "cross_arms", "ziggy": "cross_arms"},
-         "faces": {"goldie": "shocked", "noob": "angry", "bacon": "angry", "ziggy": "angry"}},
-
-        {"_beat": "PUNCH", "speaker": "sage", "vo": true, "line": "And mine said zero because...",
-         "camera": "tag:sage", "move": "push", "anims": {"sage": "look_up"}, "faces": {"sage": "neutral"}},
-
-        {"speaker": "nova", "line": "...you're not for sale.", "face": "happy", "camera": "two:sage,nova",
-         "move": "push", "sfx": "sparkle", "faces": {"sage": "happy"}, "anims": {"nova": "nod"}, "hold": 0.2},
-
-        {"speaker": "sage", "vo": true, "line": "And my friends? They came and stood right next to me.", "camera": "wide",
-         "move": "pull", "focus": "sage",
-         "anims": {"noob": "step_right", "bacon": "step_right", "sage": "nod"},
-         "faces": {"noob": "happy", "bacon": "happy", "sage": "happy", "nova": "happy"}},
-
-        {"duration": 1.9, "camera": "medium:goldie", "move": "push", "sfx": {"name": "whoosh", "at": 0.4},
-         "tag_rip": "goldie", "anims": {"goldie": "rip_tag"}, "faces": {"goldie": "sad"}},
-
-        {"speaker": "goldie", "line": "...Can I be zero too?", "face": "sad", "camera": "closeup:goldie",
-         "move": "push", "faces": {"sage": "happy", "nova": "happy"}, "hold": 0.4},
-
-        {"_beat": "OUT (loops)", "duration": 1.3, "camera": "tag:bacon", "move": "punch", "focus": "bacon",
-         "sfx": "record_scratch", "anims": {"bacon": "shocked"}, "faces": {"bacon": "shocked"}},
-
-        {"speaker": "bacon", "line": "...It was a really good sandwich.", "face": "smug", "camera": "closeup:bacon",
-         "move": "push", "anims": {"bacon": "shrug"}, "sfx": {"name": "sad_trombone", "at": 1.6}, "hold": 0.7}
+     "_beat": "HOOK",
+     "speaker": "sage",
+     "vo": true,
+     "line": "This morning, everyone woke up with a price tag.",
+     "camera": "tag:sage",
+     "move": "punch",
+     "tags_show": true,
+     "sfx": "pop",
+     "anims": {
+      "sage": "look_up",
+      "nova": "hidden"
+     },
+     "faces": {
+      "sage": "shocked"
+     },
+     "walk": {
+      "sage": [
+       -2,
+       0
       ]
+     }
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "Mine said... zero.",
+     "camera": "tag:sage@-6",
+     "move": "zoom",
+     "sfx": {
+      "name": "vine_boom",
+      "at": 0.9
+     },
+     "anims": {
+      "sage": "sad_look_down",
+      "nova": "hidden"
+     },
+     "faces": {
+      "sage": "sad"
+     }
+    },
+    {
+     "_beat": "FLIP",
+     "speaker": "sage",
+     "vo": true,
+     "line": "Goldie's said one million.",
+     "camera": "tag:goldie@8",
+     "move": "punch",
+     "sfx": "cash",
+     "tag_flash": "goldie",
+     "anims": {
+      "goldie": "brag",
+      "nova": "hidden",
+      "ziggy": "shocked"
+     },
+     "faces": {
+      "goldie": "smug",
+      "ziggy": "shocked"
+     },
+     "walk": {
+      "goldie": [
+       9,
+       0
+      ]
+     }
+    },
+    {
+     "speaker": "goldie",
+     "line": "Finally. The world knows my value.",
+     "face": "smug",
+     "cameras": [
+      "closeup:goldie",
+      "medium:goldie@-6"
+     ],
+     "moves": [
+      "push",
+      "whip"
+     ],
+     "anims": {
+      "goldie": "brag",
+      "nova": "hidden",
+      "ziggy": "nod"
+     },
+     "faces": {
+      "ziggy": "happy"
+     },
+     "walk": {
+      "ziggy": {
+       "to": [
+        5.5,
+        0.5
+       ],
+       "at": 0.4
+      }
+     }
+    },
+    {
+     "_beat": "PROOF",
+     "speaker": "sage",
+     "vo": true,
+     "line": "Noob's said three dollars.",
+     "cameras": [
+      "tag:noob",
+      "wide"
+     ],
+     "moves": [
+      "punch",
+      "whip"
+     ],
+     "sfx": "boing",
+     "tag_flash": "noob",
+     "focus": "noob",
+     "anims": {
+      "noob": "shocked",
+      "bacon": "point_laugh",
+      "ziggy": "point_laugh",
+      "goldie": "laugh",
+      "nova": "hidden"
+     },
+     "faces": {
+      "noob": "shocked",
+      "bacon": "happy",
+      "ziggy": "happy",
+      "goldie": "happy"
+     },
+     "walk": {
+      "noob": {
+       "to": [
+        -11,
+        0
+       ],
+       "run": true
+      }
+     }
+    },
+    {
+     "speaker": "noob",
+     "line": "Three dollars?! I'm not even worth a sandwich?",
+     "face": "cry",
+     "camera": "closeup:noob",
+     "move": "push",
+     "anims": {
+      "bacon": "laugh",
+      "nova": "hidden"
+     },
+     "faces": {
+      "bacon": "happy",
+      "sage": "sad"
+     }
+    },
+    {
+     "speaker": "bacon",
+     "line": "Bro... sandwiches are like five.",
+     "face": "smug",
+     "camera": "two:noob,bacon",
+     "move": "push",
+     "anims": {
+      "bacon": "shrug",
+      "noob": "sad",
+      "nova": "hidden"
+     },
+     "faces": {
+      "noob": "sad"
+     }
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "But I was worth less than Noob.",
+     "camera": "medium:sage@6",
+     "move": "push",
+     "anims": {
+      "sage": "look_up",
+      "nova": "hidden"
+     },
+     "faces": {
+      "sage": "sad"
+     }
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "Less than a sandwich. Nothing.",
+     "camera": "tag:sage",
+     "move": "push",
+     "sfx": "heartbeat",
+     "anims": {
+      "sage": "sad_look_down",
+      "nova": "hidden"
+     },
+     "faces": {
+      "sage": "sad"
+     }
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "All day, people treated us exactly like our tags.",
+     "focus": "sage",
+     "cameras": [
+      "wide",
+      "ots:ziggy,sage@5"
+     ],
+     "moves": [
+      "pull",
+      "push"
+     ],
+     "anims": {
+      "ziggy": "whisper",
+      "goldie": "point_laugh",
+      "sage": "sad_look_down",
+      "bacon": "cross_arms",
+      "nova": "hidden"
+     },
+     "faces": {
+      "ziggy": "sus",
+      "goldie": "smug",
+      "sage": "sad",
+      "noob": "sad"
+     },
+     "walk": {
+      "ziggy": {
+       "to": [
+        2.6,
+        1.4
+       ],
+       "at": 0.2
+      }
+     }
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "Goldie skipped every line.",
+     "camera": "wide",
+     "move": "whip",
+     "sfx": "whoosh",
+     "anims": {
+      "goldie": "cut_line",
+      "ziggy": "shocked",
+      "nova": "hidden"
+     },
+     "faces": {
+      "goldie": "smug",
+      "ziggy": "shocked"
+     }
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "Noob got pushed aside.",
+     "camera": "medium:noob@-8",
+     "move": "whip",
+     "sfx": {
+      "name": "oof_thud",
+      "at": 0.2
+     },
+     "anims": {
+      "noob": "stumble",
+      "nova": "hidden"
+     },
+     "faces": {
+      "noob": "shocked"
+     }
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "And people stepped away from me.",
+     "camera": "medium:sage@-5",
+     "move": "push",
+     "focus": "sage",
+     "anims": {
+      "ziggy": "idle",
+      "sage": "sad",
+      "nova": "hidden"
+     },
+     "faces": {
+      "ziggy": "sus",
+      "sage": "sad"
+     },
+     "walk": {
+      "ziggy": {
+       "to": [
+        7,
+        2.2
+       ],
+       "at": 0.15
+      }
+     }
+    },
+    {
+     "_beat": "TURN",
+     "speaker": "sage",
+     "vo": true,
+     "line": "Then Nova walked up to me.",
+     "camera": "two:sage,nova",
+     "move": "push",
+     "focus": "nova",
+     "sfx": "riser",
+     "anims": {
+      "sage": "idle"
+     },
+     "faces": {
+      "nova": "neutral",
+      "sage": "sad"
+     },
+     "walk": {
+      "nova": [
+       2,
+       0
+      ]
+     }
+    },
+    {
+     "speaker": "nova",
+     "line": "You know these aren't what you're worth, right?",
+     "face": "smug",
+     "camera": "closeup:nova",
+     "move": "push",
+     "faces": {
+      "sage": "sus"
+     }
+    },
+    {
+     "speaker": "sage",
+     "line": "Then what are they?",
+     "face": "sus",
+     "camera": "ots:nova,sage",
+     "move": "push"
+    },
+    {
+     "speaker": "nova",
+     "line": "It's the price you'd sell your friends for.",
+     "face": "smug",
+     "camera": "extreme:nova",
+     "move": "zoom",
+     "sfx": [
+      {
+       "name": "vine_boom",
+       "at": 1.9
+      }
+     ],
+     "faces": {
+      "sage": "shocked"
+     },
+     "hold": 0.35
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "Goldie would sell us for a million.",
+     "camera": "tag:goldie@7",
+     "move": "push",
+     "focus": "goldie",
+     "sfx": "sting",
+     "anims": {
+      "goldie": "scared",
+      "noob": "cross_arms",
+      "bacon": "cross_arms",
+      "ziggy": "cross_arms"
+     },
+     "faces": {
+      "goldie": "shocked",
+      "noob": "angry",
+      "bacon": "angry",
+      "ziggy": "angry"
+     }
+    },
+    {
+     "_beat": "PUNCH",
+     "speaker": "sage",
+     "vo": true,
+     "line": "And mine said zero because...",
+     "camera": "tag:sage",
+     "move": "push",
+     "anims": {
+      "sage": "look_up"
+     },
+     "faces": {
+      "sage": "neutral"
+     }
+    },
+    {
+     "speaker": "nova",
+     "line": "...you're not for sale.",
+     "face": "happy",
+     "camera": "two:sage,nova",
+     "move": "push",
+     "sfx": "sparkle",
+     "faces": {
+      "sage": "happy"
+     },
+     "anims": {
+      "nova": "nod"
+     },
+     "hold": 0.2
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "And my friends? They came and stood right next to me.",
+     "camera": "wide",
+     "move": "pull",
+     "focus": "sage",
+     "anims": {
+      "sage": "nod"
+     },
+     "faces": {
+      "noob": "happy",
+      "bacon": "happy",
+      "sage": "happy",
+      "nova": "happy"
+     },
+     "walk": {
+      "noob": {
+       "to": [
+        -6.8,
+        0
+       ]
+      },
+      "bacon": {
+       "to": [
+        -4.6,
+        0.3
+       ],
+       "at": 0.3
+      }
+     }
+    },
+    {
+     "duration": 1.9,
+     "camera": "medium:goldie",
+     "move": "push",
+     "sfx": {
+      "name": "whoosh",
+      "at": 0.4
+     },
+     "tag_rip": "goldie",
+     "anims": {
+      "goldie": "rip_tag"
+     },
+     "faces": {
+      "goldie": "sad"
+     }
+    },
+    {
+     "speaker": "goldie",
+     "line": "...Can I be zero too?",
+     "face": "sad",
+     "camera": "medium:goldie",
+     "move": "push",
+     "faces": {
+      "sage": "happy",
+      "nova": "happy"
+     },
+     "hold": 0.4,
+     "walk": {
+      "goldie": {
+       "to": [
+        5.8,
+        0.3
+       ]
+      }
+     }
+    },
+    {
+     "_beat": "OUT (loops)",
+     "duration": 1.3,
+     "camera": "tag:bacon",
+     "move": "punch",
+     "focus": "bacon",
+     "sfx": "record_scratch",
+     "anims": {
+      "bacon": "shocked"
+     },
+     "faces": {
+      "bacon": "shocked"
+     }
+    },
+    {
+     "speaker": "bacon",
+     "line": "...It was a really good sandwich.",
+     "face": "smug",
+     "camera": "closeup:bacon",
+     "move": "push",
+     "anims": {
+      "bacon": "shrug"
+     },
+     "sfx": {
+      "name": "sad_trombone",
+      "at": 1.6
+     },
+     "hold": 0.7
     }
-  ]
+   ]
+  }
+ ],
+ "extras": 4,
+ "extras_lanes": [
+  4.8,
+  6.4,
+  5.6,
+  7.1
+ ]
 }

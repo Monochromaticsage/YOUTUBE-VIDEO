@@ -239,7 +239,8 @@ def camera_pose(spec, rigs, scene_origin, fmt):
 
     o = Vector(scene_origin)
     if kind == "wide":
-        c = sum((pos(n) for n in rigs), Vector()) / max(1, len(rigs)) if rigs else o
+        vis = [n for n in rigs if not getattr(rigs[n], "hidden_now", False)] or list(rigs)
+        c = sum((pos(n) for n in vis), Vector()) / max(1, len(vis)) if rigs else o
         return c + Vector((0, -24 if tall else -18, 10 if tall else 7)), c + Vector((0, 0, 2.2)), 30
     if kind == "medium":
         p = pos(names[0])
@@ -536,6 +537,54 @@ def key_tags(tags, shot, f0, f1, scene_rigs):
             t["ripped"] = True
 
 
+# ------------------------------------------------------------ background kids
+EXTRA_LOOKS = [
+    dict(skin="#f2c9a0", shirt="#e63946", pants="#1d3557", hair={"style": "spiky", "color": "#2b2b2b"}, sleeves=True),
+    dict(skin="#8d5524", shirt="#ffb703", pants="#3a3a3a", hair={"style": "block", "color": "#1a1a1a"}),
+    dict(skin="#e8bd96", shirt="#8338ec", pants="#264653", hair={"style": "long", "color": "#c97b2a"}, sleeves=True),
+    dict(skin="#c68a5e", shirt="#06d6a0", pants="#22223b", hair={"style": "cap", "color": "#ef476f"}),
+    dict(skin="#f5d0b0", shirt="#3a86ff", pants="#e9c46a", hair={"style": "bacon", "color": "#5a3a1e"}),
+    dict(skin="#a0673f", shirt="#ff006e", pants="#2b2d42", hair={"style": "long", "color": "#111111"}),
+]
+
+
+def build_extras(ep, faces_dir):
+    """"extras": 4 on the episode adds background students who walk up and down behind the cast."""
+    n = int(ep.get("extras", 0))
+    out = []
+    for i in range(n):
+        spec = dict(EXTRA_LOOKS[i % len(EXTRA_LOOKS)])
+        spec["scale"] = 0.95 + 0.05 * (i % 3)
+        r = rigmod.build_character(f"extra{i}", spec, faces_dir)
+        out.append(r)
+    return out
+
+
+def animate_extras(extras, ep, last_frame, fps):
+    lanes = ep.get("extras_lanes", [4.6, 6.0, 5.2, 3.8, 6.6, 4.2])
+    span = float(ep.get("extras_span", 34))
+    for i, r in enumerate(extras):
+        y = lanes[i % len(lanes)]
+        speed = 3.6 + 0.5 * (i % 3)
+        direction = 1 if i % 2 == 0 else -1
+        x = -span + (2 * span) * ((i * 0.37) % 1.0)
+        r.base_yaw = 90.0 if direction > 0 else -90.0
+        step = 6
+        f = 1
+        k = 0
+        while f <= last_frame:
+            s = 1 if k % 2 else -1
+            r.base = (x, y, 0.0)
+            anims.pose(r, f, offset=(0, 0, 0.06 * (k % 2)), leg_l=(30 * s, 0, 0), leg_r=(-30 * s, 0, 0),
+                       arm_l=(-28 * s, 0, 0), arm_r=(28 * s, 0, 0), head=(0, 0, 10 * math.sin(k * 0.3 + i)))
+            x += direction * speed * step / fps
+            if abs(x) > span:  # turn around off-screen and walk back
+                direction = -direction
+                r.base_yaw = 90.0 if direction > 0 else -90.0
+            f += step
+            k += 1
+
+
 # ---------------------------------------------------------------------- main
 def main():
     args = parse_args()
@@ -552,6 +601,7 @@ def main():
     rigs_all = {n: rigmod.build_character(n, spec, faces_dir) for n, spec in ep["_chars"].items()}
 
     tags = build_tags(ep, rigs_all)
+    extras = build_extras(ep, faces_dir)
     frame = 1
     shot_i = 0
     cut_frames = set()
@@ -583,6 +633,7 @@ def main():
             prefs.keyframe_new_interpolation_type = "BEZIER"
             focus = shot.get("focus") or (speaker if speaker in scene_rigs and not shot.get("vo") else None)
             anims.CTX["focus"] = tuple(scene_rigs[focus].base[:2]) if focus in scene_rigs else None
+            walks = shot.get("walk", {})  # {"name": [x, y]} or {"name": {"to": [x, y], "at": 0.3, "run": true}}
             for name, r in rigs_all.items():
                 if name not in scene_rigs:
                     anims.hidden(r, f0, f1, fps)
@@ -591,7 +642,19 @@ def main():
                 anim_name = shot_anims.get(name, default)
                 if anim_name not in anims.ANIMS:
                     raise ValueError(f"unknown anim '{anim_name}'. Available: {sorted(anims.ANIMS)}")
-                anims.ANIMS[anim_name](r, f0, f1, fps)
+                a0 = f0
+                if name in walks:
+                    w = walks[name] if isinstance(walks[name], dict) else {"to": walks[name]}
+                    dest = (origin[0] + w["to"][0], origin[1] + w["to"][1], r.base[2])
+                    ws = f0 + round(float(w.get("at", 0)) * fps)
+                    if ws > f0:  # stand (or do the shot's anim) until the walk starts
+                        anims.ANIMS[anim_name if anim_name != "talk" else "idle"](r, f0, ws, fps)
+                    a0 = anims.walk_to(r, ws, r.base[:2], dest[:2], fps, run=bool(w.get("run")), max_frames=f1 - ws)
+                    r.base = dest
+                    if a0 >= f1 - 2:
+                        a0 = f1 - 2
+                anims.ANIMS[anim_name](r, a0, f1, fps)
+                r.hidden_now = anim_name == "hidden"
 
             cams = shot.get("cameras") or [shot.get("camera", f"medium:{speaker}" if speaker and
                                                     speaker in scene_rigs else "wide")]
@@ -623,6 +686,7 @@ def main():
             frame = f1
             shot_i += 1
 
+    animate_extras(extras, ep, frame - 1, fps)
     scn.frame_start = 1
     scn.frame_end = frame - 1
     if args.frames:
