@@ -266,6 +266,9 @@ def camera_pose(spec, rigs, scene_origin, fmt):
         # so the near character frames the edge and we see the far character's face
         loc = over - d * 3.2 + Vector((0, -4.8, HEAD_Z + 0.3))
         return loc, at + Vector((0, 0, HEAD_Z - 0.7)), 45
+    if kind == "tag":  # head + the price tag floating above it
+        p = pos(names[0])
+        return p + front(names[0], (0, -8.5, HEAD_Z + 1.2)), p + Vector((0, 0, HEAD_Z + 0.75)), 40
     if kind == "low":
         p = pos(names[0])
         return p + front(names[0], (0, -7, 0.8)), p + Vector((0, 0, HEAD_Z - 0.5)), 26
@@ -275,29 +278,68 @@ def camera_pose(spec, rigs, scene_origin, fmt):
     raise ValueError(f"unknown camera '{spec}'")
 
 
-def key_camera(cam, f0, f1, spec, rigs, origin, fmt, move, roll_deg=0.0):
+def _ease(t):
+    return t * t * (3 - 2 * t)
+
+
+def key_camera(cam, f0, f1, spec, rigs, origin, fmt, move, roll_deg=0.0, handheld=1.0):
+    """Keys the camera for frames f0..f1-1.
+
+    Moves: push (default slow push-in) | pull | pan | zoom (fast meme zoom) | shake |
+           punch (snaps in fast on the first frames, then drifts) | whip (whip-pans into the shot) | none
+    Every move also gets a gentle handheld drift (set "handheld": 0 on the episode to turn off)."""
     loc, at, lens = camera_pose(spec, rigs, origin, fmt)
     end_loc = Vector(loc)
-    if move == "push":       # slow push-in (default, feels cinematic)
-        end_loc = loc + (at - loc) * 0.10
+    if move == "push":
+        end_loc = loc + (at - loc) * 0.14
     elif move == "pull":
-        end_loc = loc - (at - loc) * 0.12
+        end_loc = loc - (at - loc) * 0.14
     elif move == "pan":
-        end_loc = loc + Vector((1.5, 0, 0))
-    elif move == "zoom":     # fast meme zoom
+        end_loc = loc + Vector((1.8, 0, 0))
+    elif move == "zoom":
         end_loc = loc + (at - loc) * 0.55
+    elif move in ("punch", "whip"):
+        end_loc = loc + (at - loc) * 0.06
     kind = spec.partition(":")[0]
-    fstop = {"extreme": 1.4, "closeup": 1.8, "low": 2.2, "ots": 2.2, "medium": 2.8, "two": 4.0,
+    fstop = {"extreme": 1.4, "closeup": 1.8, "tag": 2.0, "low": 2.2, "ots": 2.2, "medium": 2.8, "two": 4.0,
              "high": 4.0, "wide": 7.0}.get(kind, 2.8)
-    roll = math.radians(roll_deg)
-    for frame, l in ((f0, loc), (f1 - 1, end_loc)):
+    n = max(1, f1 - 1 - f0)
+    seed = (f0 * 7919) % 1000
+    amp = 0.05 * handheld * (1.6 if kind in ("wide", "two", "medium") else 1.0)
+
+    def place(frame):
+        t = (frame - f0) / n
+        if move == "punch":
+            k = min(1.0, (frame - f0) / 5.0)
+            start = loc - (at - loc) * 0.35
+            l = start.lerp(loc, _ease(k)).lerp(end_loc, _ease(t))
+        elif move == "whip":
+            k = min(1.0, (frame - f0) / 6.0)
+            l = loc.lerp(end_loc, _ease(t))
+        else:
+            l = loc.lerp(end_loc, _ease(t) if move != "zoom" else 1 - (1 - t) ** 3)
+        jitter = Vector((math.sin(frame * 0.21 + seed) + 0.5 * math.sin(frame * 0.53 + seed * 2),
+                         0.4 * math.sin(frame * 0.17 + seed * 3),
+                         math.sin(frame * 0.27 + seed * 5) + 0.4 * math.sin(frame * 0.61 + seed)))
+        l = l + jitter * amp
+        tgt = Vector(at)
+        r = roll_deg + 0.6 * handheld * math.sin(frame * 0.13 + seed)
+        if move == "whip":
+            side = 1 if (f0 // 7) % 2 else -1
+            off = (1 - _ease(k)) * 9.0 * side
+            tgt = tgt + Vector((off, 0, 0))
+            r += (1 - _ease(k)) * 12 * side
+        return l, tgt, r
+
+    frames = sorted(set([f0, f1 - 1] + list(range(f0, f1 - 1, 4 if move in ("punch", "whip") else 6))))
+    if move in ("punch", "whip"):
+        frames = sorted(set(frames + list(range(f0, min(f1 - 1, f0 + 7)))))
+    from mathutils import Quaternion
+    for frame in frames:
+        l, tgt, r = place(frame)
         cam.location = l
-        q = (at - l).to_track_quat("-Z", "Y")
-        e = q.to_euler()
-        if roll:
-            from mathutils import Quaternion
-            e = (q @ Quaternion((0, 0, 1), roll)).to_euler()
-        cam.rotation_euler = e
+        q = (tgt - l).to_track_quat("-Z", "Y")
+        cam.rotation_euler = (q @ Quaternion((0, 0, 1), math.radians(r))).to_euler()
         cam.data.lens = lens
         cam.data.dof.focus_distance = (at - l).length
         cam.data.dof.aperture_fstop = fstop
@@ -308,7 +350,8 @@ def key_camera(cam, f0, f1, spec, rigs, origin, fmt, move, roll_deg=0.0):
         cam.data.keyframe_insert("dof.aperture_fstop", frame=frame)
     if move == "shake":
         for i, f in enumerate(range(f0 + 1, f1 - 1, 2)):
-            cam.location = loc + Vector(((-0.15, 0.15)[i % 2], 0, (0.1, -0.1)[(i // 2) % 2]))
+            l, _, _ = place(f)
+            cam.location = l + Vector(((-0.15, 0.15)[i % 2], 0, (0.1, -0.1)[(i // 2) % 2]))
             cam.keyframe_insert("location", frame=f)
 
 
@@ -392,6 +435,107 @@ def harden_cuts(cut_frames, cam_cuts=()):
             fc.update()
 
 
+# ---------------------------------------------------------------- price tags
+def build_tags(ep, rigs):
+    """Floating tags above heads: "tags": {"sage": "$0", ...} on the episode.
+    Each tag is a white card with a gold string loop and bold text, parented to the character
+    so it follows them. Shots control them with:
+      "tags_show": true        tags pop in at the start of this shot (hidden before the first one)
+      "tag_flash": "goldie"    that tag pulses big (e.g. with a cash sound)
+      "tag_rip": "goldie"      that character rips it off (pairs with the rip_tag anim)
+    """
+    spec = ep.get("tags") or {}
+    out = {}
+    if not spec:
+        return out
+    card = rigmod.make_material("tag_card", "#fffaf0", roughness=0.4, texture=False)
+    edge = rigmod.make_material("tag_edge", "#e2b23a", roughness=0.35, texture=False)
+    ink = bpy.data.materials.new("tag_ink")
+    ink.use_nodes = True
+    bsdf = ink.node_tree.nodes.get("Principled BSDF")
+    bsdf.inputs["Base Color"].default_value = rigmod.hex_rgba("#1b7a34")
+    zero = bpy.data.materials.new("tag_ink_zero")
+    zero.use_nodes = True
+    zero.node_tree.nodes.get("Principled BSDF").inputs["Base Color"].default_value = rigmod.hex_rgba("#c0392b")
+    font = None
+    for fp in ("/usr/share/fonts/opentype/inter/InterDisplay-Black.otf",
+               "C:/Windows/Fonts/ariblk.ttf", "/System/Library/Fonts/Supplemental/Arial Black.ttf"):
+        if os.path.exists(fp):
+            font = bpy.data.fonts.load(fp)
+            break
+    for name, text in spec.items():
+        if name not in rigs:
+            continue
+        r = rigs[name]
+        holder = bpy.data.objects.new(f"{name}_tag", None)
+        bpy.context.scene.collection.objects.link(holder)
+        holder.parent = r.root
+        holder.location = (0, -0.1, 6.55)
+        w = max(1.6, 0.42 * len(text) + 0.6)
+        rigmod.add_obj(f"{name}_tag_card", rigmod.box_mesh("tc", (w, 0.1, 0.85)), holder, (0, 0, 0), card, bevel=0.12)
+        rigmod.add_obj(f"{name}_tag_rim", rigmod.box_mesh("tr", (w + 0.14, 0.06, 0.99)), holder, (0, 0.04, 0), edge,
+                       bevel=0.14)
+        rigmod.add_obj(f"{name}_tag_hole", rigmod.box_mesh("th", (0.16, 0.12, 0.16)), holder,
+                       (-w / 2 + 0.25, -0.02, 0.22), edge, bevel=0.06)
+        rigmod.add_obj(f"{name}_tag_str", rigmod.box_mesh("ts", (0.05, 0.05, 0.9)), holder,
+                       (-w / 2 + 0.25, 0, 0.62), edge, bevel=0)
+        cu = bpy.data.curves.new(f"{name}_tag_txt", "FONT")
+        cu.body = text
+        cu.align_x, cu.align_y = "CENTER", "CENTER"
+        cu.size = 0.62
+        cu.extrude = 0.02
+        if font:
+            cu.font = font
+        to = bpy.data.objects.new(f"{name}_tag_txt", cu)
+        bpy.context.scene.collection.objects.link(to)
+        to.parent = holder
+        to.location = (0.08, -0.07, -0.02)
+        to.rotation_euler = (math.radians(90), 0, 0)
+        to.data.materials.append(zero if text.strip() in ("$0", "$0.00") else ink)
+        holder.scale = (0, 0, 0)
+        holder.keyframe_insert("scale", frame=1)
+        out[name] = dict(holder=holder, shown=False, ripped=False, phase=len(name))
+    return out
+
+
+def key_tags(tags, shot, f0, f1, scene_rigs):
+    if not tags:
+        return
+    if shot.get("tags_show"):
+        for i, t in enumerate(tags.values()):
+            if not t["shown"]:
+                h, d = t["holder"], 4 + i * 3
+                for fr, sc in ((f0, 0), (f0 + d, 0), (f0 + d + 4, 1.25), (f0 + d + 8, 1.0)):
+                    h.scale = (sc, sc, sc)
+                    h.keyframe_insert("scale", frame=min(fr, f1 - 1))
+                t["shown"] = True
+    for name, t in tags.items():
+        h = t["holder"]
+        if not t["shown"] or t["ripped"] or name not in scene_rigs:
+            continue
+        # gentle float + sway
+        for fr in ([] if shot.get("tag_rip") == name else range(f0, f1, 10)):
+            h.location = (0, -0.1, 6.55 + 0.08 * math.sin((fr + t["phase"] * 7) * 0.12))
+            h.rotation_euler = (0, math.radians(3 * math.sin((fr + t["phase"] * 5) * 0.09)), 0)
+            h.keyframe_insert("location", frame=fr)
+            h.keyframe_insert("rotation_euler", frame=fr)
+        if shot.get("tag_flash") == name:
+            for k, sc in enumerate((1.0, 1.5, 1.15, 1.45, 1.2, 1.3, 1.0)):
+                h.scale = (sc, sc, sc)
+                h.keyframe_insert("scale", frame=min(f0 + k * 4, f1 - 1))
+        if shot.get("tag_rip") == name:
+            h.scale = (1, 1, 1)
+            h.keyframe_insert("scale", frame=f0)
+            h.keyframe_insert("location", frame=f0 + 8)
+            h.location = (0.6, -0.6, 3.6)
+            h.scale = (0.35, 0.35, 0.35)
+            h.keyframe_insert("location", frame=min(f0 + 16, f1 - 1))
+            h.keyframe_insert("scale", frame=min(f0 + 16, f1 - 1))
+            h.scale = (0, 0, 0)
+            h.keyframe_insert("scale", frame=min(f0 + 30, f1 - 1))
+            t["ripped"] = True
+
+
 # ---------------------------------------------------------------------- main
 def main():
     args = parse_args()
@@ -407,6 +551,7 @@ def main():
     prefs.keyframe_new_interpolation_type = "BEZIER"
     rigs_all = {n: rigmod.build_character(n, spec, faces_dir) for n, spec in ep["_chars"].items()}
 
+    tags = build_tags(ep, rigs_all)
     frame = 1
     shot_i = 0
     cut_frames = set()
@@ -436,6 +581,8 @@ def main():
             faces = shot.get("faces", {})
 
             prefs.keyframe_new_interpolation_type = "BEZIER"
+            focus = shot.get("focus") or (speaker if speaker in scene_rigs and not shot.get("vo") else None)
+            anims.CTX["focus"] = tuple(scene_rigs[focus].base[:2]) if focus in scene_rigs else None
             for name, r in rigs_all.items():
                 if name not in scene_rigs:
                     anims.hidden(r, f0, f1, fps)
@@ -456,8 +603,9 @@ def main():
                 a = f0 + round(ci * seg)
                 b = f0 + round((ci + 1) * seg)
                 spec, _, roll = cspec.partition("@")
-                key_camera(cam, a, b, spec, scene_rigs, origin, fmt,
-                           shot.get("move", "push") if ci == 0 else "push", float(roll or 0))
+                moves = shot.get("moves") or [shot.get("move", "push")] + ["push"] * (len(cams) - 1)
+                key_camera(cam, a, b, spec, scene_rigs, origin, fmt, moves[min(ci, len(moves) - 1)],
+                           float(roll or 0), float(ep.get("handheld", 1.0)))
                 if b < f1:
                     cam_cuts.add(b - 1)
 
@@ -470,6 +618,7 @@ def main():
                                    name == speaker and bool(shot.get("line")) and not shot.get("vo"),
                                    t.get("mouth"))
             prefs.keyframe_new_interpolation_type = "BEZIER"
+            key_tags(tags, shot, f0, f1, scene_rigs)
             cut_frames.add(f1 - 1)
             frame = f1
             shot_i += 1

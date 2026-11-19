@@ -26,7 +26,7 @@ import rig as rigmod  # noqa: E402
 def parse():
     argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else sys.argv[1:]
     p = argparse.ArgumentParser()
-    p.add_argument("--name", default="BLOCKTOPIA TALES")
+    p.add_argument("--name", default="PLUTONEX TALES")
     p.add_argument("--mascot", default="sage")
     p.add_argument("--color", default="#6c3ce0", help="brand background colour")
     p.add_argument("--accent", default="#ffd23f", help="title text colour")

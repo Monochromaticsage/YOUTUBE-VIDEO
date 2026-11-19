@@ -1,4 +1,4 @@
-# Blocktopia Tales: channel research and 50 original storylines
+# Plutonex Tales: channel research and 50 original storylines
 
 ## Part 1: Research on the reference channel (Gneef)
 

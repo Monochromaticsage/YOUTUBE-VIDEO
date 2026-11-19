@@ -469,8 +469,85 @@ def music_tension():
     return norm(buf, 0.8)
 
 
+# ---- "quirky_loop": playful sneaky-comedy track (marimba, pizzicato bass, glockenspiel, light drums)
+def marimba(freq, d):
+    t = t_(d)
+    x = np.sin(2 * np.pi * freq * t) * np.exp(-t * 7) + 0.25 * np.sin(2 * np.pi * 4 * freq * t) * np.exp(-t * 30)
+    x += 0.1 * np.sin(2 * np.pi * 10 * freq * t) * np.exp(-t * 60)
+    return x * np.minimum(1, t / 0.002)
+
+
+def glock(freq, d):
+    t = t_(d)
+    x = np.sin(2 * np.pi * freq * t) * np.exp(-t * 2.5) + 0.35 * np.sin(2 * np.pi * 2.76 * freq * t) * np.exp(-t * 9)
+    return x * np.minimum(1, t / 0.001)
+
+
+def pizz_bass(freq, d):
+    t = t_(d)
+    body = np.sin(2 * np.pi * freq * t) + 0.3 * np.sin(2 * np.pi * 2 * freq * t)
+    return lp_fast(body + 0.2 * saw(freq, d), 1200) * np.exp(-t * 6) * np.minimum(1, t / 0.004)
+
+
+def clap():
+    d = 0.18
+    x = np.zeros(int(d * SR))
+    for k, off in enumerate((0, 0.011, 0.022)):
+        mix_at(x, hp_fast(noise(0.12), 900) * env_exp(0.12, 0.03) * (0.6 if k < 2 else 1.0), off)
+    return x
+
+
+def music_quirky():
+    bpm, bars = 116, 16
+    beat = 60 / bpm
+    total = bars * 4 * beat
+    buf = np.zeros(int((total + 2) * SR))
+    # F  Dm  Bb  C  | F  Dm  G7  C   (A: bars 0-7, B with melody: bars 8-15)
+    prog = [(53, [65, 69, 72]), (50, [62, 65, 69]), (46, [62, 65, 70]), (48, [64, 67, 72]),
+            (53, [65, 69, 72]), (50, [62, 65, 69]), (43, [62, 65, 71]), (48, [64, 67, 70])]
+    walk = [0, 7, 12, 7]  # bass: root, fifth, octave, fifth
+    for bar in range(bars):
+        root, ch = prog[bar % 8]
+        t0 = bar * 4 * beat
+        for b in range(4):  # bouncy pizzicato bass on every beat
+            n = root + walk[b] - 12
+            mix_at(buf, pizz_bass(midi(n), beat * 0.8) * 0.55, t0 + b * beat)
+        for b in range(4):  # marimba stabs on the off-beats ("and" of each beat)
+            for k, n in enumerate(ch):
+                mix_at(buf, marimba(midi(n), beat * 0.5) * 0.16, t0 + b * beat + beat / 2 + k * 0.004)
+        if bar % 2 == 1:  # little marimba run up at the end of every other bar
+            for k, n in enumerate(ch + [ch[0] + 12]):
+                mix_at(buf, marimba(midi(n + 12), 0.25) * 0.12, t0 + 3 * beat + k * beat / 4)
+        # drums: soft kick 1 & 3, claps 2 & 4 in B section, shaker 16ths
+        for b in range(4):
+            if b in (0, 2):
+                mix_at(buf, kick() * 0.45, t0 + b * beat)
+            if b in (1, 3) and bar >= 8:
+                mix_at(buf, clap() * 0.35, t0 + b * beat)
+            for q in range(4):
+                mix_at(buf, hat() * (0.16 if q % 2 else 0.08), t0 + b * beat + q * beat / 4)
+    # glockenspiel melody in the B section (two 4-bar phrases), sneaky and catchy
+    phrase = [(0, 77, .5), (.5, 76, .5), (1, 74, .5), (1.5, 72, 1), (3, 69, .5), (3.5, 72, .5),
+              (4, 74, .5), (4.5, 74, .5), (5, 77, 1), (6.5, 74, .5), (7, 72, 1),
+              (8, 70, .5), (8.5, 72, .5), (9, 74, .5), (9.5, 70, 1), (11, 67, .5), (11.5, 70, .5),
+              (12, 72, .5), (12.5, 76, .5), (13, 79, 1.5), (15, 72, .5), (15.5, 76, .5)]
+    for rep in (0, 1):
+        for at_b, n, dl in phrase:
+            when = (8 * 4 + rep * 16 + at_b) * beat
+            mix_at(buf, glock(midi(n + 12), dl * beat + 0.6) * 0.2, when)
+            if rep == 1:
+                mix_at(buf, marimba(midi(n), dl * beat) * 0.1, when)
+    buf = reverb(buf, decay=0.6, mix=0.12)
+    n = int(total * SR)
+    tail = buf[n:]
+    buf = buf[:n]
+    buf[:len(tail)] += tail
+    return norm(buf, 0.8)
+
+
 MUSIC = {"chill_loop": music_chill, "happy_loop": music_happy, "mystery_loop": music_mystery,
-         "sad_loop": music_sad, "tension_loop": music_tension}
+         "sad_loop": music_sad, "tension_loop": music_tension,
+         "quirky_loop": music_quirky}
 
 
 def main():

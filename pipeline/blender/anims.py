@@ -42,20 +42,186 @@ def _loop(f0, f1, step):
 
 
 # ---------------------------------------------------------------- the moves
+CTX = {"focus": None}  # set per shot by render_episode: world (x, y) of whoever is speaking
+
+
+def _seed(rig):
+    return sum(ord(c) for c in rig.name) % 97
+
+
+def _glance(rig):
+    """Head yaw (degrees) that makes this character look at the current speaker."""
+    fx = CTX.get("focus")
+    if not fx:
+        return 0.0
+    dx = fx[0] - rig.base[0]
+    if abs(dx) < 0.5:
+        return 0.0
+    ang = math.degrees(math.atan2(dx, 3.0)) - rig.base_yaw
+    return max(-38.0, min(38.0, ang * 0.8))
+
+
 def idle(rig, f0, f1, fps):
-    for i, f in _loop(f0, f1, fps):
-        s = 1 if i % 2 else -1
-        pose(rig, f, arm_l=(0, -4 + s, 0), arm_r=(0, 4 - s, 0), head=(s * 2, 0, 0), torso=(s * 0.6, 0, 0))
-    pose(rig, f1 - 1, arm_l=(0, -4, 0), arm_r=(0, 4, 0))
+    """Alive idle: breathing, weight shifts, looks at whoever is talking, small fidgets."""
+    sd = _seed(rig)
+    look = _glance(rig)
+    step = max(8, fps // 2)
+    fidgets = [(0, 0), (-12, 6), (0, 0), (8, -4), (0, 0), (-20, 10)]
+    for i, f in _loop(f0, f1, step):
+        ph = (i + sd) % 4
+        sway = (-1, 0, 1, 0)[ph]
+        fa, fb = fidgets[(i + sd) % len(fidgets)]
+        tilt_head = 5 * math.sin((i + sd) * 1.3)
+        pose(rig, f, offset=(0.06 * sway, 0, 0.03 * (ph % 2)), yaw=2.5 * sway,
+             head=(3 * math.sin((i + sd) * 0.9), tilt_head * 0.4, look + tilt_head),
+             torso=(1.0 * (ph % 2), 1.5 * sway, 0),
+             arm_l=(fa * 0.5, -5 - (ph % 2) * 2, 0), arm_r=(fb * 0.5, 5 + (ph % 2) * 2, 0),
+             leg_l=(0, -2 * max(0, sway), 0), leg_r=(0, 2 * max(0, -sway), 0))
+    pose(rig, f1 - 1, head=(0, 0, look), arm_l=(0, -5, 0), arm_r=(0, 5, 0))
 
 
 def talk(rig, f0, f1, fps):
-    step = max(6, fps // 3)
+    """Expressive talking: both hands gesture, body bounces on the beat, head nods and turns."""
+    sd = _seed(rig)
+    step = max(6, fps // 4)
+    gestures = [((-40, 10, 20), (-10, -8, 0)), ((-15, 25, 0), (-45, -15, -20)), ((-60, 5, 30), (-60, -5, -30)),
+                ((-25, 15, 10), (0, -6, 0)), ((-10, 8, 0), (-35, -22, -10)), ((-70, 30, 0), (-20, -10, 0))]
     for i, f in _loop(f0, f1, step):
-        g = [(-25, 8, 0), (-10, 18, 0), (-35, 5, 0), (-5, 10, 0)][i % 4]
-        pose(rig, f, head=(4 if i % 2 else -3, 0, 6 if i % 3 == 0 else -4, ),
-             arm_r=(g[0], g[1], 0), arm_l=(0, -5, 0), torso=(2 if i % 2 else 0, 0, 0))
-    pose(rig, f1 - 1, arm_l=(0, -4, 0), arm_r=(0, 4, 0))
+        ar, al = gestures[(i + sd) % len(gestures)]
+        beat = i % 2
+        pose(rig, f, offset=(0, -0.05 * beat, 0.07 * beat), yaw=4 * math.sin(i * 0.8 + sd),
+             head=(5 if beat else -4, 3 * math.sin(i * 1.7), 7 * math.sin(i * 0.9 + sd)),
+             torso=(4 if beat else 1, 2 * math.sin(i * 1.1), 3 * math.sin(i * 0.6)),
+             arm_r=ar, arm_l=al)
+    pose(rig, f1 - 1, arm_l=(0, -5, 0), arm_r=(0, 5, 0))
+
+
+def nod(rig, f0, f1, fps):
+    look = _glance(rig)
+    for i, f in _loop(f0, f1, 6):
+        pose(rig, f, head=(-10 if i % 2 else 4, 0, look), arm_l=(0, -5, 0), arm_r=(0, 5, 0),
+             offset=(0, 0, 0.03 * (i % 2)))
+    pose(rig, f1 - 1, head=(0, 0, look))
+
+
+def shrug(rig, f0, f1, fps):
+    up = dict(arm_l=(-30, -55, 40), arm_r=(-30, 55, -40), torso=(0, 0, 0))
+    pose(rig, f0)
+    pose(rig, min(f0 + 5, f1 - 1), offset=(0, 0, 0.12), head=(0, 12, 0), **up)
+    for i, f in _loop(f0 + 10, f1, 10):
+        pose(rig, f, head=(0, 12 if i % 2 else -10, 0), **up)
+    pose(rig, f1 - 1, head=(0, 12, 0), **up)
+
+
+def brag(rig, f0, f1, fps):
+    """Show-off: hands on hips, chest out, chin up, little bounce."""
+    hips = dict(arm_l=(0, -35, -60), arm_r=(0, 35, 60), torso=(6, 0, 0))
+    pose(rig, f0)
+    for i, f in _loop(f0 + 4, f1, 8):
+        s = 1 if i % 2 else -1
+        pose(rig, f, offset=(0, 0, 0.1 if i % 2 else 0), yaw=8 * s, head=(12, 4 * s, 10 * s), **hips)
+    pose(rig, f1 - 1, head=(12, 0, 0), **hips)
+
+
+def cross_arms(rig, f0, f1, fps):
+    ca = dict(arm_l=(-85, 0, -55), arm_r=(-85, 0, 55))
+    look = _glance(rig)
+    pose(rig, f0)
+    for i, f in _loop(f0 + 5, f1, 12):
+        pose(rig, f, head=(4, 5 if i % 2 else -3, look), offset=(0.04 * (1 if i % 2 else -1), 0, 0), **ca)
+    pose(rig, f1 - 1, head=(4, 0, look), **ca)
+
+
+def look_up(rig, f0, f1, fps):
+    """Looks up at something above their head (e.g. their price tag)."""
+    pose(rig, f0)
+    for i, f in _loop(f0 + 5, f1, 10):
+        pose(rig, f, head=(28, 4 if i % 2 else -4, 6 if i % 2 else -6), torso=(4, 0, 0),
+             arm_l=(0, -8, 0), arm_r=(-30 if i % 3 == 0 else -10, 15, 0))
+    pose(rig, f1 - 1, head=(28, 0, 0), torso=(4, 0, 0))
+
+
+def point_laugh(rig, f0, f1, fps):
+    look = _glance(rig)
+    for i, f in _loop(f0, f1, 4):
+        back = 12 if i % 2 else 3
+        pose(rig, f, torso=(back, 0, 0), head=(back, 0, look * 0.6), arm_r=(-90, 0, 0),
+             arm_l=(-50, -10, 30), offset=(0, 0, 0.12 if i % 2 else 0))
+    pose(rig, f1 - 1, torso=(6, 0, 0), arm_r=(-90, 0, 0), arm_l=(-50, -10, 30))
+
+
+def whisper(rig, f0, f1, fps):
+    """Leans toward the speaker focus with a hand by the mouth."""
+    look = _glance(rig)
+    side = 1 if look >= 0 else -1
+    w = dict(arm_r=(-150, -10, 0) if side < 0 else (-20, 10, 0), arm_l=(-150, 10, 0) if side > 0 else (-20, -10, 0))
+    pose(rig, f0)
+    for i, f in _loop(f0 + 5, f1, 8):
+        pose(rig, f, tilt=(0, -8 * side), head=(-4, 0, look + (6 if i % 2 else 0)), **w)
+    pose(rig, f1 - 1, tilt=(0, -8 * side), head=(-4, 0, look), **w)
+
+
+def sad_look_down(rig, f0, f1, fps):
+    body = dict(torso=(-10, 0, 0), arm_l=(6, -2, 0), arm_r=(6, 2, 0))
+    pose(rig, f0)
+    pose(rig, min(f0 + 8, f1 - 1), head=(-25, 0, 0), **body)
+    for i, f in _loop(f0 + 14, f1, 14):
+        pose(rig, f, offset=(0, 0, -0.04 * (i % 2)), head=(-25, 0, 6 if i % 2 else -6), **body)
+    pose(rig, f1 - 1, head=(-25, 0, 0), **body)
+
+
+def rip_tag(rig, f0, f1, fps):
+    """Reaches above the head, yanks something down, crumples it and drops it."""
+    pose(rig, f0)
+    pose(rig, min(f0 + 8, f1 - 1), arm_r=(0, 165, 0), head=(25, 0, 0), offset=(0, 0, 0.3))
+    pose(rig, min(f0 + 14, f1 - 1), arm_r=(-60, 20, 0), head=(-10, 0, 0))
+    for i, f in _loop(f0 + 18, min(f1, f0 + 34), 4):
+        pose(rig, f, arm_r=(-70, -10 if i % 2 else 10, 0), arm_l=(-70, 10 if i % 2 else -10, 0), head=(-15, 0, 0))
+    pose(rig, min(f0 + 40, f1 - 1), arm_r=(10, 20, 0), arm_l=(0, -5, 0), head=(-12, 0, 0))
+    pose(rig, f1 - 1, head=(-8, 0, 0))
+
+
+def celebrate(rig, f0, f1, fps):
+    for i, f in _loop(f0, f1, 7):
+        s = 1 if i % 2 else -1
+        pose(rig, f, offset=(0, 0, 0.6 if i % 2 else 0), arm_l=(0, -160 if s > 0 else -120, 0),
+             arm_r=(0, 120 if s > 0 else 160, 0), head=(10, 0, 8 * s), leg_l=(-15 * (i % 2), 0, 0))
+    pose(rig, f1 - 1)
+
+
+def stumble(rig, f0, f1, fps):
+    """Gets bumped aside: staggers to his right (screen left) and nearly falls."""
+    pose(rig, f0)
+    pose(rig, min(f0 + 5, f1 - 1), offset=(-1.2, 0, 0.2), tilt=(0, -25), arm_l=(0, -110, 0), arm_r=(0, 130, 0))
+    pose(rig, min(f0 + 11, f1 - 1), offset=(-2.4, 0, 0), tilt=(0, 12), arm_l=(0, -70, 0), arm_r=(0, 60, 0))
+    pose(rig, min(f0 + 17, f1 - 1), offset=(-2.6, 0, 0), arm_l=(0, -10, 0), arm_r=(0, 10, 0), head=(-15, 0, 0))
+    pose(rig, f1 - 1, offset=(-2.6, 0, 0), head=(-20, 0, 0), torso=(-6, 0, 0))
+
+
+def step_away_right(rig, f0, f1, fps):
+    """Side-steps away from someone (to the right) and keeps a wary look back."""
+    for i, f in _loop(f0, min(f1, f0 + 18), 6):
+        t = (f - f0) / 18
+        s = 1 if i % 2 else -1
+        pose(rig, f, offset=(2.5 * t, 0.6 * t, 0.1 * (i % 2)), yaw=-25,
+             leg_l=(25 * s, 0, 0), leg_r=(-25 * s, 0, 0), arm_l=(-20 * s, 0, 0), arm_r=(20 * s, 0, 0))
+    pose(rig, min(f0 + 20, f1 - 1), offset=(2.5, 0.6, 0), head=(0, 0, -30), arm_l=(-30, -10, 0))
+    pose(rig, f1 - 1, offset=(2.5, 0.6, 0), head=(0, 0, -30), arm_l=(-30, -10, 0))
+
+
+def cut_line(rig, f0, f1, fps):
+    """Strolls in front of everyone, 6 studs to the left, chin up, then poses."""
+    end = min(f1 - 1, f0 + 36)
+    n = max(1, end - f0)
+    for i, f in _loop(f0, end, 6):
+        t = (f - f0) / n
+        s = 1 if i % 2 else -1
+        pose(rig, f, offset=(-6 * t, -1.6 * math.sin(math.pi * t), 0.06 * (i % 2)), yaw=80,
+             head=(12, 0, -40), leg_l=(28 * s, 0, 0), leg_r=(-28 * s, 0, 0), arm_l=(-20 * s, 0, 0),
+             arm_r=(20 * s, 0, 0))
+    hips = dict(arm_l=(0, -35, -60), arm_r=(0, 35, 60), head=(12, 0, 0), torso=(6, 0, 0))
+    pose(rig, min(f0 + 40, f1 - 1), offset=(-6, 0, 0), **hips)
+    pose(rig, f1 - 1, offset=(-6, 0, 0), **hips)
 
 
 def shocked(rig, f0, f1, fps):
@@ -215,6 +381,13 @@ def walk_out_right(rig, f0, f1, fps):
     _walk(rig, f0, f1, fps, (0, 0, 0), (16, 0, 0))
 
 
+def step_right(rig, f0, f1, fps):
+    """Walks 3.5 studs to the right (toward a friend) and stays there."""
+    _walk(rig, f0, min(f1, f0 + 24), fps, (0, 0, 0), (3.5, 0, 0))
+    pose(rig, min(f0 + 26, f1 - 1), offset=(3.5, 0, 0.1), head=(5, 0, 15), arm_l=(0, -8, 0), arm_r=(0, 8, 0))
+    pose(rig, f1 - 1, offset=(3.5, 0, 0), head=(0, 0, 15), arm_l=(0, -5, 0), arm_r=(0, 5, 0))
+
+
 def run_out_left(rig, f0, f1, fps):
     _walk(rig, f0, f1, fps, (0, 0, 0), (-22, 0, 0), speed_frames=4, run=True)
 
@@ -250,4 +423,5 @@ def hidden(rig, f0, f1, fps):
 ANIMS = {f.__name__: f for f in [
     idle, talk, shocked, scared, angry, laugh, sad, cry, wave, point, facepalm, think, dance, jump,
     fall, lie, sit, run_in_place, walk_in_left, walk_in_right, walk_out_left, walk_out_right,
-    run_out_left, run_out_right, frozen, unfreeze, hidden]}
+    run_out_left, run_out_right, frozen, unfreeze, hidden, nod, shrug, brag, cross_arms, look_up,
+    point_laugh, whisper, sad_look_down, rip_tag, celebrate, stumble, step_away_right, cut_line, step_right]}

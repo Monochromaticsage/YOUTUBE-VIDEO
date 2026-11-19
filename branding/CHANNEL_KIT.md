@@ -1,7 +1,7 @@
-# Channel kit: BLOCKTOPIA TALES
+# Channel kit: PLUTONEX TALES
 
 ## Name
-**Blocktopia Tales** · handle **@BlocktopiaTales**
+**Plutonex Tales** · handle **@PlutonexTales**
 A whole blocky world full of stories, with no Roblox trademark in the name.
 
 To use a different name, re-render everything with it:
@@ -23,7 +23,7 @@ His colours are in `episodes/cast.json` under `ziggy`. Change them to your own a
 
 ## Channel description (paste into Studio → Customization → Basic info)
 ```
-Welcome to BLOCKTOPIA TALES! 🧱
+Welcome to PLUTONEX TALES! 🧱
 
 Funny, dramatic and sometimes emotional animated stories from a blocky world:
 school chaos, moms who say "we have food at home," rich-kid flexes, and twists
@@ -37,7 +37,7 @@ you won't see coming.
 
 ## Channel keywords (Studio → Settings → Channel)
 ```
-roblox animation, roblox story, roblox funny, roblox shorts, animated stories, roblox school, roblox comedy, blocktopia tales
+roblox animation, roblox story, roblox funny, roblox shorts, animated stories, roblox school, roblox comedy, plutonex tales
 ```
 
 ## Upload defaults (Studio → Settings → Upload defaults)
@@ -46,7 +46,7 @@ roblox animation, roblox story, roblox funny, roblox shorts, animated stories, r
 ```
 [one-line story summary]
 
-Subscribe for more Blocktopia Tales stories! 🧱
+Subscribe for more Plutonex Tales stories! 🧱
 #roblox #robloxanimation #shorts #funny
 ```
 - **Tags:** the same as the channel keywords
@@ -57,7 +57,7 @@ Subscribe for more Blocktopia Tales stories! 🧱
 - [ ] **Copyright:** only original stories, characters, sounds and music. No movie or TV clips or scenes.
 - [ ] **AI voices:** use a **paid** ElevenLabs plan, since commercial use isn't allowed on the free plan. Never clone a real person's voice.
 - [ ] **AI disclosure:** not needed for clearly animated content.
-- [ ] **Originality test, for every video:** its own idea, recognisably Blocktopia Tales, a person made real creative decisions, and the process is explainable.
+- [ ] **Originality test, for every video:** its own idea, recognisably Plutonex Tales, a person made real creative decisions, and the process is explainable.
 - [ ] **Avoid "template" feel:** vary story types, sets and camera work. Recurring characters and storylines make it a show.
 - [ ] **Advertiser-friendly:** no swearing, gore or suggestive content.
 - [ ] **About section promise:** "Mind-bending stories with twists you never see coming, starring Sage and her friends, in 1-minute animated Shorts."
@@ -67,12 +67,12 @@ Subscribe for more Blocktopia Tales stories! 🧱
 
 ## Launch checklist
 - [ ] Create a new Gmail for the channel
-- [ ] Create the channel as **Blocktopia Tales** with handle **@BlocktopiaTales**
+- [ ] Create the channel as **Plutonex Tales** with handle **@PlutonexTales**
 - [ ] Turn on 2-Step Verification (myaccount.google.com/security)
 - [ ] Verify your phone (youtube.com/verify) to unlock custom thumbnails and long videos
 - [ ] Upload the logo, banner and watermark
 - [ ] Paste the description, keywords and upload defaults
 - [ ] Create the 4 playlists
-- [ ] Claim @BlocktopiaTales on TikTok and Instagram too
+- [ ] Claim @PlutonexTales on TikTok and Instagram too
 - [ ] Have 7 Shorts finished before posting the first one (a week of buffer)
 - [ ] Post 1 Short a day, around 3–6pm your local time

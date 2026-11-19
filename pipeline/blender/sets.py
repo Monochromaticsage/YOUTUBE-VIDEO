@@ -58,12 +58,126 @@ def classroom(o):
     return dict(DEFAULT_MARKS, teacher=(0, 6.5, 0), board=(0, 9, 0))
 
 
+def _checker_material(name, c1, c2, scale=0.5, rough=0.35):
+    from rig import hex_rgba
+    mat = bpy.data.materials.new(name)
+    mat.use_nodes = True
+    nt = mat.node_tree
+    bsdf = nt.nodes.get("Principled BSDF")
+    tc = nt.nodes.new("ShaderNodeTexCoord")
+    ch = nt.nodes.new("ShaderNodeTexChecker")
+    ch.inputs["Color1"].default_value = hex_rgba(c1)
+    ch.inputs["Color2"].default_value = hex_rgba(c2)
+    ch.inputs["Scale"].default_value = scale
+    nt.links.new(tc.outputs["Object"], ch.inputs["Vector"])
+    nt.links.new(ch.outputs["Color"], bsdf.inputs["Base Color"])
+    bsdf.inputs["Roughness"].default_value = rough
+    mat.diffuse_color = hex_rgba(c1)
+    return mat
+
+
+def _wall_text(o, text, loc, size, color, extrude=0.08):
+    from rig import hex_rgba
+    cu = bpy.data.curves.new("walltxt", "FONT")
+    cu.body = text
+    cu.align_x, cu.align_y = "CENTER", "CENTER"
+    cu.size = size
+    cu.extrude = extrude
+    for fp in ("/usr/share/fonts/opentype/inter/InterDisplay-Black.otf", "C:/Windows/Fonts/ariblk.ttf"):
+        if os.path.exists(fp):
+            cu.font = bpy.data.fonts.load(fp)
+            break
+    ob = bpy.data.objects.new("walltxt", cu)
+    bpy.context.scene.collection.objects.link(ob)
+    ob.location = (o[0] + loc[0], o[1] + loc[1], o[2] + loc[2])
+    ob.rotation_euler = (1.5708, 0, 0)
+    ob.data.materials.append(make_material(f"txt_{color}", color, roughness=0.4, texture=False))
+    return ob
+
+
+def _locker_bank(o, x0, count, y, colors, P):
+    for i in range(count):
+        x = x0 + i * 2.0
+        col = colors[i % len(colors)]
+        P.put(o, "locker", box_mesh("lk", (1.9, 1.3, 6.4), (0, 0, -3.2)), (x, y, 0.5), P.M(col, 0.35, scale=3), bevel=0.05)
+        for k in range(3):
+            P.put(o, "vent", box_mesh("lv", (1.0, 0.08, 0.12)), (x, y - 0.66, 5.9 - k * 0.25), P.M("#1b2a44", 0.5), bevel=0)
+        P.put(o, "handle", box_mesh("lh", (0.12, 0.12, 0.6)), (x + 0.6, y - 0.7, 3.4), P.M("#c9ced6", 0.25), bevel=0.03)
+        P.put(o, "lnum", box_mesh("ln", (0.5, 0.06, 0.25)), (x, y - 0.67, 5.05), P.M("#e8e3d5", 0.5), bevel=0)
+    P.put(o, "locker_base", box_mesh("lb", (count * 2.0, 1.32, 0.5), (0, 0, -0.25)),
+          (x0 + (count - 1), y, 0), P.M("#22262b", 0.6), bevel=0.02)
+    P.put(o, "locker_top", box_mesh("lt", (count * 2.0, 1.4, 0.25), (0, 0, -0.125)),
+          (x0 + (count - 1), y, 6.9), P.M("#22262b", 0.6), bevel=0.02)
+
+
+def _door(o, x, y, P, color="#9a6234"):
+    P.put(o, "door_frame", box_mesh("df", (4.0, 0.5, 8.4), (0, 0, -4.2)), (x, y, 0), P.M("#e8e3d5", 0.5), bevel=0.05)
+    P.put(o, "door", box_mesh("dr", (3.2, 0.5, 7.8), (0, 0, -3.9)), (x, y - 0.12, 0), P.M(color, 0.6, scale=5), bevel=0.05)
+    P.put(o, "door_win", box_mesh("dw", (1.1, 0.5, 2.2)), (x - 0.6, y - 0.16, 5.5), P.glow("#bfe6ff", 1.4), bevel=0.03)
+    P.put(o, "door_knob", box_mesh("dk", (0.3, 0.3, 0.3)), (x + 1.1, y - 0.5, 3.6), P.M("#d4a62a", 0.2), bevel=0.1)
+    P.put(o, "door_plaque", box_mesh("dp", (1.6, 0.1, 0.5)), (x, y - 0.3, 8.9), P.M("#1f3b73", 0.4), bevel=0.03)
+
+
 def hallway(o):
-    _room(o, floor="#9aa3ad", wall="#d8dde3", depth=10)
-    for i, x in enumerate(range(-15, 16, 2)):
-        block(o, f"locker{i}", (1.9, 1.2, 6), (x, 6.9, 3), "#2e6fd1" if i % 2 else "#2a63bd")
-        block(o, f"locker_vent{i}", (1.2, 0.1, 0.5), (x, 6.25, 5.2), "#1d4a8f", bevel=0)
-    block(o, "trophy", (4, 1, 3), (-11, 7.2, 8), "#c9a227")
+    """School hallway: checker floor, two-tone walls, locker banks, doors, trophy case,
+    bulletin board, banner, clock, plants and foreground pillars that blur with depth of field."""
+    import props as P
+    floor = _checker_material("hall_floor", "#e9e2d0", "#b9b2a2", scale=0.25, rough=0.3)
+    add_obj("hall_floor", box_mesh("hf", (140, 70, 0.4)), None, (o[0], o[1] + 5, o[2] - 0.2), floor, bevel=0)
+    wy = 9.4
+    add_obj("wall_low", box_mesh("wl", (140, 0.6, 4.2)), None, (o[0], o[1] + wy, o[2] + 2.1),
+            make_material("hall_wall_low", "#2f5fa8", roughness=0.5, tex_scale=2), bevel=0)
+    add_obj("wall_trim", box_mesh("wt", (140, 0.8, 0.3)), None, (o[0], o[1] + wy - 0.1, o[2] + 4.25),
+            make_material("hall_trim", "#f2c94c", roughness=0.4, texture=False), bevel=0.02)
+    add_obj("wall_up", box_mesh("wu", (140, 0.6, 14)), None, (o[0], o[1] + wy, o[2] + 11.2),
+            make_material("hall_wall_up", "#efe7d6", roughness=0.7, tex_scale=2), bevel=0)
+    add_obj("wall_crown", box_mesh("wc", (140, 1.2, 0.6)), None, (o[0], o[1] + wy - 0.3, o[2] + 15.2),
+            make_material("hall_crown", "#d9cfb8", roughness=0.6, texture=False), bevel=0.02)
+    ly = wy - 0.95
+    _locker_bank(o, -21, 8, ly, ["#2e6fd1", "#2a63bd"], P)
+    _door(o, -2.5, wy - 0.2, P)
+    _locker_bank(o, 2, 7, ly, ["#c0392b", "#b03426"], P)
+    _locker_bank(o, 24, 6, ly, ["#2e6fd1", "#2a63bd"], P)
+    _door(o, 21, wy - 0.2, P, color="#7a4b2e")
+    # trophy case (glowing shelves)
+    P.put(o, "case", box_mesh("tc", (6.0, 1.2, 5.4), (0, 0, -2.7)), (-30, ly, 1.0), P.M("#6e4723", 0.5, scale=5))
+    P.put(o, "case_glass", box_mesh("tg", (5.4, 0.2, 4.6)), (-30, ly - 0.62, 3.7), P.glow("#fff1c9", 0.9), bevel=0)
+    for k, tx in enumerate((-31.8, -30.6, -29.4, -28.2)):
+        P.put(o, "trophy", P.cyl_mesh("tr", 0.28, 1.0 + 0.3 * (k % 2), 10, 0.45), (tx, ly - 0.75, 2.2 + 1.6 * (k % 2)),
+              P.M("#e0b13a", 0.2), bevel=0)
+    # bulletin board with posters
+    P.put(o, "board", box_mesh("bb", (7.0, 0.2, 3.6)), (11.5, wy - 0.45, 9.0), P.M("#b98a55", 0.9, scale=9))
+    P.put(o, "board_frame", box_mesh("bf", (7.4, 0.15, 4.0)), (11.5, wy - 0.38, 9.0), P.M("#6e4723", 0.6))
+    for k, (px, col, acc) in enumerate(((9.4, "#fff3b0", "#e76f51"), (11.5, "#cde7ff", "#2a9d8f"), (13.6, "#ffd6e0", "#7b2cbf"))):
+        P.put(o, "flyer", box_mesh("fl", (1.6, 0.05, 2.2)), (px, wy - 0.58, 9.0 + (0.2 if k % 2 else -0.1)),
+              P.M(col, 0.9), (0, 0.06 * (k - 1), 0), bevel=0)
+        P.put(o, "flyer_art", box_mesh("fa", (1.1, 0.06, 0.8)), (px, wy - 0.62, 9.4 + (0.2 if k % 2 else -0.1)),
+              P.M(acc, 0.8), bevel=0)
+    # banner + school name
+    P.put(o, "banner", box_mesh("bn", (17, 0.15, 2.0)), (-12, wy - 0.4, 12.6), P.M("#7b2cbf", 0.6, scale=3))
+    _wall_text(o, "PLUTONEX HIGH", (-12, wy - 0.55, 12.55), 1.25, "#ffd23f")
+    P.put(o, "pennant1", P.prism_mesh("pn", 2.2, 0.08, 1.4), (6.5, wy - 0.4, 13.0), P.M("#2a9d8f", 0.6), (0, 0, 0), bevel=0)
+    # clock
+    P.put(o, "clock", P.cyl_mesh("ck", 0.9, 0.2, 20), (3.2, wy - 0.4, 12.4), P.M("#ffffff", 0.4), (1.5708, 0, 0), bevel=0.04)
+    P.put(o, "clock_rim", P.cyl_mesh("cr", 1.0, 0.15, 20), (3.2, wy - 0.35, 12.4), P.M("#22262b", 0.4), (1.5708, 0, 0), bevel=0)
+    # exit sign
+    P.put(o, "exit", box_mesh("ex", (2.2, 0.3, 0.9)), (21, wy - 0.6, 10.2), P.glow("#2bd96b", 3.0))
+    # water fountain, bins, plants
+    P.put(o, "fountain", box_mesh("wf", (1.6, 1.0, 0.7)), (16.2, wy - 0.9, 3.0), P.M("#c9ced6", 0.25))
+    P.put(o, "fountain_leg", box_mesh("wfl", (0.4, 0.4, 2.7), (0, 0, -1.35)), (16.2, wy - 0.7, 0), P.M("#9aa3ad", 0.3))
+    P.trash_can(o, -23.5, wy - 1.6, color="#2b4f7a")
+    P.trash_can(o, 18.6, wy - 1.6, color="#2f6b3f")
+    for px in (-34.5, 34.5, -25.3):
+        P.put(o, "pot", P.cyl_mesh("pt", 0.8, 1.4, 12, 1.0), (px, wy - 1.8, 0), P.M("#b5543a", 0.6), bevel=0.03)
+        P.bush(o, px, wy - 1.8, s=1.0, seed=int(abs(px)))
+    # stuff on the floor
+    P.put(o, "backpack", box_mesh("bp", (1.2, 0.8, 1.4), (0, 0, -0.7)), (12.6, wy - 2.3, 0), P.M("#e76f51", 0.7), bevel=0.2)
+    P.put(o, "books", box_mesh("bk", (1.2, 0.9, 0.35), (0, 0, -0.17)), (-15.6, wy - 2.2, 0), P.M("#3a86ff", 0.6), (0, 0, 0.3))
+    # foreground pillars (out of focus, give depth like a real camera)
+    for px in (-17, 17):
+        P.put(o, "pillar", box_mesh("pl", (1.8, 1.8, 16), (0, 0, -8)), (px, -9, 0), P.M("#e2d9c4", 0.6, scale=2))
+        P.put(o, "pillar_base", box_mesh("pb", (2.2, 2.2, 0.8), (0, 0, -0.4)), (px, -9, 0), P.M("#2f5fa8", 0.5))
+    P.put(o, "wet_sign", P.prism_mesh("ws", 1.3, 1.0, 1.9), (-11.5, -6.5, 0), P.M("#ffd23f", 0.5), (0, 0, 1.5708), bevel=0)
     return dict(DEFAULT_MARKS)
 
 

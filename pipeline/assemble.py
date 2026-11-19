@@ -138,7 +138,9 @@ def assemble(ep, timing, cast, build_dir, out_mp4):
     first = int(re.search(r"(\d+)\.png$", frames[0]).group(1))
     inputs = ["-framerate", str(fps), "-start_number", str(first), "-i", "frames/frame_%04d.png",
               "-i", "dialogue.wav"]
-    mix = ["[1:a]volume=1.0[a1]"]
+    duck = bool(ep.get("music")) and ep.get("duck", True)
+    # dialogue is split so it can also drive the music ducking (music dips under every line)
+    mix = ["[1:a]volume=1.0,asplit=2[a1][key]" if duck else "[1:a]volume=1.0[a1]"]
     labels = ["[a1]"]
     idx = 2
     # sound effects
@@ -167,11 +169,19 @@ def assemble(ep, timing, cast, build_dir, out_mp4):
         p = find_asset("music", music)
         if p:
             inputs += ["-stream_loop", "-1", "-i", p]
-            mix.append(f"[{idx}:a]aformat=channel_layouts=mono,volume={ep.get('music_volume', 0.12)}[m]")
+            mv = ep.get('music_volume', 0.12)
+            if duck:
+                mix.append(f"[{idx}:a]aformat=channel_layouts=mono,volume={mv}[mraw]")
+                mix.append("[mraw][key]sidechaincompress=threshold=0.05:ratio=3:attack=40:release=500:"
+                           "makeup=1[m]")
+            else:
+                mix.append(f"[{idx}:a]aformat=channel_layouts=mono,volume={mv}[m]")
             labels.append("[m]")
             idx += 1
         else:
             print(f"[assemble] missing music assets/music/{music}.* (skipped)")
+    if duck and "[m]" not in labels:
+        mix[0] = "[1:a]volume=1.0[a1]"
     mix.append(f"{''.join(labels)}amix=inputs={len(labels)}:duration=first:normalize=0,"
                f"alimiter=limit=0.95[aout]")
     W, H = (1080, 1920) if ep.get("format", "short") == "short" else (1920, 1080)
