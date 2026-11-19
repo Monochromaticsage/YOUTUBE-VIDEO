@@ -27,7 +27,7 @@ def tts_elevenlabs(text, voice_id, out_mp3, settings=None):
     key = os.environ["ELEVENLABS_API_KEY"]
     url = (f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}/with-timestamps"
            f"?output_format=mp3_44100_128")
-    body = {"text": text, "model_id": os.environ.get("ELEVENLABS_MODEL", "eleven_multilingual_v2")}
+    body = {"text": text, "model_id": os.environ.get("ELEVENLABS_MODEL", "eleven_flash_v2_5")}
     if settings:
         body["voice_settings"] = settings
     req = urllib.request.Request(url, data=json.dumps(body).encode(), method="POST",
