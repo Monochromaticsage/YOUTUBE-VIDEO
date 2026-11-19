@@ -386,6 +386,14 @@ def build_character(name, spec, faces_dir):
         else:  # block
             add_obj(f"{name}_hairtop", box_mesh("ht", (1.35, 1.3, 0.4)), head, (0, 0.05, 1.28), hm, bevel=0.15)
 
+    if spec.get("crop_top"):
+        # bare midriff band between the top and high-waisted pants, plus a waistband
+        add_obj(f"{name}_midriff", box_mesh("md", (2.03, 1.03, 0.4)), torso, (0, 0, 0.5), skin, bevel=0.05)
+        add_obj(f"{name}_waist", box_mesh("wb", (2.07, 1.07, 0.32)), torso, (0, 0, 0.15), pants, bevel=0.05)
+        trim = make_material(f"{name}_trim", spec["crop_top"])
+        add_obj(f"{name}_hem", box_mesh("hm", (2.07, 1.07, 0.1)), torso, (0, 0, 0.74), trim, bevel=0.03)
+        for x in (-0.6, 0.6):  # thin straps over the shoulders
+            add_obj(f"{name}_strap{x}", box_mesh("st", (0.22, 1.04, 0.08)), torso, (x, 0, 2.0), trim, bevel=0.02)
     if spec.get("turtleneck"):
         add_obj(f"{name}_collar", box_mesh("tn", (1.2, 1.08, 0.34)), torso, (0, 0, 2.02), shirt,
                 bevel=0.14, segments=3)
