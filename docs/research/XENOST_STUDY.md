@@ -44,3 +44,18 @@ It was scraped with a headless browser on 2026-11-19.
 ## What we take, and what we don't
 We take the **structure**: a first-person title-hook, one impossible trait or rule, fast escalation, twist, punchline, Part 2s and compilations.
 We never reuse their **premises, characters, jokes or titles**. Every Plutonex story is our own.
+
+## Length (measured on 31 Shorts: their top 20 hits plus 11 recent)
+- **Top 20 hits: 35–57 s, average about 45 s.** All 31 sampled: average 43 s.
+- → **Our target: 42–48 s** (about 110–125 spoken words).
+
+## Visual style (one frame per second from their storyboards; see `xenost_frames_*.jpg`)
+1. **A new shot almost every second.** About 40 shots in a 45-second Short. We currently cut every ~2.3 s.
+2. **Many locations per story (6–10).** For example: classroom → school exterior → broadcast desk → bathroom → stairs → principal's office → back.
+3. **Bright, flat, high-key lighting.** White and pastel walls, saturated colours, no moody shadows, vignette or blur. Our cinematic grade is darker and more "film".
+4. **One-word captions, white, near the TOP of the frame.** Ours are big and mid-screen.
+5. **Cartoon VFX on top of the 3D.** Impact lines, hearts, music notes, sweat drops, a rain cloud over a sad character, sparkles, speed lines, a big clock for "time passing".
+6. **Text signs and labels everywhere.** "ON AIR", "PRINCIPAL", "YOU MUST BE THIS TALL TO RIDE", a "NERD" T-shirt.
+7. **Extreme close-ups of faces and of objects** (a shoe, a speaker, a phone), plus wide establishing shots.
+8. **Narrator-driven.** The narrator tells the story with very little dialogue. Characters mostly *act* it out.
+9. **Every Short ends with a ~1-second meme "explosion" outro.** That's their signature sting, and we'll make our own original one.
