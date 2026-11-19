@@ -72,7 +72,11 @@ def captions(ep, timing, cast, out_ass):
              "Shadow, Alignment, MarginL, MarginR, MarginV, Encoding",
              f"Style: Cap,{ep.get('caption_font', 'Arial Black')},{size},&H00FFFFFF,&H00FFFFFF,&H00000000,"
              f"&H80000000,1,0,0,0,100,100,0,0,1,{8 if short else 5},3,2,60,60,{margin_v},1",
+             f"Style: Word,{ep.get('caption_font', 'Arial Black')},{108 if short else 70},&H00FFFFFF,&H00FFFFFF,"
+             f"&H00101010,&H90000000,1,0,0,0,100,100,0,0,1,{9 if short else 6},4,2,60,60,"
+             f"{760 if short else 120},1",
              "", "[Events]", "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text"]
+    style = ep.get("caption_style", "chunk")
     t = 0.0
     i = 0
     for sc in ep["scenes"]:
@@ -83,6 +87,25 @@ def captions(ep, timing, cast, out_ass):
                 spk = shot.get("speaker")
                 color = (cast.get(spk, {}).get("caption_color") or "#FFFFFF").lstrip("#")
                 bgr = color[4:6] + color[2:4] + color[0:2]
+                if style == "word":  # Gneef-style: one word at a time, white, exactly on the voice
+                    tw = timing["shots"][i].get("words")
+                    ws = text.split()
+                    if not tw or len(tw) != len(ws):
+                        L = sum(len(w) for w in ws) or 1
+                        speak = max(0.4, dur - 0.25)
+                        acc, tw = 0.0, []
+                        for w in ws:
+                            d = speak * len(w) / L
+                            tw.append([w, acc, acc + d])
+                            acc += d
+                    for k, (w, a, b) in enumerate(tw):
+                        end = tw[k + 1][1] if k + 1 < len(tw) else min(dur, b + 0.35)
+                        w = re.sub(r"[{}]", "", ws[k] if k < len(ws) else w)
+                        lines.append(f"Dialogue: 0,{ass_time(t + a)},{ass_time(t + max(end, a + 0.12))},Word,,0,0,0,,"
+                                     r"{\fscx70\fscy70\t(0,70,\fscx100\fscy100)}" + w)
+                    t += dur
+                    i += 1
+                    continue
                 words = text.split()
                 per = 3 if short else 7
                 chunks = [" ".join(words[k:k + per]) for k in range(0, len(words), per)]

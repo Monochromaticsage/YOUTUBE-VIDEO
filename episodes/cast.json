@@ -30,7 +30,7 @@
   "ziggy": {
     "display": "Ziggy",
     "skin": "#f2c9a0",
-    "shirt": "#ff7a1a",
+    "shirt": "#f4f1e8",
     "pants": "#2b2b2b",
     "sleeves": true,
     "hair": {
@@ -48,7 +48,8 @@
       "similarity_boost": 0.8,
       "style": 0.35,
       "use_speaker_boost": true
-    }
+    },
+    "jacket": "#ff7a1a"
   },
   "noob": {
     "display": "Noob",
@@ -65,7 +66,8 @@
       "similarity_boost": 0.8,
       "style": 0.35,
       "use_speaker_boost": true
-    }
+    },
+    "belt": null
   },
   "bacon": {
     "display": "Bacon",
@@ -86,12 +88,13 @@
       "similarity_boost": 0.8,
       "style": 0.35,
       "use_speaker_boost": true
-    }
+    },
+    "hoodie": "#3d4a3a"
   },
   "goldie": {
     "display": "Goldie",
     "skin": "#eac4a0",
-    "shirt": "#e0b000",
+    "shirt": "#f4f1e8",
     "pants": "#ffffff",
     "sleeves": true,
     "hair": {
@@ -108,7 +111,10 @@
       "similarity_boost": 0.8,
       "style": 0.35,
       "use_speaker_boost": true
-    }
+    },
+    "jacket": "#d9a400",
+    "chain": "#e8c547",
+    "belt": "#2b2b2b"
   },
   "nova": {
     "display": "Nova",
@@ -130,7 +136,8 @@
       "similarity_boost": 0.8,
       "style": 0.35,
       "use_speaker_boost": true
-    }
+    },
+    "hoodie": "#1f9e93"
   },
   "pip": {
     "display": "Pip",
@@ -175,13 +182,14 @@
       "similarity_boost": 0.8,
       "style": 0.35,
       "use_speaker_boost": true
-    }
+    },
+    "belt": "#3b2a1a"
   },
   "grandpa": {
     "display": "Grandpa Gus",
     "role": "GRANDPA - wise, funny, full of old stories and secrets. Mentor for magic/mystery plots.",
     "skin": "#e8bd96",
-    "shirt": "#7a5c3e",
+    "shirt": "#efe3c8",
     "pants": "#4a4a4a",
     "sleeves": true,
     "glasses": true,
@@ -198,12 +206,14 @@
       "similarity_boost": 0.8,
       "style": 0.35,
       "use_speaker_boost": true
-    }
+    },
+    "jacket": "#7a5c3e",
+    "belt": "#3b2a1a"
   },
   "ms_brick": {
     "display": "Ms. Brick",
     "skin": "#eac4a0",
-    "shirt": "#b5323a",
+    "shirt": "#f4f1e8",
     "pants": "#3a3a3a",
     "sleeves": true,
     "hair": {
@@ -221,6 +231,7 @@
       "similarity_boost": 0.8,
       "style": 0.35,
       "use_speaker_boost": true
-    }
+    },
+    "jacket": "#8e2a33"
   }
 }

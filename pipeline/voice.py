@@ -21,16 +21,40 @@ PAD_AFTER = 0.25  # breathing room after each line (seconds)
 
 
 def tts_elevenlabs(text, voice_id, out_mp3, settings=None):
+    """Generates speech AND per-character timestamps (saved next to the mp3 as .words.json)
+    so captions can pop one word at a time exactly when it is spoken."""
+    import base64
     key = os.environ["ELEVENLABS_API_KEY"]
-    url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}?output_format=mp3_44100_128"
+    url = (f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}/with-timestamps"
+           f"?output_format=mp3_44100_128")
     body = {"text": text, "model_id": os.environ.get("ELEVENLABS_MODEL", "eleven_multilingual_v2")}
     if settings:
         body["voice_settings"] = settings
     req = urllib.request.Request(url, data=json.dumps(body).encode(), method="POST",
-                                 headers={"xi-api-key": key, "Content-Type": "application/json",
-                                          "Accept": "audio/mpeg"})
-    with urllib.request.urlopen(req, timeout=120) as r, open(out_mp3, "wb") as f:
-        f.write(r.read())
+                                 headers={"xi-api-key": key, "Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=120) as r:
+        data = json.loads(r.read())
+    with open(out_mp3, "wb") as f:
+        f.write(base64.b64decode(data["audio_base64"]))
+    al = data.get("alignment") or data.get("normalized_alignment")
+    words = []
+    if al:
+        cur, start = "", None
+        for ch, a, b in zip(al["characters"], al["character_start_times_seconds"],
+                            al["character_end_times_seconds"]):
+            if ch.isspace():
+                if cur:
+                    words.append([cur, start, end])
+                cur, start = "", None
+                continue
+            if start is None:
+                start = a
+            cur += ch
+            end = b
+        if cur:
+            words.append([cur, start, end])
+    with open(out_mp3[:-4] + ".words.json", "w", encoding="utf-8") as f:
+        json.dump(words, f)
 
 
 def to_wav(src, dst, speed=1.0, pitch=1.0):
@@ -114,6 +138,11 @@ def build(ep, cast, build_dir, force=False):
                         silent_wav(wav, estimate_seconds(line))
                 dur, mouth = wav_info(wav, fps)
                 entry.update(audio=wav, mouth=mouth)
+                wj = wav[:-4] + ".words.json"
+                if os.path.exists(wj):
+                    with open(wj, encoding="utf-8") as f:
+                        sp = spec.get("speed", 1.0)
+                        entry["words"] = [[w, a / sp, b / sp] for w, a, b in json.load(f)]
                 duration = dur + PAD_AFTER
             else:
                 duration = 0

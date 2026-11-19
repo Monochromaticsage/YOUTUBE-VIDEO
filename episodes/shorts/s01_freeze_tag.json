@@ -1,262 +1,97 @@
 {
- "id": "s01_freeze_tag",
- "title": "Freeze Tag ❄️",
- "format": "short",
- "music": "mystery_loop",
- "music_volume": 0.1,
- "_pinned_comment": "What secret would YOU tell to unfreeze? 👇",
- "scenes": [
-  {
-   "set": "playground",
-   "cast": {
-    "noob": [
-     -8,
-     0,
-     0
-    ],
-    "bacon": [
-     -4,
-     0,
-     0
-    ],
-    "sage": [
-     0,
-     0,
-     0
-    ],
-    "goldie": [
-     4,
-     0,
-     0
-    ],
-    "nova": [
-     8,
-     0,
-     0
-    ]
-   },
-   "shots": [
+  "id": "s01_freeze_tag",
+  "title": "Freeze Tag ❄️",
+  "format": "short",
+  "mood": "golden",
+  "grade": "cinematic",
+  "caption_style": "word",
+  "auto_cuts": true,
+  "music": "mystery_loop",
+  "music_volume": 0.09,
+  "_pinned_comment": "What secret would YOU tell to unfreeze? 👇",
+  "scenes": [
     {
-     "_beat": "HOOK",
-     "speaker": "sage",
-     "line": "Noob just got tagged... and FROZE.",
-     "face": "shocked",
-     "camera": "two:noob,sage",
-     "move": "push",
-     "sfx": "freeze",
-     "anims": {
-      "noob": "frozen",
-      "sage": "shocked"
-     },
-     "faces": {
-      "noob": "shocked"
-     }
-    },
-    {
-     "_beat": "FLIP",
-     "speaker": "nova",
-     "line": "Tag means freeze.",
-     "face": "evil",
-     "camera": "low:nova",
-     "move": "zoom",
-     "sfx": "vine_boom",
-     "anims": {
-      "noob": "frozen"
-     },
-     "faces": {
-      "noob": "shocked"
-     }
-    },
-    {
-     "speaker": "nova",
-     "line": "Tell a secret you've never told... or stay frozen forever.",
-     "face": "smug",
-     "camera": "medium:nova",
-     "anims": {
-      "noob": "frozen",
-      "nova": "point"
-     },
-     "faces": {
-      "noob": "shocked"
-     }
-    },
-    {
-     "_beat": "PROOF 1",
-     "speaker": "noob",
-     "line": "I still sleep with a night light!",
-     "face": "scared",
-     "camera": "closeup:noob",
-     "anims": {
-      "noob": "unfreeze"
-     },
-     "sfx": "pop"
-    },
-    {
-     "speaker": "bacon",
-     "line": "Bro.",
-     "face": "smug",
-     "camera": "closeup:bacon",
-     "anims": {
-      "bacon": "laugh"
-     }
-    },
-    {
-     "_beat": "PROOF 2 (comic)",
-     "duration": 0.8,
-     "camera": "medium:bacon",
-     "move": "shake",
-     "sfx": "freeze",
-     "anims": {
-      "bacon": "frozen"
-     },
-     "faces": {
-      "bacon": "shocked",
-      "noob": "smug",
-      "nova": "evil"
-     }
-    },
-    {
-     "speaker": "bacon",
-     "line": "Fine! I cried at a dog food commercial. TWICE.",
-     "face": "cry",
-     "camera": "closeup:bacon",
-     "anims": {
-      "bacon": "unfreeze"
-     },
-     "faces": {
-      "noob": "happy"
-     },
-     "sfx": "sad_trombone",
-     "hold": 0.3
-    },
-    {
-     "_beat": "PROOF 3 (turns serious)",
-     "duration": 0.8,
-     "camera": "medium:goldie",
-     "move": "shake",
-     "sfx": "freeze",
-     "anims": {
-      "goldie": "frozen"
-     },
-     "faces": {
-      "goldie": "shocked",
-      "nova": "evil"
-     }
-    },
-    {
-     "speaker": "goldie",
-     "line": "I pay people to be my friends.",
-     "face": "sad",
-     "camera": "closeup:goldie",
-     "anims": {
-      "goldie": "unfreeze"
-     },
-     "hold": 0.3,
-     "faces": {
-      "sage": "sad",
-      "bacon": "shocked"
-     }
-    },
-    {
-     "_beat": "PROOF 4 (the hero)",
-     "duration": 0.8,
-     "camera": "extreme:sage",
-     "move": "zoom",
-     "sfx": "freeze",
-     "anims": {
-      "sage": "frozen"
-     },
-     "faces": {
-      "sage": "scared"
-     }
-    },
-    {
-     "speaker": "sage",
-     "line": "I only smile... so nobody leaves me.",
-     "face": "cry",
-     "camera": "closeup:sage",
-     "move": "push",
-     "sfx": "heartbeat",
-     "anims": {
-      "sage": "unfreeze"
-     },
-     "hold": 0.3
-    },
-    {
-     "speaker": "sage",
-     "line": "Wait. Nova... who tagged YOU?",
-     "face": "sus",
-     "camera": "two:sage,nova",
-     "anims": {
-      "sage": "point"
-     },
-     "sfx": "riser"
-    },
-    {
-     "_beat": "PUNCH",
-     "speaker": "nova",
-     "line": "Nobody. I've been It for ten years.",
-     "face": "cry",
-     "camera": "closeup:nova",
-     "move": "push",
-     "anims": {
-      "nova": "sad"
-     },
-     "faces": {
-      "sage": "sad"
-     },
-     "hold": 0.4
-    },
-    {
-     "speaker": "sage",
-     "line": "Tag. You're free.",
-     "face": "happy",
-     "camera": "two:sage,nova",
-     "anims": {
-      "sage": "point",
-      "nova": "shocked"
-     },
-     "sfx": "sparkle",
-     "faces": {
-      "nova": "shocked"
-     }
-    },
-    {
-     "speaker": "nova",
-     "line": "...Nobody's ever tagged me back before.",
-     "face": "happy",
-     "camera": "closeup:nova",
-     "move": "push",
-     "anims": {
-      "nova": "idle"
-     },
-     "faces": {
-      "sage": "happy"
-     },
-     "hold": 0.6
-    },
-    {
-     "_beat": "OUT (loops to start)",
-     "speaker": "nova",
-     "line": "Thanks! ...Noob, you're It.",
-     "face": "evil",
-     "camera": "wide",
-     "anims": {
-      "nova": "point",
-      "noob": "frozen"
-     },
-     "faces": {
-      "noob": "shocked",
-      "sage": "shocked",
-      "bacon": "shocked",
-      "goldie": "shocked"
-     },
-     "sfx": "freeze",
-     "hold": 0.6
+      "set": "playground",
+      "cast": {"noob": [-8, 0, 0], "bacon": [-4, 0, 0], "sage": [0, 0, 0], "goldie": [4, 0, 0], "nova": [8, 0, 0]},
+      "shots": [
+        {"_beat": "HOOK", "speaker": "sage", "vo": true, "line": "My best friend got tagged... and turned into a statue.",
+         "cameras": ["medium:noob", "extreme:noob@-10"], "move": "push", "sfx": "freeze",
+         "anims": {"noob": "frozen", "sage": "shocked"}, "faces": {"noob": "shocked", "sage": "shocked"}},
+
+        {"_beat": "FLIP", "speaker": "sage", "vo": true, "line": "The new girl, Nova, had one rule.",
+         "camera": "wide", "move": "push", "anims": {"noob": "frozen"}, "faces": {"noob": "shocked", "nova": "smug"}},
+
+        {"speaker": "nova", "line": "Tag means freeze.", "face": "evil", "camera": "low:nova@-8", "move": "zoom",
+         "sfx": "vine_boom", "anims": {"noob": "frozen", "nova": "point"}, "faces": {"noob": "shocked"}},
+
+        {"speaker": "sage", "vo": true, "line": "And the only way out was to tell a secret you've never told anyone.",
+         "cameras": ["closeup:nova", "ots:goldie,nova"], "anims": {"noob": "frozen"},
+         "faces": {"noob": "shocked", "nova": "smug", "sage": "scared"}},
+
+        {"_beat": "PROOF 1", "speaker": "noob", "line": "I still sleep with a night light!", "face": "scared",
+         "camera": "closeup:noob", "anims": {"noob": "unfreeze"}, "sfx": "pop"},
+
+        {"speaker": "sage", "vo": true, "line": "Bacon laughed so hard...", "camera": "medium:bacon",
+         "anims": {"bacon": "laugh"}, "faces": {"bacon": "happy"}},
+
+        {"speaker": "bacon", "line": "Bro.", "face": "smug", "camera": "closeup:bacon", "anims": {"bacon": "laugh"}},
+
+        {"speaker": "sage", "vo": true, "line": "...that Nova tagged him next.", "camera": "medium:bacon@8", "move": "shake",
+         "sfx": "freeze", "anims": {"bacon": "frozen", "nova": "point"}, "faces": {"bacon": "shocked", "nova": "evil"}},
+
+        {"speaker": "bacon", "line": "Fine! I cried at a dog food commercial. TWICE.", "face": "cry",
+         "camera": "closeup:bacon", "anims": {"bacon": "unfreeze"}, "faces": {"noob": "happy"}, "sfx": "sad_trombone"},
+
+        {"_beat": "TURN", "speaker": "sage", "vo": true, "line": "It was funny. Until it wasn't.",
+         "camera": "two:goldie,nova", "move": "push", "anims": {"nova": "point"},
+         "faces": {"nova": "evil", "goldie": "smug"}},
+
+        {"speaker": "sage", "vo": true, "line": "Goldie, the richest kid in school, froze mid-brag.",
+         "cameras": ["medium:goldie", "extreme:goldie@10"], "sfx": "freeze",
+         "anims": {"goldie": "frozen"}, "faces": {"goldie": "shocked"}},
+
+        {"speaker": "goldie", "line": "I pay people to be my friends.", "face": "sad", "camera": "closeup:goldie",
+         "anims": {"goldie": "unfreeze"}, "faces": {"sage": "sad", "bacon": "sad", "noob": "sad"}, "hold": 0.3},
+
+        {"speaker": "sage", "vo": true, "line": "Nobody laughed this time.", "camera": "wide", "move": "pull",
+         "anims": {"goldie": "sad"}, "faces": {"goldie": "sad", "sage": "sad", "bacon": "sad", "noob": "sad"}},
+
+        {"_beat": "THE HERO", "speaker": "sage", "vo": true, "line": "Then Nova looked at me.",
+         "camera": "closeup:nova@-7", "anims": {"nova": "point"}, "faces": {"nova": "evil"}, "sfx": "heartbeat"},
+
+        {"duration": 0.9, "camera": "extreme:sage", "move": "zoom", "sfx": "freeze",
+         "anims": {"sage": "frozen"}, "faces": {"sage": "scared"}},
+
+        {"speaker": "sage", "line": "I only smile... so nobody leaves me.", "face": "cry", "camera": "closeup:sage",
+         "move": "push", "anims": {"sage": "unfreeze"}, "hold": 0.4},
+
+        {"speaker": "sage", "vo": true, "line": "But as I broke free, I noticed something.", "camera": "closeup:nova",
+         "move": "push", "faces": {"nova": "sad"}, "sfx": "riser"},
+
+        {"speaker": "sage", "line": "Nova... who tagged YOU?", "face": "sus", "camera": "two:sage,nova",
+         "anims": {"sage": "point"}},
+
+        {"_beat": "PUNCH", "speaker": "nova", "line": "Nobody. I've been It for ten years.", "face": "cry",
+         "camera": "closeup:nova", "move": "push", "anims": {"nova": "sad"}, "faces": {"sage": "sad"}, "hold": 0.3},
+
+        {"speaker": "sage", "vo": true, "line": "She wasn't the villain. She was the loneliest kid on the playground.",
+         "cameras": ["wide", "medium:nova"], "move": "pull", "anims": {"nova": "sad"},
+         "faces": {"nova": "cry", "sage": "sad", "noob": "sad", "bacon": "sad", "goldie": "sad"}},
+
+        {"speaker": "sage", "line": "Tag. You're free.", "face": "happy", "camera": "two:sage,nova",
+         "anims": {"sage": "point", "nova": "shocked"}, "faces": {"nova": "shocked"}, "sfx": "sparkle"},
+
+        {"speaker": "nova", "line": "...Nobody's ever tagged me back before.", "face": "happy", "camera": "closeup:nova",
+         "move": "push", "faces": {"sage": "happy"}, "hold": 0.4},
+
+        {"speaker": "sage", "vo": true, "line": "We played until the streetlights came on.", "camera": "wide",
+         "move": "pull", "anims": {"nova": "jump", "noob": "dance", "bacon": "dance", "goldie": "jump", "sage": "dance"},
+         "faces": {"nova": "happy", "noob": "happy", "bacon": "happy", "goldie": "happy", "sage": "happy"}},
+
+        {"_beat": "OUT (loops)", "speaker": "nova", "line": "Thanks! ...Noob, you're It.", "face": "evil",
+         "cameras": ["closeup:nova", "medium:noob"], "anims": {"nova": "point", "noob": "frozen"},
+         "faces": {"noob": "shocked"}, "sfx": "freeze", "hold": 0.5}
+      ]
     }
-   ]
-  }
- ],
- "mood": "golden",
- "grade": "cinematic"
+  ]
 }

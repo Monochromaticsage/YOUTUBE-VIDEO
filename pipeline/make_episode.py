@@ -56,7 +56,7 @@ def validate(ep, cast):
                 errs.append(f"scene {si}: '{n}' is not in episodes/cast.json")
         for hi, sh in enumerate(sc["shots"]):
             where = f"scene {si} shot {hi}"
-            if sh.get("speaker") and sh["speaker"] not in sc["cast"]:
+            if sh.get("speaker") and sh["speaker"] not in sc["cast"] and not sh.get("vo"):
                 errs.append(f"{where}: speaker '{sh['speaker']}' not in scene cast")
             for n, a in sh.get("anims", {}).items():
                 if a not in known_anims:

@@ -396,6 +396,15 @@ def build_character(name, spec, faces_dir):
         elif style == "long":
             add_obj(f"{name}_hairtop", box_mesh("ht", (1.4, 1.35, 0.4)), head, (0, 0.05, 1.28), hm, bevel=0.15)
             add_obj(f"{name}_hairback", box_mesh("hk", (1.4, 0.35, 1.7)), head, (0, 0.6, 0.55), hm, bevel=0.12)
+        elif style == "spiky":
+            add_obj(f"{name}_hairbase", box_mesh("hb", (1.38, 1.32, 0.3)), head, (0, 0.04, 1.24), hm, bevel=0.1)
+            for i, (x, y, rx, ry) in enumerate([(-0.4, -0.25, -25, 15), (0.0, -0.3, -30, 0), (0.4, -0.25, -25, -15),
+                                                 (-0.35, 0.25, 20, 20), (0.35, 0.25, 20, -20), (0, 0.1, 0, 0)]):
+                sp = add_obj(f"{name}_spike{i}", box_mesh("sk", (0.42, 0.42, 0.7), (0, 0, -0.2)), head,
+                             (x, y, 1.3), hm, bevel=0.12, segments=2)
+                sp.rotation_euler = (math.radians(rx), math.radians(ry), math.radians(i * 17))
+            add_obj(f"{name}_fringe", box_mesh("fr", (1.2, 0.3, 0.32)), head, (0.1, -0.6, 1.12), hm,
+                    bevel=0.12).rotation_euler = (0, math.radians(-8), 0)
         elif style == "sideswept":
             # long wavy hair, deep side part, swept over the character's left shoulder (+X)
             add_obj(f"{name}_hairtop", box_mesh("ht", (1.42, 1.36, 0.34)), head, (0, 0.04, 1.27), hm,
@@ -415,6 +424,38 @@ def build_character(name, spec, faces_dir):
         else:  # block
             add_obj(f"{name}_hairtop", box_mesh("ht", (1.35, 1.3, 0.4)), head, (0, 0.05, 1.28), hm, bevel=0.15)
 
+    if spec.get("jacket"):  # open jacket over the shirt; sleeves take the jacket colour
+        jk = make_material(f"{name}_jacket", spec["jacket"], roughness=0.6, tex_scale=7)
+        for side in (-1, 1):
+            add_obj(f"{name}_jk{side}", box_mesh("jk", (0.72, 1.07, 2.0)), torso, (side * 0.66, 0, 1.0), jk,
+                    bevel=0.05)
+        add_obj(f"{name}_jkback", box_mesh("jb", (2.06, 0.5, 2.0)), torso, (0, 0.29, 1.0), jk, bevel=0.05)
+        add_obj(f"{name}_jkcollar", box_mesh("jc", (2.1, 1.1, 0.22)), torso, (0, 0.02, 1.92), jk, bevel=0.06)
+        arm_l.data.materials[0] = jk
+        arm_r.data.materials[0] = jk
+        add_obj(f"{name}_cuff_l", box_mesh("cf", (1.04, 1.04, 0.25)), arm_l, (0.5, 0, -1.35), jk, bevel=0.04)
+        add_obj(f"{name}_cuff_r", box_mesh("cf", (1.04, 1.04, 0.25)), arm_r, (-0.5, 0, -1.35), jk, bevel=0.04)
+    if spec.get("hoodie"):  # closed hoodie with hood resting behind the head, pocket and strings
+        hd = make_material(f"{name}_hoodie", spec["hoodie"], roughness=0.85, tex_scale=9)
+        add_obj(f"{name}_hdshell", box_mesh("hs", (2.05, 1.05, 2.0)), torso, (0, 0, 1.0), hd, bevel=0.06)
+        add_obj(f"{name}_hood", box_mesh("hh", (1.5, 0.75, 0.9)), torso, (0, 0.55, 2.15), hd, bevel=0.3, segments=3)
+        dark = make_material(f"{name}_hdpocket", tuple(c * 0.8 for c in hex_rgba(spec["hoodie"])[:3]) + (1,))
+        add_obj(f"{name}_pocket", box_mesh("hp", (1.2, 0.06, 0.55)), torso, (0, -0.53, 0.45), dark, bevel=0.04)
+        str_m = make_material(f"{name}_strings", "#f2f2f2", texture=False)
+        for x in (-0.25, 0.25):
+            add_obj(f"{name}_string{x}", box_mesh("ds", (0.06, 0.05, 0.6)), torso, (x, -0.55, 1.6), str_m, bevel=0)
+        arm_l.data.materials[0] = hd
+        arm_r.data.materials[0] = hd
+    if spec.get("belt"):
+        bm = make_material(f"{name}_belt", spec["belt"], roughness=0.4)
+        add_obj(f"{name}_belt", box_mesh("bt", (2.08, 1.08, 0.22)), torso, (0, 0, 0.12), bm, bevel=0.03)
+        add_obj(f"{name}_buckle", box_mesh("bk", (0.34, 0.08, 0.24)), torso, (0, -0.56, 0.12),
+                metal_material(f"{name}_buckle", "#d4a62a"), bevel=0.02)
+    if spec.get("chain"):
+        gold = metal_material(f"{name}_chain", spec["chain"])
+        for side in (-1, 1):
+            add_obj(f"{name}_chn{side}", box_mesh("cn", (0.07, 0.05, 0.9)), torso, (side * 0.22, -0.56, 1.5),
+                    gold, bevel=0).rotation_euler = (0, math.radians(side * 26), 0)
     if spec.get("crop_top"):
         # bare midriff band between the top and high-waisted pants, plus a waistband
         add_obj(f"{name}_midriff", box_mesh("md", (2.03, 1.03, 0.4)), torso, (0, 0, 0.5), skin, bevel=0.05)

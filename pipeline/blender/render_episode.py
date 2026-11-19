@@ -240,7 +240,7 @@ def camera_pose(spec, rigs, scene_origin, fmt):
     o = Vector(scene_origin)
     if kind == "wide":
         c = sum((pos(n) for n in rigs), Vector()) / max(1, len(rigs)) if rigs else o
-        return c + Vector((0, -22 if tall else -18, 7)), c + Vector((0, 0, 3)), 28
+        return c + Vector((0, -24 if tall else -18, 10 if tall else 7)), c + Vector((0, 0, 2.2)), 30
     if kind == "medium":
         p = pos(names[0])
         return p + front(names[0], (0, -10 if tall else -9, 4.2)), p + Vector((0, 0, CHEST_Z)), 35
@@ -249,7 +249,7 @@ def camera_pose(spec, rigs, scene_origin, fmt):
         return p + front(names[0], (0, -6.5, HEAD_Z + 0.4)), p + Vector((0, 0, HEAD_Z - 0.4)), 40
     if kind == "extreme":
         p = pos(names[0])
-        return p + front(names[0], (0, -4.2, HEAD_Z + 0.1)), p + Vector((0, 0, HEAD_Z)), 50
+        return p + front(names[0], (0, -5.4, HEAD_Z + 0.2)), p + Vector((0, 0, HEAD_Z + 0.05)), 50
     if kind == "two":
         a, b = pos(names[0]), pos(names[1])
         mid = (a + b) / 2
@@ -262,8 +262,10 @@ def camera_pose(spec, rigs, scene_origin, fmt):
         d.z = 0
         d = d.normalized() if d.length else Vector((1, 0, 0))
         side = Vector((-d.y, d.x, 0))
-        loc = over - d * 3.0 + side * 1.4 + Vector((0, -2.5, HEAD_Z + 0.6))
-        return loc, at + Vector((0, 0, HEAD_Z - 0.4)), 38
+        # camera in front of the line, a little behind the near character's shoulder,
+        # so the near character frames the edge and we see the far character's face
+        loc = over - d * 3.2 + Vector((0, -4.8, HEAD_Z + 0.3))
+        return loc, at + Vector((0, 0, HEAD_Z - 0.7)), 45
     if kind == "low":
         p = pos(names[0])
         return p + front(names[0], (0, -7, 0.8)), p + Vector((0, 0, HEAD_Z - 0.5)), 26
@@ -353,7 +355,19 @@ def fcurves_of(idblock):
     return list(getattr(act, "fcurves", []))
 
 
-def harden_cuts(cut_frames):
+def auto_second_angle(first, speaker, rigs, i):
+    """Pick a contrasting second camera so long lines cut like an edited film."""
+    others = [n for n in rigs if n != speaker]
+    near = min(others, key=lambda n: (Vector(rigs[n].base) - Vector(rigs[speaker].base)).length) if others else None
+    kind = first.partition(":")[0]
+    options = []
+    if near:
+        options.append(f"ots:{near},{speaker}")
+    options += [f"low:{speaker}@-8", f"closeup:{speaker}@10" if kind != "closeup" else f"medium:{speaker}"]
+    return options[i % len(options)]
+
+
+def harden_cuts(cut_frames, cam_cuts=()):
     """Make the jump between the last frame of a shot and the first of the next a hard
     cut, and stop the big jump from bending the motion inside the shot."""
     ids = list(bpy.data.objects) + list(bpy.data.cameras) + list(bpy.data.materials)
@@ -362,16 +376,18 @@ def harden_cuts(cut_frames):
         for fc in fcurves_of(nt):  # face swaps must snap, never slide
             for kp in fc.keyframe_points:
                 kp.interpolation = "CONSTANT"
+    cam_ids = {bpy.context.scene.camera, bpy.context.scene.camera.data}
     for idb in ids:
+        cuts = (cut_frames | set(cam_cuts)) if idb in cam_ids else cut_frames
         for fc in fcurves_of(idb):
             if idb in [m.node_tree for m in bpy.data.materials]:
                 continue
             for kp in fc.keyframe_points:
                 f = round(kp.co[0])
-                if f in cut_frames:
+                if f in cuts:
                     kp.interpolation = "CONSTANT"
                     kp.handle_left_type = kp.handle_right_type = "VECTOR"
-                elif f - 1 in cut_frames:
+                elif f - 1 in cuts:
                     kp.handle_left_type = kp.handle_right_type = "VECTOR"
             fc.update()
 
@@ -394,6 +410,7 @@ def main():
     frame = 1
     shot_i = 0
     cut_frames = set()
+    cam_cuts = set()  # extra cuts inside a shot (camera only)
     for si, sc in enumerate(ep["scenes"]):
         origin = (si * SCENE_SPACING, 0, 0)
         marks = sets.build_set(sc.get("set", "stage"), origin, os.path.join(ROOT, "assets"))
@@ -423,21 +440,34 @@ def main():
                 if name not in scene_rigs:
                     anims.hidden(r, f0, f1, fps)
                     continue
-                default = "talk" if name == speaker else "idle"
+                default = "talk" if (name == speaker and not shot.get("vo")) else "idle"
                 anim_name = shot_anims.get(name, default)
                 if anim_name not in anims.ANIMS:
                     raise ValueError(f"unknown anim '{anim_name}'. Available: {sorted(anims.ANIMS)}")
                 anims.ANIMS[anim_name](r, f0, f1, fps)
 
-            key_camera(cam, f0, f1, shot.get("camera", f"medium:{speaker}" if speaker else "wide"),
-                       scene_rigs, origin, fmt, shot.get("move", "push"))
+            cams = shot.get("cameras") or [shot.get("camera", f"medium:{speaker}" if speaker and
+                                                    speaker in scene_rigs else "wide")]
+            if (len(cams) == 1 and ep.get("auto_cuts") and n_frames > fps * 2.6 and speaker in scene_rigs
+                    and not shot.get("vo")):
+                cams = cams + [auto_second_angle(cams[0], speaker, scene_rigs, shot_i)]
+            seg = n_frames / len(cams)
+            for ci, cspec in enumerate(cams):
+                a = f0 + round(ci * seg)
+                b = f0 + round((ci + 1) * seg)
+                spec, _, roll = cspec.partition("@")
+                key_camera(cam, a, b, spec, scene_rigs, origin, fmt,
+                           shot.get("move", "push") if ci == 0 else "push", float(roll or 0))
+                if b < f1:
+                    cam_cuts.add(b - 1)
 
             prefs.keyframe_new_interpolation_type = "CONSTANT"
             for name, r in scene_rigs.items():
                 expr = shot.get("face", "neutral") if name == speaker else faces.get(name, "neutral")
                 if name == speaker and "face" not in shot:
                     expr = faces.get(name, "neutral")
-                key_faces_for_shot(r, f0, f1, expr, name == speaker and bool(shot.get("line")),
+                key_faces_for_shot(r, f0, f1, expr,
+                                   name == speaker and bool(shot.get("line")) and not shot.get("vo"),
                                    t.get("mouth"))
             prefs.keyframe_new_interpolation_type = "BEZIER"
             cut_frames.add(f1 - 1)
@@ -452,7 +482,7 @@ def main():
     scn.frame_step = args.step
     if ep.get("fog", True):
         apply_fog(MOODS[ep.get("mood", "day")])
-    harden_cuts(cut_frames)
+    harden_cuts(cut_frames, cam_cuts)
     os.makedirs(args.out, exist_ok=True)
     if args.save_blend:
         bpy.ops.wm.save_as_mainfile(filepath=os.path.abspath(args.save_blend))
