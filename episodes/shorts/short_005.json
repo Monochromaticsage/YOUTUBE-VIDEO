@@ -14,7 +14,7 @@
         {"speaker": "bacon", "line": "That was a warm up. Watch.", "face": "angry",
          "anims": {"bacon": "jump"}, "camera": "two:bacon,noob"},
         {"duration": 1.6, "camera": "wide", "move": "none",
-         "anims": {"bacon": "fall"}, "faces": {"bacon": "dead", "noob": "shocked"}, "sfx": "oof"},
+         "anims": {"bacon": "fall"}, "faces": {"bacon": "dead", "noob": "shocked"}, "sfx": "oof_thud"},
         {"speaker": "noob", "line": "Pro, huh?", "face": "smug",
          "anims": {"noob": "laugh"}, "camera": "closeup:noob"},
         {"speaker": "bacon", "line": "My controller disconnected.", "face": "sad",

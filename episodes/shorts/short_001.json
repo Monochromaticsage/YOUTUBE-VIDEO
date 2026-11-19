@@ -24,7 +24,7 @@
          "move": "zoom", "sfx": "vine_boom"},
 
         {"duration": 1.2, "camera": "extreme:noob", "move": "shake",
-         "anims": {"noob": "shocked"}, "faces": {"noob": "shocked", "bacon": "shocked"}, "sfx": "scream"},
+         "anims": {"noob": "shocked"}, "faces": {"noob": "shocked", "bacon": "shocked"}, "sfx": "sting"},
 
         {"speaker": "bacon", "line": "I'm switching schools.",
          "face": "neutral", "anims": {"bacon": "walk_out_right", "noob": "idle"},

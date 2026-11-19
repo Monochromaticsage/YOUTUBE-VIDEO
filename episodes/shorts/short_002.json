@@ -16,7 +16,7 @@
         {"speaker": "mom", "line": "We have... one frozen pea.", "face": "neutral",
          "anims": {"mom": "think"}, "camera": "closeup:mom", "hold": 0.4},
         {"duration": 1.0, "camera": "extreme:noob", "move": "zoom",
-         "faces": {"noob": "dead"}, "anims": {"noob": "idle"}, "sfx": "bruh"},
+         "faces": {"noob": "dead"}, "anims": {"noob": "idle"}, "sfx": "sad_trombone"},
         {"speaker": "noob", "line": "I'm calling grandma.", "face": "sus",
          "anims": {"noob": "walk_out_left"}, "camera": "wide", "move": "none"},
         {"speaker": "mom", "line": "...Okay, fine. Pizza.", "face": "sad",

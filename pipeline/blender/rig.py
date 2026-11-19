@@ -245,6 +245,8 @@ def build_character(name, spec, faces_dir):
 
     root = bpy.data.objects.new(f"{name}_root", None)
     bpy.context.scene.collection.objects.link(root)
+    sc = float(spec.get("scale", 1.0))  # e.g. 0.75 for a little kid
+    root.scale = (sc, sc, sc)
 
     # Torso 2x1x2 studs, sitting on legs of height 2
     torso = add_obj(f"{name}_torso", box_mesh("t", (2, 1, 2), (0, 0, -1)), root, (0, 0, 2), shirt)

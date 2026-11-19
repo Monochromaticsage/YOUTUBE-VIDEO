@@ -10,7 +10,7 @@
         {"speaker": "noob", "line": "Just one more game and then I'll do my homework.", "face": "happy",
          "anims": {"noob": "sit", "mom": "hidden"}, "camera": "medium:noob"},
         {"speaker": "mom", "line": "Let me see your screen time.", "face": "sus",
-         "anims": {"mom": "walk_in_left"}, "camera": "wide", "sfx": "door"},
+         "anims": {"mom": "walk_in_left"}, "camera": "wide", "sfx": "door_knock"},
         {"duration": 1.0, "camera": "extreme:noob", "move": "zoom",
          "faces": {"noob": "scared"}, "anims": {"noob": "scared"}},
         {"speaker": "mom", "line": "FOURTEEN hours?!", "face": "shocked",

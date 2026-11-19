@@ -11,7 +11,8 @@
     },
     "caption_color": "#FFB347",
     "voice_id": "",
-    "_note": "Channel mascot / main character. Replace colours with your own avatar's."
+    "_note": "Channel mascot / main character. Replace colours with your own avatar's.",
+    "role": "HERO - curious, brave, kind. The main character of most stories."
   },
   "noob": {
     "display": "Noob",
@@ -20,7 +21,8 @@
     "pants": "#a2c48b",
     "caption_color": "#FFE14D",
     "voice_id": "",
-    "pitch": 1.08
+    "pitch": 1.08,
+    "role": "BEST FRIEND - the underdog, overlooked, big heart. Great for emotional stories."
   },
   "bacon": {
     "display": "Bacon",
@@ -32,6 +34,79 @@
       "color": "#6b3b1d"
     },
     "caption_color": "#FF9E5E",
+    "voice_id": "",
+    "role": "FUNNY FRIEND - sarcastic, chill, always has a comeback. Comic relief."
+  },
+  "goldie": {
+    "display": "Goldie",
+    "skin": "#eac4a0",
+    "shirt": "#e0b000",
+    "pants": "#ffffff",
+    "sleeves": true,
+    "hair": {
+      "style": "cap",
+      "color": "#111111"
+    },
+    "caption_color": "#FFD700",
+    "voice_id": "",
+    "role": "RIVAL - rich, show-off, secretly lonely. Can be a villain or get a redemption arc."
+  },
+  "nova": {
+    "display": "Nova",
+    "role": "MYSTERY KID - the quiet new kid who knows too much. Powers mystery and magic-rule stories.",
+    "skin": "#c68a5e",
+    "shirt": "#2ec4b6",
+    "pants": "#22223b",
+    "sleeves": true,
+    "hair": {
+      "style": "long",
+      "color": "#7b2cbf"
+    },
+    "caption_color": "#6FFFE9",
+    "voice_id": ""
+  },
+  "pip": {
+    "display": "Pip",
+    "role": "LITTLE SISTER - Ziggy's sister, small and brave. Gives stories a heart.",
+    "skin": "#f2c9a0",
+    "shirt": "#ff5d8f",
+    "pants": "#4cc9f0",
+    "sleeves": true,
+    "scale": 0.78,
+    "hair": {
+      "style": "long",
+      "color": "#3b2314"
+    },
+    "caption_color": "#FF8FB1",
+    "voice_id": ""
+  },
+  "mom": {
+    "display": "Mom",
+    "skin": "#eac4a0",
+    "shirt": "#7b4fa0",
+    "pants": "#2e2e5e",
+    "sleeves": true,
+    "hair": {
+      "style": "long",
+      "color": "#8a4b20"
+    },
+    "caption_color": "#D7A6FF",
+    "voice_id": "",
+    "role": "ZIGGY'S MOM - warm, stern, protective. Home stories."
+  },
+  "grandpa": {
+    "display": "Grandpa Gus",
+    "role": "GRANDPA - wise, funny, full of old stories and secrets. Mentor for magic/mystery plots.",
+    "skin": "#e8bd96",
+    "shirt": "#7a5c3e",
+    "pants": "#4a4a4a",
+    "sleeves": true,
+    "glasses": true,
+    "hair": {
+      "style": "block",
+      "color": "#d9d9d9"
+    },
+    "caption_color": "#E0C9A6",
     "voice_id": ""
   },
   "ms_brick": {
@@ -46,32 +121,7 @@
     },
     "glasses": true,
     "caption_color": "#FF6B6B",
-    "voice_id": ""
-  },
-  "goldie": {
-    "display": "Goldie",
-    "skin": "#eac4a0",
-    "shirt": "#e0b000",
-    "pants": "#ffffff",
-    "sleeves": true,
-    "hair": {
-      "style": "cap",
-      "color": "#111111"
-    },
-    "caption_color": "#FFD700",
-    "voice_id": ""
-  },
-  "mom": {
-    "display": "Mom",
-    "skin": "#eac4a0",
-    "shirt": "#7b4fa0",
-    "pants": "#2e2e5e",
-    "sleeves": true,
-    "hair": {
-      "style": "long",
-      "color": "#8a4b20"
-    },
-    "caption_color": "#D7A6FF",
-    "voice_id": ""
+    "voice_id": "",
+    "role": "TEACHER - strict but fair. Sets the rules in school stories."
   }
 }

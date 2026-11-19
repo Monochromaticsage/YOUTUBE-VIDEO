@@ -228,19 +228,42 @@ def thumb(args, c):
     render(scn, os.path.join(args.out, "thumbnail_template.png"))
 
 
+def lineup(args, c):
+    """Character sheet: the whole cast side by side with names."""
+    names = list(c)
+    scn, cam = reset(args, 2400, 1000, "#f4efe6")
+    font = find_font()
+    gap = 4.4
+    x0 = -gap * (len(names) - 1) / 2
+    faces = ["happy", "neutral", "smug", "smug", "sus", "happy", "happy", "happy", "neutral"]
+    for i, n in enumerate(names):
+        x = x0 + i * gap
+        character(n, c[n], (x, 0, 0), 0, "idle", faces[i % len(faces)])
+        text3d(f"name{i}", c[n].get("display", n).upper(), font, "#2b2b2b", 0.55, (x, -1.2, -0.75),
+               extrude=0.04, outline=False)
+    floor = rigmod.add_obj("floor", rigmod.box_mesh("floor", (80, 10, 0.2), (0, 0, 0.1)), None, (0, 2, 0),
+                           rigmod.make_material("floor", "#e2d9c8"), bevel=0)
+    cam.data.type = "ORTHO"
+    cam.data.ortho_scale = gap * len(names) + 1
+    aim(cam, (0, -40, 2.6), (0, 0, 2.6))
+    render(scn, os.path.join(args.out, "characters.png"))
+
+
 def main():
     args = parse()
     os.makedirs(args.out, exist_ok=True)
     c = cast()
     if args.mascot not in c:
         raise SystemExit(f"mascot '{args.mascot}' not in episodes/cast.json")
-    only = set(args.only.split(",")) if args.only else {"logo", "banner", "thumb"}
+    only = set(args.only.split(",")) if args.only else {"logo", "banner", "thumb", "lineup"}
     if "logo" in only:
         logo(args, c)
     if "banner" in only:
         banner(args, c)
     if "thumb" in only:
         thumb(args, c)
+    if "lineup" in only:
+        lineup(args, c)
 
 
 if __name__ == "__main__":
