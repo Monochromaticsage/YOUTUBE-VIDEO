@@ -16,8 +16,16 @@
       "detailed": {}
     },
     "caption_color": "#FF6F91",
-    "voice_id": "",
-    "crop_top": "#d4637f"
+    "voice_id": "cgSgspJ2msm6clMCkdW9",
+    "crop_top": "#d4637f",
+    "voice_name": "Jessica - playful, bright, warm",
+    "pitch": 1.0,
+    "voice_settings": {
+      "stability": 0.38,
+      "similarity_boost": 0.8,
+      "style": 0.35,
+      "use_speaker_boost": true
+    }
   },
   "ziggy": {
     "display": "Ziggy",
@@ -30,9 +38,17 @@
       "color": "#1fb5ff"
     },
     "caption_color": "#FFB347",
-    "voice_id": "",
+    "voice_id": "IKne3meq5aSn9XLyUdCD",
     "_note": "Channel mascot / main character. Replace colours with your own avatar's.",
-    "role": "BEST FRIEND - Sage's goofy, loyal best friend."
+    "role": "BEST FRIEND - Sage's goofy, loyal best friend.",
+    "voice_name": "Charlie - energetic",
+    "pitch": 1.06,
+    "voice_settings": {
+      "stability": 0.38,
+      "similarity_boost": 0.8,
+      "style": 0.35,
+      "use_speaker_boost": true
+    }
   },
   "noob": {
     "display": "Noob",
@@ -40,9 +56,16 @@
     "shirt": "#0d69ac",
     "pants": "#a2c48b",
     "caption_color": "#FFE14D",
-    "voice_id": "",
-    "pitch": 1.08,
-    "role": "BEST FRIEND - the underdog, overlooked, big heart. Great for emotional stories."
+    "voice_id": "TX3LPaxmHKxFdv7VOQHJ",
+    "pitch": 1.12,
+    "role": "BEST FRIEND - the underdog, overlooked, big heart. Great for emotional stories.",
+    "voice_name": "Liam - energetic (pitched up = younger)",
+    "voice_settings": {
+      "stability": 0.38,
+      "similarity_boost": 0.8,
+      "style": 0.35,
+      "use_speaker_boost": true
+    }
   },
   "bacon": {
     "display": "Bacon",
@@ -54,8 +77,16 @@
       "color": "#6b3b1d"
     },
     "caption_color": "#FF9E5E",
-    "voice_id": "",
-    "role": "FUNNY FRIEND - sarcastic, chill, always has a comeback. Comic relief."
+    "voice_id": "bIHbv24MWmeRgasZH58o",
+    "role": "FUNNY FRIEND - sarcastic, chill, always has a comeback. Comic relief.",
+    "voice_name": "Will - relaxed, chill",
+    "pitch": 1.0,
+    "voice_settings": {
+      "stability": 0.38,
+      "similarity_boost": 0.8,
+      "style": 0.35,
+      "use_speaker_boost": true
+    }
   },
   "goldie": {
     "display": "Goldie",
@@ -68,8 +99,16 @@
       "color": "#111111"
     },
     "caption_color": "#FFD700",
-    "voice_id": "",
-    "role": "RIVAL - rich, show-off, secretly lonely. Can be a villain or get a redemption arc."
+    "voice_id": "N2lVS1w4EtoT3dr4eOWO",
+    "role": "RIVAL - rich, show-off, secretly lonely. Can be a villain or get a redemption arc.",
+    "voice_name": "Callum - husky trickster (pitched up)",
+    "pitch": 1.08,
+    "voice_settings": {
+      "stability": 0.38,
+      "similarity_boost": 0.8,
+      "style": 0.35,
+      "use_speaker_boost": true
+    }
   },
   "nova": {
     "display": "Nova",
@@ -83,7 +122,15 @@
       "color": "#7b2cbf"
     },
     "caption_color": "#6FFFE9",
-    "voice_id": ""
+    "voice_id": "EXAVITQu4vr4xnSDxMaL",
+    "voice_name": "Sarah - calm, confident",
+    "pitch": 1.04,
+    "voice_settings": {
+      "stability": 0.38,
+      "similarity_boost": 0.8,
+      "style": 0.35,
+      "use_speaker_boost": true
+    }
   },
   "pip": {
     "display": "Pip",
@@ -98,7 +145,15 @@
       "color": "#3b2314"
     },
     "caption_color": "#FF8FB1",
-    "voice_id": ""
+    "voice_id": "FGY2WhTYpPnrIDTdsKH5",
+    "voice_name": "Laura - quirky (pitched up = little kid)",
+    "pitch": 1.16,
+    "voice_settings": {
+      "stability": 0.38,
+      "similarity_boost": 0.8,
+      "style": 0.35,
+      "use_speaker_boost": true
+    }
   },
   "mom": {
     "display": "Mom",
@@ -111,8 +166,16 @@
       "color": "#8a4b20"
     },
     "caption_color": "#D7A6FF",
-    "voice_id": "",
-    "role": "SAGE'S MOM - warm, stern, protective. Home stories."
+    "voice_id": "hpp4J3VqNfWAUOO0d1Us",
+    "role": "SAGE'S MOM - warm, stern, protective. Home stories.",
+    "voice_name": "Bella - warm, bright",
+    "pitch": 1.0,
+    "voice_settings": {
+      "stability": 0.38,
+      "similarity_boost": 0.8,
+      "style": 0.35,
+      "use_speaker_boost": true
+    }
   },
   "grandpa": {
     "display": "Grandpa Gus",
@@ -127,7 +190,15 @@
       "color": "#d9d9d9"
     },
     "caption_color": "#E0C9A6",
-    "voice_id": ""
+    "voice_id": "pqHfZKP75CvOlQylNhV4",
+    "voice_name": "Bill - wise, mature",
+    "pitch": 1.0,
+    "voice_settings": {
+      "stability": 0.38,
+      "similarity_boost": 0.8,
+      "style": 0.35,
+      "use_speaker_boost": true
+    }
   },
   "ms_brick": {
     "display": "Ms. Brick",
@@ -141,7 +212,15 @@
     },
     "glasses": true,
     "caption_color": "#FF6B6B",
-    "voice_id": "",
-    "role": "TEACHER - strict but fair. Sets the rules in school stories."
+    "voice_id": "Xb7hH8MSUJpSbSDYk0k2",
+    "role": "TEACHER - strict but fair. Sets the rules in school stories.",
+    "voice_name": "Alice - clear British teacher",
+    "pitch": 1.0,
+    "voice_settings": {
+      "stability": 0.38,
+      "similarity_boost": 0.8,
+      "style": 0.35,
+      "use_speaker_boost": true
+    }
   }
 }

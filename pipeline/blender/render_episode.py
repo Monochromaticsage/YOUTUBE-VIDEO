@@ -191,7 +191,8 @@ def camera_pose(spec, rigs, scene_origin, fmt):
         a, b = pos(names[0]), pos(names[1])
         mid = (a + b) / 2
         gap = (a - b).length
-        return mid + Vector((0, -(9 + gap * (1.9 if tall else 0.9)), 4.5)), mid + Vector((0, 0, CHEST_Z)), 32
+        dist = max(9.0, 1.6 * (gap + 4)) if tall else 9 + gap * 0.9  # fit both bodies in frame
+        return mid + Vector((0, -dist, 4.5)), mid + Vector((0, 0, CHEST_Z)), 32
     if kind == "ots":
         over, at = pos(names[0]), pos(names[1])
         d = (at - over)

@@ -9,11 +9,31 @@
   {
    "set": "outdoors",
    "cast": {
-    "noob": "far_left",
-    "bacon": "left",
-    "sage": "center",
-    "goldie": "right",
-    "nova": "far_right"
+    "noob": [
+     -8,
+     0,
+     0
+    ],
+    "bacon": [
+     -4,
+     0,
+     0
+    ],
+    "sage": [
+     0,
+     0,
+     0
+    ],
+    "goldie": [
+     4,
+     0,
+     0
+    ],
+    "nova": [
+     8,
+     0,
+     0
+    ]
    },
    "shots": [
     {
