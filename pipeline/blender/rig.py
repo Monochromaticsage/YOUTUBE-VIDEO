@@ -8,6 +8,7 @@ one cell of a face "atlas" image; changing expression = moving the UV window.
 If you drop a PNG at assets/faces/<expression>.png (transparent background,
 square), it is used instead of the generated face for every character.
 """
+import math
 import os
 
 import bpy
@@ -35,6 +36,12 @@ def make_material(name, color, roughness=0.55):
     bsdf.inputs["Base Color"].default_value = rgba
     bsdf.inputs["Roughness"].default_value = roughness
     mat.diffuse_color = rgba  # used by the Workbench engine
+    return mat
+
+
+def metal_material(name, color):
+    mat = make_material(name, color, roughness=0.25)
+    mat.node_tree.nodes.get("Principled BSDF").inputs["Metallic"].default_value = 1.0
     return mat
 
 
@@ -181,7 +188,41 @@ def draw_face(expr, mouth_open):
     return ink, white, pink, blue, red
 
 
-def build_face_atlas(name, skin_hex, faces_dir, glasses=False):
+def stylize_face(expr, mouth_open, layers, style):
+    """Personal face details layered on top of an expression.
+    style keys: lashes, teeth, brows ("arched"), blush, sparkle, lips ("#hex")."""
+    ink, white, pink, blue, red = layers
+    extra = {"blush": np.zeros_like(ink), "lips": np.zeros_like(ink)}
+    L, R, EY = 92, 164, 108
+    yy, xx = _yy_xx()
+    if style.get("teeth") and expr in ("happy", "love"):
+        # replace the line smile with a big open smile showing teeth
+        ink[yy > 140] = False
+        pink[yy > 140] = False
+        ry = 44 if mouth_open else 34
+        mouth = _ellipse(128, 156, 44, ry) & (yy >= 156)
+        lips = _ellipse(128, 156, 51, ry + 7) & (yy >= 150) & ~mouth
+        teeth = mouth & (yy <= 156 + ry * 0.45)
+        pink |= mouth & ~teeth
+        white |= teeth
+        extra["lips"] |= lips
+    if style.get("brows") == "arched" and expr in ("neutral", "happy", "love", "cry"):
+        for cx in (L, R):
+            ink |= _arc(cx, EY + 10, 36, 7, up=False, span=0.55) & (yy < EY - 18)
+    if style.get("lashes") and expr not in ("dead", "sus", "smug"):
+        for cx, d in ((L, -1), (R, 1)):
+            for (ax, ay, bx, by) in ((9, -17, 22, -25), (3, -21, 11, -31)):
+                ink |= _segment(cx + d * ax, EY + ay, cx + d * bx, EY + by, 4)
+    if style.get("sparkle") and expr not in ("dead", "sus", "evil", "love", "cry"):
+        for cx in (L, R):
+            white |= _ellipse(cx + 4, EY - 9, 4.5, 4.5) & ink
+    if style.get("blush"):
+        for cx in (L - 8, R + 8):
+            extra["blush"] |= _ellipse(cx, EY + 40, 18, 9) & ~ink
+    return (ink, white, pink, blue, red), extra
+
+
+def build_face_atlas(name, skin_hex, faces_dir, glasses=False, style=None):
     W, H = ATLAS_COLS * CELL, ATLAS_ROWS * CELL
     px = np.zeros((H, W, 4), np.float32)
     skin = np.array(hex_rgba(skin_hex), np.float32)
@@ -201,14 +242,23 @@ def build_face_atlas(name, skin_hex, faces_dir, glasses=False):
                 img = bpy.data.images.load(custom)
                 img.scale(CELL, CELL)
                 c = np.array(img.pixels[:], np.float32).reshape(CELL, CELL, 4)[::-1]
+                rgb = c[..., :3]
+                c[..., :3] = np.where(rgb <= 0.04045, rgb / 12.92, ((rgb + 0.055) / 1.055) ** 2.4)
                 a = c[..., 3:4]
                 cell = cell * (1 - a) + np.concatenate([c[..., :3], np.ones_like(a)], -1) * a
                 bpy.data.images.remove(img)
             else:
                 layers = draw_face(expr, bool(open_))
+                extra = {}
+                if style:
+                    layers, extra = stylize_face(expr, bool(open_), layers, style)
                 ink, white, pink, blue, red = layers
+                if "blush" in extra:
+                    cell[extra["blush"]] = cell[extra["blush"]] * 0.55 + np.array(hex_rgba("#ff7f9a")) * 0.45
                 for mask, key in ((white, "white"), (pink, "pink"), (blue, "blue"), (red, "red"), (ink, "ink")):
                     cell[mask] = colors[key]
+                if "lips" in extra:
+                    cell[extra["lips"]] = hex_rgba(style.get("lips", "#c75b6e"))
             if glasses:
                 rim = np.zeros((CELL, CELL), bool)
                 for cx in (92, 164):
@@ -217,7 +267,8 @@ def build_face_atlas(name, skin_hex, faces_dir, glasses=False):
                 cell[rim[::1]] = colors["ink"]
             # Blender images are stored bottom row first -> flip, and atlas row 0 is at the bottom
             px[row * CELL:(row + 1) * CELL, col * CELL:(col + 1) * CELL] = cell[::-1]
-    img = bpy.data.images.new(f"{name}_faces", W, H, alpha=True)
+    img = bpy.data.images.new(f"{name}_faces", W, H, alpha=True, float_buffer=True)
+    img.colorspace_settings.name = "Non-Color"  # pixels below are already linear
     img.pixels.foreach_set(px.ravel())
     img.pack()
     return img
@@ -270,7 +321,8 @@ def build_character(name, spec, faces_dir):
     face.parent = head
     face.location = (0, -0.605, 0.58)
 
-    atlas = build_face_atlas(name, spec.get("skin", "#f5cd30"), faces_dir, bool(spec.get("glasses")))
+    atlas = build_face_atlas(name, spec.get("skin", "#f5cd30"), faces_dir, bool(spec.get("glasses")),
+                             spec.get("face_style"))
     fm = bpy.data.materials.new(f"{name}_face_mat")
     fm.use_nodes = True
     nt = fm.node_tree
@@ -301,8 +353,43 @@ def build_character(name, spec, faces_dir):
         elif style == "long":
             add_obj(f"{name}_hairtop", box_mesh("ht", (1.4, 1.35, 0.4)), head, (0, 0.05, 1.28), hm, bevel=0.15)
             add_obj(f"{name}_hairback", box_mesh("hk", (1.4, 0.35, 1.7)), head, (0, 0.6, 0.55), hm, bevel=0.12)
+        elif style == "sideswept":
+            # long wavy hair, deep side part, swept over the character's left shoulder (+X)
+            add_obj(f"{name}_hairtop", box_mesh("ht", (1.42, 1.36, 0.34)), head, (0, 0.04, 1.27), hm,
+                    bevel=0.15, segments=3)
+            add_obj(f"{name}_swoop", box_mesh("hs", (0.95, 0.32, 0.42)), head, (0.22, -0.6, 1.08), hm,
+                    bevel=0.16, segments=3).rotation_euler = (0, math.radians(-12), 0)
+            add_obj(f"{name}_hairback", box_mesh("hk", (1.5, 0.42, 2.4)), head, (0, 0.62, 0.05), hm,
+                    bevel=0.18, segments=3)
+            for i in range(5):  # big wavy curtain over the shoulder down to the chest
+                z = 0.95 - i * 0.55
+                x = 0.88 + (0.12 if i % 2 else 0.0)
+                add_obj(f"{name}_wave{i}", box_mesh("hw", (0.78, 0.9, 0.78)), head, (x, -0.18, z),
+                        hm, bevel=0.2, segments=4)
+            for i in range(3):  # shorter side tucked behind the other ear
+                add_obj(f"{name}_side{i}", box_mesh("hd", (0.42, 0.6, 0.55)), head,
+                        (-0.75 + (0.06 if i % 2 else 0), 0.15, 0.95 - i * 0.45), hm, bevel=0.2, segments=3)
         else:  # block
             add_obj(f"{name}_hairtop", box_mesh("ht", (1.35, 1.3, 0.4)), head, (0, 0.05, 1.28), hm, bevel=0.15)
+
+    if spec.get("turtleneck"):
+        add_obj(f"{name}_collar", box_mesh("tn", (1.2, 1.08, 0.34)), torso, (0, 0, 2.02), shirt,
+                bevel=0.14, segments=3)
+    if spec.get("knit"):
+        rib = make_material(f"{name}_rib", spec["knit"])
+        for x in (-0.55, -0.18, 0.18, 0.55):
+            add_obj(f"{name}_rib{x}", box_mesh("rb", (0.14, 0.04, 1.75)), torso, (x, -0.515, 0.95), rib, bevel=0.03)
+    if spec.get("necklace"):
+        gold = metal_material(f"{name}_gold", spec["necklace"])
+        for side in (-1, 1):
+            add_obj(f"{name}_chain{side}", box_mesh("ch", (0.045, 0.03, 0.76)), torso,
+                    (side * 0.18, -0.53, 1.52), gold, bevel=0).rotation_euler = (0, math.radians(side * 28), 0)
+        add_obj(f"{name}_pendant", box_mesh("pd", (0.1, 0.06, 0.3)), torso, (0, -0.54, 1.05), gold, bevel=0.03)
+    if spec.get("earrings"):
+        gold = metal_material(f"{name}_ear_gold", spec["earrings"])
+        for x in (-0.66, 0.66):
+            add_obj(f"{name}_earring{x}", box_mesh("er", (0.13, 0.13, 0.13)), head, (x, -0.05, 0.4), gold,
+                    bevel=0.06, segments=3)
 
     parts = {"torso": torso, "head": head, "arm_l": arm_l, "arm_r": arm_r, "leg_l": leg_l, "leg_r": leg_r}
     for ob in parts.values():

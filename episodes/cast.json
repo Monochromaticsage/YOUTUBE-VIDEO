@@ -1,4 +1,30 @@
 {
+  "sage": {
+    "display": "Sage",
+    "role": "HERO - the main character. Curious, brave, kind, and always smiling. Leads most stories.",
+    "skin": "#a8693f",
+    "shirt": "#efe6d6",
+    "pants": "#2f3e5c",
+    "sleeves": true,
+    "hair": {
+      "style": "sideswept",
+      "color": "#7a1430"
+    },
+    "turtleneck": true,
+    "knit": "#e2d6c1",
+    "necklace": "#d4a62a",
+    "earrings": "#d4a62a",
+    "face_style": {
+      "lashes": true,
+      "teeth": true,
+      "brows": "arched",
+      "blush": true,
+      "sparkle": true,
+      "lips": "#c2566b"
+    },
+    "caption_color": "#FF6F91",
+    "voice_id": ""
+  },
   "ziggy": {
     "display": "Ziggy",
     "skin": "#f2c9a0",
@@ -12,7 +38,7 @@
     "caption_color": "#FFB347",
     "voice_id": "",
     "_note": "Channel mascot / main character. Replace colours with your own avatar's.",
-    "role": "HERO - curious, brave, kind. The main character of most stories."
+    "role": "BEST FRIEND - Sage's goofy, loyal best friend."
   },
   "noob": {
     "display": "Noob",
@@ -67,7 +93,7 @@
   },
   "pip": {
     "display": "Pip",
-    "role": "LITTLE SISTER - Ziggy's sister, small and brave. Gives stories a heart.",
+    "role": "LITTLE SISTER - Sage's sister, small and brave. Gives stories a heart.",
     "skin": "#f2c9a0",
     "shirt": "#ff5d8f",
     "pants": "#4cc9f0",
@@ -92,7 +118,7 @@
     },
     "caption_color": "#D7A6FF",
     "voice_id": "",
-    "role": "ZIGGY'S MOM - warm, stern, protective. Home stories."
+    "role": "SAGE'S MOM - warm, stern, protective. Home stories."
   },
   "grandpa": {
     "display": "Grandpa Gus",

@@ -27,7 +27,7 @@ def parse():
     argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else sys.argv[1:]
     p = argparse.ArgumentParser()
     p.add_argument("--name", default="BLOCKTOPIA TALES")
-    p.add_argument("--mascot", default="ziggy")
+    p.add_argument("--mascot", default="sage")
     p.add_argument("--color", default="#6c3ce0", help="brand background colour")
     p.add_argument("--accent", default="#ffd23f", help="title text colour")
     p.add_argument("--out", default=os.path.join(ROOT, "branding"))
@@ -168,7 +168,7 @@ def logo(args, c):
     scn, cam = reset(args, 800, 800, args.color)
     character(args.mascot, c[args.mascot], (0, 0, 0), 14, "idle", "happy")
     cam.data.lens = 50
-    aim(cam, (0.9, -5.8, 5.0), (0.05, 0, 4.55))
+    aim(cam, (1.2, -6.4, 5.0), (0.35, 0, 4.45))
     path = os.path.join(args.out, "logo.png")
     render(scn, path)
     img = bpy.data.images.load(path)
@@ -239,8 +239,8 @@ def lineup(args, c):
     for i, n in enumerate(names):
         x = x0 + i * gap
         character(n, c[n], (x, 0, 0), 0, "idle", faces[i % len(faces)])
-        text3d(f"name{i}", c[n].get("display", n).upper(), font, "#2b2b2b", 0.55, (x, -1.2, -0.75),
-               extrude=0.04, outline=False)
+        text3d(f"name{i}", c[n].get("display", n).upper(), font, "#2b2b2b", 0.5, (x, -1.2, -0.75),
+               extrude=0.0, outline=False, spacing=1.25)
     floor = rigmod.add_obj("floor", rigmod.box_mesh("floor", (80, 10, 0.2), (0, 0, 0.1)), None, (0, 2, 0),
                            rigmod.make_material("floor", "#e2d9c8"), bevel=0)
     cam.data.type = "ORTHO"
