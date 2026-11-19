@@ -151,6 +151,8 @@ def assemble(ep, timing, cast, build_dir, out_mp4):
             sfx = shot.get("sfx")
             if isinstance(sfx, str):
                 sfx = [{"name": sfx, "at": 0}]
+            elif isinstance(sfx, dict):
+                sfx = [sfx]
             for fx in sfx or []:
                 p = find_asset("sfx", fx["name"])
                 if not p:
