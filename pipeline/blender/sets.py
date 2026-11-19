@@ -114,7 +114,46 @@ def stage(o):
     return dict(DEFAULT_MARKS)
 
 
-BUILDERS = {f.__name__: f for f in [classroom, hallway, bedroom, kitchen, outdoors, stage]}
+def playground(o):
+    """Detailed park / playground at the edge of a neighbourhood."""
+    import props as P
+    grass = make_material("pg_grass", "#4f8f3f", roughness=0.95, tex_scale=1.2, bump=0.3)
+    add_obj("ground", box_mesh("ground", (260, 260, 0.4)), None, (o[0], o[1] + 60, o[2] - 0.2), grass, bevel=0)
+    path = make_material("pg_path", "#c9b48a", roughness=0.95, tex_scale=3, bump=0.25)
+    add_obj("path", box_mesh("path", (6, 120, 0.06)), None, (o[0], o[1] + 30, o[2] + 0.03), path, bevel=0)
+    add_obj("path2", box_mesh("path2", (90, 5, 0.06)), None, (o[0], o[1] + 2, o[2] + 0.025), path, bevel=0)
+    sand = make_material("pg_sand", "#e0c68f", roughness=1.0, tex_scale=6, bump=0.4)
+    add_obj("sandpit", box_mesh("sandpit", (14, 9, 0.12)), None, (o[0] - 13, o[1] + 12, o[2] + 0.05), sand, bevel=0.05)
+    P.swings(o, -13, 12)
+    P.slide(o, 13, 13)
+    for x in (-30, -18, 18, 30):
+        P.lamp_post(o, x, 5)
+    P.bench(o, -22, 7, rot=0.15)
+    P.bench(o, 23, 7.5, rot=-0.15)
+    P.trash_can(o, -25.5, 6.5)
+    P.trash_can(o, 26.5, 6.5, color="#2b4f7a")
+    P.sign_post(o, 7, 9, color="#2e86c1")
+    P.fence(o, -44, -4, 24)
+    P.fence(o, 4, 44, 24)
+    for i, x in enumerate((-36, -22, 22, 36)):
+        P.house(o, x, 42 + (i % 2) * 4, wall=["#e9d8c4", "#cfe0e8", "#f2d0c0", "#e6e1b8"][i],
+                roof=["#7b3b2c", "#3d4f6b", "#6b3b5a", "#4f6b3b"][i], seed=i)
+    P.house(o, 0, 58, w=14, wall="#d8c9e8", roof="#5b3b7b", seed=9)
+    P.scatter(o, P.tree, 16, (-60, 60), (20, 80), seed=3, keep_out=(-9, 9, 0, 70))
+    P.scatter(o, P.bush, 14, (-45, 45), (14, 26), seed=4, keep_out=(-8, 8, 0, 40))
+    P.scatter(o, P.rock, 8, (-40, 40), (6, 22), seed=5, keep_out=(-9, 9, -5, 30))
+    # foreground framing pieces (they blur nicely with depth of field)
+    P.bush(o, -16, -6, s=1.3, seed=11)
+    P.bush(o, 17, -7, s=1.2, seed=12)
+    P.tree(o, -24, -10, s=1.1, seed=13)
+    P.tree(o, 25, -12, s=1.2, seed=14)
+    P.barrel(o, 19, -3, color="#2e6b8a")
+    P.crate(o, -19, -2.5, rot=0.4)
+    P.cone(o, 9, -4)
+    return dict(DEFAULT_MARKS)
+
+
+BUILDERS = {f.__name__: f for f in [classroom, hallway, bedroom, kitchen, outdoors, stage, playground]}
 
 
 def build_set(name, origin, assets_dir):

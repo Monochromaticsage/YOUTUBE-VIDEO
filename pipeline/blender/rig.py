@@ -28,14 +28,43 @@ def hex_rgba(h, a=1.0):
     return (*lin, a)
 
 
-def make_material(name, color, roughness=0.55):
+TEXTURE = {"on": True}  # set False for flat colours
+
+
+def _sock(node, ident):
+    for s in list(node.inputs) + list(node.outputs):
+        if s.identifier == ident:
+            return s
+    raise KeyError(ident)
+
+
+def make_material(name, color, roughness=0.55, texture=True, tex_scale=4.0, bump=0.12):
+    """Principled material. With texture=True it gets subtle colour variation and bump
+    (reads as fabric / plastic / wood instead of flat CG colour)."""
     mat = bpy.data.materials.new(name)
     mat.use_nodes = True
-    bsdf = mat.node_tree.nodes.get("Principled BSDF")
+    nt = mat.node_tree
+    bsdf = nt.nodes.get("Principled BSDF")
     rgba = hex_rgba(color) if isinstance(color, str) else color
     bsdf.inputs["Base Color"].default_value = rgba
     bsdf.inputs["Roughness"].default_value = roughness
     mat.diffuse_color = rgba  # used by the Workbench engine
+    if texture and TEXTURE["on"]:
+        noise = nt.nodes.new("ShaderNodeTexNoise")
+        noise.inputs["Scale"].default_value = tex_scale
+        noise.inputs["Detail"].default_value = 6.0
+        mix = nt.nodes.new("ShaderNodeMix")
+        mix.data_type = "RGBA"
+        dark = tuple(c * 0.78 for c in rgba[:3]) + (1.0,)
+        light = tuple(min(1.0, c * 1.06) for c in rgba[:3]) + (1.0,)
+        _sock(mix, "A_Color").default_value = dark
+        _sock(mix, "B_Color").default_value = light
+        nt.links.new(noise.outputs["Fac"], _sock(mix, "Factor_Float"))
+        nt.links.new(_sock(mix, "Result_Color"), bsdf.inputs["Base Color"])
+        bmp = nt.nodes.new("ShaderNodeBump")
+        bmp.inputs["Strength"].default_value = bump
+        nt.links.new(noise.outputs["Fac"], bmp.inputs["Height"])
+        nt.links.new(bmp.outputs["Normal"], bsdf.inputs["Normal"])
     return mat
 
 
@@ -303,7 +332,7 @@ class Rig:
 
 def build_character(name, spec, faces_dir):
     """spec: {"skin": "#hex", "shirt": "#hex", "pants": "#hex", "hair": {...}}"""
-    skin = make_material(f"{name}_skin", spec.get("skin", "#f5cd30"))
+    skin = make_material(f"{name}_skin", spec.get("skin", "#f5cd30"), texture=False)
     shirt = make_material(f"{name}_shirt", spec.get("shirt", "#0d69ac"))
     pants = make_material(f"{name}_pants", spec.get("pants", "#a2c48b"))
     arm_mat = shirt if spec.get("sleeves", False) else skin

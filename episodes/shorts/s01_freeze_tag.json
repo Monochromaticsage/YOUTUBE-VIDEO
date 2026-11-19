@@ -7,7 +7,7 @@
  "_pinned_comment": "What secret would YOU tell to unfreeze? 👇",
  "scenes": [
   {
-   "set": "outdoors",
+   "set": "playground",
    "cast": {
     "noob": [
      -8,
@@ -256,5 +256,7 @@
     }
    ]
   }
- ]
+ ],
+ "mood": "golden",
+ "grade": "cinematic"
 }

@@ -63,6 +63,51 @@ def load_episode(path):
     return ep
 
 
+# ---------------------------------------------------------------------- moods
+# Lighting + fog presets. "golden" / "dusk" / "night" give the cinematic hazy look.
+MOODS = {
+    "day":    dict(sky="#cfe6ff", zenith="#5ea4ec", sky_strength=0.9, sun=3.2, sun_color="#fff6e8", sun_elev=40, sun_az=-30,
+                   fill=0.8, fill_color="#cfe0ff", fog="#bcd8f5", fog_start=25, fog_end=140, fog_max=0.55),
+    "golden": dict(sky="#f0b487", zenith="#5f86c4", sky_strength=0.7, sun=4.2, sun_color="#ffc48e", sun_elev=16,
+                   sun_az=-55, fill=1.0, fill_color="#5d8fd8", fog="#e8b48a", fog_start=30, fog_end=130,
+                   fog_max=0.7),
+    "dusk":   dict(sky="#e08a6e", zenith="#3b3f78", sky_strength=0.55, sun=3.0, sun_color="#ff8a5c", sun_elev=6, sun_az=-60,
+                   fill=0.9, fill_color="#5b78c9", fog="#8a6e9e", fog_start=8, fog_end=70, fog_max=0.8),
+    "night":  dict(sky="#26305a", zenith="#0a0e1f", sky_strength=0.35, sun=0.8, sun_color="#9fb4ff", sun_elev=35, sun_az=20,
+                   fill=0.35, fill_color="#3a4f8f", fog="#1d2747", fog_start=6, fog_end=55, fog_max=0.85),
+    "indoor": dict(sky="#d9c7a8", sky_strength=0.8, sun=2.6, sun_color="#ffd9a8", sun_elev=35, sun_az=-40,
+                   fill=0.9, fill_color="#bcd0ff", fog="#d9c2a0", fog_start=14, fog_end=90, fog_max=0.4),
+}
+
+
+def apply_fog(mood):
+    """Distance haze baked into every material: surfaces fade toward the fog colour
+    with distance from the camera. Cheap in both Cycles and EEVEE (no volumetrics)."""
+    fog = rigmod.hex_rgba(mood["fog"])
+    for mat in bpy.data.materials:
+        nt = mat.node_tree if mat.use_nodes else None
+        if not nt:
+            continue
+        out = next((n for n in nt.nodes if n.type == "OUTPUT_MATERIAL"), None)
+        if not out or not out.inputs["Surface"].links:
+            continue
+        src = out.inputs["Surface"].links[0].from_socket
+        cam = nt.nodes.new("ShaderNodeCameraData")
+        rng = nt.nodes.new("ShaderNodeMapRange")
+        rng.inputs["From Min"].default_value = mood["fog_start"]
+        rng.inputs["From Max"].default_value = mood["fog_end"]
+        rng.inputs["To Max"].default_value = mood["fog_max"]
+        emit = nt.nodes.new("ShaderNodeEmission")
+        emit.inputs["Color"].default_value = fog
+        emit.inputs["Strength"].default_value = 1.0
+        mix = nt.nodes.new("ShaderNodeMixShader")
+        nt.links.new(cam.outputs["View Distance"], rng.inputs["Value"])
+        nt.links.new(rng.outputs["Result"], mix.inputs["Fac"])
+        nt.links.new(src, mix.inputs[1])
+        nt.links.new(emit.outputs["Emission"], mix.inputs[2])
+        nt.links.new(mix.outputs["Shader"], out.inputs["Surface"])
+
+
 # --------------------------------------------------------------------- setup
 def setup_scene(ep, args):
     bpy.ops.wm.read_factory_settings(use_empty=True)
@@ -117,31 +162,49 @@ def setup_scene(ep, args):
     except TypeError:
         pass
 
+    mood = MOODS[ep.get("mood", "day")]
     world = bpy.data.worlds.new("world")
     scn.world = world
     if not world.node_tree:
         world.use_nodes = True
     bg = world.node_tree.nodes.get("Background")
-    bg.inputs["Color"].default_value = rigmod.hex_rgba(ep.get("sky", "#8fc8ff"))
-    bg.inputs["Strength"].default_value = 0.9
+    bg.inputs["Color"].default_value = rigmod.hex_rgba(ep.get("sky", mood["sky"]))
+    bg.inputs["Strength"].default_value = mood["sky_strength"]
     world.color = bg.inputs["Color"].default_value[:3]
+    if mood.get("zenith"):  # vertical gradient: horizon colour -> zenith colour
+        wn = world.node_tree
+        tc = wn.nodes.new("ShaderNodeTexCoord")
+        sep = wn.nodes.new("ShaderNodeSeparateXYZ")
+        rng = wn.nodes.new("ShaderNodeMapRange")
+        rng.inputs["From Min"].default_value = -0.02
+        rng.inputs["From Max"].default_value = 0.55
+        ramp = wn.nodes.new("ShaderNodeValToRGB")
+        ramp.color_ramp.elements[0].color = rigmod.hex_rgba(ep.get("sky", mood["sky"]))
+        ramp.color_ramp.elements[1].color = rigmod.hex_rgba(mood["zenith"])
+        wn.links.new(tc.outputs["Generated"], sep.inputs["Vector"])
+        wn.links.new(sep.outputs["Z"], rng.inputs["Value"])
+        wn.links.new(rng.outputs["Result"], ramp.inputs["Fac"])
+        wn.links.new(ramp.outputs["Color"], bg.inputs["Color"])
 
     sun_data = bpy.data.lights.new("sun", "SUN")
-    sun_data.energy = 3.2
-    sun_data.angle = math.radians(8)
+    sun_data.energy = mood["sun"]
+    sun_data.color = rigmod.hex_rgba(mood["sun_color"])[:3]
+    sun_data.angle = math.radians(6)
     sun = bpy.data.objects.new("sun", sun_data)
     scn.collection.objects.link(sun)
-    sun.rotation_euler = (math.radians(50), math.radians(-12), math.radians(-30))
+    sun.rotation_euler = (math.radians(90 - mood["sun_elev"]), math.radians(-8), math.radians(mood["sun_az"]))
 
     fill_data = bpy.data.lights.new("fill", "SUN")
-    fill_data.energy = 0.8
+    fill_data.energy = mood["fill"]
+    fill_data.color = rigmod.hex_rgba(mood["fill_color"])[:3]
     fill_data.use_shadow = False
     fill = bpy.data.objects.new("fill", fill_data)
     scn.collection.objects.link(fill)
-    fill.rotation_euler = (math.radians(70), 0, math.radians(150))
+    fill.rotation_euler = (math.radians(70), 0, math.radians(mood["sun_az"] + 170))
 
     cam_data = bpy.data.cameras.new("cam")
     cam_data.lens = 30 if ep.get("format", "short") == "short" else 35
+    cam_data.dof.use_dof = ep.get("dof", True)
     cam = bpy.data.objects.new("cam", cam_data)
     scn.collection.objects.link(cam)
     scn.camera = cam
@@ -210,7 +273,7 @@ def camera_pose(spec, rigs, scene_origin, fmt):
     raise ValueError(f"unknown camera '{spec}'")
 
 
-def key_camera(cam, f0, f1, spec, rigs, origin, fmt, move):
+def key_camera(cam, f0, f1, spec, rigs, origin, fmt, move, roll_deg=0.0):
     loc, at, lens = camera_pose(spec, rigs, origin, fmt)
     end_loc = Vector(loc)
     if move == "push":       # slow push-in (default, feels cinematic)
@@ -221,13 +284,26 @@ def key_camera(cam, f0, f1, spec, rigs, origin, fmt, move):
         end_loc = loc + Vector((1.5, 0, 0))
     elif move == "zoom":     # fast meme zoom
         end_loc = loc + (at - loc) * 0.55
+    kind = spec.partition(":")[0]
+    fstop = {"extreme": 1.4, "closeup": 1.8, "low": 2.2, "ots": 2.2, "medium": 2.8, "two": 4.0,
+             "high": 4.0, "wide": 7.0}.get(kind, 2.8)
+    roll = math.radians(roll_deg)
     for frame, l in ((f0, loc), (f1 - 1, end_loc)):
         cam.location = l
-        cam.rotation_euler = (at - l).to_track_quat("-Z", "Y").to_euler()
+        q = (at - l).to_track_quat("-Z", "Y")
+        e = q.to_euler()
+        if roll:
+            from mathutils import Quaternion
+            e = (q @ Quaternion((0, 0, 1), roll)).to_euler()
+        cam.rotation_euler = e
         cam.data.lens = lens
+        cam.data.dof.focus_distance = (at - l).length
+        cam.data.dof.aperture_fstop = fstop
         cam.keyframe_insert("location", frame=frame)
         cam.keyframe_insert("rotation_euler", frame=frame)
         cam.data.keyframe_insert("lens", frame=frame)
+        cam.data.keyframe_insert("dof.focus_distance", frame=frame)
+        cam.data.keyframe_insert("dof.aperture_fstop", frame=frame)
     if move == "shake":
         for i, f in enumerate(range(f0 + 1, f1 - 1, 2)):
             cam.location = loc + Vector(((-0.15, 0.15)[i % 2], 0, (0.1, -0.1)[(i // 2) % 2]))
@@ -374,6 +450,8 @@ def main():
         a, b = args.frames.split(":")
         scn.frame_start, scn.frame_end = int(a), int(b)
     scn.frame_step = args.step
+    if ep.get("fog", True):
+        apply_fog(MOODS[ep.get("mood", "day")])
     harden_cuts(cut_frames)
     os.makedirs(args.out, exist_ok=True)
     if args.save_blend:

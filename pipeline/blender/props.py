@@ -1,0 +1,231 @@
+"""Prop library for dressing sets. Every function places one prop at world position
+(x, y) relative to an origin and returns nothing. Blocky, Roblox-like proportions.
+
+Lights: lamps and lit windows add real point lights / emissive glass, so dusk and
+night scenes glow.
+"""
+import math
+import random
+
+import bpy
+
+from rig import add_obj, box_mesh, hex_rgba, make_material
+
+_mats = {}
+
+
+def M(color, rough=0.7, tex=True, scale=4.0):
+    key = (color, rough, tex, scale)
+    if key not in _mats:
+        _mats[key] = make_material(f"p_{color}_{rough}", color, roughness=rough, texture=tex, tex_scale=scale)
+    return _mats[key]
+
+
+def glow(color, strength=6.0):
+    key = ("glow", color, strength)
+    if key not in _mats:
+        mat = bpy.data.materials.new(f"glow_{color}")
+        mat.use_nodes = True
+        nt = mat.node_tree
+        for n in list(nt.nodes):
+            if n.type != "OUTPUT_MATERIAL":
+                nt.nodes.remove(n)
+        em = nt.nodes.new("ShaderNodeEmission")
+        em.inputs["Color"].default_value = hex_rgba(color)
+        em.inputs["Strength"].default_value = strength
+        nt.links.new(em.outputs["Emission"], nt.nodes.get("Material Output").inputs["Surface"])
+        mat.diffuse_color = hex_rgba(color)
+        _mats[key] = mat
+    return _mats[key]
+
+
+def cyl_mesh(name, r, h, segs=12, r_top=None):
+    r_top = r if r_top is None else r_top
+    v, f = [], []
+    for i in range(segs):
+        a = 2 * math.pi * i / segs
+        v.append((r * math.cos(a), r * math.sin(a), 0))
+        v.append((r_top * math.cos(a), r_top * math.sin(a), h))
+    for i in range(segs):
+        j = (i + 1) % segs
+        f.append((2 * i, 2 * j, 2 * j + 1, 2 * i + 1))
+    f.append(tuple(2 * i for i in reversed(range(segs))))
+    f.append(tuple(2 * i + 1 for i in range(segs)))
+    me = bpy.data.meshes.new(name)
+    me.from_pydata(v, [], f)
+    me.update()
+    return me
+
+
+def prism_mesh(name, w, d, h):
+    """Gable roof: triangle profile along Y."""
+    x, y = w / 2, d / 2
+    v = [(-x, -y, 0), (x, -y, 0), (0, -y, h), (-x, y, 0), (x, y, 0), (0, y, h)]
+    f = [(0, 1, 2), (3, 5, 4), (0, 3, 4, 1), (1, 4, 5, 2), (0, 2, 5, 3)]
+    me = bpy.data.meshes.new(name)
+    me.from_pydata(v, [], f)
+    me.update()
+    return me
+
+
+def put(o, name, mesh, loc, mat, rot=(0, 0, 0), bevel=0.04, segments=2):
+    ob = add_obj(name, mesh, None, (o[0] + loc[0], o[1] + loc[1], o[2] + loc[2]), mat, bevel=bevel,
+                 segments=segments)
+    ob.rotation_euler = rot
+    return ob
+
+
+def point_light(o, loc, color="#ffcf8a", watts=150, radius=0.3):
+    ld = bpy.data.lights.new("lamp", "POINT")
+    ld.energy = watts
+    ld.color = hex_rgba(color)[:3]
+    ld.shadow_soft_size = radius
+    ob = bpy.data.objects.new("lamp", ld)
+    bpy.context.scene.collection.objects.link(ob)
+    ob.location = (o[0] + loc[0], o[1] + loc[1], o[2] + loc[2])
+    return ob
+
+
+# -------------------------------------------------------------------- props
+def crate(o, x, y, s=1.0, rot=0.0):
+    wood = M("#9a6b3c", 0.8, scale=6)
+    edge = M("#6e4723", 0.8)
+    put(o, "crate", box_mesh("c", (1.6 * s, 1.6 * s, 1.6 * s), (0, 0, -0.8 * s)), (x, y, 0), wood, (0, 0, rot))
+    for dz in (0.08, 1.52):
+        put(o, "crate_band", box_mesh("cb", (1.66 * s, 1.66 * s, 0.14 * s)), (x, y, dz * s), edge, (0, 0, rot))
+
+
+def barrel(o, x, y, color="#7a4b2e", rot=0.0):
+    put(o, "barrel", cyl_mesh("b", 0.7, 1.8, 14), (x, y, 0), M(color, 0.6, scale=8), (0, 0, rot), bevel=0.05)
+    for z in (0.3, 1.4):
+        put(o, "barrel_band", cyl_mesh("bb", 0.73, 0.12, 14), (x, y, z), M("#3b3b3b", 0.4), bevel=0)
+
+
+def lamp_post(o, x, y, light=True, color="#ffcf8a"):
+    dark = M("#2d2f36", 0.45)
+    put(o, "lamp_pole", cyl_mesh("lp", 0.13, 7.0, 10), (x, y, 0), dark, bevel=0)
+    put(o, "lamp_base", cyl_mesh("lb", 0.3, 0.6, 10), (x, y, 0), dark, bevel=0)
+    put(o, "lamp_head", box_mesh("lh", (0.8, 0.8, 0.5)), (x, y, 7.15), dark)
+    put(o, "lamp_glass", box_mesh("lg", (0.62, 0.62, 0.4)), (x, y, 6.75), glow(color, 8))
+    if light:
+        point_light(o, (x, y, 6.4), color, watts=220, radius=0.4)
+
+
+def bench(o, x, y, rot=0.0, color="#8a5a32"):
+    wood, metal = M(color, 0.8, scale=7), M("#2d2f36", 0.45)
+    c, sn = math.cos(rot), math.sin(rot)
+
+    def at(dx, dy, z):
+        return (x + dx * c - dy * sn, y + dx * sn + dy * c, z)
+    for dy in (-0.3, 0.05, 0.4):
+        put(o, "bench_plank", box_mesh("bp", (3.4, 0.3, 0.12)), at(0, dy, 1.0), wood, (0, 0, rot))
+    put(o, "bench_back", box_mesh("bk", (3.4, 0.12, 0.7)), at(0, 0.62, 1.6), wood, (0, 0, rot))
+    for dx in (-1.5, 1.5):
+        put(o, "bench_leg", box_mesh("bl", (0.15, 1.0, 1.0), (0, 0, -0.5)), at(dx, 0.05, 0), metal, (0, 0, rot))
+
+
+def fence(o, x0, x1, y, color="#efe6d6", h=2.2):
+    mat = M(color, 0.75, scale=6)
+    n = max(1, int(abs(x1 - x0) / 2.2))
+    for i in range(n + 1):
+        x = x0 + (x1 - x0) * i / n
+        put(o, "fence_post", box_mesh("fp", (0.28, 0.28, h), (0, 0, -h / 2)), (x, y, 0), mat)
+    for z in (0.75, 1.6):
+        put(o, "fence_rail", box_mesh("fr", (abs(x1 - x0), 0.16, 0.22)), ((x0 + x1) / 2, y, z), mat)
+
+
+def sign_post(o, x, y, color="#c0392b", board="#f2e3c6", rot=0.0):
+    put(o, "sign_pole", box_mesh("sp", (0.22, 0.22, 4.2), (0, 0, -2.1)), (x, y, 0), M("#5b3a1f"))
+    put(o, "sign_board", box_mesh("sb", (2.6, 0.16, 1.3)), (x, y, 3.5), M(board, 0.8), (0, 0, rot))
+    put(o, "sign_stripe", box_mesh("ss", (2.3, 0.18, 0.28)), (x, y - 0.01, 3.85), M(color, 0.6), (0, 0, rot))
+
+
+def trash_can(o, x, y, color="#2f6b3f"):
+    put(o, "bin", cyl_mesh("tb", 0.55, 1.5, 12), (x, y, 0), M(color, 0.5), bevel=0.03)
+    put(o, "bin_lid", cyl_mesh("tl", 0.62, 0.15, 12), (x, y, 1.5), M("#22262b", 0.5), bevel=0.03)
+
+
+def cone(o, x, y):
+    put(o, "cone", cyl_mesh("cn", 0.4, 1.0, 10, 0.06), (x, y, 0.08), M("#ff6a1a", 0.5), bevel=0)
+    put(o, "cone_base", box_mesh("cb", (0.9, 0.9, 0.08), (0, 0, -0.04)), (x, y, 0), M("#ff6a1a", 0.5), bevel=0)
+
+
+def rock(o, x, y, s=1.0, seed=0):
+    r = random.Random(seed)
+    ob = put(o, "rock", box_mesh("rk", (1.6 * s, 1.3 * s, 1.0 * s), (0, 0, -0.4 * s)), (x, y, 0),
+             M("#7d7f86", 0.9, scale=3), (r.uniform(-0.2, 0.2), r.uniform(-0.2, 0.2), r.uniform(0, 3)),
+             bevel=0.35 * s, segments=3)
+    return ob
+
+
+def bush(o, x, y, s=1.0, color="#3f8a3a", seed=0):
+    r = random.Random(seed)
+    for i in range(3):
+        dx, dy = r.uniform(-0.6, 0.6) * s, r.uniform(-0.4, 0.4) * s
+        sz = r.uniform(1.0, 1.5) * s
+        put(o, "bush", box_mesh("bu", (sz, sz, sz * 0.85), (0, 0, -sz * 0.4)), (x + dx, y + dy, 0),
+            M(color, 0.9, scale=2.5), (0, 0, r.uniform(0, 1)), bevel=0.32 * sz, segments=3)
+
+
+def tree(o, x, y, s=1.0, seed=0, palette=("#2f7d32", "#3e9440", "#276b2a")):
+    r = random.Random(seed)
+    put(o, "trunk", cyl_mesh("tt", 0.45 * s, 4.5 * s, 8, 0.35 * s), (x, y, 0), M("#6b4226", 0.9, scale=8), bevel=0)
+    for i, (z, w) in enumerate(((4.2, 4.2), (5.9, 3.4), (7.2, 2.2))):
+        col = palette[i % len(palette)]
+        put(o, "leaves", box_mesh("lv", (w * s, w * s, 1.9 * s), (0, 0, -0.9 * s)), (x, y, z * s), M(col, 0.85, scale=2),
+            (0, 0, r.uniform(0, 1.5)), bevel=0.45 * s, segments=3)
+
+
+def house(o, x, y, w=10, d=8, h=7, wall="#e9d8c4", roof="#7b3b2c", lit=True, rot=0.0, seed=0):
+    r = random.Random(seed)
+    put(o, "house", box_mesh("hs", (w, d, h), (0, 0, -h / 2)), (x, y, 0), M(wall, 0.85, scale=3), (0, 0, rot), bevel=0.06)
+    put(o, "roof", prism_mesh("rf", w + 1.2, d + 1.2, h * 0.45), (x, y, h), M(roof, 0.7, scale=5), (0, 0, rot), bevel=0)
+    win = glow("#ffcb7a", 3.5) if lit else M("#8fb3cc", 0.2)
+    for wx in (-w * 0.28, w * 0.28):
+        for wz in (h * 0.3, h * 0.68):
+            if r.random() < 0.85:
+                put(o, "window", box_mesh("wn", (1.4, 0.12, 1.4)), (x + wx, y - d / 2 - 0.04, wz), win, (0, 0, rot), bevel=0)
+    put(o, "door", box_mesh("dr", (1.6, 0.14, 2.8), (0, 0, -1.4)), (x, y - d / 2 - 0.05, 0), M("#5b3a1f", 0.7), (0, 0, rot))
+
+
+def swings(o, x, y):
+    frame = M("#c0392b", 0.5)
+    for dx in (-3.2, 3.2):
+        for dy in (-1.2, 1.2):
+            put(o, "swing_leg", cyl_mesh("sl", 0.14, 6.4, 8), (x + dx, y + dy * 1.0, 0), frame,
+                (math.radians(-dy * 9), 0, 0), bevel=0)
+    put(o, "swing_bar", box_mesh("sb", (6.8, 0.3, 0.3)), (x, y, 6.25), frame)
+    for sx in (-1.5, 1.5):
+        for cx in (-0.45, 0.45):
+            put(o, "chain", box_mesh("ch", (0.05, 0.05, 4.4)), (x + sx + cx, y, 4.0), M("#8c8c8c", 0.3), bevel=0)
+        put(o, "seat", box_mesh("se", (1.2, 0.55, 0.12)), (x + sx, y, 1.8), M("#2d2f36", 0.5))
+
+
+def slide(o, x, y):
+    put(o, "slide_tower", box_mesh("st", (2.4, 2.4, 0.3)), (x, y, 4.0), M("#f1c40f", 0.5))
+    for dx in (-1.0, 1.0):
+        for dy in (-1.0, 1.0):
+            put(o, "slide_post", box_mesh("spo", (0.25, 0.25, 4.0), (0, 0, -2.0)), (x + dx, y + dy, 0), M("#2980b9", 0.5))
+    put(o, "slide_ramp", box_mesh("sr", (1.6, 6.5, 0.2)), (x, y - 3.9, 2.1), M("#e74c3c", 0.35),
+        (math.radians(-38), 0, 0), bevel=0.05)
+    for i in range(6):
+        put(o, "ladder", box_mesh("ld", (1.6, 0.15, 0.12)), (x, y + 1.35, 0.6 + i * 0.6), M("#2980b9", 0.5), bevel=0)
+
+
+def poster(o, x, y, z, color="#f2e3c6", accent="#c0392b", rot=0.0):
+    put(o, "poster", box_mesh("po", (1.6, 0.05, 2.1)), (x, y, z), M(color, 0.9), (0, 0, rot), bevel=0)
+    put(o, "poster_art", box_mesh("pa", (1.1, 0.06, 0.9)), (x, y - 0.01, z + 0.3), M(accent, 0.8), (0, 0, rot), bevel=0)
+
+
+def scatter(o, fn, n, xr, yr, seed=1, keep_out=None, **kw):
+    """Place n copies of prop fn randomly; keep_out = (x0, x1, y0, y1) stays clear (the stage)."""
+    r = random.Random(seed)
+    placed = 0
+    tries = 0
+    while placed < n and tries < n * 30:
+        tries += 1
+        x, y = r.uniform(*xr), r.uniform(*yr)
+        if keep_out and keep_out[0] < x < keep_out[1] and keep_out[2] < y < keep_out[3]:
+            continue
+        fn(o, x, y, seed=r.randint(0, 9999), **kw) if "seed" in fn.__code__.co_varnames else fn(o, x, y, **kw)
+        placed += 1

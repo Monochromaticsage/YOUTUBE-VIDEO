@@ -17,6 +17,17 @@ from voice import SAMPLE_RATE
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
 
+# ffmpeg colour grades: warm highlights / teal shadows like cinematic animation
+GRADES = {
+    "none": "",
+    "cinematic": "eq=contrast=1.12:saturation=1.12:gamma=0.96,"
+                 "colorbalance=rs=-0.10:gs=0.03:bs=0.13:rm=0.0:bm=0.0:rh=0.05:gh=0.02:bh=-0.05",
+    "warm": "eq=contrast=1.08:saturation=1.2,colorbalance=rs=0.02:bs=0.04:rm=0.05:bm=-0.04:rh=0.1:bh=-0.08",
+    "cool": "eq=contrast=1.1:saturation=1.05,colorbalance=rs=-0.08:bs=0.12:rh=0.02:bh=0.04",
+    "night": "eq=contrast=1.15:saturation=0.9:brightness=-0.03,colorbalance=rs=-0.1:bs=0.15:rh=-0.02:bh=0.08",
+}
+
+
 def find_asset(folder, name):
     for ext in ("wav", "mp3", "ogg", "m4a", "flac"):
         p = os.path.join(ROOT, "assets", folder, f"{name}.{ext}")
@@ -141,7 +152,15 @@ def assemble(ep, timing, cast, build_dir, out_mp4):
     mix.append(f"{''.join(labels)}amix=inputs={len(labels)}:duration=first:normalize=0,"
                f"alimiter=limit=0.95[aout]")
     W, H = (1080, 1920) if ep.get("format", "short") == "short" else (1920, 1080)
-    vf = f"[0:v]scale={W}:{H}:flags=lanczos,subtitles=subs.ass,format=yuv420p[vout]"
+    grade = GRADES[ep.get("grade", "none")]
+    if grade:
+        # colour grade -> soft glow (bloom) -> vignette -> captions
+        vf = (f"[0:v]scale={W}:{H}:flags=lanczos,{grade},split[g1][g2];"
+              f"[g2]gblur=sigma=22,eq=brightness=-0.06[glow];"
+              f"[g1][glow]blend=all_mode=screen:all_opacity=0.28,vignette=angle=PI/4.6,"
+              f"subtitles=subs.ass,format=yuv420p[vout]")
+    else:
+        vf = f"[0:v]scale={W}:{H}:flags=lanczos,subtitles=subs.ass,format=yuv420p[vout]"
     cmd = ["ffmpeg", "-y", "-loglevel", "error", *inputs, "-filter_complex", ";".join(mix + [vf]),
            "-map", "[vout]", "-map", "[aout]", "-c:v", "libx264", "-preset", "medium", "-crf", "18",
            "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", "-shortest",
