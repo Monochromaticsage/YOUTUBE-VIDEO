@@ -1,87 +1,108 @@
-# Batch 01: three Shorts for tomorrow (v2, rebuilt from the data study)
+# Batch 01: three Shorts for tomorrow (v3)
 
-These are built on the three highest-performing structures from `docs/research/XENOST_STUDY.md`:
-a family member with one impossible trait, an adult embarrassing a kid at school, and "everyone thinks ___".
-All stories are original. About 35–40 seconds each, narrated by Sage.
-
----
-
-## S03: "My Little Sister Can TASTE Lies!"
-Formula: family member + one impossible trait (Xenost's #1 pattern)
-Sets: kitchen → hallway → kitchen · Cast: Sage, Pip, Goldie, Ms. Brick, Mom
-
-| # | Who | Line | On screen |
-|---|-----|------|-----------|
-| 1 | Sage | My little sister can taste lies. | Pip at the table; Sage beside her |
-| 2 | Sage | Every lie tastes like a sour lemon. | Close-up: Pip's face scrunches (sour sting) |
-| 3 | Sage | I said I brushed my teeth. | Sage smiles innocently |
-| 4 | Pip | Bleh! LEMON! | Pip gags, points at Sage (vine boom) |
-| 5 | Sage | So I brought her to school. | Hallway; Pip walks in like a detective |
-| 6 | Goldie | My dad owns a yacht. | Goldie bragging, sunglasses |
-| 7 | Pip | LEMON! | Pip gags; the crowd turns to Goldie |
-| 8 | Ms. Brick | I love grading your homework. | Ms. Brick with a huge stack of papers |
-| 9 | Pip | Double lemon! | Pip falls over (oof thud); class laughs |
-| 10 | Sage | Then we got home... and Mom said... | Kitchen; Mom at the counter |
-| 11 | Mom | I'm not mad. Just tell me who broke the vase. | Broken vase on the floor (heartbeat) |
-| 12 | Pip | ...That tastes like a WHOLE lemon tree. | Pip turns green; Sage slowly backs away |
-| 13 | Sage | I'm grounded until I'm thirty. | Sage in her room, staring out the window |
-
-**Comment question:** What would YOUR lies taste like? 🍋👇
-**Title:** My Little Sister Can TASTE Lies! 🍋
+Target: about 45 seconds each (Xenost's hits average 45 s). The narrator leads, with short dialogue.
+v3 takes my v2 structure and adds the best details from the alternative draft (vase-piece callback,
+upside-down star, "it's wireless", windshield-wiper glasses, Grandpa's "five").
+`[ ]` = what's on screen, which needs no voice and costs no credits. `(SFX)` = sound effect.
 
 ---
 
-## S04: "My MOM Became Our Substitute Teacher!"
-Formula: adult embarrasses a kid at school (the top category, 6.4M median)
-Sets: classroom → hallway · Cast: Sage, Mom, Goldie, Noob, Bacon
+## S03: "My Little Sister Can TASTE Lies!" 🍋
+Outfits: Sage in a lilac hoodie (home) and a denim jacket (school) · Pip in yellow overalls
+Locations: living room → school hallway → classroom → dinner table
 
-| # | Who | Line | On screen |
-|---|-----|------|-----------|
-| 1 | Sage | Our teacher was sick. So the school called a substitute. | Empty teacher's desk; door opens |
-| 2 | Sage | It was my mom. | Mom walks in with a coffee mug; Sage slides down in her chair |
-| 3 | Mom | Good morning, class! Good morning, sweetie! | Mom waves right at Sage; class turns (record scratch) |
-| 4 | Sage | Then she took attendance. | Mom with a clipboard |
-| 5 | Mom | Sage... did you wear the underwear I ironed? | Class erupts laughing |
-| 6 | Sage | Then she showed my baby photos. On the projector. | Big screen behind Mom; Noob and Bacon howl |
-| 7 | Goldie | Ha! Baby Sage looks like a potato! | Goldie pointing, laughing |
-| 8 | Sage | And then Mom smiled. The scary smile. | Close-up: Mom's calm smile (heartbeat) |
-| 9 | Mom | Goldie. Pop quiz. Just you. Two hundred questions. | Giant stack of paper lands on Goldie's desk (thud) |
-| 10 | Goldie | ...Can I call my lawyer? | Goldie sweating |
-| 11 | Sage | By lunch, she was the most feared teacher in school. | Hallway; kids flatten against lockers as Mom passes |
-| 12 | Sage | And now? | Next-day classroom |
-| 13 | Sage | The principal hired her full-time. | Mom at the teacher's desk, waving; Sage face-plants |
+SAGE: My little sister can taste lies. Every lie tastes like a sour lemon.
+[Sage backs up filming herself; her elbow knocks a vase off the table] (CRASH)
+PIP: What was that?
+SAGE: Nothing!
+PIP: LEMON!
+[Pip's face scrunches; lemon icon pops] (sour sting)
+SAGE: So I hid the broken piece in my pocket… and took her to school.
+[Hallway: Goldie struts past in a pink jacket with a crooked star patch]
+SAGE: Goldie. Is that my jacket?
+GOLDIE: No. I bought it yesterday.
+PIP: Lemon.
+GOLDIE: My aunt bought it.
+PIP: Lemon. With the peel!
+SAGE: I sewed that star on upside down.
+[Goldie slowly turns. Zoom on the upside-down star. Goldie hands the jacket back] (vine boom)
+[Classroom: Ms. Brick behind a giant stack of papers]
+MS. BRICK: I just love grading your homework.
+PIP: Double lemon!
+[Pip falls off her chair] (oof)
+SAGE: Then we got home.
+MOM: I'm not mad. Just tell me who broke my vase.
+[Pip turns green; a lemon tree sprouts behind her] (heartbeat)
+PIP: That tastes like a WHOLE lemon tree.
+[Sage slowly puts the missing piece on the table]
+SAGE: Before I answer… how mad are we talking?
+[Mom silently slides a dustpan across the table] (record scratch)
+SAGE: See you when I'm thirty.
 
-**Comment question:** Would YOU want your mom as your teacher? 👇
-**Title:** My MOM Became Our Substitute Teacher! 😳
-
----
-
-## S05: "Everyone Thinks Noob Is a GENIUS!"
-Formula: "everyone thinks ___" mistaken identity (a 15–23M structure)
-Sets: hallway → classroom → stage · Cast: Sage, Noob, Ms. Brick, Grandpa Gus, Bacon
-
-| # | Who | Line | On screen |
-|---|-----|------|-----------|
-| 1 | Sage | My best friend Noob found my grandpa's glasses. | Noob tries on big glasses; Grandpa in the background patting his pockets |
-| 2 | Sage | Now everyone thinks he's a genius. | Students gather around Noob |
-| 3 | Ms. Brick | Noob, what is two plus two? | Classroom; Ms. Brick at the board |
-| 4 | Noob | ...Fish. | Long silence (crickets) |
-| 5 | Ms. Brick | ...Fish. Of course. Numbers live in the ocean of the mind. | Ms. Brick wipes a tear; class applauds |
-| 6 | Sage | He won the science fair with a potato. | Stage: a plain potato with a gold ribbon |
-| 7 | Bacon | Bro, what does it do? | Bacon squinting |
-| 8 | Noob | It's a potato. | Crowd gasps, "so deep" (vine boom) |
-| 9 | Sage | Then he got elected class president. | Noob on stage, confetti |
-| 10 | Sage | Until Grandpa came to take his glasses back. | Grandpa walks on stage and gently takes them |
-| 11 | Ms. Brick | Quick! Noob! Two plus two? | Everyone leans in |
-| 12 | Noob | Four. | Noob proud |
-| 13 | Ms. Brick | Wrong. Everyone knows it's fish. | Class nods; Noob stares at camera |
-
-**Comment question:** What's the dumbest thing YOU said that people thought was smart? 👇
-**Title:** Everyone Thinks Noob Is a GENIUS! 🤓🐟
+💬 Comment question: What would YOUR lies taste like? 🍋👇
 
 ---
 
-## Backup stories (from v1, kept for later batches)
-- **"My Mom Turned Off the Wi-Fi FOREVER!"** Mom has a secret router in her closet. ("…This is research.")
-- **"My Grandpa Joined My CLASS!"** Retired: too close to their "My DAD went back to school!"
-- **"My Little Sister SOLD Our House!"** Retired: their "I was bored, so I SOLD my dad!" was a weak performer (0.83M).
+## S04: "My MOM Became Our Substitute Teacher!" 😳
+Outfits: Sage in a green cardigan · Mom in a coral blazer with a patterned tote
+Locations: classroom → projector close-ups → hallway → classroom (next day)
+
+SAGE: Our teacher was sick, so the school sent a substitute. I knew it was my mom before I even saw her face.
+[A patterned tote swings through the door] (record scratch)
+MOM: Good morning, class! Sage, sweetie, you forgot your lunch!
+[A glittery lunchbox reading MOMMY'S LITTLE STAR lands on Sage's desk; Sage slides down in her chair]
+SAGE: Then she plugged her phone into the projector.
+[A huge baby photo: baby Sage in a laundry basket wearing one sock]
+GOLDIE: Ha! Baby Sage looks like a potato!
+[Class laughs. Sage yanks the cable. The photo stays up]
+MOM: It's wireless, sweetie.
+SAGE: Then Mom smiled. The scary smile.
+[Close-up: Mom's calm smile] (heartbeat)
+MOM: Goldie. Pop quiz. Just you. Two hundred questions.
+[A giant paper stack slams onto Goldie's desk] (thud)
+GOLDIE: …I'd like to take back the potato comment.
+SAGE: By lunch, the whole school was scared of my mom.
+[Hallway: kids flatten against the lockers as Mom walks past]
+SAGE: Next morning, I asked… where's Ms. Brick?
+MOM: Still sick. I'm here all week. Tomorrow, we're watching home videos.
+[Sage face-plants onto her desk] (sad trombone)
+SAGE: I'm moving to Grandpa's.
+
+💬 Comment question: Would YOU want your mom as your teacher? 👇
+
+---
+
+## S05: "Everyone Thinks Noob Is a GENIUS!" 🤓🐟
+Outfits: Sage in a striped rugby shirt · Noob in a red hoodie and Grandpa's huge glasses
+Locations: kitchen → classroom → science fair → school stage
+
+SAGE: My best friend Noob put on my grandpa's glasses. Now everyone thinks he's a genius.
+[Kitchen: Grandpa watches Noob try them on]
+GRANDPA: Careful. People believe anything you say in those.
+[Classroom]
+MS. BRICK: Noob, what's two plus two?
+NOOB: …Fish.
+[Ms. Brick slowly writes FISH on the board] (crickets)
+MS. BRICK: He's thinking beyond numbers.
+[Class applauds]
+SAGE: Yesterday, she made ME show my work.
+SAGE: Then he won the science fair… with a potato.
+[A plain potato wearing a blue ribbon]
+BACON: Bro. What does it do?
+NOOB: It's a potato.
+MS. BRICK: A powerful statement.
+[A VOTE NOOB banner unrolls] (cash)
+SAGE: Then Grandpa texted me.
+[Phone: "Need my glasses. Just put salt in my tea."]
+SAGE: So I made Noob a trade. These have windshield wipers.
+[Tiny wipers swish across the lenses; Noob swaps instantly] (sparkle)
+MS. BRICK: Final question, Noob. Two plus two?
+NOOB: Four!
+MS. BRICK: Wrong. Everyone knows it's fish.
+[Grandpa walks in, puts his glasses on, leans into the mic]
+GRANDPA: It's five.
+MS. BRICK: …Correct.
+[Class goes wild; Sage face-palms] (airhorn)
+SAGE: Grandpa's running for president now.
+
+💬 Comment question: What's the dumbest thing YOU said that people thought was smart? 👇
