@@ -1,0 +1,112 @@
+{
+  "id": "s04_substitute_mom",
+  "title": "My MOM Became Our Substitute Teacher! 😳",
+  "format": "short",
+  "mood": "bright",
+  "grade": "bright",
+  "fog": false,
+  "dof": false,
+  "handheld": 0.35,
+  "caption_style": "word",
+  "caption_pos": "top",
+  "cut_every": 1.25,
+  "sting": true,
+  "cta": {"at": 19},
+  "music": "quirky_loop",
+  "music_volume": 0.14,
+  "_pinned_comment": "Would YOU want your mom as your teacher? 👇",
+  "characters": {
+    "sage": {"crop_top": false, "knit": "#7bc47f", "shirt": "#a5d6a7", "sleeves": true, "pants": "#5b7fc7"},
+    "mom": {"jacket": "#ff7f6e", "shirt": "#fff3e0"}
+  },
+  "scenes": [
+    {
+      "set": "classroom_bright",
+      "cast": {"mom": [15, 8.6, 0], "sage": [-3, 1.6, 0], "goldie": [8, 1.6, 0], "noob": [3, 5.8, 0], "bacon": [-8, 5.8, 0]},
+      "props": [
+        {"id": "lunch", "type": "lunchbox", "at": [-3, 0.3, 1.96], "hidden": true, "scale": 0.8, "cam_dist": 3.2},
+        {"id": "screen", "type": "screen", "image": "textures/baby_sage.png", "w": 9.6, "h": 7.2,
+         "at": [-1, 11.25, 8.2], "hidden": true, "cam_dist": 15},
+        {"id": "quiz", "type": "paper_stack", "at": [9.2, 0.3, 7.96], "hidden": true}
+      ],
+      "shots": [
+        {"_beat": "HOOK", "speaker": "sage", "vo": true,
+         "line": "Our teacher was sick, so the school sent a substitute. I knew it was my mom before I even saw her face.",
+         "camera": "closeup:sage", "move": "punch",
+         "walk": {"mom": {"to": [1.6, 8.8], "at": 3.6}},
+         "anims": {"sage": "sit", "goldie": "sit", "noob": "sit", "bacon": "sit", "mom": "idle"},
+         "faces": {"sage": "shocked", "mom": "happy"},
+         "fx": [{"e": "😳", "at": 5.2, "x": 0.68, "y": 0.42, "size": 200, "dur": 1.0}]},
+        {"speaker": "mom", "line": "Good morning, class! Sage, sweetie, you forgot your lunch!", "camera": "medium:mom",
+         "show": ["lunch"], "prop_moves": {"lunch": {"at": 1.8, "dur": 0.3, "pop": true}},
+         "anims": {"mom": "wave", "sage": "sit_slide_down", "goldie": "sit_point", "noob": "sit", "bacon": "sit"},
+         "face": "happy", "faces": {"sage": "sad", "goldie": "happy"},
+         "fx": [{"e": "✨", "at": 2.0, "x": 0.4, "y": 0.62, "size": 170, "dur": 1.0}]},
+        {"speaker": "sage", "vo": true, "line": "Then she plugged her phone into the projector.", "camera": "medium:mom",
+         "anims": {"mom": "point", "sage": "sit", "goldie": "sit", "noob": "sit", "bacon": "sit"},
+         "faces": {"mom": "happy", "sage": "scared"}},
+        {"_beat": "PHOTO", "duration": 1.6, "no_cuts": true, "camera": "prop:screen", "move": "zoom",
+         "show": ["screen"], "prop_moves": {"screen": {"at": 0, "dur": 0.35, "pop": true}},
+         "anims": {"mom": "idle", "sage": "sit", "goldie": "sit", "noob": "sit", "bacon": "sit"},
+         "sfx": [{"name": "vine_boom", "at": 0.3}],
+         "fx": [{"e": "👶", "at": 0.5, "x": 0.82, "y": 0.62, "size": 170, "dur": 1.0}]},
+        {"speaker": "goldie", "line": "Ha! Baby Sage looks like a potato!", "camera": "closeup:goldie",
+         "anims": {"goldie": "sit_point", "noob": "sit_point", "bacon": "sit_point", "sage": "sit_slide_down", "mom": "idle"},
+         "face": "happy", "faces": {"noob": "happy", "bacon": "happy", "sage": "cry"},
+         "fx": [{"e": "🥔", "at": 1.0, "x": 0.72, "y": 0.5, "size": 220, "dur": 1.1, "burst": true}]},
+        {"speaker": "mom", "line": "It's wireless, sweetie.", "camera": "closeup:mom", "no_cuts": true,
+         "anims": {"mom": "shrug", "sage": "sit", "goldie": "sit", "noob": "sit", "bacon": "sit"}, "face": "smug",
+         "fx": [{"e": "📶", "at": 0.3, "x": 0.7, "y": 0.42, "size": 160, "dur": 1.0}]},
+        {"speaker": "sage", "vo": true, "line": "Then Mom smiled. The scary smile.", "camera": "extreme:mom",
+         "no_cuts": true, "move": "push",
+         "anims": {"mom": "idle", "sage": "sit", "goldie": "sit", "noob": "sit", "bacon": "sit"}, "faces": {"mom": "evil"},
+         "sfx": [{"name": "heartbeat", "at": 0.6, "volume": 0.7}]},
+        {"speaker": "mom", "line": "Goldie. Pop quiz. Just you. Two hundred questions.", "camera": "medium:mom",
+         "anims": {"mom": "point", "goldie": "sit_shocked", "sage": "sit", "noob": "sit", "bacon": "sit"},
+         "face": "smug", "faces": {"goldie": "shocked"}},
+        {"_beat": "SLAM", "duration": 1.2, "no_cuts": true, "camera": "medium:goldie", "move": "shake",
+         "show": ["quiz"], "prop_moves": {"quiz": {"at": 0, "dur": 0.22, "to": [0, 0, -6]}},
+         "anims": {"goldie": "sit_shocked", "mom": "idle", "sage": "sit", "noob": "sit", "bacon": "sit"},
+         "faces": {"goldie": "dead"}, "sfx": [{"name": "oof_thud", "at": 0.2}],
+         "fx": [{"e": "💥", "at": 0.22, "x": 0.5, "y": 0.6, "size": 240, "dur": 0.7}]},
+        {"speaker": "goldie", "line": "I'd like to take back the potato comment.", "camera": "closeup:goldie",
+         "anims": {"goldie": "sit", "mom": "cross_arms", "sage": "sit_talk", "noob": "sit", "bacon": "sit"},
+         "face": "scared", "faces": {"sage": "happy", "mom": "smug"},
+         "fx": [{"e": "💦", "at": 0.3, "x": 0.64, "y": 0.4, "size": 150, "dur": 1.2}]}
+      ]
+    },
+    {
+      "set": "hallway",
+      "cast": {"mom": [-16, 3, 0], "noob": [-7, 7.4, 0], "bacon": [-2, 7.4, 0], "goldie": [4, 7.4, 0]},
+      "shots": [
+        {"speaker": "sage", "vo": true, "line": "By lunch, the whole school was scared of my mom.", "camera": "wide",
+         "no_cuts": true, "move": "pan", "walk": {"mom": [12, 3]},
+         "anims": {"mom": "idle", "noob": "flatten", "bacon": "flatten", "goldie": "flatten"},
+         "faces": {"mom": "smug", "noob": "scared", "bacon": "scared", "goldie": "scared"},
+         "fx": [{"e": "😱", "at": 1.0, "x": 0.3, "y": 0.5, "size": 150, "dur": 1.2}]}
+      ]
+    },
+    {
+      "set": "classroom_bright",
+      "cast": {"mom": [1.6, 8.8, 0], "sage": [-3, 1.6, 0], "noob": [3, 5.8, 0], "goldie": [8, 1.6, 0]},
+      "shots": [
+        {"speaker": "sage", "vo": true, "line": "Next morning, I asked...", "camera": "closeup:sage", "no_cuts": true,
+         "anims": {"sage": "sit", "mom": "idle", "noob": "sit", "goldie": "sit"}, "faces": {"sage": "sus"},
+         "fx": [{"text": "NEXT MORNING", "color": "#ffd23f", "size": 100, "at": 0.0, "x": 0.5, "y": 0.72, "dur": 1.2}]},
+        {"speaker": "sage", "line": "Where's Ms. Brick?", "camera": "closeup:sage", "no_cuts": true,
+         "anims": {"sage": "sit_talk", "mom": "idle", "noob": "sit", "goldie": "sit"}, "face": "scared"},
+        {"speaker": "mom", "line": "Still sick. I'm here all week. Tomorrow, we're watching home videos.",
+         "camera": "medium:mom", "anims": {"mom": "talk", "sage": "sit", "noob": "sit", "goldie": "sit"},
+         "face": "happy", "faces": {"sage": "shocked"},
+         "fx": [{"e": "📼", "at": 2.8, "x": 0.7, "y": 0.45, "size": 190, "dur": 1.3, "burst": true}]},
+        {"_beat": "FACEPLANT", "duration": 1.3, "no_cuts": true, "camera": "medium:sage", "move": "shake",
+         "anims": {"sage": "sit_faceplant", "mom": "idle", "noob": "sit", "goldie": "sit"},
+         "sfx": [{"name": "sad_trombone", "at": 0.25}]},
+        {"speaker": "sage", "vo": true, "line": "I'm moving to Grandpa's.", "camera": "wide", "no_cuts": true,
+         "anims": {"sage": "sit_faceplant", "mom": "wave", "noob": "sit", "goldie": "sit"}, "faces": {"mom": "happy"},
+         "hold": 1.3,
+         "fx": [{"e": "🧳", "at": 0.4, "x": 0.3, "y": 0.5, "size": 180, "dur": 1.2}]}
+      ]
+    }
+  ]
+}

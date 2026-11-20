@@ -497,12 +497,50 @@ def back_up_bump(rig, f0, f1, fps):
     pose(rig, f1 - 1, offset=(-1.1, 0.65, 0), arm_r=(-60, 0, 0), arm_l=(-30, -30, 0), head=(-15, 0, 40))
 
 
+def sit_faceplant(rig, f0, f1, fps):
+    """Seated, then slams face-down onto the desk and stays there."""
+    s = dict(offset=(0, 0.4, -0.95), leg_l=(-90, 0, 0), leg_r=(-90, 0, 0))
+    pose(rig, f0, arm_l=(-40, 0, 0), arm_r=(-40, 0, 0), **s)
+    pose(rig, min(f0 + 5, f1 - 1), torso=(8, 0, 0), head=(10, 0, 0), arm_l=(-60, 0, 0), arm_r=(-60, 0, 0), **s)
+    pose(rig, min(f0 + 9, f1 - 1), torso=(-55, 0, 0), head=(-20, 0, 0), arm_l=(-120, -20, 0), arm_r=(-120, 20, 0), **s)
+    for i, f in _loop(f0 + 14, f1, 10):
+        pose(rig, f, torso=(-55, 0, 0), head=(-20, 0, 4 if i % 2 else -4), arm_l=(-120, -20, 0), arm_r=(-120, 20, 0), **s)
+    pose(rig, f1 - 1, torso=(-55, 0, 0), head=(-20, 0, 0), arm_l=(-120, -20, 0), arm_r=(-120, 20, 0), **s)
+
+
+def flatten(rig, f0, f1, fps):
+    """Presses flat against the wall behind them, arms spread, terrified."""
+    pose(rig, f0)
+    pose(rig, min(f0 + 5, f1 - 1), offset=(0, 0.7, 0.1), torso=(8, 0, 0), head=(12, 0, 0),
+         arm_l=(0, -80, 0), arm_r=(0, 80, 0))
+    for i, f in _loop(f0 + 8, f1, 4):
+        pose(rig, f, offset=(0.03 * (1 if i % 2 else -1), 0.7, 0.1), torso=(8, 0, 0), head=(12, 0, 6 if i % 2 else -6),
+             arm_l=(0, -80, 0), arm_r=(0, 80, 0))
+    pose(rig, f1 - 1, offset=(0, 0.7, 0.1), torso=(8, 0, 0), head=(12, 0, 0), arm_l=(0, -80, 0), arm_r=(0, 80, 0))
+
+
+def sit_slide_down(rig, f0, f1, fps):
+    """Embarrassed: slowly slides down in the chair until only the head shows."""
+    pose(rig, f0, offset=(0, 0.4, -0.95), leg_l=(-90, 0, 0), leg_r=(-90, 0, 0), arm_l=(-40, 0, 0), arm_r=(-40, 0, 0))
+    pose(rig, f1 - 1, offset=(0, -0.3, -1.6), tilt=(-25, 0), leg_l=(-70, 0, 0), leg_r=(-70, 0, 0), head=(20, 0, 0),
+         arm_l=(-20, -10, 0), arm_r=(-20, 10, 0))
+
+
+def sweat(rig, f0, f1, fps):
+    """Nervous: tugs collar, shifts weight, glances around."""
+    for i, f in _loop(f0, f1, 5):
+        s = 1 if i % 2 else -1
+        pose(rig, f, offset=(0.05 * s, 0, 0), head=(-5, 0, 20 * s), arm_r=(-150, 30, 0), arm_l=(0, -8, 0), torso=(-3, 0, 0))
+    pose(rig, f1 - 1, arm_r=(-150, 30, 0))
+
+
 ANIMS = {f.__name__: f for f in [
     idle, talk, shocked, scared, angry, laugh, sad, cry, wave, point, facepalm, think, dance, jump,
     fall, lie, sit, run_in_place, walk_in_left, walk_in_right, walk_out_left, walk_out_right,
     run_out_left, run_out_right, frozen, unfreeze, hidden, nod, shrug, brag, cross_arms, look_up,
     point_laugh, whisper, sad_look_down, rip_tag, celebrate, stumble, step_away_right, cut_line, step_right,
-    turn_around, sit_talk, sit_shocked, sit_fall, sit_point, slide_object, film_selfie, back_up_bump]}
+    turn_around, sit_talk, sit_shocked, sit_fall, sit_point, slide_object, film_selfie, back_up_bump,
+    sit_faceplant, flatten, sit_slide_down, sweat]}
 
 
 def walk_to(rig, f0, start, end, fps, speed=6.5, run=False, max_frames=None):

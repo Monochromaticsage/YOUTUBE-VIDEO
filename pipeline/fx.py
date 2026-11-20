@@ -59,6 +59,27 @@ def _word(text, size, color):
     return im
 
 
+def _phone(msg, sender, size):
+    """A phone with one chat bubble (e.g. a text from Grandpa). size = phone height in px."""
+    import textwrap
+    W, H = int(size * 0.52), size
+    im = Image.new("RGBA", (W + 20, H + 20), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle([10, 10, W + 10, H + 10], radius=W // 7, fill=(25, 25, 32), outline=(80, 80, 95), width=6)
+    d.rounded_rectangle([24, 24, W - 4, H - 4], radius=W // 9, fill=(240, 244, 250))
+    hf = ImageFont.truetype(FONT, max(14, W // 11))
+    d.text((W // 2 + 10, 60), sender, font=hf, fill=(30, 30, 40), anchor="mm")
+    bf = ImageFont.truetype(FONT, max(12, W // 13))
+    lines = textwrap.wrap(msg, width=16)
+    lh = int(bf.size * 1.25)
+    bh = lh * len(lines) + 30
+    top = 110
+    d.rounded_rectangle([36, top, W - 20, top + bh], radius=24, fill=(229, 229, 234))
+    for k, ln in enumerate(lines):
+        d.text((52, top + 15 + k * lh), ln, font=bf, fill=(20, 20, 25))
+    return im
+
+
 def _burst(size, color="#ffffff"):
     """Comic impact star behind a sticker."""
     im = Image.new("RGBA", (size, size), (0, 0, 0, 0))
@@ -75,7 +96,9 @@ def _burst(size, color="#ffffff"):
 
 def _base(fx):
     size = int(fx.get("size", 260))
-    if "text" in fx:
+    if "phone" in fx:
+        img = _phone(fx["phone"], fx.get("sender", "Grandpa"), size)
+    elif "text" in fx:
         img = _word(fx["text"], size, fx.get("color", "#ffffff"))
     else:
         img = _emoji(fx.get("e", "💥"), size)

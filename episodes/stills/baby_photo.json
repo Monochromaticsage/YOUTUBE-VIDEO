@@ -1,0 +1,12 @@
+{
+  "id": "still_baby_photo",
+  "title": "baby photo still (projector gag in S04)",
+  "format": "short",
+  "mood": "bright", "fog": false, "dof": false, "handheld": 0,
+  "characters": {"sage": {"scale": 0.5, "crop_top": false, "shirt": "#ffe3ef", "pants": "#ffe3ef", "sleeves": true,
+                          "necklace": false, "earrings": false}},
+  "scenes": [{"set": "living_room", "cast": {"sage": [0, 2.9, 0.75]},
+              "props": [{"id": "basket", "type": "basket", "at": [0, 3.0, 0], "scale": 0.55}],
+              "shots": [{"duration": 0.3, "camera": "closeup:sage", "no_cuts": true, "move": "push",
+                         "anims": {"sage": "sit"}, "faces": {"sage": "happy"}}]}]
+}

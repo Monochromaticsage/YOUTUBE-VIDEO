@@ -1,0 +1,136 @@
+{
+  "id": "s05_noob_genius",
+  "title": "Everyone Thinks Noob Is a GENIUS! 🤓🐟",
+  "format": "short",
+  "mood": "bright",
+  "grade": "bright",
+  "fog": false,
+  "dof": false,
+  "handheld": 0.35,
+  "caption_style": "word",
+  "caption_pos": "top",
+  "cut_every": 1.25,
+  "sting": true,
+  "cta": {"at": 19},
+  "music": "quirky_loop",
+  "music_volume": 0.14,
+  "_pinned_comment": "What's the dumbest thing YOU said that people thought was smart? 👇",
+  "characters": {
+    "noob": {"glasses": true, "hoodie": "#e53935", "shirt": "#e53935", "sleeves": true},
+    "sage": {"crop_top": false, "shirt": "#ffffff", "knit": "#1e63e9", "sleeves": true, "pants": "#8d7b5a"}
+  },
+  "scenes": [
+    {
+      "set": "dining_room",
+      "cast": {"grandpa": [-5.5, 4.4, 0], "noob": [-1.5, 4.4, 0], "sage": [2.8, 4.4, 0]},
+      "shots": [
+        {"_beat": "HOOK", "speaker": "sage", "vo": true,
+         "line": "My best friend Noob put on my grandpa's glasses. Now everyone thinks he's a genius.",
+         "camera": "closeup:noob", "move": "punch",
+         "anims": {"noob": "brag", "grandpa": "cross_arms", "sage": "idle"},
+         "faces": {"noob": "smug", "grandpa": "sus", "sage": "sus"},
+         "fx": [{"e": "🤓", "at": 3.2, "x": 0.7, "y": 0.42, "size": 210, "dur": 1.3, "burst": true}]},
+        {"speaker": "grandpa", "line": "Careful. People believe anything you say in those.", "camera": "medium:grandpa",
+         "anims": {"grandpa": "point", "noob": "idle", "sage": "idle"}, "face": "sus", "faces": {"noob": "smug"}}
+      ]
+    },
+    {
+      "set": "classroom_bright",
+      "cast": {"ms_brick": [1.8, 9.3, 0], "noob": [-3, 1.6, 0], "sage": [-8, 1.6, 0], "bacon": [8, 1.6, 0]},
+      "props": [{"id": "fish", "type": "sign", "text": "FISH", "size": 1.3, "color": "#1e63e9",
+                 "at": [3.4, 11.4, 7.3], "hidden": true, "cam_dist": 12}],
+      "shots": [
+        {"speaker": "ms_brick", "line": "Noob, what's two plus two?", "camera": "medium:ms_brick",
+         "anims": {"ms_brick": "point", "noob": "sit", "sage": "sit", "bacon": "sit"}, "face": "neutral"},
+        {"speaker": "noob", "line": "...Fish.", "camera": "closeup:noob", "no_cuts": true, "move": "push",
+         "anims": {"noob": "sit", "sage": "sit", "bacon": "sit"}, "face": "smug",
+         "sfx": [{"name": "tick_tock", "at": 0.6, "volume": 0.5}],
+         "fx": [{"e": "🐟", "at": 0.5, "x": 0.72, "y": 0.45, "size": 200, "dur": 1.1}]},
+        {"_beat": "BOARD", "duration": 1.4, "no_cuts": true, "camera": "prop:fish", "move": "zoom",
+         "show": ["fish"], "prop_moves": {"fish": {"at": 0.2, "dur": 0.4, "pop": true}},
+         "anims": {"ms_brick": "point", "noob": "sit", "sage": "sit", "bacon": "sit"},
+         "sfx": [{"name": "pop", "at": 0.3}]},
+        {"speaker": "ms_brick", "line": "He's thinking beyond numbers.", "camera": "medium:ms_brick",
+         "anims": {"ms_brick": "celebrate", "noob": "sit", "sage": "sit_shocked", "bacon": "sit_point"},
+         "face": "love", "faces": {"sage": "shocked", "noob": "smug"},
+         "fx": [{"e": "👏", "at": 0.6, "x": 0.3, "y": 0.55, "size": 180, "dur": 1.2},
+                {"e": "👏", "at": 0.9, "x": 0.74, "y": 0.6, "size": 160, "dur": 1.0}]},
+        {"speaker": "sage", "line": "Yesterday, she made ME show my work.", "camera": "closeup:sage",
+         "anims": {"sage": "sit_talk", "noob": "sit", "bacon": "sit"}, "face": "angry",
+         "fx": [{"e": "😤", "at": 0.5, "x": 0.68, "y": 0.42, "size": 170, "dur": 1.0}]}
+      ]
+    },
+    {
+      "set": "hallway",
+      "cast": {"noob": [-1, 1, 0], "bacon": [-5, 0.5, 0], "ms_brick": [4, 0.6, 0], "sage": [-8.5, 1.2, 0]},
+      "props": [
+        {"id": "table", "type": "podium", "text": "SCIENCE FAIR", "mic": false, "at": [-1, -1.6, 0], "scale": 0.8},
+        {"id": "potato", "type": "potato", "at": [-1, -1.6, 2.9], "cam_dist": 4.5},
+        {"id": "banner", "type": "sign", "text": "VOTE NOOB", "size": 1.4, "color": "#ffffff", "board": "#e53935",
+         "at": [3, 8.6, 9.5], "hidden": true, "cam_dist": 10}
+      ],
+      "shots": [
+        {"speaker": "sage", "vo": true, "line": "Then he won the science fair... with a potato.", "camera": "prop:potato",
+         "move": "push", "anims": {"noob": "brag", "bacon": "idle", "ms_brick": "celebrate", "sage": "facepalm"},
+         "faces": {"noob": "smug", "ms_brick": "love"},
+         "fx": [{"e": "🥔", "at": 1.6, "x": 0.5, "y": 0.5, "size": 220, "dur": 1.2, "burst": true}]},
+        {"speaker": "bacon", "line": "Bro. What does it do?", "camera": "closeup:bacon",
+         "anims": {"bacon": "think", "noob": "idle"}, "face": "sus"},
+        {"speaker": "noob", "line": "It's a potato.", "camera": "closeup:noob", "no_cuts": true,
+         "anims": {"noob": "shrug"}, "face": "smug"},
+        {"speaker": "ms_brick", "line": "A powerful statement.", "camera": "medium:ms_brick", "no_cuts": true,
+         "anims": {"ms_brick": "nod"}, "face": "love", "sfx": "vine_boom"},
+        {"_beat": "BANNER", "duration": 1.3, "no_cuts": true, "camera": "prop:banner", "move": "pull",
+         "show": ["banner"], "prop_moves": {"banner": {"at": 0, "dur": 0.4, "pop": true}},
+         "anims": {"noob": "celebrate", "bacon": "celebrate", "ms_brick": "celebrate", "sage": "facepalm"},
+         "sfx": [{"name": "cash", "at": 0.2}],
+         "fx": [{"e": "🗳️", "at": 0.4, "x": 0.25, "y": 0.62, "size": 170, "dur": 0.9}]},
+        {"speaker": "sage", "vo": true, "line": "Then Grandpa texted me.", "camera": "closeup:sage", "no_cuts": true,
+         "anims": {"sage": "look_up"}, "faces": {"sage": "sus"}, "hold": 0.8,
+         "sfx": [{"name": "notification", "at": 0.1}],
+         "fx": [{"phone": "Need my glasses. Just put salt in my tea.", "size": 640, "at": 0.15, "x": 0.5, "y": 0.58, "dur": 2.0}]},
+        {"speaker": "sage", "line": "So I made Noob a trade. These have windshield wipers.", "camera": "two:sage,noob",
+         "walk": {"sage": [-3.2, 0.8]}, "anims": {"sage": "talk", "noob": "shocked", "bacon": "idle"},
+         "face": "smug", "faces": {"noob": "love"},
+         "fx": [{"text": "SWISH SWISH", "color": "#7cd4ff", "size": 95, "at": 2.0, "x": 0.5, "y": 0.66, "dur": 1.2, "anim": "shake"},
+                {"e": "✨", "at": 2.1, "x": 0.66, "y": 0.45, "size": 150, "dur": 1.0}]}
+      ]
+    },
+    {
+      "set": "stage",
+      "cast": {"noob": [0, 1.4, 0], "ms_brick": [-5.5, 0.4, 0], "sage": [5, 0.4, 0], "bacon": [8.5, 1.2, 0],
+               "grandpa": [15, 1.0, 0]},
+      "props": [
+        {"id": "podium", "type": "podium", "text": "NOOB 4 PREZ", "at": [0, -0.6, 0]},
+        {"id": "banner2", "type": "sign", "text": "VOTE NOOB", "size": 1.8, "color": "#ffffff", "board": "#e53935",
+         "at": [0, 9.6, 11]}
+      ],
+      "shots": [
+        {"speaker": "ms_brick", "line": "Final question, Noob. Two plus two?", "camera": "medium:ms_brick",
+         "anims": {"ms_brick": "point", "noob": "idle", "sage": "cross_arms", "bacon": "idle", "grandpa": "hidden"},
+         "faces": {"noob": "smug"}},
+        {"speaker": "noob", "line": "Four!", "camera": "closeup:noob", "no_cuts": true,
+         "anims": {"noob": "celebrate", "grandpa": "hidden"}, "face": "happy"},
+        {"speaker": "ms_brick", "line": "Wrong. Everyone knows it's fish.", "camera": "medium:ms_brick",
+         "anims": {"ms_brick": "angry", "noob": "shocked", "grandpa": "hidden"}, "face": "angry", "faces": {"noob": "shocked"},
+         "fx": [{"e": "🐟", "at": 1.2, "x": 0.72, "y": 0.46, "size": 190, "dur": 1.0, "anim": "spin"}]},
+        {"_beat": "GRANDPA", "duration": 1.6, "no_cuts": true, "camera": "wide", "move": "push",
+         "walk": {"grandpa": [2.2, 0.6]},
+         "anims": {"noob": "idle", "ms_brick": "idle", "sage": "idle", "bacon": "idle"},
+         "faces": {"grandpa": "smug"}, "sfx": [{"name": "footsteps", "at": 0.1}]},
+        {"speaker": "grandpa", "line": "It's five.", "camera": "closeup:grandpa", "no_cuts": true, "move": "push",
+         "anims": {"grandpa": "nod"}, "face": "smug"},
+        {"speaker": "ms_brick", "line": "...Correct.", "camera": "wide", "no_cuts": true,
+         "anims": {"ms_brick": "celebrate", "bacon": "celebrate", "noob": "shocked", "sage": "facepalm", "grandpa": "brag"},
+         "face": "love", "faces": {"noob": "shocked", "grandpa": "smug"},
+         "sfx": [{"name": "airhorn", "at": 0.4, "volume": 0.6}],
+         "fx": [{"e": "🎉", "at": 0.3, "x": 0.3, "y": 0.55, "size": 180, "dur": 1.0},
+                {"e": "🎉", "at": 0.5, "x": 0.72, "y": 0.6, "size": 170, "dur": 1.0}]},
+        {"speaker": "sage", "vo": true, "line": "Grandpa's running for president now.", "camera": "closeup:grandpa",
+         "no_cuts": true, "anims": {"grandpa": "wave", "sage": "facepalm"}, "face": "happy", "faces": {"grandpa": "happy"},
+         "hold": 1.3,
+         "fx": [{"text": "GRANDPA 4 PREZ", "color": "#ffd23f", "size": 100, "at": 0.6, "x": 0.5, "y": 0.72, "dur": 1.4, "anim": "shake"}]}
+      ]
+    }
+  ]
+}

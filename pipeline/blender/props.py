@@ -307,6 +307,124 @@ STORY_PROPS = {"vase": _vase, "shards": _shards, "piece": _piece, "paper_stack":
                "dustpan": _dustpan, "lemon_tree": _lemon_tree, "plate": _plate}
 
 
+def _text_obj(root, n, text, size, color, loc, extrude=0.04):
+    import os
+    cu = bpy.data.curves.new(f"{n}_txt", "FONT")
+    cu.body = text
+    cu.align_x, cu.align_y = "CENTER", "CENTER"
+    cu.size = size
+    cu.extrude = extrude
+    fp = "/usr/share/fonts/opentype/inter/InterDisplay-Black.otf"
+    if os.path.exists(fp):
+        cu.font = bpy.data.fonts.load(fp, check_existing=True)
+    ob = bpy.data.objects.new(f"{n}_txt", cu)
+    bpy.context.scene.collection.objects.link(ob)
+    ob.parent = root
+    ob.location = loc
+    ob.rotation_euler = (math.radians(90), 0, 0)
+    ob.data.materials.append(M(color, rough=0.4, tex=False))
+    return ob
+
+
+def _sign(root, n, pd):
+    """Text on an optional backing board: {"text": "VOTE NOOB", "size": 1.2, "color": "#fff", "board": "#e53935"}"""
+    text = pd.get("text", "SIGN")
+    size = float(pd.get("size", 1.0))
+    if pd.get("board"):
+        w = max(1.5, len(text) * size * 0.62 + size)
+        h = size * 1.6 * (text.count("\n") + 1)
+        _kid(root, f"{n}_board", box_mesh("sb", (w, 0.15, h)), (0, 0.1, 0), M(pd["board"], rough=0.6, tex=False), bevel=0.05)
+    _text_obj(root, n, text, size, pd.get("color", "#ffffff"), (0, -0.05, 0))
+    return 0.5, 6.0
+
+
+def _lunchbox(root, n, pd):
+    pink = M("#ff6fb5", rough=0.25, tex=False)
+    _kid(root, f"{n}_box", box_mesh("lb", (2.0, 1.0, 1.4)), (0, 0, 0.7), pink, bevel=0.12)
+    _kid(root, f"{n}_handle", box_mesh("lh", (0.9, 0.2, 0.35)), (0, 0, 1.55), M("#ffd23f", tex=False), bevel=0.08)
+    rnd = random.Random(2)
+    for i in range(26):  # glitter
+        _kid(root, f"{n}_gl{i}", box_mesh("gl", (0.08, 0.04, 0.08)), (rnd.uniform(-0.95, 0.95), -0.52, rnd.uniform(0.1, 1.35)),
+             glow(("#fff6b0", "#ffffff", "#ffd1f0")[i % 3], 3.0), bevel=0)
+    _text_obj(root, n, "MOMMY'S\nLITTLE STAR", 0.24, "#ffffff", (0, -0.53, 0.72), extrude=0.01)
+    return 1.4, 4.0
+
+
+def _screen(root, n, pd):
+    """Pull-down projector screen showing an image file (pd["image"], relative to assets/)."""
+    import os
+    w, h = float(pd.get("w", 9.0)), float(pd.get("h", 6.0))
+    _kid(root, f"{n}_case", box_mesh("sc", (w + 0.6, 0.6, 0.5)), (0, 0, h / 2 + 0.4), M("#eceff1", tex=False), bevel=0.1)
+    me = bpy.data.meshes.new(f"{n}_img")
+    me.from_pydata([(-w / 2, 0, -h / 2), (w / 2, 0, -h / 2), (w / 2, 0, h / 2), (-w / 2, 0, h / 2)], [], [(0, 1, 2, 3)])
+    uv = me.uv_layers.new()
+    for li, co in zip(range(4), [(0, 0), (1, 0), (1, 1), (0, 1)]):
+        uv.data[li].uv = co
+    ob = bpy.data.objects.new(f"{n}_img", me)
+    bpy.context.scene.collection.objects.link(ob)
+    ob.parent = root
+    mat = bpy.data.materials.new(f"{n}_imgmat")
+    mat.use_nodes = True
+    nt = mat.node_tree
+    for nd in list(nt.nodes):
+        if nd.type != "OUTPUT_MATERIAL":
+            nt.nodes.remove(nd)
+    em = nt.nodes.new("ShaderNodeEmission")
+    em.inputs["Strength"].default_value = 1.0
+    path = os.path.join(os.path.dirname(__file__), "..", "..", "assets", pd.get("image", ""))
+    if pd.get("image") and os.path.exists(path):
+        tex = nt.nodes.new("ShaderNodeTexImage")
+        tex.image = bpy.data.images.load(os.path.abspath(path))
+        nt.links.new(tex.outputs["Color"], em.inputs["Color"])
+    else:
+        em.inputs["Color"].default_value = hex_rgba("#ffffff")
+    nt.links.new(em.outputs["Emission"], nt.nodes.get("Material Output").inputs["Surface"])
+    me.materials.append(mat)
+    _kid(root, f"{n}_bar", box_mesh("sbr", (w + 0.2, 0.25, 0.25)), (0, 0, -h / 2 - 0.1), M("#90a4ae", tex=False), bevel=0.05)
+    return 0.0, h * 1.3  # image is centred on the root
+
+
+def _potato(root, n, pd):
+    _kid(root, f"{n}_stand", box_mesh("ps", (2.0, 1.6, 0.25)), (0, 0, 0.12), M("#ffffff", tex=False), bevel=0.05)
+    _kid(root, f"{n}_pot", box_mesh("pt", (1.3, 0.85, 0.8)), (0, 0, 0.7), M("#c8a165", rough=0.85, scale=8), bevel=0.35)
+    blue = M("#1e63e9", rough=0.4, tex=False)
+    _kid(root, f"{n}_rib", cyl_mesh("rb", 0.42, 0.06, 16), (0.55, -0.48, 1.05), blue, bevel=0, rot=(90, 0, 0))
+    for side in (-1, 1):
+        _kid(root, f"{n}_tail{side}", box_mesh("rt", (0.16, 0.05, 0.6)), (0.55 + side * 0.15, -0.5, 0.65), blue, bevel=0,
+             rot=(0, side * 15, 0))
+    _text_obj(root, n, "1st", 0.28, "#ffd23f", (0.55, -0.53, 1.05), extrude=0.01)
+    return 1.2, 4.0
+
+
+def _podium(root, n, pd):
+    wood = M("#8d6e63", rough=0.5)
+    _kid(root, f"{n}_body", box_mesh("pd", (2.6, 1.6, 3.4)), (0, 0, 1.7), wood, bevel=0.08)
+    _kid(root, f"{n}_top", box_mesh("pt", (3.0, 1.9, 0.25)), (0, 0, 3.5), M("#6d4c41"), bevel=0.06)
+    if pd.get("mic", True):
+        _kid(root, f"{n}_mic", box_mesh("mc", (0.08, 0.08, 1.1)), (0, -0.5, 4.1), M("#222222", rough=0.3, tex=False),
+             bevel=0, rot=(-25, 0, 0))
+        _kid(root, f"{n}_mhead", box_mesh("mh", (0.3, 0.3, 0.35)), (0, -0.75, 4.6), M("#333333", rough=0.3, tex=False),
+             bevel=0.12)
+    if pd.get("text"):
+        _text_obj(root, n, pd["text"], 0.45, "#ffd23f", (0, -0.82, 2.2), extrude=0.02)
+    return 3.6, 7.0
+
+
+def _basket(root, n, pd):
+    weave = M("#e0c48c", rough=0.9, scale=10)
+    _kid(root, f"{n}_base", box_mesh("bb", (3.4, 2.6, 0.2)), (0, 0, 0.1), weave, bevel=0.05)
+    for x, y, sx, sy in [(0, -1.25, 3.4, 0.15), (0, 1.25, 3.4, 0.15), (-1.65, 0, 0.15, 2.6), (1.65, 0, 0.15, 2.6)]:
+        _kid(root, f"{n}_w", box_mesh("bw", (sx, sy, 1.4)), (x, y, 0.75), weave, bevel=0.04)
+    for i in range(3):
+        _kid(root, f"{n}_sock{i}", box_mesh("bs", (0.9, 0.5, 0.25)), (-1.0 + i * 1.0, 0.6, 0.4),
+             M(("#ffffff", "#81d4fa", "#ff8fab")[i], tex=False), bevel=0.1)
+    return 1.4, 6.0
+
+
+STORY_PROPS.update({"lunchbox": _lunchbox, "screen": _screen, "potato": _potato, "podium": _podium,
+                    "basket": _basket, "sign": _sign})
+
+
 def scene_prop(pd, origin):
     """pd: {"id": "vase", "type": "vase", "at": [x, y, z], "rot": deg, "scale": 1.0}"""
     from mathutils import Vector
@@ -319,6 +437,7 @@ def scene_prop(pd, origin):
     root.scale = (s, s, s)
     if pd["type"] not in STORY_PROPS:
         raise ValueError(f"unknown prop type '{pd['type']}'. Available: {sorted(STORY_PROPS)}")
-    h, dist = STORY_PROPS[pd["type"]](root, pd["id"])
+    fn = STORY_PROPS[pd["type"]]
+    h, dist = fn(root, pd["id"], pd) if fn.__code__.co_argcount >= 3 else fn(root, pd["id"])
     center = Vector(root.location) + Vector((0, 0, h * 0.5 * s))
     return {"root": root, "center": center, "scale": (s, s, s), "cam_dist": pd.get("cam_dist", dist * s)}
