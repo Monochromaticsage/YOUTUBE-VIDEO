@@ -32,7 +32,7 @@
       "shots": [
         {"_beat": "HOOK", "speaker": "sage", "vo": true,
          "line": "Our teacher was sick, so the school sent a substitute. I knew it was my mom before I even saw her face.",
-         "camera": "closeup:sage", "move": "punch",
+         "cameras": ["closeup:sage", "wide", "extreme:sage", "medium:mom"], "moves": ["punch", "push", "push", "push"],
          "walk": {"mom": {"to": [1.6, 8.8], "at": 3.6}},
          "anims": {"sage": "sit", "goldie": "sit", "noob": "sit", "bacon": "sit", "mom": "idle"},
          "faces": {"sage": "shocked", "mom": "happy"},

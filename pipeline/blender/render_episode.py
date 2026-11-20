@@ -433,7 +433,9 @@ def auto_angles(base, speaker, rigs, n, seed):
     if not vis:
         return [base] * n
     s = speaker if speaker in vis else vis[0]
-    others = [k for k in vis if k != s] or [s]
+    # reactions only from characters near the action (not someone still off by a far wall)
+    sp = Vector(rigs[s].base)
+    others = [k for k in vis if k != s and (Vector(rigs[k].base) - sp).length < 13] or [s]
     pattern = []
     for i in range(12):
         r = others[(seed + i) % len(others)]
