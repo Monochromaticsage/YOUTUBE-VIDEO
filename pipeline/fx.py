@@ -96,7 +96,13 @@ def _burst(size, color="#ffffff"):
 
 def _base(fx):
     size = int(fx.get("size", 260))
-    if "phone" in fx:
+    if "img" in fx:  # a picture (e.g. an old photo) from assets/, scaled to `size` px tall, optional tilt
+        root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "assets"))
+        img = Image.open(os.path.join(root, fx["img"])).convert("RGBA")
+        img = img.resize((max(1, int(img.width * size / img.height)), size), Image.LANCZOS)
+        if fx.get("tilt"):
+            img = img.rotate(fx["tilt"], resample=Image.BICUBIC, expand=True)
+    elif "phone" in fx:
         img = _phone(fx["phone"], fx.get("sender", "Grandpa"), size)
     elif "text" in fx:
         img = _word(fx["text"], size, fx.get("color", "#ffffff"))

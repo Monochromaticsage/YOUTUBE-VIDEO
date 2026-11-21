@@ -288,14 +288,44 @@ def _frame_pic(o, P, x, y, z, w, h, color):
     P.put(o, "pic", box_mesh("pc", (w, 0.17, h)), (x, y - 0.02, z), P.M(color, 0.6, tex=False), bevel=0)
 
 
-def living_room(o):
+def living_room_window(o):
+    """Living room whose window is a real opening onto the front yard (someone can stand outside it)."""
+    return living_room(o, hole=True)
+
+
+def living_room(o, hole=False):
     """Bright family living room: sofa, rug, side table (vase spot), TV, window with curtains, plants, photos."""
     import props as P
     wall, wy = "#fff1dc", 9.6
     block(o, "floor", (60, 40, 0.4), (0, 6, -0.2), "#e2b47c", bevel=0)
     for i in range(-14, 15, 2):  # plank lines
         block(o, "plank", (0.06, 40, 0.02), (i * 1.0, 6, 0.01), "#c99a62", bevel=0)
-    block(o, "wall_back", (60, 0.6, 16), (0, wy + 0.3, 8), wall, bevel=0)
+    if hole:  # window opening x -12.25..-6.75, z 3.4..7.6, with the yard behind it
+        wx, ww, z0, z1 = -9.5, 5.5, 3.4, 7.6
+        l, r = wx - ww / 2, wx + ww / 2
+        block(o, "wall_bl", (l + 30, 0.6, 16), ((l - 30) / 2, wy + 0.3, 8), wall, bevel=0)
+        block(o, "wall_br", (30 - r, 0.6, 16), ((r + 30) / 2, wy + 0.3, 8), wall, bevel=0)
+        block(o, "wall_top", (ww, 0.6, 16 - z1), (wx, wy + 0.3, (z1 + 16) / 2), wall, bevel=0)
+        block(o, "wall_bot", (ww, 0.6, z0), (wx, wy + 0.3, z0 / 2), wall, bevel=0)
+        for dz in (z0, z1):
+            block(o, "win_sill", (ww + 0.6, 1.0, 0.3), (wx, wy + 0.3, dz), "#ffffff", bevel=0.05)
+        for dx in (l, r):
+            block(o, "win_side", (0.3, 1.0, z1 - z0), (dx, wy + 0.3, (z0 + z1) / 2), "#ffffff", bevel=0.05)
+        for side in (-1, 1):
+            P.put(o, "curtain", box_mesh("ct", (1.3, 0.4, z1 - z0 + 1.6)), (wx + side * (ww / 2 + 0.5), wy - 0.25, (z0 + z1) / 2 + 0.3),
+                  P.M("#ff8fab", 0.9, scale=8), bevel=0.15)
+        block(o, "yard", (60, 40, 0.4), (0, wy + 20.6, -0.2), "#6cc04a", bevel=0)
+        block(o, "path_out", (4, 40, 0.06), (wx, wy + 20.6, 0.03), "#d8c7a3", bevel=0)
+        for i, x in enumerate(range(-24, 25, 3)):
+            block(o, f"fence{i}", (0.5, 0.4, 3.0), (x, wy + 9, 1.5), "#ffffff", bevel=0.08)
+        block(o, "fence_rail", (50, 0.3, 0.4), (0, wy + 9, 2.2), "#ffffff", bevel=0)
+        for x, y in ((-15, wy + 6), (-4, wy + 5), (-20, wy + 12)):
+            block(o, "bush", (3.2, 3.2, 2.6), (x, y, 1.3), "#3f9d3a", bevel=0.6)
+        block(o, "tree_t", (1.0, 1.0, 7), (-1, wy + 14, 3.5), "#7a5233")
+        block(o, "tree_l", (6, 6, 5), (-1, wy + 14, 8.5), "#4caf50", bevel=0.8)
+        P.put(o, "sky", box_mesh("sky", (120, 0.2, 60)), (0, wy + 30, 20), P.glow("#bfe6ff", 1.4), bevel=0)
+    else:
+        block(o, "wall_back", (60, 0.6, 16), (0, wy + 0.3, 8), wall, bevel=0)
     block(o, "wainscot", (60, 0.7, 3.2), (0, wy, 1.6), "#ffffff", bevel=0)
     block(o, "rail", (60, 0.8, 0.25), (0, wy, 3.25), "#e8d3b0", bevel=0)
     block(o, "wall_l", (0.6, 30, 16), (-18, 0, 8), wall, bevel=0)
@@ -317,21 +347,26 @@ def living_room(o):
     block(o, "book2", (1.2, 0.9, 0.22), (1.6, 4.4, 1.85), "#42a5f5", bevel=0.03)
     block(o, "mug", (0.45, 0.45, 0.55), (3.6, 4.2, 1.72), "#ffffff", bevel=0.1)
     # side table for the vase (left of centre)
-    block(o, "stable_top", (2.2, 2.2, 0.25), (-4.8, 1.8, 2.5), "#ffffff", bevel=0.06)
-    block(o, "stable_leg", (0.5, 0.5, 2.4), (-4.8, 1.8, 1.2), "#d7ccc8", bevel=0.05)
-    block(o, "stable_foot", (1.4, 1.4, 0.15), (-4.8, 1.8, 0.08), "#d7ccc8", bevel=0.04)
+    if hole:
+        pass
+    else:
+      block(o, "stable_top", (2.2, 2.2, 0.25), (-4.8, 1.8, 2.5), "#ffffff", bevel=0.06)
+      block(o, "stable_leg", (0.5, 0.5, 2.4), (-4.8, 1.8, 1.2), "#d7ccc8", bevel=0.05)
+      block(o, "stable_foot", (1.4, 1.4, 0.15), (-4.8, 1.8, 0.08), "#d7ccc8", bevel=0.04)
     # TV unit
     block(o, "tv_unit", (7, 1.8, 1.8), (11.5, 8.5, 0.9), "#f5f5f5", bevel=0.08)
     block(o, "tv", (6, 0.3, 3.4), (11.5, 9.0, 3.8), "#151515", bevel=0.06)
     P.put(o, "tv_screen", box_mesh("ts", (5.6, 0.1, 3.0)), (11.5, 8.83, 3.8), P.glow("#7cc7ff", 0.9), bevel=0)
-    _window(o, P, -9.5, wy - 0.05, 7.6, w=5.5, h=4.5, curtain="#ff8fab")
+    if not hole:
+        _window(o, P, -9.5, wy - 0.05, 7.6, w=5.5, h=4.5, curtain="#ff8fab")
     for x, z, w, h, c in [(-1.5, 11.2, 2.2, 1.6, "#81d4fa"), (1.2, 11.6, 1.6, 2.2, "#ffcc80"), (3.8, 11.0, 2.4, 1.6, "#c5e1a5")]:
         _frame_pic(o, P, x, wy - 0.05, z, w, h, c)
     for x in (-15, 15.5):
         P.put(o, "pot", P.cyl_mesh("pot", 0.8, 1.4, 14, 1.0), (x, 7.5, 0), P.M("#ffffff", 0.4, tex=False), bevel=0)
         P.put(o, "plant", box_mesh("pl", (2.2, 2.2, 3.0)), (x, 7.5, 2.9), P.M("#43a047"), bevel=0.5)
-    block(o, "lamp_pole", (0.2, 0.2, 6), (-13, 8, 3), "#cfcfcf", bevel=0)
-    block(o, "lamp_shade", (1.6, 1.6, 1.2), (-13, 8, 6.4), "#fff8e1", bevel=0.2)
+    lx = -15.5 if hole else -13
+    block(o, "lamp_pole", (0.2, 0.2, 6), (lx, 6, 3), "#cfcfcf", bevel=0)
+    block(o, "lamp_shade", (1.6, 1.6, 1.2), (lx, 6, 6.4), "#fff8e1", bevel=0.2)
     block(o, "clock", (1.6, 0.2, 1.6), (7.5, wy - 0.05, 12), "#ffffff", bevel=0.3)
     return dict(DEFAULT_MARKS, vase_top=(-4.8, 1.8, 2.63))
 
@@ -419,7 +454,7 @@ def classroom_bright(o):
                 desk_fcr=(3, 1.6, 0), desk_fr=(8, 1.6, 0), teacher_desk=(8.5, 9.0, 2.6))
 
 
-BUILDERS = {f.__name__: f for f in [classroom, hallway, bedroom, kitchen, outdoors, stage, playground,
+BUILDERS = {f.__name__: f for f in [living_room_window, classroom, hallway, bedroom, kitchen, outdoors, stage, playground,
                                      living_room, dining_room, classroom_bright]}
 
 

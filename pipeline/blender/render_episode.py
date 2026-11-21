@@ -244,6 +244,9 @@ def camera_pose(spec, rigs, scene_origin, fmt):
         return Matrix.Rotation(yaw, 3, "Z") @ Vector(off)
 
     o = Vector(scene_origin)
+    if kind == "at":  # explicit: at:x,y,z,tx,ty,tz[,lens] relative to the scene origin
+        v = [float(x) for x in arg.split(",")]
+        return o + Vector(v[0:3]), o + Vector(v[3:6]), v[6] if len(v) > 6 else 32
     if kind == "wide":
         vis = [n for n in rigs if not getattr(rigs[n], "hidden_now", False)] or list(rigs)
         c = sum((pos(n) for n in vis), Vector()) / max(1, len(vis)) if rigs else o
@@ -695,11 +698,14 @@ def main():
             if m is None:
                 raise ValueError(f"unknown mark '{mark}'. Marks for this set: {sorted(marks)}")
             r.base = (origin[0] + m[0], origin[1] + m[1], origin[2] + m[2])
+            r.yaw_fixed = m[3] if len(m) > 3 else None  # optional 4th value: facing in degrees
             scene_rigs[name] = r
         # turn characters slightly toward each other
         cx = sum(r.base[0] for r in scene_rigs.values()) / max(1, len(scene_rigs))
         for r in scene_rigs.values():
             r.base_yaw = max(-30.0, min(30.0, -(r.base[0] - cx) * 9.0))
+            if r.yaw_fixed is not None:
+                r.base_yaw = float(r.yaw_fixed)
 
         for shot in sc["shots"]:
             t = timing["shots"][shot_i]

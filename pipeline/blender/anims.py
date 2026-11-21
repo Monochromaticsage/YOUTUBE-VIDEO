@@ -534,13 +534,84 @@ def sweat(rig, f0, f1, fps):
     pose(rig, f1 - 1, arm_r=(-150, 30, 0))
 
 
+def hug(rig, f0, f1, fps):
+    """Side hug: arm over the shoulder of the person beside them, leaning in, swaying happily.
+    The partner is on whichever side the character is turned toward."""
+    right = rig.base_yaw >= 0
+    over = (0, -72, 0) if right else (0, 72, 0)
+    across = (-70, 0, 40) if right else (-70, 0, -40)
+    for i, f in _loop(f0, f1, 8):
+        s = 1 if i % 2 else -1
+        kw = {"arm_l": over, "arm_r": across} if right else {"arm_r": over, "arm_l": across}
+        pose(rig, f, offset=((0.12 if right else -0.12) + 0.04 * s, 0, 0), tilt=(0, 4 if right else -4),
+             head=(4, 10 if right else -10, 6 * s), **kw)
+    kw = {"arm_l": over, "arm_r": across} if right else {"arm_r": over, "arm_l": across}
+    pose(rig, f1 - 1, offset=(0.12 if right else -0.12, 0, 0), tilt=(0, 4 if right else -4),
+         head=(4, 10 if right else -10, 0), **kw)
+
+
+def yell_back(rig, f0, f1, fps):
+    """Spins round to face the window/door behind them and points, yelling."""
+    back = 180 - rig.base_yaw
+    pose(rig, f0)
+    pose(rig, min(f0 + 5, f1 - 1), yaw=back, arm_r=(-90, 0, 0), head=(8, 0, 0), torso=(6, 0, 0))
+    for i, f in _loop(f0 + 8, f1, 5):
+        pose(rig, f, yaw=back, offset=(0, 0, 0.04 * (i % 2)), arm_r=(-95 if i % 2 else -85, 0, 0),
+             head=(10 if i % 2 else 4, 0, 0), torso=(6, 0, 0))
+    pose(rig, f1 - 1, yaw=back, arm_r=(-90, 0, 0), head=(8, 0, 0), torso=(6, 0, 0))
+
+
+def bang_window(rig, f0, f1, fps):
+    """Pounds on glass in front of them with both fists, desperate."""
+    for i, f in _loop(f0, f1, 4):
+        a = i % 2
+        pose(rig, f, offset=(0, -0.08 * a, 0.03 * a), head=(6, 0, 5 if a else -5), torso=(5 if a else 0, 0, 0),
+             arm_l=(-150 if a else -110, -15, 0), arm_r=(-110 if a else -150, 15, 0))
+    pose(rig, f1 - 1, arm_l=(-130, -15, 0), arm_r=(-130, 15, 0))
+
+
+def play_game(rig, f0, f1, fps):
+    """Holds a game controller in both hands, thumbs mashing, leaning into it."""
+    for i, f in _loop(f0, f1, 4):
+        a = i % 2
+        pose(rig, f, offset=(0, 0, 0.02 * a), head=(-12, 0, 4 if a else -4), torso=(8, 3 if a else -3, 0),
+             arm_l=(-60 - 6 * a, -18, -25), arm_r=(-66 + 6 * a, 18, 25))
+    pose(rig, f1 - 1, head=(-12, 0, 0), torso=(8, 0, 0), arm_l=(-60, -18, -25), arm_r=(-60, 18, 25))
+
+
+def touch_cheek(rig, f0, f1, fps):
+    """Slowly raises a hand to touch their cheek, frozen in realisation."""
+    tc = dict(arm_r=(-145, -30, 0), head=(-6, 8, -10))
+    pose(rig, f0)
+    pose(rig, min(f0 + 12, f1 - 1), **tc)
+    for i, f in _loop(f0 + 16, f1, 9):
+        pose(rig, f, arm_r=(-145, -30, 0), head=(-6, 8, -10 + (2 if i % 2 else -2)))
+    pose(rig, f1 - 1, **tc)
+
+
+def hold_photo(rig, f0, f1, fps):
+    """Holds something up in both hands for the other person to see."""
+    hp = dict(arm_l=(-95, -5, -20), arm_r=(-95, 5, 20), head=(-4, 0, 0))
+    pose(rig, f0)
+    pose(rig, min(f0 + 6, f1 - 1), **hp)
+    pose(rig, f1 - 1, **hp)
+
+
+def lean_whisper(rig, f0, f1, fps):
+    """Leans in slowly toward the other person, hand cupped by the mouth (face stays to camera)."""
+    d = 1 if rig.base_yaw >= 0 else -1
+    pose(rig, f0)
+    pose(rig, f1 - 1, offset=(0.15 * d, 0, -0.05), tilt=(0, 4 * d), torso=(8, 0, 0), head=(4, 4 * d, 0),
+         arm_r=(-140, -30, 0) if d > 0 else (0, 5, 0), arm_l=(0, -5, 0) if d > 0 else (-140, 30, 0))
+
 ANIMS = {f.__name__: f for f in [
     idle, talk, shocked, scared, angry, laugh, sad, cry, wave, point, facepalm, think, dance, jump,
     fall, lie, sit, run_in_place, walk_in_left, walk_in_right, walk_out_left, walk_out_right,
     run_out_left, run_out_right, frozen, unfreeze, hidden, nod, shrug, brag, cross_arms, look_up,
     point_laugh, whisper, sad_look_down, rip_tag, celebrate, stumble, step_away_right, cut_line, step_right,
     turn_around, sit_talk, sit_shocked, sit_fall, sit_point, slide_object, film_selfie, back_up_bump,
-    sit_faceplant, flatten, sit_slide_down, sweat]}
+    sit_faceplant, flatten, sit_slide_down, sweat, hug, bang_window, play_game, touch_cheek, hold_photo,
+    lean_whisper, yell_back]}
 
 
 def walk_to(rig, f0, start, end, fps, speed=6.5, run=False, max_frames=None):

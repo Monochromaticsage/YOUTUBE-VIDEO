@@ -1,0 +1,683 @@
+{
+ "id": "s06_clone",
+ "title": "My CLONE Replaced Me! 😱",
+ "format": "short",
+ "mood": "bright",
+ "grade": "bright",
+ "fog": false,
+ "dof": false,
+ "handheld": 0.35,
+ "caption_style": "word",
+ "caption_pos": "top",
+ "cut_every": 1.25,
+ "sting": false,
+ "cta": {
+  "at": 17
+ },
+ "music": "mystery_loop",
+ "music_volume": 0.13,
+ "_loop": "last shot repeats the first shot's framing so the restart is invisible",
+ "_pinned_comment": "WHO is the REAL Sage? The one WITH the birthmark or WITHOUT? 👀👇",
+ "characters": {
+  "sage": {
+   "face_style": {
+    "detailed": {
+     "birthmark": "#4a2414"
+    }
+   }
+  },
+  "clone": {
+   "display": "Clone Sage",
+   "skin": "#f0c6a8",
+   "shirt": "#e8829b",
+   "pants": "#7fa7d6",
+   "sleeves": false,
+   "hair": {
+    "style": "sideswept",
+    "color": "#6d1128"
+   },
+   "necklace": "#d4a62a",
+   "earrings": "#d4a62a",
+   "face_style": {
+    "detailed": {}
+   },
+   "caption_color": "#B388FF",
+   "voice_id": "cgSgspJ2msm6clMCkdW9",
+   "crop_top": "#d4637f",
+   "voice_name": "Jessica - playful, bright, warm",
+   "pitch": 0.93,
+   "voice_settings": {
+    "stability": 0.38,
+    "similarity_boost": 0.8,
+    "style": 0.35,
+    "use_speaker_boost": true
+   }
+  }
+ },
+ "scenes": [
+  {
+   "set": "living_room_window",
+   "cast": {
+    "sage": [
+     -11.4,
+     11.4,
+     0,
+     0
+    ],
+    "mom": [
+     -6.6,
+     6.2,
+     0,
+     12
+    ],
+    "clone": [
+     -5.2,
+     6.2,
+     0,
+     -12
+    ]
+   },
+   "shots": [
+    {
+     "_beat": "HOOK",
+     "speaker": "sage",
+     "vo": true,
+     "line": "My clone replaced me. And even my own mom thinks I'm the fake one!",
+     "cameras": [
+      "at:-8.3,-3.5,5.2,-8.3,8,5.0,25",
+      "closeup:sage",
+      "medium:clone",
+      "closeup:sage"
+     ],
+     "moves": [
+      "punch",
+      "push",
+      "push",
+      "shake"
+     ],
+     "anims": {
+      "mom": "hug",
+      "clone": "hug",
+      "sage": "bang_window"
+     },
+     "faces": {
+      "mom": "happy",
+      "clone": "smug",
+      "sage": "scared"
+     },
+     "sfx": [
+      {
+       "name": "door_knock",
+       "at": 0.15
+      },
+      {
+       "name": "door_knock",
+       "at": 1.4
+      }
+     ],
+     "fx": [
+      {
+       "text": "BANG BANG!",
+       "color": "#ffffff",
+       "size": 110,
+       "at": 1.3,
+       "x": 0.5,
+       "y": 0.66,
+       "dur": 1.0,
+       "anim": "shake"
+      }
+     ]
+    },
+    {
+     "speaker": "mom",
+     "line": "GO AWAY!",
+     "camera": "at:-12.5,16.5,5.6,-6.6,6.2,4.4,35",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "mom": "yell_back",
+      "clone": "hug",
+      "sage": "bang_window"
+     },
+     "face": "angry",
+     "faces": {
+      "clone": "smug",
+      "sage": "scared"
+     }
+    },
+    {
+     "_beat": "SMILE",
+     "duration": 0.9,
+     "camera": "closeup:clone",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "mom": "hug",
+      "clone": "idle",
+      "sage": "bang_window"
+     },
+     "faces": {
+      "clone": "evil",
+      "mom": "happy",
+      "sage": "scared"
+     }
+    },
+    {
+     "_beat": "ZOOM",
+     "duration": 0.8,
+     "camera": "extreme:sage",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "mom": "hug",
+      "clone": "hug",
+      "sage": "shocked"
+     },
+     "faces": {
+      "sage": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "vine_boom",
+       "at": 0.05
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "bedroom",
+   "cast": {
+    "sage": [
+     -6,
+     2.5,
+     0
+    ],
+    "clone": [
+     5.5,
+     4.5,
+     0,
+     0
+    ]
+   },
+   "shots": [
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "It started when I found another me in my room. They knew my name, my friends... even my password!",
+     "walk": {
+      "sage": [
+       1.0,
+       3.0
+      ]
+     },
+     "anims": {
+      "clone": "play_game",
+      "sage": "idle"
+     },
+     "faces": {
+      "clone": "happy",
+      "sage": "sus"
+     },
+     "fx": [
+      {
+       "e": "🔑",
+       "at": 4.6,
+       "x": 0.7,
+       "y": 0.45,
+       "size": 200,
+       "dur": 1.2,
+       "burst": true
+      }
+     ],
+     "cameras": [
+      "medium:clone",
+      "closeup:sage",
+      "medium:clone",
+      "two:sage,clone"
+     ],
+     "moves": [
+      "push",
+      "push",
+      "push",
+      "push"
+     ]
+    },
+    {
+     "speaker": "sage",
+     "line": "WHO ARE YOU?!",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "sage": "shocked",
+      "clone": "idle"
+     },
+     "face": "shocked",
+     "faces": {
+      "clone": "happy"
+     }
+    },
+    {
+     "speaker": "clone",
+     "line": "I'm you. Obviously.",
+     "camera": "closeup:clone",
+     "no_cuts": true,
+     "anims": {
+      "clone": "shrug",
+      "sage": "idle"
+     },
+     "face": "smug",
+     "faces": {
+      "sage": "shocked"
+     }
+    }
+   ]
+  },
+  {
+   "set": "living_room_window",
+   "cast": {
+    "mom": [
+     -3.4,
+     4.4,
+     0,
+     12
+    ],
+    "clone": [
+     -1.8,
+     4.4,
+     0,
+     -12
+    ],
+    "sage": [
+     4.5,
+     3.4,
+     0,
+     -15
+    ]
+   },
+   "shots": [
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "I told Mom. She chose the clone.",
+     "camera": "two:mom,clone",
+     "anims": {
+      "mom": "hug",
+      "clone": "hug",
+      "sage": "talk"
+     },
+     "faces": {
+      "mom": "happy",
+      "clone": "smug",
+      "sage": "sad"
+     },
+     "fx": [
+      {
+       "e": "💔",
+       "at": 1.2,
+       "x": 0.7,
+       "y": 0.45,
+       "size": 170,
+       "dur": 1.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "hallway",
+   "_secret": "birthmark swap: the popular one here is the one WITH the birthmark",
+   "cast": {
+    "sage": [
+     2.5,
+     1.5,
+     0
+    ],
+    "noob": [
+     -0.2,
+     3.0,
+     0
+    ],
+    "bacon": [
+     5.2,
+     3.0,
+     0
+    ],
+    "goldie": [
+     2.5,
+     4.6,
+     0
+    ],
+    "clone": [
+     -8,
+     1.0,
+     0
+    ]
+   },
+   "shots": [
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "My friends chose the clone too.",
+     "cameras": [
+      "medium:sage",
+      "closeup:clone"
+     ],
+     "moves": [
+      "push",
+      "push"
+     ],
+     "anims": {
+      "sage": "wave",
+      "noob": "celebrate",
+      "bacon": "celebrate",
+      "goldie": "celebrate",
+      "clone": "sad"
+     },
+     "faces": {
+      "sage": "happy",
+      "noob": "happy",
+      "bacon": "happy",
+      "goldie": "happy",
+      "clone": "sad"
+     }
+    }
+   ]
+  },
+  {
+   "set": "classroom_bright",
+   "cast": {
+    "ms_brick": [
+     1.8,
+     9.3,
+     0,
+     0
+    ],
+    "clone": [
+     -3,
+     1.6,
+     0,
+     0
+    ],
+    "noob": [
+     6.5,
+     5.8,
+     0,
+     0
+    ],
+    "sage": [
+     -13,
+     6.5,
+     0,
+     15
+    ]
+   },
+   "shots": [
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "Even Ms. Brick gave the clone MY seat!",
+     "cameras": [
+      "medium:ms_brick",
+      "medium:clone",
+      "medium:sage"
+     ],
+     "moves": [
+      "push",
+      "push",
+      "push"
+     ],
+     "anims": {
+      "ms_brick": "point",
+      "clone": "sit_point",
+      "noob": "sit",
+      "sage": "cross_arms"
+     },
+     "faces": {
+      "ms_brick": "happy",
+      "clone": "smug",
+      "sage": "angry"
+     },
+     "fx": [
+      {
+       "e": "😤",
+       "at": 1.6,
+       "x": 0.68,
+       "y": 0.42,
+       "size": 170,
+       "dur": 0.9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "hallway",
+   "cast": {
+    "sage": [
+     -2.2,
+     1.0,
+     0,
+     35
+    ],
+    "clone": [
+     0.6,
+     1.0,
+     0,
+     -35
+    ]
+   },
+   "shots": [
+    {
+     "speaker": "sage",
+     "line": "STOP STEALING MY LIFE!",
+     "camera": "closeup:sage",
+     "move": "punch",
+     "no_cuts": true,
+     "anims": {
+      "sage": "angry",
+      "clone": "idle"
+     },
+     "face": "angry",
+     "faces": {
+      "clone": "smug"
+     }
+    },
+    {
+     "speaker": "clone",
+     "line": "I'm not stealing anything...",
+     "camera": "closeup:clone",
+     "move": "push",
+     "no_cuts": true,
+     "anims": {
+      "clone": "idle",
+      "sage": "angry"
+     },
+     "face": "smug"
+    },
+    {
+     "speaker": "clone",
+     "line": "You're the clone. I've been trying to get rid of YOU.",
+     "camera": "closeup:clone",
+     "move": "push",
+     "no_cuts": true,
+     "anims": {
+      "clone": "lean_whisper",
+      "sage": "scared"
+     },
+     "face": "evil",
+     "faces": {
+      "sage": "scared"
+     },
+     "sfx": [
+      {
+       "name": "heartbeat",
+       "at": 0.3,
+       "volume": 0.7
+      }
+     ]
+    },
+    {
+     "_beat": "PHOTO",
+     "duration": 2.0,
+     "camera": "medium:clone",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "clone": "hold_photo",
+      "sage": "scared"
+     },
+     "faces": {
+      "clone": "smug",
+      "sage": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "pop",
+       "at": 0.15
+      }
+     ],
+     "fx": [
+      {
+       "img": "textures/twin_babies_photo.png",
+       "size": 820,
+       "at": 0.15,
+       "x": 0.5,
+       "y": 0.56,
+       "dur": 1.85,
+       "tilt": -4
+      }
+     ]
+    },
+    {
+     "_beat": "CHEEK",
+     "duration": 1.5,
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "sage": "touch_cheek",
+      "clone": "idle"
+     },
+     "faces": {
+      "sage": "shocked",
+      "clone": "smug"
+     },
+     "sfx": [
+      {
+       "name": "vine_boom",
+       "at": 0.6
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "line": "Wait... which one am I?",
+     "camera": "extreme:sage",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "sage": "scared",
+      "clone": "idle"
+     },
+     "face": "scared"
+    }
+   ]
+  },
+  {
+   "set": "living_room_window",
+   "cast": {
+    "mom": [
+     -3.5,
+     4.0,
+     0,
+     35
+    ],
+    "clone": [
+     -1.6,
+     4.6,
+     0,
+     -20
+    ],
+    "sage": [
+     3.6,
+     3.4,
+     0,
+     -20
+    ]
+   },
+   "shots": [
+    {
+     "speaker": "mom",
+     "line": "SAGE! Stop letting that kid inside!",
+     "camera": "medium:mom",
+     "anims": {
+      "mom": "point",
+      "clone": "idle",
+      "sage": "shocked"
+     },
+     "face": "angry",
+     "faces": {
+      "clone": "smug",
+      "sage": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "door_slam",
+       "at": 2.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "living_room_window",
+   "cast": {
+    "sage": [
+     -11.4,
+     11.4,
+     0,
+     0
+    ],
+    "mom": [
+     -6.6,
+     6.2,
+     0,
+     12
+    ],
+    "clone": [
+     -5.2,
+     6.2,
+     0,
+     -12
+    ]
+   },
+   "_beat": "LOOP: identical to the first frame",
+   "shots": [
+    {
+     "_beat": "LOOP",
+     "duration": 1.4,
+     "camera": "at:-8.3,-3.5,5.2,-8.3,8,5.0,25",
+     "no_cuts": true,
+     "anims": {
+      "mom": "hug",
+      "clone": "hug",
+      "sage": "bang_window"
+     },
+     "faces": {
+      "mom": "happy",
+      "clone": "smug",
+      "sage": "scared"
+     },
+     "sfx": [
+      {
+       "name": "door_knock",
+       "at": 0.25
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

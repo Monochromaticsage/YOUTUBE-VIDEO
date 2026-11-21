@@ -224,6 +224,8 @@ def draw_face_detailed(expr, mouth_open, skin_lin, opts):
     for cx in (EYE_L - 26, EYE_R + 26):  # blush
         cv.paint(ellipse(cx, 304, 50, 24, soft=40), c["blush"], 0.5)
     draw_nose(cv, skin)
+    if opts.get("birthmark"):  # small dark mark high on the right cheek (viewer's left)
+        cv.paint(ellipse(EYE_L - 30, 318, 15, 13, soft=3), c.get("birthmark", hex3("#4a2414")), 0.95)
     for cx, side in ((EYE_L, -1), (EYE_R, 1)):
         draw_eye(cv, c, cx, side, open_, pupil, look_y, mode, skin)
         if expr == "smug" and side > 0:

@@ -1,0 +1,96 @@
+{
+ "id": "still_twin_babies",
+ "title": "twin baby photo (S06 twist)",
+ "format": "short",
+ "mood": "bright",
+ "fog": false,
+ "dof": false,
+ "handheld": 0,
+ "characters": {
+  "sage": {
+   "scale": 0.5,
+   "crop_top": false,
+   "shirt": "#fff3c4",
+   "pants": "#fff3c4",
+   "sleeves": true,
+   "necklace": false,
+   "earrings": false,
+   "face_style": {
+    "detailed": {
+     "birthmark": "#4a2414"
+    }
+   }
+  },
+  "clone": {
+   "display": "Clone Sage",
+   "skin": "#f0c6a8",
+   "shirt": "#fff3c4",
+   "pants": "#fff3c4",
+   "sleeves": true,
+   "hair": {
+    "style": "sideswept",
+    "color": "#6d1128"
+   },
+   "necklace": false,
+   "earrings": false,
+   "face_style": {
+    "detailed": {}
+   },
+   "caption_color": "#B388FF",
+   "voice_id": "cgSgspJ2msm6clMCkdW9",
+   "crop_top": false,
+   "voice_name": "Jessica - playful, bright, warm",
+   "pitch": 0.93,
+   "voice_settings": {
+    "stability": 0.38,
+    "similarity_boost": 0.8,
+    "style": 0.35,
+    "use_speaker_boost": true
+   },
+   "scale": 0.5
+  }
+ },
+ "scenes": [
+  {
+   "set": "living_room",
+   "cast": {
+    "sage": [
+     -0.8,
+     2.8,
+     1.0
+    ],
+    "clone": [
+     0.8,
+     2.8,
+     1.0
+    ]
+   },
+   "props": [
+    {
+     "id": "basket",
+     "type": "basket",
+     "at": [
+      0,
+      3.0,
+      0
+     ]
+    }
+   ],
+   "shots": [
+    {
+     "duration": 0.3,
+     "camera": "two:sage,clone",
+     "no_cuts": true,
+     "anims": {
+      "sage": "sit",
+      "clone": "sit"
+     },
+     "faces": {
+      "sage": "happy",
+      "clone": "happy"
+     }
+    }
+   ]
+  }
+ ]
+}
