@@ -57,7 +57,7 @@ def validate(ep, cast):
             if sh.get("speaker") and sh["speaker"] not in sc["cast"] and not sh.get("vo"):
                 errs.append(f"{where}: speaker '{sh['speaker']}' not in scene cast")
             for n, a in sh.get("anims", {}).items():
-                if a not in known_anims:
+                if a.split("@")[0] not in known_anims:
                     errs.append(f"{where}: unknown anim '{a}'")
                 if n not in sc["cast"]:
                     errs.append(f"{where}: anim for '{n}' who is not in the scene")
