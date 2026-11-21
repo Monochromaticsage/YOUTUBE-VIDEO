@@ -1,0 +1,688 @@
+{
+ "id": "s07_sneeze",
+ "title": "Every Time I Sneeze, My Day RESTARTS! 🤧",
+ "format": "short",
+ "mood": "bright",
+ "grade": "bright",
+ "fog": false,
+ "dof": false,
+ "handheld": 0.35,
+ "caption_style": "word",
+ "caption_pos": "top",
+ "cut_every": 1.25,
+ "sting": false,
+ "cta": {
+  "at": 16
+ },
+ "music": "quirky_loop",
+ "music_volume": 0.14,
+ "_loop": "ends on 'another HUGE-' and the video restarts on the ACHOO",
+ "_secret": "Goldie already holds the feather in the very first shot (behind Sage)",
+ "_pinned_comment": "Did you see what Goldie was holding in the FIRST second? 👀🪶",
+ "characters": {
+  "sage": {
+   "crop_top": false,
+   "shirt": "#4fc3f7",
+   "hoodie": "#4fc3f7",
+   "pants": "#5b7fc7",
+   "sleeves": true
+  }
+ },
+ "scenes": [
+  {
+   "set": "classroom_bright",
+   "cast": {
+    "ms_brick": [
+     1.8,
+     9.3,
+     0,
+     0
+    ],
+    "sage": [
+     -3,
+     1.6,
+     0,
+     0
+    ],
+    "goldie": [
+     -0.8,
+     5.8,
+     0,
+     0
+    ],
+    "noob": [
+     8,
+     1.6,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "feather",
+     "type": "feather",
+     "at": [
+      -1.5,
+      5.0,
+      4.3
+     ],
+     "scale": 0.55,
+     "rot": 15,
+     "color": "#6f8fbf"
+    }
+   ],
+   "shots": [
+    {
+     "_beat": "ACHOO (loop point)",
+     "speaker": "sage",
+     "line": "ACHOO!",
+     "camera": "medium:sage",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "sage": "sit_sneeze",
+      "goldie": "hold_feather",
+      "ms_brick": "idle",
+      "noob": "sit"
+     },
+     "faces": {
+      "sage": "shocked",
+      "goldie": "evil"
+     },
+     "fx": [
+      {
+       "e": "💦",
+       "at": 0.15,
+       "x": 0.5,
+       "y": 0.5,
+       "size": 260,
+       "dur": 0.6,
+       "burst": true
+      },
+      {
+       "flash": true,
+       "at": 0.45,
+       "dur": 0.35,
+       "x": 0.5,
+       "y": 0.5
+      }
+     ],
+     "sfx": [
+      {
+       "name": "glitch",
+       "at": 0.4,
+       "volume": 0.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "bedroom",
+   "cast": {
+    "sage": [
+     -9,
+     3.6,
+     0.7,
+     0
+    ],
+    "mom": [
+     7,
+     3,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "clock",
+     "type": "sign",
+     "text": "7:00",
+     "size": 1.0,
+     "color": "#ff3b30",
+     "board": "#1b1b1b",
+     "at": [
+      -4.6,
+      9.4,
+      4.2
+     ],
+     "cam_dist": 6
+    }
+   ],
+   "shots": [
+    {
+     "_beat": "HOOK",
+     "speaker": "sage",
+     "vo": true,
+     "line": "I sneezed during my math test... and woke up three hours earlier!",
+     "cameras": [
+      "medium:sage",
+      "prop:clock",
+      "closeup:sage"
+     ],
+     "moves": [
+      "punch",
+      "zoom",
+      "push"
+     ],
+     "anims": {
+      "sage": "sit_up_scream",
+      "mom": "hidden"
+     },
+     "faces": {
+      "sage": "shocked"
+     },
+     "fx": [
+      {
+       "text": "7:00 AM?!",
+       "color": "#ff3b30",
+       "size": 130,
+       "at": 1.9,
+       "x": 0.5,
+       "y": 0.66,
+       "dur": 1.4,
+       "anim": "shake"
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "I thought it was a dream. Until Mom said the exact same thing twice.",
+     "camera": "wide",
+     "walk": {
+      "mom": [
+       -3.8,
+       3
+      ]
+     },
+     "anims": {
+      "sage": "sit",
+      "mom": "idle"
+     },
+     "faces": {
+      "sage": "sus",
+      "mom": "happy"
+     }
+    },
+    {
+     "speaker": "mom",
+     "line": "You're late for school!",
+     "camera": "medium:mom",
+     "no_cuts": true,
+     "anims": {
+      "mom": "point",
+      "sage": "sit"
+     },
+     "face": "angry"
+    },
+    {
+     "speaker": "sage",
+     "line": "Achoo!",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "sage": "sit_sneeze",
+      "mom": "idle"
+     },
+     "face": "shocked",
+     "fx": [
+      {
+       "flash": true,
+       "at": 0.3,
+       "dur": 0.35,
+       "x": 0.5,
+       "y": 0.5
+      }
+     ],
+     "sfx": [
+      {
+       "name": "glitch",
+       "at": 0.3,
+       "volume": 0.8
+      }
+     ]
+    },
+    {
+     "speaker": "mom",
+     "line": "You're late for school!",
+     "camera": "medium:mom",
+     "no_cuts": true,
+     "anims": {
+      "mom": "point",
+      "sage": "sit"
+     },
+     "face": "angry",
+     "fx": [
+      {
+       "text": "AGAIN?!",
+       "color": "#ffd23f",
+       "size": 120,
+       "at": 0.6,
+       "x": 0.5,
+       "y": 0.7,
+       "dur": 1.0,
+       "anim": "shake"
+      }
+     ]
+    },
+    {
+     "_beat": "JAW",
+     "duration": 0.9,
+     "camera": "extreme:sage",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "sage": "sit_shocked",
+      "mom": "idle"
+     },
+     "faces": {
+      "sage": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "vine_boom",
+       "at": 0.05
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "classroom_bright",
+   "cast": {
+    "ms_brick": [
+     1.8,
+     9.3,
+     0,
+     0
+    ],
+    "sage": [
+     -3,
+     1.6,
+     0,
+     0
+    ],
+    "goldie": [
+     -0.8,
+     5.8,
+     0,
+     0
+    ],
+    "noob": [
+     8,
+     1.6,
+     0,
+     0
+    ]
+   },
+   "shots": [
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "So I memorized every answer... sneezed... and took the test again!",
+     "cameras": [
+      "closeup:sage",
+      "medium:ms_brick",
+      "closeup:sage"
+     ],
+     "moves": [
+      "push",
+      "push",
+      "punch"
+     ],
+     "anims": {
+      "sage": "sit_write",
+      "goldie": "sit",
+      "ms_brick": "idle",
+      "noob": "sit"
+     },
+     "faces": {
+      "sage": "smug",
+      "goldie": "sus"
+     },
+     "fx": [
+      {
+       "img": "textures/test_f.png",
+       "size": 620,
+       "at": 0.2,
+       "x": 0.5,
+       "y": 0.58,
+       "dur": 1.2,
+       "tilt": -5
+      },
+      {
+       "flash": true,
+       "at": 2.3,
+       "dur": 0.35,
+       "x": 0.5,
+       "y": 0.5
+      },
+      {
+       "text": "SPEED MODE",
+       "color": "#7cd4ff",
+       "size": 100,
+       "at": 2.8,
+       "x": 0.5,
+       "y": 0.7,
+       "dur": 1.0,
+       "anim": "shake"
+      }
+     ],
+     "sfx": [
+      {
+       "name": "glitch",
+       "at": 2.3,
+       "volume": 0.8
+      }
+     ]
+    },
+    {
+     "speaker": "ms_brick",
+     "line": "A plus! A perfect score!",
+     "camera": "medium:ms_brick",
+     "no_cuts": true,
+     "anims": {
+      "ms_brick": "celebrate",
+      "sage": "sit",
+      "goldie": "sit",
+      "noob": "sit"
+     },
+     "face": "love",
+     "faces": {
+      "sage": "happy",
+      "goldie": "sus"
+     },
+     "sfx": [
+      {
+       "name": "ding",
+       "at": 0.2
+      }
+     ],
+     "fx": [
+      {
+       "img": "textures/test_aplus.png",
+       "size": 640,
+       "at": 0.3,
+       "x": 0.5,
+       "y": 0.6,
+       "dur": 1.4,
+       "tilt": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "hallway",
+   "cast": {
+    "sage": [
+     -4,
+     1,
+     0
+    ],
+    "goldie": [
+     5,
+     1,
+     0
+    ]
+   },
+   "shots": [
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "But every time I sneezed... Goldie remembered a little more.",
+     "camera": "two:sage,goldie",
+     "walk": {
+      "goldie": [
+       -0.6,
+       1
+      ]
+     },
+     "anims": {
+      "sage": "idle",
+      "goldie": "idle"
+     },
+     "faces": {
+      "sage": "happy",
+      "goldie": "smug"
+     }
+    },
+    {
+     "_beat": "LEFT",
+     "duration": 0.9,
+     "camera": "two:sage,goldie",
+     "no_cuts": true,
+     "walk": {
+      "sage": [
+       -6,
+       -0.6
+      ],
+      "goldie": [
+       -2.6,
+       -0.6
+      ]
+     },
+     "anims": {},
+     "faces": {
+      "sage": "sus",
+      "goldie": "smug"
+     },
+     "sfx": [
+      {
+       "name": "whoosh",
+       "at": 0.1
+      }
+     ]
+    },
+    {
+     "_beat": "RIGHT",
+     "duration": 0.9,
+     "camera": "two:sage,goldie",
+     "no_cuts": true,
+     "walk": {
+      "sage": [
+       -2,
+       1.6
+      ],
+      "goldie": [
+       1.4,
+       1.6
+      ]
+     },
+     "anims": {},
+     "faces": {
+      "sage": "angry",
+      "goldie": "smug"
+     },
+     "sfx": [
+      {
+       "name": "whoosh",
+       "at": 0.1
+      }
+     ]
+    },
+    {
+     "speaker": "goldie",
+     "line": "You already tried that yesterday.",
+     "camera": "closeup:goldie",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "goldie": "cross_arms",
+      "sage": "idle"
+     },
+     "face": "smug",
+     "faces": {
+      "sage": "shocked"
+     }
+    },
+    {
+     "_beat": "TURN",
+     "duration": 1.0,
+     "camera": "extreme:sage",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "sage": "idle",
+      "goldie": "cross_arms"
+     },
+     "faces": {
+      "sage": "scared"
+     },
+     "sfx": [
+      {
+       "name": "heartbeat",
+       "at": 0.1,
+       "volume": 0.6
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "line": "How do you remember?!",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "anims": {
+      "sage": "talk",
+      "goldie": "cross_arms"
+     },
+     "face": "scared"
+    },
+    {
+     "speaker": "goldie",
+     "line": "Every time YOU sneeze... I get smarter.",
+     "camera": "closeup:goldie",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "goldie": "brag",
+      "sage": "idle"
+     },
+     "face": "evil",
+     "faces": {
+      "sage": "scared"
+     },
+     "fx": [
+      {
+       "img": "textures/test_stack.png",
+       "size": 760,
+       "at": 1.4,
+       "x": 0.5,
+       "y": 0.62,
+       "dur": 1.6
+      }
+     ]
+    },
+    {
+     "_beat": "MY F",
+     "duration": 1.3,
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "anims": {
+      "sage": "sad_look_down",
+      "goldie": "brag"
+     },
+     "faces": {
+      "sage": "cry"
+     },
+     "sfx": [
+      {
+       "name": "sad_trombone",
+       "at": 0.2
+      }
+     ],
+     "fx": [
+      {
+       "img": "textures/test_f.png",
+       "size": 620,
+       "at": 0.15,
+       "x": 0.5,
+       "y": 0.62,
+       "dur": 1.1,
+       "tilt": 6
+      }
+     ]
+    },
+    {
+     "_beat": "FEATHER",
+     "duration": 1.2,
+     "camera": "medium:goldie",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "goldie": "hold_feather",
+      "sage": "scared"
+     },
+     "faces": {
+      "goldie": "evil",
+      "sage": "scared"
+     },
+     "sfx": [
+      {
+       "name": "riser",
+       "at": 0.0,
+       "volume": 0.6
+      }
+     ],
+     "fx": [
+      {
+       "e": "🪶",
+       "at": 0.1,
+       "x": 0.62,
+       "y": 0.4,
+       "size": 380,
+       "dur": 1.1,
+       "anim": "spin"
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "line": "WAIT! DON'T!",
+     "camera": "extreme:sage",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "sage": "scared",
+      "goldie": "hold_feather"
+     },
+     "face": "scared"
+    },
+    {
+     "_beat": "LOOP",
+     "speaker": "sage",
+     "vo": true,
+     "line": "Goldie shoved it under my nose... and I felt another HUGE—",
+     "camera": "extreme:sage",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "sage": "sneeze_build",
+      "goldie": "hold_feather"
+     },
+     "face": "scared",
+     "fx": [
+      {
+       "e": "🪶",
+       "at": 0.2,
+       "x": 0.5,
+       "y": 0.6,
+       "size": 300,
+       "dur": 3.4,
+       "anim": "shake"
+      },
+      {
+       "e": "👃",
+       "at": 1.4,
+       "x": 0.3,
+       "y": 0.45,
+       "size": 160,
+       "dur": 1.4
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

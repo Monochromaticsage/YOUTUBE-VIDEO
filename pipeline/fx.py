@@ -119,8 +119,16 @@ def render_sticker(fx, out_dir, W, H):
     os.makedirs(out_dir, exist_ok=True)
     for p in os.listdir(out_dir):
         os.remove(os.path.join(out_dir, p))
-    img = _base(fx)
     dur = float(fx.get("dur", 1.0))
+    if fx.get("flash"):  # full-screen white flash that fades out (place at x=0.5, y=0.5)
+        n = max(2, int(dur * FPS))
+        col = fx["flash"] if isinstance(fx["flash"], str) else "#ffffff"
+        for i in range(n):
+            a = int(255 * max(0.0, 1 - i / n) ** 1.5)
+            Image.new("RGBA", (W, H), Image.new("RGB", (1, 1), col).getpixel((0, 0)) + (a,)).save(
+                os.path.join(out_dir, f"f_{i:03d}.png"))
+        return
+    img = _base(fx)
     n = max(2, int(dur * FPS))
     anim = fx.get("anim", "pop")
     pad = 1.35

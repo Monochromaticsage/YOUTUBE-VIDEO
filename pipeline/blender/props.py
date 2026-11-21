@@ -425,6 +425,20 @@ STORY_PROPS.update({"lunchbox": _lunchbox, "screen": _screen, "potato": _potato,
                     "basket": _basket, "sign": _sign})
 
 
+def _feather(root, n, pd):
+    """A big fluffy feather standing upright (held / propped by a character): {"color": "#ffffff"}"""
+    col = M(pd.get("color", "#ffffff"), rough=0.9, tex=False)
+    _kid(root, f"{n}_quill", cyl_mesh("fq", 0.05, 2.4, 8), (0, 0, 0), M("#d9c9a8", tex=False), bevel=0)
+    for i in range(7):
+        z = 0.7 + i * 0.32
+        w = 0.5 + 0.45 * math.sin(math.pi * (i + 0.5) / 7)
+        _kid(root, f"{n}_vane{i}", box_mesh("fv", (w, 0.08, 0.36)), (0, 0, z), col, bevel=0.12, rot=(0, (i % 2) * 6 - 3, 0))
+    return 3.0, 4.0
+
+
+STORY_PROPS["feather"] = _feather
+
+
 def scene_prop(pd, origin):
     """pd: {"id": "vase", "type": "vase", "at": [x, y, z], "rot": deg, "scale": 1.0}"""
     from mathutils import Vector

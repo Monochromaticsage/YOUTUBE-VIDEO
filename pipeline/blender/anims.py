@@ -604,6 +604,71 @@ def lean_whisper(rig, f0, f1, fps):
     pose(rig, f1 - 1, offset=(0.15 * d, 0, -0.05), tilt=(0, 4 * d), torso=(8, 0, 0), head=(4, 4 * d, 0),
          arm_r=(-140, -30, 0) if d > 0 else (0, 5, 0), arm_l=(0, -5, 0) if d > 0 else (-140, 30, 0))
 
+SEAT = dict(offset=(0, 0.4, -0.95), leg_l=(-90, 0, 0), leg_r=(-90, 0, 0))
+
+
+def _sneeze(rig, f0, f1, seat):
+    """Ah... ah... CHOO: head and body wind back, then snap forward, then a little recoil."""
+    base = SEAT if seat else {}
+    ox, oy, oz = base.get("offset", (0, 0, 0))
+    legs = {k: v for k, v in base.items() if k != "offset"}
+    n = f1 - f0
+    wind = f0 + int(n * 0.35)
+    snap = min(wind + 3, f1 - 2)
+    pose(rig, f0, offset=(ox, oy, oz), **legs)
+    pose(rig, wind, offset=(ox, oy + 0.15, oz + 0.05), head=(28, 0, 0), torso=(-14, 0, 0),
+         arm_l=(-20, -30, 0), arm_r=(-20, 30, 0), **legs)
+    pose(rig, snap, offset=(ox, oy - 0.35, oz - 0.05), head=(-35, 0, 0), torso=(26, 0, 0),
+         arm_l=(-60, -10, 0), arm_r=(-60, 10, 0), **legs)
+    pose(rig, min(snap + 5, f1 - 1), offset=(ox, oy - 0.1, oz), head=(-8, 0, 6), torso=(8, 0, 0), **legs)
+    pose(rig, f1 - 1, offset=(ox, oy, oz), head=(0, 0, 0), **legs)
+
+
+def sneeze(rig, f0, f1, fps):
+    _sneeze(rig, f0, f1, False)
+
+
+def sit_sneeze(rig, f0, f1, fps):
+    _sneeze(rig, f0, f1, True)
+
+
+def sneeze_build(rig, f0, f1, fps):
+    """The 'ah... ah...' before a sneeze: nose twitches, head tilts further and further back, eyes squeeze.
+    Ends at the peak of the wind-up (the next shot is the sneeze)."""
+    for i, f in _loop(f0, f1, 3):
+        t = (f - f0) / max(1, f1 - f0)
+        tw = 2 if i % 2 else -2
+        pose(rig, f, offset=(0, 0.2 * t, 0.05 * t), head=(32 * t + tw, 0, tw), torso=(-15 * t, 0, 0),
+             arm_l=(-30 * t, -30 * t, 0), arm_r=(-30 * t, 30 * t, 0))
+    pose(rig, f1 - 1, offset=(0, 0.2, 0.05), head=(34, 0, 0), torso=(-16, 0, 0), arm_l=(-30, -30, 0), arm_r=(-30, 30, 0))
+
+
+def sit_write(rig, f0, f1, fps):
+    """Seated, scribbling answers at lightning speed."""
+    for i, f in _loop(f0, f1, 2):
+        a = i % 2
+        pose(rig, f, head=(-20, 0, 4 if a else -4), torso=(10, 0, 0), arm_r=(-55 - 10 * a, 10 * a, 0),
+             arm_l=(-40, -10, 0), **SEAT)
+    pose(rig, f1 - 1, head=(-20, 0, 0), torso=(10, 0, 0), arm_r=(-55, 0, 0), arm_l=(-40, -10, 0), **SEAT)
+
+
+def sit_up_scream(rig, f0, f1, fps):
+    """Bolts upright in bed, arms flung out, screaming."""
+    pose(rig, f0, tilt=(-40, 0), **SEAT)
+    pose(rig, min(f0 + 4, f1 - 1), arm_l=(0, -110, 0), arm_r=(0, 110, 0), head=(12, 0, 0), **SEAT)
+    for i, f in _loop(f0 + 6, f1, 3):
+        s = 1 if i % 2 else -1
+        pose(rig, f, arm_l=(0, -110 - 8 * s, 0), arm_r=(0, 110 + 8 * s, 0), head=(12, 0, 5 * s), **SEAT)
+    pose(rig, f1 - 1, arm_l=(0, -110, 0), arm_r=(0, 110, 0), head=(12, 0, 0), **SEAT)
+
+
+def hold_feather(rig, f0, f1, fps):
+    """Holds something up beside their face with one hand, grinning (the feather)."""
+    pose(rig, f0, arm_r=(-150, 20, 0))
+    for i, f in _loop(f0, f1, 7):
+        pose(rig, f, arm_r=(-150, 20 + (4 if i % 2 else -4), 0), head=(4, 0, 6 if i % 2 else -6))
+    pose(rig, f1 - 1, arm_r=(-150, 20, 0))
+
 ANIMS = {f.__name__: f for f in [
     idle, talk, shocked, scared, angry, laugh, sad, cry, wave, point, facepalm, think, dance, jump,
     fall, lie, sit, run_in_place, walk_in_left, walk_in_right, walk_out_left, walk_out_right,
@@ -611,7 +676,7 @@ ANIMS = {f.__name__: f for f in [
     point_laugh, whisper, sad_look_down, rip_tag, celebrate, stumble, step_away_right, cut_line, step_right,
     turn_around, sit_talk, sit_shocked, sit_fall, sit_point, slide_object, film_selfie, back_up_bump,
     sit_faceplant, flatten, sit_slide_down, sweat, hug, bang_window, play_game, touch_cheek, hold_photo,
-    lean_whisper, yell_back]}
+    lean_whisper, yell_back, sneeze, sit_sneeze, sneeze_build, sit_write, sit_up_scream, hold_feather]}
 
 
 def walk_to(rig, f0, start, end, fps, speed=6.5, run=False, max_frames=None):
