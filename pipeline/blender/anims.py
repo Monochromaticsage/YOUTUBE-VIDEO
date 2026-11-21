@@ -669,6 +669,114 @@ def hold_feather(rig, f0, f1, fps):
         pose(rig, f, arm_r=(-150, 20 + (4 if i % 2 else -4), 0), head=(4, 0, 6 if i % 2 else -6))
     pose(rig, f1 - 1, arm_r=(-150, 20, 0))
 
+def still(rig, f0, f1, fps):
+    """Stands completely still (used before a delayed move)."""
+    pose(rig, f0)
+    pose(rig, f1 - 1)
+
+
+HAND_START = (0, 40, 0)  # where a loop-ending hand raise stops, and the opening raise starts from
+
+
+def raise_hand(rig, f0, f1, fps):
+    """Right hand shoots straight up from the low 'starting' position and stays up."""
+    pose(rig, f0, arm_r=HAND_START)
+    pose(rig, min(f0 + 4, f1 - 1), arm_r=(0, 140, 0), head=(6, 0, 0))
+    for i, f in _loop(f0 + 7, f1, 8):
+        pose(rig, f, arm_r=(0, 140, 0), head=(6, 0, 3 if i % 2 else -3))
+    pose(rig, f1 - 1, arm_r=(0, 140, 0))
+
+
+def raise_hand_start(rig, f0, f1, fps):
+    """Begins lifting the right hand slowly; the shot (and video) ends mid-lift."""
+    pose(rig, f0)
+    pose(rig, f1 - 1, arm_r=HAND_START)
+
+
+def spin(rig, f0, f1, fps):
+    n = max(8, min(f1 - f0 - 1, 16))
+    for k in range(0, n + 1, 2):
+        pose(rig, f0 + k, yaw=360 * k / n, offset=(0, 0, 0.3 * math.sin(math.pi * k / n)), arm_l=(0, -70, 0), arm_r=(0, 70, 0))
+    pose(rig, f1 - 1)
+
+
+def chicken_dance(rig, f0, f1, fps):
+    """Elbows flapping like wings, head pecking, knees bobbing."""
+    for i, f in _loop(f0, f1, 4):
+        a = i % 2
+        pose(rig, f, offset=(0, 0, 0.12 * a), head=(18 if a else -6, 0, 0), torso=(6 * a, 0, 0),
+             arm_l=(-20, -60 if a else -15, 40), arm_r=(-20, 60 if a else 15, -40),
+             leg_l=(-12 * a, 0, 0), leg_r=(-12 * (1 - a), 0, 0))
+    pose(rig, f1 - 1)
+
+
+def sit_eat(rig, f0, f1, fps):
+    """Seated, shovels food into mouth happily."""
+    seat = dict(offset=(0, 0.4, -0.95), leg_l=(-90, 0, 0), leg_r=(-90, 0, 0))
+    for i, f in _loop(f0, f1, 5):
+        a = i % 2
+        pose(rig, f, arm_r=(-150 if a else -60, -25 if a else 0, 0), head=(-6 if a else 2, 0, 0), **seat)
+    pose(rig, f1 - 1, arm_r=(-60, 0, 0), **seat)
+
+
+def sit_reach_freeze(rig, f0, f1, fps):
+    """Seated, slowly reaches toward the plate... and freezes mid-air."""
+    seat = dict(offset=(0, 0.4, -0.95), leg_l=(-90, 0, 0), leg_r=(-90, 0, 0))
+    pose(rig, f0, **seat)
+    mid = min(f0 + int((f1 - f0) * 0.4), f1 - 2)
+    pose(rig, mid, arm_r=(-75, 0, 0), torso=(8, 0, 0), **seat)
+    pose(rig, f1 - 1, arm_r=(-75, 0, 0), torso=(8, 0, 0), head=(4, 0, 18), **seat)
+
+
+def sit_thumbs_up(rig, f0, f1, fps):
+    seat = dict(offset=(0, 0.4, -0.95), leg_l=(-90, 0, 0), leg_r=(-90, 0, 0))
+    pose(rig, f0, **seat)
+    pose(rig, min(f0 + 4, f1 - 1), arm_r=(-100, -20, 0), head=(4, 6, 0), **seat)
+    pose(rig, f1 - 1, arm_r=(-100, -20, 0), head=(4, 6, 0), **seat)
+
+
+def tilt_glass(rig, f0, f1, fps):
+    """Holds a glass out at chest height and slowly, dramatically tips it."""
+    pose(rig, f0, arm_r=(-80, 0, 0))
+    pose(rig, f1 - 1, arm_r=(-85, 0, -35), head=(-10, 0, 8), torso=(4, 0, 0))
+
+
+def resist_raise(rig, f0, f1, fps):
+    """The right arm rises on its own while the left hand grabs it and pulls down."""
+    n = f1 - f0
+    for i, f in _loop(f0, f1, 3):
+        t = (f - f0) / max(1, n)
+        up = 40 + 100 * min(1.0, t * 1.3)
+        sh = 6 if i % 2 else -6
+        pose(rig, f, offset=(0.05 * (1 if i % 2 else -1), 0, 0), arm_r=(0, up + sh, 0),
+             arm_l=(-90 - up * 0.3, 0, -40), torso=(-6, 0, 0), head=(14, 0, 8 * (1 if i % 2 else -1)))
+    pose(rig, f1 - 1, arm_r=(0, 140, 0), arm_l=(-140, 0, -40), head=(14, 0, 0))
+
+
+def arms_up(rig, f0, f1, fps):
+    """Both arms shoot straight up and stay there."""
+    pose(rig, f0)
+    pose(rig, min(f0 + 3, f1 - 1), arm_l=(0, -140, 0), arm_r=(0, 140, 0), offset=(0, 0, 0.15))
+    for i, f in _loop(f0 + 6, f1, 6):
+        pose(rig, f, arm_l=(0, -140, 0), arm_r=(0, 140, 0), head=(0, 0, 4 if i % 2 else -4))
+    pose(rig, f1 - 1, arm_l=(0, -140, 0), arm_r=(0, 140, 0))
+
+
+def raise_hand_l(rig, f0, f1, fps):
+    """Same as raise_hand but with the left hand (the side away from someone standing on their right)."""
+    L = (0, -HAND_START[1], 0)
+    pose(rig, f0, arm_l=L)
+    pose(rig, min(f0 + 4, f1 - 1), arm_l=(0, -140, 0), head=(6, 0, 0))
+    for i, f in _loop(f0 + 7, f1, 8):
+        pose(rig, f, arm_l=(0, -140, 0), head=(6, 0, 3 if i % 2 else -3))
+    pose(rig, f1 - 1, arm_l=(0, -140, 0))
+
+
+def raise_hand_start_l(rig, f0, f1, fps):
+    pose(rig, f0)
+    pose(rig, f1 - 1, arm_l=(0, -HAND_START[1], 0))
+
+
 ANIMS = {f.__name__: f for f in [
     idle, talk, shocked, scared, angry, laugh, sad, cry, wave, point, facepalm, think, dance, jump,
     fall, lie, sit, run_in_place, walk_in_left, walk_in_right, walk_out_left, walk_out_right,
@@ -676,7 +784,9 @@ ANIMS = {f.__name__: f for f in [
     point_laugh, whisper, sad_look_down, rip_tag, celebrate, stumble, step_away_right, cut_line, step_right,
     turn_around, sit_talk, sit_shocked, sit_fall, sit_point, slide_object, film_selfie, back_up_bump,
     sit_faceplant, flatten, sit_slide_down, sweat, hug, bang_window, play_game, touch_cheek, hold_photo,
-    lean_whisper, yell_back, sneeze, sit_sneeze, sneeze_build, sit_write, sit_up_scream, hold_feather]}
+    lean_whisper, yell_back, sneeze, sit_sneeze, sneeze_build, sit_write, sit_up_scream, hold_feather,
+    still, raise_hand, raise_hand_start, spin, chicken_dance, sit_eat, sit_reach_freeze, sit_thumbs_up, tilt_glass,
+    resist_raise, arms_up, raise_hand_l, raise_hand_start_l]}
 
 
 def walk_to(rig, f0, start, end, fps, speed=6.5, run=False, max_frames=None):

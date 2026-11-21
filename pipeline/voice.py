@@ -143,7 +143,7 @@ def build(ep, cast, build_dir, force=False):
                     with open(wj, encoding="utf-8") as f:
                         sp = spec.get("speed", 1.0)
                         entry["words"] = [[w, a / sp, b / sp] for w, a, b in json.load(f)]
-                duration = dur + PAD_AFTER
+                duration = dur + shot.get("pad", PAD_AFTER)
             else:
                 duration = 0
             duration = max(duration, shot.get("duration", 0)) + shot.get("hold", 0)

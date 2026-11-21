@@ -1,0 +1,561 @@
+{
+ "id": "s08_copy_sister",
+ "title": "My Sister Copied EVERYTHING I Did! 🪞",
+ "format": "short",
+ "mood": "bright",
+ "grade": "bright",
+ "fog": false,
+ "dof": false,
+ "handheld": 0.35,
+ "caption_style": "word",
+ "caption_pos": "top",
+ "cut_every": 1.25,
+ "sting": false,
+ "cta": {
+  "at": 15
+ },
+ "music": "quirky_loop",
+ "music_volume": 0.14,
+ "loop": true,
+ "_loop": "last shot = first shot (same room, camera, poses); Pip's hand starts rising at the end and shoots up at the start; last line runs into the first",
+ "_secret": "in the chicken dance (and every copy move) Pip moves a split second BEFORE Sage",
+ "_pinned_comment": "Watch the chicken dance again... who REALLY moves first? 👀🐔",
+ "characters": {
+  "sage": {
+   "crop_top": false,
+   "shirt": "#ffd23f",
+   "hoodie": "#ffd23f",
+   "pants": "#3d5a99",
+   "sleeves": true
+  }
+ },
+ "scenes": [
+  {
+   "set": "living_room",
+   "cast": {
+    "sage": [
+     -1.2,
+     1.6,
+     0,
+     0
+    ],
+    "pip": [
+     1.9,
+     1.8,
+     0,
+     0
+    ]
+   },
+   "shots": [
+    {
+     "_beat": "HOOK",
+     "speaker": "sage",
+     "vo": true,
+     "line": "My sister copied everything I did... until she started doing things BEFORE me!",
+     "cameras": [
+      "at:0.1,-7.0,5.0,0.1,1.7,4.3,24",
+      "extreme:sage",
+      "medium:pip",
+      "extreme:sage"
+     ],
+     "moves": [
+      "none",
+      "punch",
+      "push",
+      "punch"
+     ],
+     "anims": {
+      "pip": "raise_hand_l",
+      "sage": "raise_hand@0.25"
+     },
+     "faces": {
+      "sage": "sus",
+      "pip": "smug"
+     },
+     "sfx": [
+      {
+       "name": "boing",
+       "at": 0.12,
+       "volume": 0.5
+      }
+     ],
+     "fx": [
+      {
+       "text": "BEFORE ME?!",
+       "color": "#ffd23f",
+       "size": 110,
+       "at": 3.6,
+       "x": 0.5,
+       "y": 0.7,
+       "dur": 1.1,
+       "anim": "shake"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "living_room",
+   "cast": {
+    "sage": [
+     -1.2,
+     1.6,
+     0,
+     0
+    ],
+    "pip": [
+     1.9,
+     1.8,
+     0,
+     0
+    ]
+   },
+   "shots": [
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "At first I thought she was just annoying me.",
+     "camera": "two:sage,pip",
+     "anims": {
+      "sage": "cross_arms",
+      "pip": "cross_arms"
+     },
+     "faces": {
+      "sage": "angry",
+      "pip": "smug"
+     }
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "I jumped... she jumped.",
+     "camera": "two:sage,pip",
+     "no_cuts": true,
+     "anims": {
+      "pip": "jump",
+      "sage": "jump@0.18"
+     },
+     "faces": {
+      "sage": "angry",
+      "pip": "neutral"
+     },
+     "sfx": [
+      {
+       "name": "boing",
+       "at": 0.1
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "I spun... she spun.",
+     "camera": "two:sage,pip",
+     "no_cuts": true,
+     "anims": {
+      "pip": "spin",
+      "sage": "spin@0.18"
+     },
+     "faces": {
+      "sage": "angry",
+      "pip": "neutral"
+     },
+     "sfx": [
+      {
+       "name": "whoosh",
+       "at": 0.1
+      }
+     ]
+    },
+    {
+     "_secret": "Pip starts every flap first",
+     "speaker": "sage",
+     "vo": true,
+     "line": "I did the chicken dance... she was already dancing!",
+     "cameras": [
+      "two:sage,pip",
+      "medium:pip"
+     ],
+     "moves": [
+      "push",
+      "push"
+     ],
+     "no_cuts": false,
+     "anims": {
+      "pip": "chicken_dance",
+      "sage": "chicken_dance@0.15"
+     },
+     "faces": {
+      "sage": "angry",
+      "pip": "neutral"
+     },
+     "fx": [
+      {
+       "e": "🐔",
+       "at": 0.6,
+       "x": 0.72,
+       "y": 0.45,
+       "size": 190,
+       "dur": 1.2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "dining_room",
+   "cast": {
+    "sage": [
+     -1.8,
+     3.9,
+     0,
+     0
+    ],
+    "pip": [
+     1.8,
+     3.9,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "plate1",
+     "type": "plate",
+     "at": [
+      -1.8,
+      1.4,
+      2.16
+     ]
+    },
+    {
+     "id": "plate2",
+     "type": "plate",
+     "at": [
+      1.8,
+      1.4,
+      2.16
+     ]
+    },
+    {
+     "id": "broc1",
+     "type": "broccoli",
+     "at": [
+      -1.8,
+      1.4,
+      2.25
+     ],
+     "cam_dist": 3.5
+    },
+    {
+     "id": "broc2",
+     "type": "broccoli",
+     "at": [
+      1.8,
+      1.4,
+      2.25
+     ]
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "So I tried something she HATES. Broccoli.",
+     "cameras": [
+      "prop:broc1",
+      "closeup:sage"
+     ],
+     "moves": [
+      "push",
+      "push"
+     ],
+     "anims": {
+      "sage": "sit",
+      "pip": "sit"
+     },
+     "faces": {
+      "sage": "smug",
+      "pip": "neutral"
+     },
+     "fx": [
+      {
+       "e": "🥦",
+       "at": 1.4,
+       "x": 0.7,
+       "y": 0.45,
+       "size": 190,
+       "dur": 1.0,
+       "burst": "#9ccc65"
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "But she ate hers before I even touched mine!",
+     "cameras": [
+      "at:0,-6.5,5.4,0,2.8,3.4,30",
+      "closeup:pip"
+     ],
+     "moves": [
+      "push",
+      "push"
+     ],
+     "hide": [
+      "broc2"
+     ],
+     "anims": {
+      "pip": "sit_eat",
+      "sage": "sit_reach_freeze"
+     },
+     "faces": {
+      "sage": "shocked",
+      "pip": "happy"
+     }
+    },
+    {
+     "_beat": "THUMBS",
+     "duration": 1.1,
+     "camera": "at:0,-6.5,5.4,0,2.8,3.4,30",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "pip": "sit_thumbs_up",
+      "sage": "sit_reach_freeze"
+     },
+     "faces": {
+      "pip": "happy",
+      "sage": "sad"
+     },
+     "sfx": [
+      {
+       "name": "ding",
+       "at": 0.15
+      }
+     ],
+     "fx": [
+      {
+       "e": "👍",
+       "at": 0.15,
+       "x": 0.7,
+       "y": 0.5,
+       "size": 170,
+       "dur": 0.9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "living_room",
+   "cast": {
+    "sage": [
+     -1.2,
+     1.6,
+     0,
+     0
+    ],
+    "pip": [
+     1.9,
+     1.8,
+     0,
+     0
+    ],
+    "mom": [
+     10,
+     2.5,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "juice",
+     "type": "juice",
+     "at": [
+      -2.0,
+      -0.3,
+      3.3
+     ],
+     "cam_dist": 4,
+     "scale": 0.6
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "Then I had a genius plan. I pretended to spill Mom's favorite juice!",
+     "cameras": [
+      "medium:sage",
+      "prop:juice",
+      "medium:pip"
+     ],
+     "moves": [
+      "push",
+      "push",
+      "push"
+     ],
+     "anims": {
+      "sage": "tilt_glass",
+      "pip": "point",
+      "mom": "hidden"
+     },
+     "faces": {
+      "sage": "smug",
+      "pip": "neutral"
+     },
+     "prop_moves": {
+      "juice": {
+       "at": 1.2,
+       "dur": 2.0,
+       "rot": [
+        0,
+        -55,
+        0
+       ]
+      }
+     },
+     "fx": [
+      {
+       "e": "🧻",
+       "at": 3.0,
+       "x": 0.66,
+       "y": 0.55,
+       "size": 200,
+       "dur": 1.4,
+       "burst": true
+      }
+     ]
+    },
+    {
+     "speaker": "mom",
+     "line": "SAGE! Don't you dare!",
+     "camera": "medium:mom",
+     "walk": {
+      "mom": [
+       4.6,
+       2.5
+      ]
+     },
+     "anims": {
+      "mom": "point",
+      "sage": "shocked",
+      "pip": "point"
+     },
+     "face": "angry",
+     "faces": {
+      "sage": "scared",
+      "pip": "smug"
+     },
+     "sfx": [
+      {
+       "name": "record_scratch",
+       "at": 0.05
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "living_room",
+   "cast": {
+    "sage": [
+     -1.2,
+     1.6,
+     0,
+     0
+    ],
+    "pip": [
+     1.9,
+     1.8,
+     0,
+     0
+    ]
+   },
+   "shots": [
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "That's when I noticed something terrifying. She wasn't copying me...",
+     "camera": "two:sage,pip",
+     "anims": {
+      "pip": "raise_hand_l",
+      "sage": "resist_raise@0.3"
+     },
+     "faces": {
+      "pip": "smug",
+      "sage": "scared"
+     }
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "I was copying HER!",
+     "camera": "extreme:sage",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "pip": "arms_up",
+      "sage": "arms_up@0.15"
+     },
+     "faces": {
+      "sage": "shocked",
+      "pip": "evil"
+     },
+     "sfx": [
+      {
+       "name": "vine_boom",
+       "at": 0.1
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "line": "STOP CONTROLLING ME!",
+     "camera": "two:sage,pip",
+     "no_cuts": true,
+     "anims": {
+      "pip": "laugh",
+      "sage": "arms_up"
+     },
+     "face": "angry",
+     "faces": {
+      "pip": "happy"
+     }
+    },
+    {
+     "speaker": "pip",
+     "line": "Wanna see something REALLY funny?",
+     "camera": "closeup:pip",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "pip": "idle",
+      "sage": "idle"
+     },
+     "face": "evil"
+    },
+    {
+     "_beat": "LOOP: same room, camera and poses as the first frame",
+     "speaker": "sage",
+     "vo": true,
+     "line": "She raised her hand... and that's when I realized—",
+     "camera": "at:0.1,-7.0,5.0,0.1,1.7,4.3,24",
+     "no_cuts": true,
+     "move": "none",
+     "pad": 0.0,
+     "anims": {
+      "pip": "raise_hand_start_l",
+      "sage": "still"
+     },
+     "faces": {
+      "sage": "sus",
+      "pip": "smug"
+     }
+    }
+   ]
+  }
+ ]
+}

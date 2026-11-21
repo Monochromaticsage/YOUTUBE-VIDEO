@@ -439,6 +439,26 @@ def _feather(root, n, pd):
 STORY_PROPS["feather"] = _feather
 
 
+def _broccoli(root, n, pd):
+    """A little pile of broccoli florets (sits on a plate)."""
+    g = M("#3e9b3a", rough=0.8, tex=False)
+    for i, (x, y) in enumerate([(-0.3, 0), (0.25, 0.1), (0, -0.25), (0.05, 0.3)]):
+        _kid(root, f"{n}_st{i}", cyl_mesh("bs", 0.09, 0.3, 8), (x, y, 0), M("#9ccc65", tex=False), bevel=0)
+        _kid(root, f"{n}_fl{i}", box_mesh("bf", (0.38, 0.38, 0.3)), (x, y, 0.38), g, bevel=0.14)
+    return 0.6, 3.0
+
+
+def _juice(root, n, pd):
+    """A glass of red juice."""
+    glass = M("#e8f4ff", rough=0.1, tex=False)
+    _kid(root, f"{n}_glass", cyl_mesh("jg", 0.32, 0.95, 16), (0, 0, 0), glass, bevel=0)
+    _kid(root, f"{n}_juice", cyl_mesh("jj", 0.335, 0.8, 16), (0, 0, 0.04), M("#e0263a", rough=0.3, tex=False), bevel=0)
+    return 1.0, 3.0
+
+
+STORY_PROPS.update({"broccoli": _broccoli, "juice": _juice})
+
+
 def scene_prop(pd, origin):
     """pd: {"id": "vase", "type": "vase", "at": [x, y, z], "rot": deg, "scale": 1.0}"""
     from mathutils import Vector

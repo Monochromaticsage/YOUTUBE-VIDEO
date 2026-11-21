@@ -194,12 +194,19 @@ def assemble(ep, timing, cast, build_dir, out_mp4):
         if p:
             inputs += ["-stream_loop", "-1", "-i", p]
             mv = ep.get('music_volume', 0.12)
+            stretch = ""
+            if ep.get("loop"):  # seamless replay: stretch the music so a whole number of loops fills the video
+                L = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of",
+                                          "csv=p=0", p], capture_output=True, text=True).stdout.strip() or 0)
+                if L > 0:
+                    k = max(1, round(total / L))
+                    stretch = f"atempo={L * k / total:.5f},"
             if duck:
-                mix.append(f"[{idx}:a]aformat=channel_layouts=mono,volume={mv}[mraw]")
+                mix.append(f"[{idx}:a]{stretch}aformat=channel_layouts=mono,volume={mv}[mraw]")
                 mix.append("[mraw][key]sidechaincompress=threshold=0.05:ratio=3:attack=40:release=500:"
                            "makeup=1[m]")
             else:
-                mix.append(f"[{idx}:a]aformat=channel_layouts=mono,volume={mv}[m]")
+                mix.append(f"[{idx}:a]{stretch}aformat=channel_layouts=mono,volume={mv}[m]")
             labels.append("[m]")
             idx += 1
         else:

@@ -725,6 +725,10 @@ def main():
                     continue
                 default = "talk" if (name == speaker and not shot.get("vo")) else "idle"
                 anim_name = shot_anims.get(name, default)
+                delay = 0.0
+                if "@" in anim_name:  # "jump@0.2": start this anim 0.2 s into the shot (idle before)
+                    anim_name, d_ = anim_name.split("@")
+                    delay = float(d_)
                 if anim_name not in anims.ANIMS:
                     raise ValueError(f"unknown anim '{anim_name}'. Available: {sorted(anims.ANIMS)}")
                 a0 = f0
@@ -738,6 +742,10 @@ def main():
                     r.base = dest
                     if a0 >= f1 - 2:
                         a0 = f1 - 2
+                if delay > 0 and a0 + round(delay * fps) < f1 - 2:
+                    d0 = a0 + round(delay * fps)
+                    anims.ANIMS["still"](r, a0, d0, fps)
+                    a0 = d0
                 anims.ANIMS[anim_name](r, a0, f1, fps)
                 r.hidden_now = anim_name == "hidden"
                 sc_ = float(ep["_chars"].get(name, {}).get("scale", 1.0))
