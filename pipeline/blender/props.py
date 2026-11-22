@@ -314,7 +314,7 @@ def _text_obj(root, n, text, size, color, loc, extrude=0.04):
     cu.align_x, cu.align_y = "CENTER", "CENTER"
     cu.size = size
     cu.extrude = extrude
-    fp = "/usr/share/fonts/opentype/inter/InterDisplay-Black.otf"
+    fp = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "assets", "fonts", "InterDisplay-Black.otf")
     if os.path.exists(fp):
         cu.font = bpy.data.fonts.load(fp, check_existing=True)
     ob = bpy.data.objects.new(f"{n}_txt", cu)

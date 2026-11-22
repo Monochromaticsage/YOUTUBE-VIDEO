@@ -40,8 +40,8 @@ def parse():
 def find_font():
     cands = glob.glob(os.path.join(ROOT, "assets", "fonts", "*.[ot]tf"))
     cands += [r"C:\Windows\Fonts\ariblk.ttf", r"C:\Windows\Fonts\impact.ttf",
-              "/usr/share/fonts/opentype/inter/Inter-Black.otf",
-              "/Library/Fonts/Arial Black.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"]
+              os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "assets", "fonts", "Inter-Black.otf"),
+              "/Library/Fonts/Arial Black.ttf", os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "assets", "fonts", "DejaVuSans-Bold.ttf")]
     for c in cands:
         if os.path.exists(c):
             return bpy.data.fonts.load(c)

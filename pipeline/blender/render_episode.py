@@ -536,7 +536,7 @@ def build_tags(ep, rigs):
     zero.use_nodes = True
     zero.node_tree.nodes.get("Principled BSDF").inputs["Base Color"].default_value = rigmod.hex_rgba("#c0392b")
     font = None
-    for fp in ("/usr/share/fonts/opentype/inter/InterDisplay-Black.otf",
+    for fp in (os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "assets", "fonts", "InterDisplay-Black.otf"),
                "C:/Windows/Fonts/ariblk.ttf", "/System/Library/Fonts/Supplemental/Arial Black.ttf"):
         if os.path.exists(fp):
             font = bpy.data.fonts.load(fp)

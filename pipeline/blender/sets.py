@@ -83,7 +83,7 @@ def _wall_text(o, text, loc, size, color, extrude=0.08):
     cu.align_x, cu.align_y = "CENTER", "CENTER"
     cu.size = size
     cu.extrude = extrude
-    for fp in ("/usr/share/fonts/opentype/inter/InterDisplay-Black.otf", "C:/Windows/Fonts/ariblk.ttf"):
+    for fp in (os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "assets", "fonts", "InterDisplay-Black.otf"), "C:/Windows/Fonts/ariblk.ttf"):
         if os.path.exists(fp):
             cu.font = bpy.data.fonts.load(fp)
             break

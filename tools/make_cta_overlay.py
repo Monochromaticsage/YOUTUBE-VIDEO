@@ -9,8 +9,8 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 OUT = os.path.join(ROOT, "assets", "overlays", "cta")
-F = "/usr/share/fonts/opentype/inter/InterDisplay-Black.otf"
-EMO = "/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf"
+F = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "fonts", "InterDisplay-Black.otf")
+EMO = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "fonts", "NotoColorEmoji.ttf")
 FPS, SECONDS = 30, 4.0
 W, H = 640, 150
 

@@ -1,9 +1,10 @@
+import os
 import sys
 from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance, ImageOps
 S = sys.argv[1]; OUT = sys.argv[2]
 W, H = 1080, 1920
-F = "/usr/share/fonts/opentype/inter/InterDisplay-Black.otf"
-EMO = "/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf"
+F = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "fonts", "InterDisplay-Black.otf")
+EMO = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "fonts", "NotoColorEmoji.ttf")
 
 bg = Image.open(f"{S}/hi_985/frame_0985.png").convert("RGB").resize((W, H), Image.LANCZOS)
 shift = 170

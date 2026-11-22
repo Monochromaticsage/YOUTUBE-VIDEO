@@ -12,8 +12,8 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 BUILD = os.path.join(ROOT, "build", "compilation")
 W, H = 1920, 1080
-BLACK = "/usr/share/fonts/opentype/inter/InterDisplay-Black.otf"
-BOLD = "/usr/share/fonts/opentype/inter/InterDisplay-Bold.otf"
+BLACK = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "fonts", "InterDisplay-Black.otf")
+BOLD = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "fonts", "InterDisplay-Bold.otf")
 YELLOW, PINK, WHITE = (255, 210, 63), (255, 127, 160), (255, 255, 255)
 
 # Story titles shown in the side panel (short, punchy).

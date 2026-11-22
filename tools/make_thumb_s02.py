@@ -1,12 +1,13 @@
 """Thumbnail for Short #2 "Price Tags": Sage's $0 close-up with a Goldie $1,000,000 inset.
 usage: python tools/make_thumb_s02.py <dir with frame_0150.png + frame_0180.png> branding/s02_price_tags_thumbnail.png
 """
+import os
 import sys
 from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance
 SRC = sys.argv[1]; OUT = sys.argv[2]
 W, H = 1080, 1920
-F = "/usr/share/fonts/opentype/inter/InterDisplay-Black.otf"
-EMO = "/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf"
+F = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "fonts", "InterDisplay-Black.otf")
+EMO = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "fonts", "NotoColorEmoji.ttf")
 
 bg = Image.open(f"{SRC}/frame_0150.png").convert("RGB").resize((W, H), Image.LANCZOS)
 # zoom the shot out a little and drop it below the headline; blurred copy fills the edges

@@ -4,7 +4,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageEnhance
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 B = os.path.join(ROOT, "branding")
-F = "/usr/share/fonts/opentype/inter/InterDisplay-Black.otf"
+F = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "fonts", "InterDisplay-Black.otf")
 W, H = 1280, 720
 im = Image.new("RGB", (W, H), (20, 16, 40))
 crops = [("s03_taste_lies", 250), ("s05_noob_genius", 160), ("s04_substitute_mom", 220)]

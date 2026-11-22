@@ -11,8 +11,8 @@ import os
 from PIL import Image, ImageDraw, ImageFont
 
 FPS = 30
-FONT = "/usr/share/fonts/opentype/inter/InterDisplay-Black.otf"
-EMOJI = "/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf"
+FONT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "fonts", "InterDisplay-Black.otf")
+EMOJI = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "fonts", "NotoColorEmoji.ttf")
 
 
 def _emoji(chars, size):

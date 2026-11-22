@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.join(ROOT, "pipeline"))
 import fx  # noqa: E402
 
 W, H = 1080, 1920
-F = "/usr/share/fonts/opentype/inter/InterDisplay-Black.otf"
+F = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "fonts", "InterDisplay-Black.otf")
 
 
 def base(path):

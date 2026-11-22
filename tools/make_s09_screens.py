@@ -10,8 +10,8 @@ sys.path.insert(0, os.path.join(ROOT, "pipeline"))
 import fx  # noqa: E402
 
 D = os.path.join(ROOT, "assets", "textures", "s09")
-BLACK = "/usr/share/fonts/opentype/inter/InterDisplay-Black.otf"
-BOLD = "/usr/share/fonts/opentype/inter/InterDisplay-Bold.otf"
+BLACK = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "fonts", "InterDisplay-Black.otf")
+BOLD = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "fonts", "InterDisplay-Bold.otf")
 SW, SH = 1280, 800
 
 
