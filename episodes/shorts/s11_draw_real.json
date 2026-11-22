@@ -150,9 +150,9 @@
      },
      "fx": [
       {
-       "text": "WHAT WOULD YOU DRAW? ✏️",
+       "text": "WHAT WOULD YOU DRAW?",
        "color": "#ffd23f",
-       "size": 92,
+       "size": 70,
        "at": 2.4,
        "x": 0.5,
        "y": 0.72,
