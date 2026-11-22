@@ -1,0 +1,578 @@
+{
+ "id": "s09_teacher_future",
+ "title": "My Teacher Punished Me BEFORE I Did Anything! 😳",
+ "format": "short",
+ "mood": "bright",
+ "grade": "bright",
+ "fog": false,
+ "dof": false,
+ "handheld": 0.35,
+ "caption_style": "word",
+ "caption_pos": "top",
+ "cut_every": 1.25,
+ "sting": false,
+ "cta": {
+  "at": 15
+ },
+ "music": "mystery_loop",
+ "music_volume": 0.13,
+ "loop": true,
+ "_loop": "ends pushing into the laptop as screen-Ms. Brick slams the slip; restarts on the real slip landing (slam sound at 0.0)",
+ "_secret": "at 0:02 the laptop behind Ms. Brick already shows tiny Sage reaching for DELETE (the 0:35 moment)",
+ "_pinned_comment": "Pause at 0:02 and look at the laptop... 👀💻",
+ "characters": {
+  "sage": {
+   "crop_top": false,
+   "shirt": "#ff8a65",
+   "hoodie": "#ff8a65",
+   "pants": "#3d5a99",
+   "sleeves": true
+  }
+ },
+ "scenes": [
+  {
+   "set": "classroom_bright",
+   "cast": {
+    "sage": [
+     -3,
+     1.6,
+     0,
+     0
+    ],
+    "noob": [
+     3,
+     1.6,
+     0,
+     0
+    ],
+    "ms_brick": [
+     0.9,
+     0.0,
+     0,
+     -30
+    ],
+    "bacon": [
+     -8,
+     5.8,
+     0,
+     0
+    ],
+    "goldie": [
+     3,
+     5.8,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "laptop",
+     "type": "laptop",
+     "image": "textures/s09/screen_reach.png",
+     "at": [
+      5.9,
+      8.4,
+      2.6
+     ],
+     "rot": -8,
+     "cam_dist": 3.6
+    },
+    {
+     "id": "slip",
+     "type": "slip",
+     "image": "textures/s09/slip.png",
+     "at": [
+      -3,
+      0.35,
+      4.97
+     ],
+     "hidden": true
+    }
+   ],
+   "shots": [
+    {
+     "_beat": "HOOK (loop point: slip lands)",
+     "speaker": "sage",
+     "vo": true,
+     "line": "My teacher gave me detention... for something I hadn't even DONE yet!",
+     "cameras": [
+      "at:-3,-2.6,4.6,-3,0.4,2.0,40",
+      "at:-1.5,-7,6,3.5,4.5,3.6,30",
+      "closeup:sage"
+     ],
+     "moves": [
+      "punch",
+      "push",
+      "push"
+     ],
+     "show": [
+      "slip"
+     ],
+     "prop_moves": {
+      "slip": {
+       "at": 0.0,
+       "dur": 0.1,
+       "to": [
+        0,
+        0,
+        -3
+       ]
+      }
+     },
+     "anims": {
+      "noob": "sit",
+      "bacon": "sit",
+      "goldie": "sit",
+      "sage": "sit_shocked",
+      "ms_brick": "point"
+     },
+     "faces": {
+      "sage": "shocked",
+      "ms_brick": "angry"
+     },
+     "sfx": [
+      {
+       "name": "door_slam",
+       "at": 0.06,
+       "volume": 0.75
+      }
+     ],
+     "fx": [
+      {
+       "text": "DETENTION?!",
+       "color": "#ff3b30",
+       "size": 120,
+       "at": 1.3,
+       "x": 0.5,
+       "y": 0.7,
+       "dur": 1.2,
+       "anim": "shake"
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "line": "But I didn't DO anything!",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "anims": {
+      "noob": "sit",
+      "bacon": "sit",
+      "goldie": "sit",
+      "sage": "sit_talk",
+      "ms_brick": "cross_arms"
+     },
+     "face": "shocked"
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "She said I'd throw a paper airplane. I laughed...",
+     "cameras": [
+      "medium:ms_brick",
+      "closeup:sage"
+     ],
+     "moves": [
+      "push",
+      "push"
+     ],
+     "anims": {
+      "noob": "sit",
+      "bacon": "sit",
+      "goldie": "sit",
+      "sage": "sit_talk",
+      "ms_brick": "point"
+     },
+     "faces": {
+      "sage": "happy",
+      "ms_brick": "smug"
+     },
+     "fx": [
+      {
+       "img": "textures/s09/slip.png",
+       "size": 560,
+       "at": 0.2,
+       "x": 0.5,
+       "y": 0.6,
+       "dur": 1.6,
+       "tilt": -4
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "...until my friend handed me one!",
+     "cameras": [
+      "closeup:noob",
+      "medium:sage"
+     ],
+     "moves": [
+      "push",
+      "push"
+     ],
+     "anims": {
+      "noob": "sit_point",
+      "bacon": "sit",
+      "goldie": "sit",
+      "sage": "sit_reach_freeze",
+      "ms_brick": "cross_arms"
+     },
+     "faces": {
+      "noob": "smug",
+      "sage": "scared"
+     },
+     "fx": [
+      {
+       "e": "✈️",
+       "at": 0.3,
+       "x": 0.62,
+       "y": 0.55,
+       "size": 200,
+       "dur": 1.2
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "Then she punished me for eating chips...",
+     "camera": "closeup:sage",
+     "anims": {
+      "noob": "sit",
+      "bacon": "sit",
+      "goldie": "sit",
+      "sage": "sit_eat",
+      "ms_brick": "point"
+     },
+     "faces": {
+      "sage": "happy"
+     },
+     "sfx": [
+      {
+       "name": "door_slam",
+       "at": 1.3,
+       "volume": 0.5
+      }
+     ],
+     "fx": [
+      {
+       "e": "🍟",
+       "at": 0.2,
+       "x": 0.68,
+       "y": 0.5,
+       "size": 180,
+       "dur": 1.0
+      },
+      {
+       "img": "textures/s09/slip.png",
+       "size": 380,
+       "at": 1.3,
+       "x": 0.5,
+       "y": 0.66,
+       "dur": 0.8,
+       "tilt": 8
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "falling asleep...",
+     "camera": "medium:sage",
+     "no_cuts": true,
+     "anims": {
+      "noob": "sit",
+      "bacon": "sit",
+      "goldie": "sit",
+      "sage": "sit_faceplant",
+      "ms_brick": "point"
+     },
+     "sfx": [
+      {
+       "name": "door_slam",
+       "at": 0.8,
+       "volume": 0.5
+      }
+     ],
+     "fx": [
+      {
+       "e": "💤",
+       "at": 0.1,
+       "x": 0.64,
+       "y": 0.42,
+       "size": 170,
+       "dur": 1.0
+      },
+      {
+       "img": "textures/s09/slip.png",
+       "size": 380,
+       "at": 0.8,
+       "x": 0.5,
+       "y": 0.66,
+       "dur": 0.7,
+       "tilt": -8
+      }
+     ]
+    },
+    {
+     "speaker": "ms_brick",
+     "line": "Sage! What's the answer?",
+     "camera": "medium:ms_brick",
+     "no_cuts": true,
+     "anims": {
+      "noob": "sit",
+      "bacon": "sit",
+      "goldie": "sit",
+      "ms_brick": "point",
+      "sage": "sit"
+     },
+     "face": "angry"
+    },
+    {
+     "speaker": "sage",
+     "line": "Yes, MOM?!",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "noob": "sit",
+      "bacon": "sit",
+      "goldie": "sit",
+      "sage": "sit_shocked",
+      "ms_brick": "cross_arms"
+     },
+     "face": "shocked"
+    },
+    {
+     "_beat": "LAUGH",
+     "duration": 1.4,
+     "camera": "wide",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "noob": "sit_point",
+      "bacon": "sit_point",
+      "goldie": "sit_point",
+      "sage": "sit_slide_down",
+      "ms_brick": "cross_arms"
+     },
+     "faces": {
+      "noob": "happy",
+      "bacon": "happy",
+      "goldie": "happy",
+      "sage": "sad",
+      "ms_brick": "smug"
+     },
+     "sfx": [
+      {
+       "name": "door_slam",
+       "at": 0.5,
+       "volume": 0.5
+      }
+     ],
+     "fx": [
+      {
+       "text": "HOW DOES SHE KNOW?!",
+       "color": "#ffd23f",
+       "size": 96,
+       "at": 0.2,
+       "x": 0.5,
+       "y": 0.7,
+       "dur": 1.2,
+       "anim": "shake"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "classroom_bright",
+   "cast": {
+    "sage": [
+     -3,
+     3.6,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "laptop",
+     "type": "laptop",
+     "image": "textures/s09/screen_reach.png",
+     "at": [
+      5.9,
+      8.4,
+      2.6
+     ],
+     "rot": -8,
+     "cam_dist": 3.6
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "So at break, I sneaked to her desk...",
+     "camera": "at:2,-7,7.5,3,5,3,28",
+     "walk": {
+      "sage": [
+       3.4,
+       7.0
+      ]
+     },
+     "anims": {
+      "sage": "idle"
+     },
+     "faces": {
+      "sage": "sus"
+     },
+     "sfx": [
+      {
+       "name": "footsteps",
+       "at": 0.2,
+       "volume": 0.6
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "and found a video of tomorrow's class... playing TODAY!",
+     "camera": "prop:laptop",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "sage": "idle"
+     },
+     "faces": {
+      "sage": "shocked"
+     },
+     "fx": [
+      {
+       "img": "textures/s09/lap_plane.png",
+       "size": 640,
+       "at": 0.1,
+       "x": 0.5,
+       "y": 0.55,
+       "dur": 3.0
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "I tried to delete it. But the screen showed me deleting it... three seconds BEFORE I did!",
+     "camera": "prop:laptop",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "sage": "idle"
+     },
+     "faces": {
+      "sage": "scared"
+     },
+     "fx": [
+      {
+       "img": "textures/s09/lap_far.png",
+       "size": 640,
+       "at": 0.1,
+       "x": 0.5,
+       "y": 0.55,
+       "dur": 2.4
+      },
+      {
+       "img": "textures/s09/lap_near.png",
+       "size": 640,
+       "at": 2.45,
+       "x": 0.5,
+       "y": 0.55,
+       "dur": 3.2
+      }
+     ]
+    },
+    {
+     "_beat": "WRIST",
+     "duration": 1.5,
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "sage": "resist_raise"
+     },
+     "faces": {
+      "sage": "scared"
+     },
+     "sfx": [
+      {
+       "name": "heartbeat",
+       "at": 0.1,
+       "volume": 0.7
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "line": "Wait... that's NOT me!",
+     "camera": "prop:laptop",
+     "no_cuts": true,
+     "move": "zoom",
+     "anims": {
+      "sage": "scared"
+     },
+     "face": "scared",
+     "sfx": [
+      {
+       "name": "vine_boom",
+       "at": 0.3
+      }
+     ],
+     "fx": [
+      {
+       "img": "textures/s09/lap_smile.png",
+       "size": 680,
+       "at": 0.0,
+       "x": 0.5,
+       "y": 0.55,
+       "dur": 2.2
+      }
+     ]
+    },
+    {
+     "_beat": "LOOP",
+     "speaker": "sage",
+     "vo": true,
+     "line": "Then it showed tomorrow's teacher giving me detention... for something I hadn't even—",
+     "camera": "prop:laptop",
+     "no_cuts": true,
+     "move": "push",
+     "pad": 0.0,
+     "anims": {
+      "sage": "idle"
+     },
+     "faces": {
+      "sage": "scared"
+     },
+     "sfx": [
+      {
+       "name": "whoosh",
+       "at": 3.6,
+       "volume": 0.6
+      }
+     ],
+     "fx": [
+      {
+       "img": "textures/s09/lap_slam.png",
+       "size": 700,
+       "at": 0.0,
+       "x": 0.5,
+       "y": 0.55,
+       "dur": 6.0
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

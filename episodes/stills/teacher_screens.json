@@ -1,0 +1,114 @@
+{
+ "id": "still_teacher_screens",
+ "title": "security-cam stills for the laptop in S09",
+ "format": "short",
+ "mood": "bright",
+ "fog": false,
+ "dof": false,
+ "handheld": 0,
+ "characters": {
+  "sage": {
+   "crop_top": false,
+   "shirt": "#ff8a65",
+   "hoodie": "#ff8a65",
+   "pants": "#3d5a99",
+   "sleeves": true
+  }
+ },
+ "scenes": [
+  {
+   "set": "classroom_bright",
+   "cast": {
+    "sage": [
+     -3,
+     1.6,
+     0,
+     0
+    ],
+    "ms_brick": [
+     -0.6,
+     0.6,
+     0,
+     -30
+    ],
+    "noob": [
+     3,
+     1.6,
+     0,
+     0
+    ]
+   },
+   "shots": [
+    {
+     "duration": 0.3,
+     "camera": "high:sage",
+     "no_cuts": true,
+     "move": "none",
+     "anims": {
+      "sage": "point",
+      "ms_brick": "idle",
+      "noob": "sit"
+     },
+     "faces": {
+      "sage": "smug",
+      "ms_brick": "angry"
+     }
+    },
+    {
+     "duration": 0.3,
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "move": "none",
+     "anims": {
+      "sage": "idle",
+      "ms_brick": "idle",
+      "noob": "sit"
+     },
+     "faces": {
+      "sage": "evil"
+     }
+    },
+    {
+     "duration": 0.3,
+     "camera": "high:sage",
+     "no_cuts": true,
+     "move": "none",
+     "anims": {
+      "sage": "sit",
+      "ms_brick": "point",
+      "noob": "sit"
+     },
+     "faces": {
+      "sage": "scared",
+      "ms_brick": "angry"
+     }
+    }
+   ]
+  },
+  {
+   "set": "classroom_bright",
+   "cast": {
+    "sage": [
+     7.6,
+     6.8,
+     0,
+     0
+    ]
+   },
+   "shots": [
+    {
+     "duration": 0.3,
+     "camera": "high:sage",
+     "no_cuts": true,
+     "move": "none",
+     "anims": {
+      "sage": "point"
+     },
+     "faces": {
+      "sage": "sus"
+     }
+    }
+   ]
+  }
+ ]
+}

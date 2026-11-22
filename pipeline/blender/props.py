@@ -456,7 +456,58 @@ def _juice(root, n, pd):
     return 1.0, 3.0
 
 
-STORY_PROPS.update({"broccoli": _broccoli, "juice": _juice})
+def _img_quad(root, n, image, w, h, loc, horizontal=False, glow=1.0):
+    """A flat picture (emissive) from assets/<image>. Upright facing -Y, or lying flat facing up."""
+    import os
+    me = bpy.data.meshes.new(f"{n}_img")
+    if horizontal:
+        me.from_pydata([(-w / 2, -h / 2, 0), (w / 2, -h / 2, 0), (w / 2, h / 2, 0), (-w / 2, h / 2, 0)], [], [(0, 1, 2, 3)])
+    else:
+        me.from_pydata([(-w / 2, 0, -h / 2), (w / 2, 0, -h / 2), (w / 2, 0, h / 2), (-w / 2, 0, h / 2)], [], [(0, 1, 2, 3)])
+    uv = me.uv_layers.new()
+    for li, co in zip(range(4), [(0, 0), (1, 0), (1, 1), (0, 1)]):
+        uv.data[li].uv = co
+    ob = bpy.data.objects.new(f"{n}_img", me)
+    bpy.context.scene.collection.objects.link(ob)
+    ob.parent = root
+    ob.location = loc
+    mat = bpy.data.materials.new(f"{n}_imgmat")
+    mat.use_nodes = True
+    nt = mat.node_tree
+    for nd in list(nt.nodes):
+        if nd.type != "OUTPUT_MATERIAL":
+            nt.nodes.remove(nd)
+    em = nt.nodes.new("ShaderNodeEmission")
+    em.inputs["Strength"].default_value = glow
+    path = os.path.join(os.path.dirname(__file__), "..", "..", "assets", image or "")
+    if image and os.path.exists(path):
+        tex = nt.nodes.new("ShaderNodeTexImage")
+        tex.image = bpy.data.images.load(os.path.abspath(path))
+        nt.links.new(tex.outputs["Color"], em.inputs["Color"])
+    else:
+        em.inputs["Color"].default_value = hex_rgba("#ffffff")
+    nt.links.new(em.outputs["Emission"], nt.nodes.get("Material Output").inputs["Surface"])
+    me.materials.append(mat)
+    return ob
+
+
+def _laptop(root, n, pd):
+    """Open laptop; the screen shows pd["image"]."""
+    dark = M("#2b2f36", rough=0.4, tex=False)
+    _kid(root, f"{n}_base", box_mesh("lb", (2.4, 1.6, 0.14)), (0, 0, 0.07), dark, bevel=0.04)
+    _kid(root, f"{n}_lid", box_mesh("ll", (2.4, 0.1, 1.6)), (0, 0.78, 0.94), dark, bevel=0.04)
+    _img_quad(root, n, pd.get("image"), 2.15, 1.38, (0, 0.72, 0.95))
+    return 1.7, 4.0
+
+
+def _slip(root, n, pd):
+    """A detention slip lying flat (image from pd["image"])."""
+    _kid(root, f"{n}_paper", box_mesh("sp", (1.5, 1.05, 0.02)), (0, 0, 0.01), M("#fffbe6", tex=False), bevel=0)
+    _img_quad(root, n, pd.get("image"), 1.44, 1.0, (0, 0, 0.025), horizontal=True, glow=0.9)
+    return 0.1, 3.0
+
+
+STORY_PROPS.update({"broccoli": _broccoli, "juice": _juice, "laptop": _laptop, "slip": _slip})
 
 
 def scene_prop(pd, origin):
