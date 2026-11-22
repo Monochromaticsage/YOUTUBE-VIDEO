@@ -206,6 +206,26 @@
      ]
     },
     {
+     "speaker": "mom",
+     "line": "...And the window.",
+     "camera": "medium:mom",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "mom": "cross_arms",
+      "sage": "sit",
+      "grandpa": "sit_eat_chips"
+     },
+     "face": "smug",
+     "sfx": [
+      {
+       "name": "door_slam",
+       "at": 0.5,
+       "volume": 0.5
+      }
+     ]
+    },
+    {
      "speaker": "sage",
      "vo": true,
      "line": "I thought about gaming...",
@@ -231,8 +251,6 @@
      ]
     },
     {
-     "_beat": "SNATCH",
-     "duration": 1.2,
      "camera": "two:sage,mom",
      "no_cuts": true,
      "walk": {
@@ -266,7 +284,9 @@
        "dur": 0.6,
        "anim": "rise"
       }
-     ]
+     ],
+     "speaker": "mom",
+     "line": "Nice try."
     },
     {
      "speaker": "sage",
@@ -294,7 +314,7 @@
     },
     {
      "speaker": "mom",
-     "line": "STOP THINKING ABOUT CHICKENS!",
+     "line": "STOP THINKING ABOUT CHICKENS! And I do NOT dance like that!",
      "camera": "medium:mom",
      "no_cuts": true,
      "move": "punch",
@@ -404,7 +424,7 @@
     },
     {
      "speaker": "grandpa",
-     "line": "What did I DO?!",
+     "line": "What did I DO?! I'M EIGHTY-TWO!",
      "camera": "wide",
      "no_cuts": true,
      "walk": {
@@ -433,7 +453,28 @@
      "faces": {
       "mom": "angry",
       "sage": "happy"
-     }
+     },
+     "fx": [
+      {
+       "e": "🍟",
+       "at": 0.2,
+       "x": 0.4,
+       "y": 0.5,
+       "size": 200,
+       "dur": 1.0,
+       "burst": true,
+       "anim": "spin"
+      },
+      {
+       "e": "🍟",
+       "at": 0.4,
+       "x": 0.65,
+       "y": 0.55,
+       "size": 150,
+       "dur": 0.9,
+       "anim": "rise"
+      }
+     ]
     }
    ]
   },
