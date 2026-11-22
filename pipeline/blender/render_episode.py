@@ -689,6 +689,14 @@ def main():
         PROPS.clear()
         for pd in sc.get("props", []):
             PROPS[pd["id"]] = props.scene_prop(pd, origin)
+            if pd.get("attach"):  # "sage:arm_r": the prop rides in that character's hand
+                from mathutils import Matrix
+                who, part = pd["attach"].split(":")
+                rt = PROPS[pd["id"]]["root"]
+                rt.parent = rigs_all[who].parts[part]
+                rt.matrix_parent_inverse = Matrix.Identity(4)
+                rt.location = pd.get("local", (-0.5, -0.45, -1.55))
+                rt.rotation_euler = tuple(math.radians(a) for a in pd.get("local_rot", (90, 0, 0)))
             if pd.get("hidden"):
                 _prop_vis(pd["id"], False, 1)
         scene_rigs = {}

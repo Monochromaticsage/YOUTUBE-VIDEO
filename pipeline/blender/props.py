@@ -552,6 +552,63 @@ def _stash(root, n, pd):
 STORY_PROPS.update({"cookie_jar": _cookie_jar, "chocolate": _chocolate, "stash": _stash})
 
 
+def _pencil(root, n, pd):
+    """A pencil pointing along -Z (so it sticks out of a fist); "gold": true for the magic one."""
+    gold = pd.get("gold")
+    body = M("#ffcf33" if not gold else "#ffd700", rough=0.25 if gold else 0.6, tex=False)
+    _kid(root, f"{n}_body", box_mesh("pb", (0.22, 0.22, 1.5)), (0, 0, -0.45), body, bevel=0.03)
+    _kid(root, f"{n}_tip", cyl_mesh("pt", 0.12, 0.3, 8, 0.02), (0, 0, -1.5), M("#f1c79a", tex=False), bevel=0, rot=(180, 0, 0))
+    _kid(root, f"{n}_lead", box_mesh("pl", (0.06, 0.06, 0.1)), (0, 0, -1.77), M("#333333", tex=False), bevel=0)
+    _kid(root, f"{n}_band", box_mesh("pn", (0.24, 0.24, 0.12)), (0, 0, 0.36), M("#c0c0c0", rough=0.3, tex=False), bevel=0.02)
+    _kid(root, f"{n}_eraser", box_mesh("pe", (0.23, 0.23, 0.2)), (0, 0, 0.5), M("#ff8fab", tex=False), bevel=0.04)
+    if gold:
+        for k in range(3):
+            _kid(root, f"{n}_spark{k}", box_mesh("sp", (0.12, 0.12, 0.12)), (0.3 * math.cos(k * 2.1), 0.3 * math.sin(k * 2.1), -0.4 + k * 0.3),
+                 M("#fff59d", tex=False), bevel=0.04)
+    return 0.4, 3.0
+
+
+def _flat_pizza(root, n, pd):
+    """A pizza as flat as the drawing it came from."""
+    _kid(root, f"{n}_base", box_mesh("fp", (1.7, 1.3, 0.04)), (0, 0, 0.02), M("#f2c879", tex=False), bevel=0)
+    _kid(root, f"{n}_sauce", box_mesh("fs", (1.5, 1.1, 0.02)), (0, 0, 0.05), M("#e2552d", tex=False), bevel=0)
+    for k, (x, y) in enumerate([(-0.4, -0.2), (0.3, 0.25), (0.45, -0.3), (-0.2, 0.3), (0.0, -0.05)]):
+        _kid(root, f"{n}_pep{k}", cyl_mesh("pp", 0.14, 0.03, 10), (x, y, 0.07), M("#a52a2a", tex=False), bevel=0)
+    return 0.1, 3.0
+
+
+def _car_sq(root, n, pd):
+    """A cartoon car with SQUARE wheels (drawn badly)."""
+    red = M(pd.get("color", "#e53935"), rough=0.35, tex=False)
+    _kid(root, f"{n}_body", box_mesh("cb", (4.2, 2.0, 1.1)), (0, 0, 1.15), red, bevel=0.2)
+    _kid(root, f"{n}_cab", box_mesh("cc", (2.2, 1.8, 1.0)), (-0.2, 0, 2.15), red, bevel=0.2)
+    glass = M("#9fd3ff", rough=0.1, tex=False)
+    _kid(root, f"{n}_win", box_mesh("cw", (2.0, 1.85, 0.7)), (-0.2, 0, 2.2), glass, bevel=0.1)
+    blk = M("#222222", tex=False)
+    for k, (x, y) in enumerate([(-1.4, -1.0), (1.4, -1.0), (-1.4, 1.0), (1.4, 1.0)]):
+        _kid(root, f"{n}_wheel{k}", box_mesh("cq", (0.9, 0.3, 0.9)), (x, y, 0.45), blk, bevel=0.02)
+    for y in (-0.6, 0.6):
+        _kid(root, f"{n}_lamp{y}", box_mesh("cl", (0.1, 0.4, 0.3)), (2.12, y, 1.3), M("#fff59d", tex=False), bevel=0)
+    return 2.6, 8.0
+
+
+def _potato_dog(root, n, pd):
+    """A 'puppy' that came out looking like a potato with legs."""
+    tan = M("#c8a165", rough=0.85, scale=8)
+    _kid(root, f"{n}_body", box_mesh("db", (1.6, 1.0, 0.9)), (0, 0, 0.85), tan, bevel=0.35)
+    for k, (x, y) in enumerate([(-0.5, -0.3), (0.5, -0.3), (-0.5, 0.3), (0.5, 0.3)]):
+        _kid(root, f"{n}_leg{k}", box_mesh("dl", (0.16, 0.16, 0.5)), (x, y, 0.25), M("#8d6e43", tex=False), bevel=0.03)
+    for x in (0.55, 0.85):
+        _kid(root, f"{n}_eye{x}", box_mesh("de", (0.16, 0.05, 0.16)), (x - 0.2, -0.5, 1.05), M("#ffffff", tex=False), bevel=0)
+        _kid(root, f"{n}_pup{x}", box_mesh("dp", (0.08, 0.06, 0.08)), (x - 0.2, -0.53, 1.03), M("#111111", tex=False), bevel=0)
+    _kid(root, f"{n}_tail", box_mesh("dt", (0.4, 0.1, 0.1)), (-0.95, 0, 1.1), M("#8d6e43", tex=False), bevel=0.03, rot=(0, -30, 0))
+    _kid(root, f"{n}_ear", box_mesh("dr", (0.2, 0.06, 0.3)), (0.55, -0.1, 1.35), M("#8d6e43", tex=False), bevel=0.03)
+    return 1.3, 4.0
+
+
+STORY_PROPS.update({"pencil": _pencil, "flat_pizza": _flat_pizza, "car_sq": _car_sq, "potato_dog": _potato_dog})
+
+
 def scene_prop(pd, origin):
     """pd: {"id": "vase", "type": "vase", "at": [x, y, z], "rot": deg, "scale": 1.0}"""
     from mathutils import Vector

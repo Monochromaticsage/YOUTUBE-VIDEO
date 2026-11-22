@@ -812,6 +812,26 @@ def eyes_closed_smile(rig, f0, f1, fps):
     pose(rig, f1 - 1, arm_l=(-80, 0, 30), arm_r=(-80, 0, -30), head=(8, 0, 0))
 
 
+
+PENCIL_UP = dict(arm_r=(-125, 0, 0), head=(4, 0, 0), torso=(-2, 0, 0))  # holds the pencil up to the camera
+
+
+def pencil_up(rig, f0, f1, fps):
+    """Seated; grins and lifts the pencil up toward the camera. The video ends in this pose."""
+    pose(rig, f0, arm_r=(-55, 0, 0), **SEAT)
+    pose(rig, f1 - 1, **PENCIL_UP, **SEAT)
+
+
+def pencil_down(rig, f0, f1, fps):
+    """Seated; starts with the pencil held up, brings it down to the notebook and starts sketching."""
+    pose(rig, f0, **PENCIL_UP, **SEAT)
+    d = min(f0 + 10, f1 - 2)
+    pose(rig, d, arm_r=(-55, 0, 0), head=(-18, 0, 0), torso=(8, 0, 0), **SEAT)
+    for i, f in _loop(d + 2, f1, 3):
+        a = i % 2
+        pose(rig, f, arm_r=(-55 - 8 * a, 6 * a, 0), head=(-18, 0, 3 if a else -3), torso=(8, 0, 0), **SEAT)
+    pose(rig, f1 - 1, arm_r=(-55, 0, 0), head=(-18, 0, 0), torso=(8, 0, 0), **SEAT)
+
 ANIMS = {f.__name__: f for f in [
     idle, talk, shocked, scared, angry, laugh, sad, cry, wave, point, facepalm, think, dance, jump,
     fall, lie, sit, run_in_place, walk_in_left, walk_in_right, walk_out_left, walk_out_right,
@@ -822,7 +842,7 @@ ANIMS = {f.__name__: f for f in [
     lean_whisper, yell_back, sneeze, sit_sneeze, sneeze_build, sit_write, sit_up_scream, hold_feather,
     still, raise_hand, raise_hand_start, spin, chicken_dance, sit_eat, sit_reach_freeze, sit_thumbs_up, tilt_glass,
     resist_raise, arms_up, raise_hand_l, raise_hand_start_l, reach_to, reach_caught, sit_eat_chips,
-    eyes_closed_smile]}
+    eyes_closed_smile, pencil_up, pencil_down]}
 
 
 def walk_to(rig, f0, start, end, fps, speed=6.5, run=False, max_frames=None):

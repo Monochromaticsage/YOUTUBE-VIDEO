@@ -1,0 +1,705 @@
+{
+ "id": "s11_draw_real",
+ "title": "Whatever I Draw Becomes REAL! ✏️",
+ "format": "short",
+ "mood": "bright",
+ "grade": "bright",
+ "fog": false,
+ "dof": false,
+ "handheld": 0.35,
+ "caption_style": "word",
+ "caption_pos": "top",
+ "cut_every": 1.25,
+ "sting": false,
+ "cta": {
+  "at": 15
+ },
+ "music": "happy_loop",
+ "music_volume": 0.13,
+ "loop": true,
+ "_loop": "ends with Sage holding the golden pencil up to camera: 'So if YOU ever find a pencil like this... just—' -> opens on the same shot: 'imagine whatever you draw becomes REAL...'",
+ "_secret": "first frame: Sage already holds the GOLDEN pencil and the potato-dog is asleep under the table",
+ "_pinned_comment": "What would YOU draw? 👇✏️",
+ "characters": {
+  "sage": {
+   "crop_top": false,
+   "shirt": "#64b5f6",
+   "hoodie": "#64b5f6",
+   "pants": "#3d5a99",
+   "sleeves": true
+  }
+ },
+ "scenes": [
+  {
+   "set": "living_room",
+   "cast": {
+    "sage": [
+     2.4,
+     6.7,
+     0.75,
+     0
+    ],
+    "pip": [
+     -1.4,
+     6.7,
+     0.75,
+     0
+    ],
+    "mom": [
+     11,
+     2.5,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "book",
+     "type": "slip",
+     "image": "textures/s11/page_blank.png",
+     "at": [
+      2.2,
+      4.5,
+      1.47
+     ],
+     "scale": 1.3
+    },
+    {
+     "id": "pencil",
+     "type": "pencil",
+     "attach": "sage:arm_r",
+     "hidden": true
+    },
+    {
+     "id": "gold",
+     "type": "pencil",
+     "gold": true,
+     "attach": "sage:arm_r"
+    },
+    {
+     "id": "dog_sleep",
+     "type": "potato_dog",
+     "at": [
+      1.0,
+      2.4,
+      0
+     ],
+     "scale": 0.5,
+     "rot": -20
+    },
+    {
+     "id": "pizza",
+     "type": "flat_pizza",
+     "at": [
+      1.0,
+      4.3,
+      1.47
+     ],
+     "hidden": true,
+     "cam_dist": 5.5
+    },
+    {
+     "id": "car",
+     "type": "car_sq",
+     "at": [
+      -6.5,
+      2.2,
+      0
+     ],
+     "hidden": true,
+     "scale": 1.1
+    },
+    {
+     "id": "dog",
+     "type": "potato_dog",
+     "at": [
+      -2.0,
+      2.6,
+      0
+     ],
+     "hidden": true,
+     "scale": 0.8,
+     "cam_dist": 5
+    }
+   ],
+   "shots": [
+    {
+     "_beat": "HOOK (loop point)",
+     "speaker": "sage",
+     "vo": true,
+     "line": "Imagine whatever you draw becomes REAL. What would YOU draw?",
+     "cameras": [
+      "at:2.4,-2.2,5.2,2.4,5.6,3.0,30",
+      "closeup:sage"
+     ],
+     "moves": [
+      "none",
+      "push"
+     ],
+     "anims": {
+      "pip": "sit",
+      "mom": "hidden",
+      "sage": "pencil_down"
+     },
+     "faces": {
+      "sage": "happy",
+      "pip": "happy"
+     },
+     "fx": [
+      {
+       "text": "WHAT WOULD YOU DRAW? ✏️",
+       "color": "#ffd23f",
+       "size": 92,
+       "at": 2.4,
+       "x": 0.5,
+       "y": 0.72,
+       "dur": 1.6,
+       "anim": "shake"
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "I drew a pizza...",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "hide": [
+      "gold",
+      "dog_sleep"
+     ],
+     "show": [
+      "pencil"
+     ],
+     "anims": {
+      "pip": "sit",
+      "mom": "hidden",
+      "sage": "sit_write"
+     },
+     "faces": {
+      "sage": "smug"
+     },
+     "fx": [
+      {
+       "img": "textures/s11/draw_pizza.png",
+       "size": 560,
+       "at": 0.2,
+       "x": 0.5,
+       "y": 0.6,
+       "dur": 1.4,
+       "tilt": -4
+      }
+     ]
+    },
+    {
+     "_beat": "POOF pizza",
+     "duration": 1.1,
+     "camera": "prop:pizza",
+     "no_cuts": true,
+     "move": "zoom",
+     "show": [
+      "pizza"
+     ],
+     "prop_moves": {
+      "pizza": {
+       "at": 0.1,
+       "dur": 0.25,
+       "pop": true
+      }
+     },
+     "anims": {
+      "pip": "sit",
+      "mom": "hidden",
+      "sage": "sit_shocked"
+     },
+     "faces": {
+      "sage": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "pop",
+       "at": 0.1
+      },
+      {
+       "name": "sparkle",
+       "at": 0.15,
+       "volume": 0.6
+      }
+     ],
+     "fx": [
+      {
+       "e": "💨",
+       "at": 0.1,
+       "x": 0.5,
+       "y": 0.55,
+       "size": 300,
+       "dur": 0.6,
+       "burst": "#ffffff"
+      },
+      {
+       "flash": true,
+       "at": 0.1,
+       "dur": 0.25,
+       "x": 0.5,
+       "y": 0.5
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "line": "It tastes like... pencil.",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "anims": {
+      "pip": "sit",
+      "mom": "hidden",
+      "sage": "sit_eat"
+     },
+     "face": "sus",
+     "fx": [
+      {
+       "e": "✏️",
+       "at": 1.0,
+       "x": 0.68,
+       "y": 0.45,
+       "size": 150,
+       "dur": 1.0
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "Then I drew my dream car!",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "hide": [
+      "pizza"
+     ],
+     "anims": {
+      "pip": "sit",
+      "mom": "hidden",
+      "sage": "sit_write"
+     },
+     "faces": {
+      "sage": "happy"
+     },
+     "fx": [
+      {
+       "img": "textures/s11/draw_car.png",
+       "size": 560,
+       "at": 0.2,
+       "x": 0.5,
+       "y": 0.6,
+       "dur": 1.4,
+       "tilt": 4
+      }
+     ]
+    },
+    {
+     "_beat": "POOF car",
+     "duration": 1.8,
+     "camera": "wide",
+     "no_cuts": true,
+     "move": "shake",
+     "show": [
+      "car"
+     ],
+     "prop_moves": {
+      "car": {
+       "at": 0.4,
+       "dur": 1.3,
+       "to": [
+        4.5,
+        0,
+        0
+       ]
+      }
+     },
+     "anims": {
+      "pip": "sit_shocked",
+      "mom": "hidden",
+      "sage": "sit_shocked"
+     },
+     "faces": {
+      "sage": "shocked",
+      "pip": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "pop",
+       "at": 0.1
+      },
+      {
+       "name": "boing",
+       "at": 0.5
+      },
+      {
+       "name": "boing",
+       "at": 0.9
+      },
+      {
+       "name": "boing",
+       "at": 1.3
+      }
+     ],
+     "fx": [
+      {
+       "e": "💨",
+       "at": 0.1,
+       "x": 0.3,
+       "y": 0.6,
+       "size": 300,
+       "dur": 0.6,
+       "burst": "#ffffff"
+      },
+      {
+       "flash": true,
+       "at": 0.1,
+       "dur": 0.25,
+       "x": 0.5,
+       "y": 0.5
+      },
+      {
+       "text": "BUMP BUMP BUMP",
+       "color": "#ffffff",
+       "size": 96,
+       "at": 0.5,
+       "x": 0.5,
+       "y": 0.72,
+       "dur": 1.2,
+       "anim": "shake"
+      }
+     ]
+    },
+    {
+     "speaker": "mom",
+     "line": "SAGE! Why is there a CAR in my living room?!",
+     "camera": "medium:mom",
+     "walk": {
+      "mom": [
+       7,
+       2.6
+      ]
+     },
+     "anims": {
+      "pip": "sit",
+      "mom": "angry",
+      "sage": "sit"
+     },
+     "face": "angry",
+     "faces": {
+      "sage": "scared"
+     }
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "So I drew a MILLION dollars!",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "hide": [
+      "car"
+     ],
+     "anims": {
+      "pip": "sit",
+      "mom": "hidden",
+      "sage": "sit_write"
+     },
+     "faces": {
+      "sage": "smug"
+     },
+     "fx": [
+      {
+       "img": "textures/s11/draw_money.png",
+       "size": 560,
+       "at": 0.2,
+       "x": 0.5,
+       "y": 0.6,
+       "dur": 1.5,
+       "tilt": -3
+      }
+     ]
+    },
+    {
+     "_beat": "POOF $1",
+     "duration": 1.3,
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "move": "zoom",
+     "anims": {
+      "pip": "sit",
+      "mom": "hidden",
+      "sage": "sit_shocked"
+     },
+     "faces": {
+      "sage": "happy"
+     },
+     "sfx": [
+      {
+       "name": "cash",
+       "at": 0.15
+      }
+     ],
+     "fx": [
+      {
+       "e": "💨",
+       "at": 0.1,
+       "x": 0.5,
+       "y": 0.45,
+       "size": 300,
+       "dur": 0.6,
+       "burst": "#ffffff"
+      },
+      {
+       "flash": true,
+       "at": 0.1,
+       "dur": 0.25,
+       "x": 0.5,
+       "y": 0.5
+      },
+      {
+       "img": "textures/s11/dollar.png",
+       "size": 260,
+       "at": 0.3,
+       "x": 0.5,
+       "y": 0.55,
+       "dur": 1.0,
+       "tilt": 8
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "line": "...I forgot the zeros.",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "pip": "sit",
+      "mom": "hidden",
+      "sage": "sit"
+     },
+     "face": "sad",
+     "sfx": [
+      {
+       "name": "sad_trombone",
+       "at": 0.9,
+       "volume": 0.6
+      }
+     ]
+    },
+    {
+     "speaker": "pip",
+     "line": "Draw me a puppy!",
+     "camera": "closeup:pip",
+     "no_cuts": true,
+     "anims": {
+      "pip": "sit",
+      "mom": "hidden"
+     },
+     "face": "happy",
+     "fx": [
+      {
+       "img": "textures/s11/draw_puppy.png",
+       "size": 520,
+       "at": 0.7,
+       "x": 0.5,
+       "y": 0.62,
+       "dur": 1.1,
+       "tilt": 5
+      }
+     ]
+    },
+    {
+     "_beat": "POOF puppy",
+     "duration": 1.6,
+     "camera": "prop:dog",
+     "no_cuts": true,
+     "move": "push",
+     "show": [
+      "dog"
+     ],
+     "prop_moves": {
+      "dog": {
+       "at": 0.1,
+       "dur": 0.25,
+       "pop": true
+      }
+     },
+     "anims": {
+      "pip": "sit",
+      "mom": "hidden",
+      "sage": "sit_shocked"
+     },
+     "sfx": [
+      {
+       "name": "pop",
+       "at": 0.1
+      },
+      {
+       "name": "boing",
+       "at": 0.7
+      }
+     ],
+     "fx": [
+      {
+       "e": "💨",
+       "at": 0.1,
+       "x": 0.5,
+       "y": 0.55,
+       "size": 300,
+       "dur": 0.6,
+       "burst": "#ffffff"
+      },
+      {
+       "flash": true,
+       "at": 0.1,
+       "dur": 0.25,
+       "x": 0.5,
+       "y": 0.5
+      },
+      {
+       "text": "WOOF?",
+       "color": "#ffd23f",
+       "size": 120,
+       "at": 0.6,
+       "x": 0.5,
+       "y": 0.35,
+       "dur": 0.9,
+       "anim": "shake"
+      }
+     ]
+    },
+    {
+     "speaker": "pip",
+     "line": "I LOVE him!",
+     "camera": "closeup:pip",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "pip": "sit",
+      "mom": "hidden"
+     },
+     "face": "love",
+     "fx": [
+      {
+       "e": "💖",
+       "at": 0.2,
+       "x": 0.68,
+       "y": 0.45,
+       "size": 160,
+       "dur": 1.0
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "line": "NOOO! My pencil!",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "move": "shake",
+     "hide": [
+      "pencil",
+      "dog"
+     ],
+     "anims": {
+      "pip": "sit",
+      "mom": "hidden",
+      "sage": "sit_shocked"
+     },
+     "face": "cry",
+     "sfx": [
+      {
+       "name": "record_scratch",
+       "at": 0.05
+      }
+     ],
+     "fx": [
+      {
+       "text": "SNAP!",
+       "color": "#ff3b30",
+       "size": 130,
+       "at": 0.05,
+       "x": 0.5,
+       "y": 0.66,
+       "dur": 0.8,
+       "anim": "shake"
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "So I drew a brand-new one...",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "show": [
+      "gold",
+      "dog_sleep"
+     ],
+     "anims": {
+      "pip": "sit",
+      "mom": "hidden",
+      "sage": "sit_write"
+     },
+     "faces": {
+      "sage": "smug"
+     },
+     "sfx": [
+      {
+       "name": "sparkle",
+       "at": 1.2
+      }
+     ],
+     "fx": [
+      {
+       "img": "textures/s11/draw_pencil.png",
+       "size": 520,
+       "at": 0.1,
+       "x": 0.5,
+       "y": 0.6,
+       "dur": 1.1,
+       "tilt": -4
+      },
+      {
+       "e": "💨",
+       "at": 1.2,
+       "x": 0.4,
+       "y": 0.55,
+       "size": 300,
+       "dur": 0.6,
+       "burst": "#ffffff"
+      },
+      {
+       "flash": true,
+       "at": 1.2,
+       "dur": 0.25,
+       "x": 0.5,
+       "y": 0.5
+      }
+     ]
+    },
+    {
+     "_beat": "LOOP: same shot as the opening",
+     "speaker": "sage",
+     "vo": true,
+     "line": "So if YOU ever find a pencil like this... just—",
+     "camera": "at:2.4,-2.2,5.2,2.4,5.6,3.0,30",
+     "no_cuts": true,
+     "move": "none",
+     "pad": 0.0,
+     "anims": {
+      "pip": "sit",
+      "mom": "hidden",
+      "sage": "pencil_up"
+     },
+     "faces": {
+      "sage": "happy",
+      "pip": "happy"
+     }
+    }
+   ]
+  }
+ ]
+}
