@@ -777,6 +777,41 @@ def raise_hand_start_l(rig, f0, f1, fps):
     pose(rig, f1 - 1, arm_l=(0, -HAND_START[1], 0))
 
 
+
+REACH = dict(arm_r=(-70, 0, 0), torso=(10, 0, 0), head=(-6, 0, 0))  # sneaky reach toward something in front
+
+
+def reach_to(rig, f0, f1, fps):
+    """Grins and slowly reaches forward; the shot (video) ends with the hand almost there."""
+    pose(rig, f0, head=(-4, 0, 0))
+    pose(rig, f1 - 1, **REACH)
+
+
+def reach_caught(rig, f0, f1, fps):
+    """Starts mid-reach (where reach_to ends), freezes, then snaps the hand back guiltily."""
+    pose(rig, f0, **REACH)
+    pose(rig, min(f0 + 10, f1 - 1), **REACH)
+    pose(rig, min(f0 + 14, f1 - 1), arm_r=(-20, 0, 0), torso=(-4, 0, 0), head=(8, 0, 0))
+    pose(rig, f1 - 1, arm_r=(-10, 0, 0), head=(6, 0, 0))
+
+
+def sit_eat_chips(rig, f0, f1, fps):
+    """Lounging on the couch munching snacks."""
+    seat = dict(offset=(0, 0.4, -0.95), leg_l=(-90, 0, 0), leg_r=(-90, 0, 0))
+    for i, f in _loop(f0, f1, 6):
+        a = i % 2
+        pose(rig, f, arm_r=(-140 if a else -70, -20 if a else 0, 0), arm_l=(-50, 0, 0), head=(4 if a else 0, 0, 0), **seat)
+    pose(rig, f1 - 1, arm_l=(-50, 0, 0), **seat)
+
+
+def eyes_closed_smile(rig, f0, f1, fps):
+    """Concentrating hard on a sneaky thought: hands steepled, little sway."""
+    for i, f in _loop(f0, f1, 8):
+        s = 1 if i % 2 else -1
+        pose(rig, f, arm_l=(-80, 0, 30), arm_r=(-80, 0, -30), head=(8, 0, 4 * s), torso=(3, 0, 0))
+    pose(rig, f1 - 1, arm_l=(-80, 0, 30), arm_r=(-80, 0, -30), head=(8, 0, 0))
+
+
 ANIMS = {f.__name__: f for f in [
     idle, talk, shocked, scared, angry, laugh, sad, cry, wave, point, facepalm, think, dance, jump,
     fall, lie, sit, run_in_place, walk_in_left, walk_in_right, walk_out_left, walk_out_right,
@@ -786,7 +821,8 @@ ANIMS = {f.__name__: f for f in [
     sit_faceplant, flatten, sit_slide_down, sweat, hug, bang_window, play_game, touch_cheek, hold_photo,
     lean_whisper, yell_back, sneeze, sit_sneeze, sneeze_build, sit_write, sit_up_scream, hold_feather,
     still, raise_hand, raise_hand_start, spin, chicken_dance, sit_eat, sit_reach_freeze, sit_thumbs_up, tilt_glass,
-    resist_raise, arms_up, raise_hand_l, raise_hand_start_l]}
+    resist_raise, arms_up, raise_hand_l, raise_hand_start_l, reach_to, reach_caught, sit_eat_chips,
+    eyes_closed_smile]}
 
 
 def walk_to(rig, f0, start, end, fps, speed=6.5, run=False, max_frames=None):

@@ -80,6 +80,51 @@ def _phone(msg, sender, size):
     return im
 
 
+def _thought(content, size, tail="left"):
+    """Cartoon thought cloud holding emoji, a picture (path under assets/) or short text. size = cloud width."""
+    W = int(size)
+    H = int(size * 0.78)
+    pad = int(size * 0.2)
+    im = Image.new("RGBA", (W + 2 * pad, H + int(size * 0.34) + 2 * pad), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    cx, cy, rx, ry = W / 2 + pad, H / 2 + pad, W * 0.42, H * 0.36
+    puffs = []
+    for k in range(10):
+        a = 2 * math.pi * k / 10
+        puffs.append((cx + rx * math.cos(a), cy + ry * math.sin(a), size * 0.17))
+    for (x, y, r) in puffs:
+        d.ellipse([x - r - 6, y - r - 6, x + r + 6, y + r + 6], fill=(30, 30, 40))
+    d.ellipse([cx - rx - 6, cy - ry - 6, cx + rx + 6, cy + ry + 6], fill=(30, 30, 40))
+    for (x, y, r) in puffs:
+        d.ellipse([x - r, y - r, x + r, y + r], fill=(255, 255, 255))
+    d.ellipse([cx - rx, cy - ry, cx + rx, cy + ry], fill=(255, 255, 255))
+    sx = cx - rx * 0.5 if tail == "left" else cx + rx * 0.5
+    for i, r in enumerate((size * 0.06, size * 0.04, size * 0.025)):
+        x = sx + (-1 if tail == "left" else 1) * i * size * 0.07
+        y = cy + ry + size * 0.12 + i * size * 0.08
+        d.ellipse([x - r - 5, y - r - 5, x + r + 5, y + r + 5], fill=(30, 30, 40))
+        d.ellipse([x - r, y - r, x + r, y + r], fill=(255, 255, 255))
+    inner_w, inner_h = int(rx * 1.7), int(ry * 1.6)
+    if isinstance(content, str) and content.endswith(".png"):
+        root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "assets"))
+        pic = Image.open(os.path.join(root, content)).convert("RGBA")
+        pic.thumbnail((inner_w, inner_h))
+    elif isinstance(content, str) and any(ord(c) > 0x2000 for c in content) and not any(c.isalpha() and ord(c) < 128 for c in content):
+        pic = _emoji(content, int(inner_h * 0.8))
+        pic.thumbnail((inner_w, inner_h))
+    else:
+        import textwrap
+        lines = textwrap.wrap(content, 12)
+        fs = int(min(inner_h / (len(lines) * 1.25), size * 0.13, inner_w / (max(len(x) for x in lines) * 0.62)))
+        f = ImageFont.truetype(FONT, fs)
+        pic = Image.new("RGBA", (inner_w, int(fs * 1.25 * len(lines)) + 10), (0, 0, 0, 0))
+        pd = ImageDraw.Draw(pic)
+        for k, ln in enumerate(lines):
+            pd.text((inner_w / 2, k * fs * 1.25 + fs * 0.6), ln, font=f, fill=(30, 30, 50), anchor="mm")
+    im.alpha_composite(pic, (int(cx - pic.width / 2), int(cy - pic.height / 2)))
+    return im
+
+
 def _burst(size, color="#ffffff"):
     """Comic impact star behind a sticker."""
     im = Image.new("RGBA", (size, size), (0, 0, 0, 0))
@@ -96,7 +141,9 @@ def _burst(size, color="#ffffff"):
 
 def _base(fx):
     size = int(fx.get("size", 260))
-    if "img" in fx:  # a picture (e.g. an old photo) from assets/, scaled to `size` px tall, optional tilt
+    if "thought" in fx:
+        img = _thought(fx["thought"], size, fx.get("tail", "left"))
+    elif "img" in fx:  # a picture (e.g. an old photo) from assets/, scaled to `size` px tall, optional tilt
         root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "assets"))
         img = Image.open(os.path.join(root, fx["img"])).convert("RGBA")
         img = img.resize((max(1, int(img.width * size / img.height)), size), Image.LANCZOS)

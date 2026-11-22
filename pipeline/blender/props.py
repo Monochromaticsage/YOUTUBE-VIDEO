@@ -510,6 +510,48 @@ def _slip(root, n, pd):
 STORY_PROPS.update({"broccoli": _broccoli, "juice": _juice, "laptop": _laptop, "slip": _slip})
 
 
+def _cookie(root, n, x, y, z, r=0.32):
+    _kid(root, n, cyl_mesh("ck", r, 0.12, 14), (x, y, z), M("#c98d4b", rough=0.8, tex=False), bevel=0)
+    for k in range(3):
+        a = k * 2.1
+        _kid(root, f"{n}_chip{k}", box_mesh("cc", (0.08, 0.08, 0.04)), (x + r * 0.5 * math.cos(a), y + r * 0.5 * math.sin(a), z + 0.12),
+             M("#3e2414", tex=False), bevel=0)
+
+
+def _cookie_jar(root, n, pd):
+    """Glass cookie jar with a red lid, full of cookies."""
+    _kid(root, f"{n}_jar", cyl_mesh("cj", 0.75, 1.5, 18), (0, 0, 0), M("#dff1ff", rough=0.15, tex=False), bevel=0)
+    _kid(root, f"{n}_lid", cyl_mesh("cl", 0.8, 0.22, 18), (0, 0, 1.5), M("#e53935", rough=0.4, tex=False), bevel=0)
+    _kid(root, f"{n}_knob", box_mesh("kn", (0.3, 0.3, 0.22)), (0, 0, 1.8), M("#e53935", tex=False), bevel=0.08)
+    for i in range(4):
+        _cookie(root, f"{n}_c{i}", 0, -0.62, 0.25 + i * 0.3, r=0.28)
+    return 2.0, 3.6
+
+
+def _chocolate(root, n, pd):
+    """A chocolate bar in a red wrapper, standing on its end."""
+    _kid(root, f"{n}_bar", box_mesh("ch", (0.7, 0.18, 1.1)), (0, 0, 0.55), M("#5a3220", tex=False), bevel=0.04)
+    _kid(root, f"{n}_wrap", box_mesh("cw", (0.74, 0.2, 0.55)), (0, 0, 0.3), M("#d32f2f", tex=False), bevel=0.03)
+    return 1.1, 3.0
+
+
+def _stash(root, n, pd):
+    """A huge hidden pile of cookies and chocolate bars."""
+    for i in range(14):
+        x, y = (i % 5) * 0.75 - 1.5, (i // 5) * 0.6 - 0.6
+        if i % 3 == 0:
+            _kid(root, f"{n}_bar{i}", box_mesh("sb", (0.7, 0.2, 1.0)), (x, y, 0.5 + (i % 2) * 0.4), M("#d32f2f" if i % 2 else "#5a3220", tex=False),
+                 bevel=0.03, rot=(0, 0, i * 17))
+        else:
+            for k in range(1 + i % 3):
+                _cookie(root, f"{n}_ck{i}_{k}", x, y, 0.1 + k * 0.16, r=0.34)
+    _kid(root, f"{n}_box", box_mesh("bx", (3.8, 2.0, 0.6)), (0, 0, 0.3), M("#c49a6c", rough=0.9, tex=False), bevel=0.05)
+    return 1.6, 5.0
+
+
+STORY_PROPS.update({"cookie_jar": _cookie_jar, "chocolate": _chocolate, "stash": _stash})
+
+
 def scene_prop(pd, origin):
     """pd: {"id": "vase", "type": "vase", "at": [x, y, z], "rot": deg, "scale": 1.0}"""
     from mathutils import Vector

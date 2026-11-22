@@ -1,0 +1,648 @@
+{
+ "id": "s10_mom_mind",
+ "title": "My Mom Can READ My Mind! 🧠",
+ "format": "short",
+ "mood": "bright",
+ "grade": "bright",
+ "fog": false,
+ "dof": false,
+ "handheld": 0.35,
+ "caption_style": "word",
+ "caption_pos": "top",
+ "cut_every": 1.25,
+ "sting": false,
+ "cta": {
+  "at": 15
+ },
+ "music": "quirky_loop",
+ "music_volume": 0.14,
+ "loop": true,
+ "_loop": "last shot = first shot (kitchen, same camera, Sage reaching for the jar with Mom behind); the reach continues across the cut; last line runs into the first",
+ "_secret": "a chocolate bar is already poking out beside the fridge in the first second (where the stash is found)",
+ "_pinned_comment": "Look beside the fridge in the FIRST second 👀🍫",
+ "characters": {
+  "sage": {
+   "crop_top": false,
+   "shirt": "#81c784",
+   "hoodie": "#81c784",
+   "pants": "#3d5a99",
+   "sleeves": true
+  }
+ },
+ "scenes": [
+  {
+   "set": "dining_room",
+   "cast": {
+    "sage": [
+     7.5,
+     4.6,
+     0,
+     0
+    ],
+    "mom": [
+     5.6,
+     6.4,
+     0,
+     15
+    ]
+   },
+   "props": [
+    {
+     "id": "jar",
+     "type": "cookie_jar",
+     "at": [
+      6.6,
+      2.5,
+      2.16
+     ],
+     "scale": 0.8,
+     "cam_dist": 3.6
+    },
+    {
+     "id": "choc",
+     "type": "chocolate",
+     "at": [
+      14.1,
+      7.4,
+      0
+     ],
+     "scale": 0.6,
+     "rot": -20
+    }
+   ],
+   "shots": [
+    {
+     "_beat": "HOOK (loop point: hand inches from the jar)",
+     "speaker": "sage",
+     "vo": true,
+     "line": "My mom caught me stealing a cookie... BEFORE I even touched it!",
+     "cameras": [
+      "at:8,-5.5,6.2,9,4.5,3.8,24",
+      "medium:mom",
+      "prop:jar"
+     ],
+     "moves": [
+      "none",
+      "push",
+      "push"
+     ],
+     "anims": {
+      "sage": "reach_caught",
+      "mom": "point"
+     },
+     "faces": {
+      "sage": "smug",
+      "mom": "angry"
+     }
+    },
+    {
+     "speaker": "mom",
+     "line": "Don't even THINK about it!",
+     "camera": "extreme:sage",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "sage": "shocked",
+      "mom": "point"
+     },
+     "face": "angry",
+     "faces": {
+      "sage": "shocked"
+     },
+     "fx": [
+      {
+       "text": "HOW DID SHE KNOW?!",
+       "color": "#ffd23f",
+       "size": 100,
+       "at": 0.5,
+       "x": 0.5,
+       "y": 0.72,
+       "dur": 1.2,
+       "anim": "shake"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "living_room",
+   "cast": {
+    "sage": [
+     -2,
+     6.6,
+     0.75,
+     0
+    ],
+    "grandpa": [
+     3.2,
+     6.6,
+     0.75,
+     0
+    ],
+    "mom": [
+     8,
+     3,
+     0,
+     0
+    ]
+   },
+   "shots": [
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "So I tested her. I thought about sneaking outside...",
+     "camera": "closeup:sage",
+     "anims": {
+      "sage": "sit",
+      "grandpa": "sit_eat_chips",
+      "mom": "idle"
+     },
+     "faces": {
+      "sage": "sus"
+     },
+     "fx": [
+      {
+       "thought": "🏃🚪",
+       "size": 440,
+       "at": 1.4,
+       "x": 0.66,
+       "y": 0.3,
+       "dur": 1.8
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "She locked the door!",
+     "camera": "medium:mom",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "mom": "point",
+      "sage": "sit",
+      "grandpa": "sit_eat_chips"
+     },
+     "faces": {
+      "mom": "smug"
+     },
+     "sfx": [
+      {
+       "name": "door_slam",
+       "at": 0.2,
+       "volume": 0.7
+      }
+     ],
+     "fx": [
+      {
+       "e": "🔒",
+       "at": 0.2,
+       "x": 0.68,
+       "y": 0.5,
+       "size": 200,
+       "dur": 1.0,
+       "burst": true
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "I thought about gaming...",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "anims": {
+      "sage": "sit",
+      "grandpa": "sit_eat_chips",
+      "mom": "idle"
+     },
+     "faces": {
+      "sage": "happy"
+     },
+     "fx": [
+      {
+       "thought": "🎮",
+       "size": 420,
+       "at": 0.3,
+       "x": 0.66,
+       "y": 0.3,
+       "dur": 1.4
+      }
+     ]
+    },
+    {
+     "_beat": "SNATCH",
+     "duration": 1.2,
+     "camera": "two:sage,mom",
+     "no_cuts": true,
+     "walk": {
+      "mom": [
+       0.6,
+       4.4
+      ]
+     },
+     "anims": {
+      "mom": "point",
+      "sage": "sit_shocked",
+      "grandpa": "sit_eat_chips"
+     },
+     "faces": {
+      "mom": "smug",
+      "sage": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "whoosh",
+       "at": 0.5
+      }
+     ],
+     "fx": [
+      {
+       "e": "🎮",
+       "at": 0.6,
+       "x": 0.4,
+       "y": 0.5,
+       "size": 170,
+       "dur": 0.6,
+       "anim": "rise"
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "Then I imagined Mom in a giant chicken costume.",
+     "camera": "closeup:sage",
+     "anims": {
+      "sage": "sit",
+      "grandpa": "sit_eat_chips",
+      "mom": "idle"
+     },
+     "faces": {
+      "sage": "happy"
+     },
+     "fx": [
+      {
+       "thought": "👩🐔",
+       "size": 460,
+       "at": 1.0,
+       "x": 0.66,
+       "y": 0.3,
+       "dur": 2.0
+      }
+     ]
+    },
+    {
+     "speaker": "mom",
+     "line": "STOP THINKING ABOUT CHICKENS!",
+     "camera": "medium:mom",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "mom": "angry",
+      "sage": "sit",
+      "grandpa": "sit_eat_chips"
+     },
+     "face": "angry",
+     "fx": [
+      {
+       "text": "BAWK!",
+       "color": "#ffd23f",
+       "size": 130,
+       "at": 0.2,
+       "x": 0.3,
+       "y": 0.62,
+       "dur": 0.9,
+       "anim": "shake"
+      }
+     ]
+    },
+    {
+     "_beat": "PILLOW",
+     "duration": 1.0,
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "move": "shake",
+     "anims": {
+      "sage": "sit_shocked",
+      "grandpa": "sit_eat_chips",
+      "mom": "angry"
+     },
+     "faces": {
+      "sage": "happy"
+     },
+     "sfx": [
+      {
+       "name": "oof_thud",
+       "at": 0.35
+      }
+     ],
+     "fx": [
+      {
+       "e": "😂",
+       "at": 0.0,
+       "x": 0.68,
+       "y": 0.42,
+       "size": 150,
+       "dur": 0.4
+      },
+      {
+       "e": "💥",
+       "at": 0.35,
+       "x": 0.5,
+       "y": 0.5,
+       "size": 260,
+       "dur": 0.6
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "So I thought... Grandpa ate all your secret chocolate!",
+     "camera": "closeup:sage",
+     "anims": {
+      "sage": "sit",
+      "grandpa": "sit_eat_chips",
+      "mom": "idle"
+     },
+     "faces": {
+      "sage": "smug"
+     },
+     "fx": [
+      {
+       "thought": "👴🍫",
+       "size": 440,
+       "at": 1.2,
+       "x": 0.66,
+       "y": 0.3,
+       "dur": 2.0
+      }
+     ]
+    },
+    {
+     "_beat": "TURN",
+     "duration": 1.1,
+     "camera": "medium:grandpa",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "grandpa": "sit_eat_chips",
+      "sage": "sit",
+      "mom": "angry"
+     },
+     "faces": {
+      "grandpa": "neutral",
+      "mom": "angry"
+     },
+     "sfx": [
+      {
+       "name": "record_scratch",
+       "at": 0.1
+      }
+     ]
+    },
+    {
+     "speaker": "grandpa",
+     "line": "What did I DO?!",
+     "camera": "wide",
+     "no_cuts": true,
+     "walk": {
+      "grandpa": {
+       "to": [
+        12,
+        3
+       ],
+       "run": true
+      },
+      "mom": {
+       "to": [
+        8.5,
+        3.5
+       ],
+       "run": true,
+       "at": 0.3
+      }
+     },
+     "anims": {
+      "sage": "sit",
+      "grandpa": "scared",
+      "mom": "angry"
+     },
+     "face": "scared",
+     "faces": {
+      "mom": "angry",
+      "sage": "happy"
+     }
+    }
+   ]
+  },
+  {
+   "set": "dining_room",
+   "cast": {
+    "sage": [
+     7.5,
+     4.6,
+     0,
+     0
+    ],
+    "mom": [
+     5.6,
+     6.4,
+     0,
+     15
+    ]
+   },
+   "props": [
+    {
+     "id": "jar",
+     "type": "cookie_jar",
+     "at": [
+      6.6,
+      2.5,
+      2.16
+     ],
+     "scale": 0.8,
+     "cam_dist": 3.6
+    },
+    {
+     "id": "choc",
+     "type": "chocolate",
+     "at": [
+      14.1,
+      7.4,
+      0
+     ],
+     "scale": 0.6,
+     "rot": -20
+    },
+    {
+     "id": "stash",
+     "type": "stash",
+     "at": [
+      14.4,
+      6.4,
+      0
+     ],
+     "scale": 0.8,
+     "rot": -30,
+     "hidden": true,
+     "cam_dist": 6
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "Then I heard MOM'S thoughts!",
+     "camera": "medium:mom",
+     "anims": {
+      "mom": "sweat",
+      "sage": "idle"
+     },
+     "faces": {
+      "mom": "scared",
+      "sage": "sus"
+     },
+     "fx": [
+      {
+       "thought": "DON'T CHECK BEHIND THE FRIDGE!",
+       "size": 480,
+       "at": 0.5,
+       "x": 0.4,
+       "y": 0.3,
+       "dur": 1.6,
+       "tail": "right"
+      }
+     ]
+    },
+    {
+     "_beat": "STASH",
+     "duration": 1.6,
+     "camera": "prop:stash",
+     "no_cuts": true,
+     "move": "push",
+     "walk": {
+      "sage": [
+       11.8,
+       4.8
+      ]
+     },
+     "show": [
+      "stash"
+     ],
+     "anims": {
+      "mom": "scared",
+      "sage": "idle"
+     },
+     "faces": {
+      "sage": "shocked",
+      "mom": "scared"
+     },
+     "sfx": [
+      {
+       "name": "vine_boom",
+       "at": 0.5
+      }
+     ],
+     "fx": [
+      {
+       "e": "🍪",
+       "at": 0.5,
+       "x": 0.3,
+       "y": 0.45,
+       "size": 170,
+       "dur": 1.0,
+       "burst": true
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "line": "You hid ALL the cookies?!",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "sage": "shocked",
+      "mom": "scared"
+     },
+     "face": "shocked"
+    }
+   ]
+  },
+  {
+   "set": "dining_room",
+   "cast": {
+    "sage": [
+     7.5,
+     4.6,
+     0,
+     0
+    ],
+    "mom": [
+     5.6,
+     6.4,
+     0,
+     15
+    ]
+   },
+   "props": [
+    {
+     "id": "jar",
+     "type": "cookie_jar",
+     "at": [
+      6.6,
+      2.5,
+      2.16
+     ],
+     "scale": 0.8,
+     "cam_dist": 3.6
+    },
+    {
+     "id": "choc",
+     "type": "chocolate",
+     "at": [
+      14.1,
+      7.4,
+      0
+     ],
+     "scale": 0.6,
+     "rot": -20
+    }
+   ],
+   "_beat": "LOOP: identical to scene 1",
+   "shots": [
+    {
+     "_beat": "LOOP",
+     "speaker": "sage",
+     "vo": true,
+     "line": "Mom panicked. I heard her think... don't touch that cookie! So I reached for it, and—",
+     "camera": "at:8,-5.5,6.2,9,4.5,3.8,24",
+     "no_cuts": true,
+     "move": "none",
+     "pad": 0.0,
+     "anims": {
+      "sage": "reach_to",
+      "mom": "still"
+     },
+     "faces": {
+      "sage": "smug",
+      "mom": "angry"
+     },
+     "fx": [
+      {
+       "thought": "DON'T TOUCH THAT COOKIE!",
+       "size": 420,
+       "at": 1.6,
+       "x": 0.3,
+       "y": 0.3,
+       "dur": 1.8,
+       "tail": "right"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
