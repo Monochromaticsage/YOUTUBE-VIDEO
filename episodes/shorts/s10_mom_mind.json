@@ -40,8 +40,8 @@
      0
     ],
     "mom": [
-     5.6,
-     6.4,
+     6.2,
+     6.6,
      0,
      15
     ]
@@ -62,11 +62,11 @@
      "id": "choc",
      "type": "chocolate",
      "at": [
-      14.1,
-      7.4,
-      0
+      9.9,
+      7.5,
+      3.3
      ],
-     "scale": 0.6,
+     "scale": 0.7,
      "rot": -20
     }
    ],
@@ -77,7 +77,7 @@
      "vo": true,
      "line": "My mom caught me stealing a cookie... BEFORE I even touched it!",
      "cameras": [
-      "at:8,-5.5,6.2,9,4.5,3.8,24",
+      "at:7.2,-2.5,5.6,8.0,5.0,3.8,28",
       "medium:mom",
       "prop:jar"
      ],
@@ -482,8 +482,8 @@
    "set": "dining_room",
    "cast": {
     "sage": [
-     7.5,
-     4.6,
+     9.5,
+     4.4,
      0,
      0
     ],
@@ -510,23 +510,23 @@
      "id": "choc",
      "type": "chocolate",
      "at": [
-      14.1,
-      7.4,
-      0
+      9.9,
+      7.5,
+      3.3
      ],
-     "scale": 0.6,
+     "scale": 0.7,
      "rot": -20
     },
     {
      "id": "stash",
      "type": "stash",
      "at": [
-      14.4,
-      6.4,
+      9.2,
+      6.0,
       0
      ],
      "scale": 0.8,
-     "rot": -30,
+     "rot": 0,
      "hidden": true,
      "cam_dist": 6
     }
@@ -565,8 +565,8 @@
      "move": "push",
      "walk": {
       "sage": [
-       11.8,
-       4.8
+       11.6,
+       4.6
       ]
      },
      "show": [
@@ -622,8 +622,8 @@
      0
     ],
     "mom": [
-     5.6,
-     6.4,
+     6.2,
+     6.6,
      0,
      15
     ]
@@ -644,11 +644,11 @@
      "id": "choc",
      "type": "chocolate",
      "at": [
-      14.1,
-      7.4,
-      0
+      9.9,
+      7.5,
+      3.3
      ],
-     "scale": 0.6,
+     "scale": 0.7,
      "rot": -20
     }
    ],
@@ -659,7 +659,7 @@
      "speaker": "sage",
      "vo": true,
      "line": "Mom panicked. I heard her think... don't touch that cookie! So I reached for it, and—",
-     "camera": "at:8,-5.5,6.2,9,4.5,3.8,24",
+     "camera": "at:7.2,-2.5,5.6,8.0,5.0,3.8,28",
      "no_cuts": true,
      "move": "none",
      "pad": 0.0,
