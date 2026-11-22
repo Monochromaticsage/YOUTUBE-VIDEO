@@ -1,4 +1,4 @@
-# Plutonex Tales: starting a new cloud session
+# Plutonex Tales: LONG-FORM cloud session (Shorts are made in a different chat)
 
 ## 1. Setup script (optional; makes every new session install everything automatically)
 
@@ -25,8 +25,10 @@ The pipeline then runs with `ELEVENLABS_API_KEY=proxy-injected`. The proxy swaps
 ## 3. The prompt to paste
 
 ```
-You are continuing my YouTube channel "Plutonex Tales" (@PlutonexTales): Roblox-style 3D animated
-comedy Shorts made with Blender (bpy) + ffmpeg + ElevenLabs. Repo: monochromaticsage/youtube-video,
+You are the LONG-FORM video maker for my YouTube channel "Plutonex Tales" (@PlutonexTales): Roblox-style
+3D animated comedy made with Blender (bpy) + ffmpeg + ElevenLabs. ONLY make long-form (16:9, 3+ minute)
+videos in this chat. Shorts are made in a separate chat; don't render Shorts here, and don't edit the
+Shorts episode files (episodes/shorts/*) unless I ask. Repo: monochromaticsage/youtube-video,
 branch claude/confident-mccarthy-h2bhft (check it out and keep committing + pushing to it).
 Read docs/CLOUD_SETUP_PROMPT.md and README.md first.
 
@@ -73,10 +75,20 @@ WORKFLOW WITH ME:
   - If I send a storyline and say "generate", map the names to our cast and make it.
   - If I only ask what you think, give feedback and wait. Don't start rendering until I say go.
   - Send me the finished MP4 + thumbnail + the title/description/tags/pinned comment text in chat.
-  - I post 3 Shorts a day (plus a long-form every 2 days, a compilation of recent Shorts made with
-    tools/make_compilation.py). Never ask for my YouTube password.
+  - My schedule: 3 Shorts a day (made in the other chat) + 1 LONG video every 2 days (made HERE).
+    Never ask for my YouTube password.
   - Note: output/*.mp4 files are not in git. Videos already finished in the old session must be downloaded from there.
 
-NEXT JOB: episodes/shorts/s10_mom_mind.json ("My Mom Can READ My Mind!") is written but not rendered.
-Run the silent test frames, fix any blocked cameras, then render it, make the thumbnail and upload pack, and send it to me.
+LONG-FORM PLAN:
+  A) Compilations (cheap: no voice credits, minutes to build). tools/make_compilation.py <out_id> "<title>" <ep ids...>
+     builds a 16:9 video: each Short in the centre over a blurred copy, a "STORY n/N" counter, a subscribe
+     panel, and an outro. Use it with the finished Short MP4s in media/shorts/ (or ones I upload). Make a
+     16:9 thumbnail (see tools/make_thumb_l01.py) and an upload pack with chapter timestamps (0:00 ...).
+     Order the strongest/newest story first; a title like "5 CRAZIEST Family Stories! 😳".
+  B) Original long episodes (later, when a Short goes viral): a 6-10 minute "full story" / Part 2 of the
+     hit, with "format": "long" (16:9). It costs about 1,000+ credits and 10+ hours of render per episode,
+     so propose the script and get my OK first.
+
+NEXT JOB: build Long-form #1, a compilation of the newest Shorts (s08 Sister Copied, s06 Clone, s07 Sneeze,
+s03 Taste Lies, s05 Noob Genius, s04 Substitute Mom), with a thumbnail and upload pack, and send it to me.
 ```
