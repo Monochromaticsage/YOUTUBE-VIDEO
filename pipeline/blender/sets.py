@@ -293,7 +293,12 @@ def living_room_window(o):
     return living_room(o, hole=True)
 
 
-def living_room(o, hole=False):
+def living_room_clear(o):
+    """Living room with nothing on the coffee table (room for story props)."""
+    return living_room(o, clear=True)
+
+
+def living_room(o, hole=False, clear=False):
     """Bright family living room: sofa, rug, side table (vase spot), TV, window with curtains, plants, photos."""
     import props as P
     wall, wy = "#fff1dc", 9.6
@@ -343,9 +348,10 @@ def living_room(o, hole=False):
     block(o, "ctable", (4.5, 2.2, 0.3), (2.5, 4.4, 1.3), "#8d6e63", bevel=0.08)
     for dx in (-1.9, 1.9):
         block(o, "ctleg", (0.3, 1.8, 1.15), (2.5 + dx, 4.4, 0.6), "#6d4c41", bevel=0.04)
-    block(o, "book1", (1.4, 1.0, 0.25), (1.6, 4.4, 1.6), "#ef5350", bevel=0.03)
-    block(o, "book2", (1.2, 0.9, 0.22), (1.6, 4.4, 1.85), "#42a5f5", bevel=0.03)
-    block(o, "mug", (0.45, 0.45, 0.55), (3.6, 4.2, 1.72), "#ffffff", bevel=0.1)
+    if not clear:
+        block(o, "book1", (1.4, 1.0, 0.25), (1.6, 4.4, 1.6), "#ef5350", bevel=0.03)
+        block(o, "book2", (1.2, 0.9, 0.22), (1.6, 4.4, 1.85), "#42a5f5", bevel=0.03)
+        block(o, "mug", (0.45, 0.45, 0.55), (3.6, 4.2, 1.72), "#ffffff", bevel=0.1)
     # side table for the vase (left of centre)
     if hole:
         pass
@@ -454,7 +460,7 @@ def classroom_bright(o):
                 desk_fcr=(3, 1.6, 0), desk_fr=(8, 1.6, 0), teacher_desk=(8.5, 9.0, 2.6))
 
 
-BUILDERS = {f.__name__: f for f in [living_room_window, classroom, hallway, bedroom, kitchen, outdoors, stage, playground,
+BUILDERS = {f.__name__: f for f in [living_room_window, living_room_clear, classroom, hallway, bedroom, kitchen, outdoors, stage, playground,
                                      living_room, dining_room, classroom_bright]}
 
 

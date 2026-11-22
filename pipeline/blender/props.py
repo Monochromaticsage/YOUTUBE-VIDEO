@@ -568,27 +568,51 @@ def _pencil(root, n, pd):
     return 0.4, 3.0
 
 
+def _tri_mesh(name, pts, h):
+    """Extruded flat polygon (pts in XY), thickness h."""
+    v = [(x, y, 0) for x, y in pts] + [(x, y, h) for x, y in pts]
+    n = len(pts)
+    f = [tuple(range(n))[::-1], tuple(range(n, 2 * n))]
+    for i in range(n):
+        j = (i + 1) % n
+        f.append((i, j, n + j, n + i))
+    me = bpy.data.meshes.new(name)
+    me.from_pydata(v, [], f)
+    return me
+
+
 def _flat_pizza(root, n, pd):
-    """A pizza as flat as the drawing it came from."""
-    _kid(root, f"{n}_base", box_mesh("fp", (1.7, 1.3, 0.04)), (0, 0, 0.02), M("#f2c879", tex=False), bevel=0)
-    _kid(root, f"{n}_sauce", box_mesh("fs", (1.5, 1.1, 0.02)), (0, 0, 0.05), M("#e2552d", tex=False), bevel=0)
-    for k, (x, y) in enumerate([(-0.4, -0.2), (0.3, 0.25), (0.45, -0.3), (-0.2, 0.3), (0.0, -0.05)]):
-        _kid(root, f"{n}_pep{k}", cyl_mesh("pp", 0.14, 0.03, 10), (x, y, 0.07), M("#a52a2a", tex=False), bevel=0)
-    return 0.1, 3.0
+    """A big pizza slice as flat as the drawing it came from: crust, cheese, pepperoni."""
+    tri = [(-1.1, -0.8), (1.3, 0.0), (-1.1, 0.8)]
+    _kid(root, f"{n}_crust", _tri_mesh("pc", [(-1.25, -0.95), (1.45, 0.0), (-1.25, 0.95)], 0.06), (0, 0, 0), M("#d9a25f", rough=0.8, tex=False), bevel=0)
+    _kid(root, f"{n}_cheese", _tri_mesh("pz", tri, 0.05), (0, 0, 0.05), M("#ffcf4a", rough=0.6, tex=False), bevel=0)
+    _kid(root, f"{n}_edge", box_mesh("pe", (0.28, 1.95, 0.16)), (-1.2, 0, 0.08), M("#c98a45", rough=0.8, tex=False), bevel=0.06)
+    for k, (x, y) in enumerate([(-0.55, -0.3), (-0.5, 0.35), (0.1, 0.0), (0.55, 0.12), (-0.05, -0.4)]):
+        _kid(root, f"{n}_pep{k}", cyl_mesh("pp", 0.17, 0.04, 14), (x, y, 0.1), M("#b3261e", rough=0.5, tex=False), bevel=0)
+    return 0.15, 4.0
 
 
 def _car_sq(root, n, pd):
-    """A cartoon car with SQUARE wheels (drawn badly)."""
-    red = M(pd.get("color", "#e53935"), rough=0.35, tex=False)
-    _kid(root, f"{n}_body", box_mesh("cb", (4.2, 2.0, 1.1)), (0, 0, 1.15), red, bevel=0.2)
-    _kid(root, f"{n}_cab", box_mesh("cc", (2.2, 1.8, 1.0)), (-0.2, 0, 2.15), red, bevel=0.2)
-    glass = M("#9fd3ff", rough=0.1, tex=False)
-    _kid(root, f"{n}_win", box_mesh("cw", (2.0, 1.85, 0.7)), (-0.2, 0, 2.2), glass, bevel=0.1)
-    blk = M("#222222", tex=False)
-    for k, (x, y) in enumerate([(-1.4, -1.0), (1.4, -1.0), (-1.4, 1.0), (1.4, 1.0)]):
-        _kid(root, f"{n}_wheel{k}", box_mesh("cq", (0.9, 0.3, 0.9)), (x, y, 0.45), blk, bevel=0.02)
-    for y in (-0.6, 0.6):
-        _kid(root, f"{n}_lamp{y}", box_mesh("cl", (0.1, 0.4, 0.3)), (2.12, y, 1.3), M("#fff59d", tex=False), bevel=0)
+    """A shiny cartoon sports car... with SQUARE wheels (because it was drawn that way). Faces +X."""
+    red = M(pd.get("color", "#e3262f"), rough=0.4, tex=False)
+    dark = M("#1d1d22", rough=0.5, tex=False)
+    glass = M("#7fb8e6", rough=0.05, tex=False)
+    chrome = M("#d9d9df", rough=0.15, tex=False)
+    _kid(root, f"{n}_body", box_mesh("cb", (4.6, 2.1, 0.9)), (0, 0, 1.05), red, bevel=0.35)
+    _kid(root, f"{n}_hood", box_mesh("ch", (1.5, 2.0, 0.35)), (1.45, 0, 1.55), red, bevel=0.15)
+    _kid(root, f"{n}_cab", box_mesh("cc", (2.1, 1.9, 0.95)), (-0.35, 0, 1.95), red, bevel=0.35)
+    _kid(root, f"{n}_wind", box_mesh("cw", (0.12, 1.7, 0.7)), (0.72, 0, 1.98), glass, bevel=0.04, rot=(0, -28, 0))
+    for y in (-0.96, 0.96):
+        _kid(root, f"{n}_side{y}", box_mesh("cs", (1.6, 0.06, 0.6)), (-0.4, y, 2.0), glass, bevel=0.03)
+        _kid(root, f"{n}_mirror{y}", box_mesh("cm", (0.2, 0.25, 0.18)), (0.6, y * 1.12, 1.75), red, bevel=0.05)
+        _kid(root, f"{n}_lamp{y}", box_mesh("cl", (0.08, 0.5, 0.25)), (2.3, y * 0.62, 1.2), M("#fff6b0", rough=0.1, tex=False), bevel=0.03)
+        _kid(root, f"{n}_tail{y}", box_mesh("ct", (0.08, 0.5, 0.2)), (-2.3, y * 0.62, 1.25), M("#ff3b30", rough=0.2, tex=False), bevel=0.03)
+    _kid(root, f"{n}_grille", box_mesh("cg", (0.06, 0.9, 0.3)), (2.32, 0, 0.95), dark, bevel=0.02)
+    for x in (2.25, -2.25):
+        _kid(root, f"{n}_bumper{x}", box_mesh("cu", (0.25, 2.15, 0.25)), (x, 0, 0.7), chrome, bevel=0.08)
+    for k, (x, y) in enumerate([(-1.45, -1.05), (1.45, -1.05), (-1.45, 1.05), (1.45, 1.05)]):
+        _kid(root, f"{n}_wheel{k}", box_mesh("cq", (1.0, 0.42, 1.0)), (x, y, 0.5), dark, bevel=0.04)
+        _kid(root, f"{n}_hub{k}", box_mesh("hb", (0.42, 0.44, 0.42)), (x, y, 0.5), chrome, bevel=0.04)
     return 2.6, 8.0
 
 
