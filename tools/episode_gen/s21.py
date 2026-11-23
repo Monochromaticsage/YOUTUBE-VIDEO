@@ -29,7 +29,7 @@ ep={"id":"s21_invisible","title":"I Turned INVISIBLE... and Nobody Noticed 👻"
    {"speaker":"noob","line":"Nope. I just say that to the air every morning.","camera":"closeup:noob","no_cuts":True,"anims":{"noob":"sit_thumbs_up","goldie":"sit","ms_brick":"idle","sage":"hidden"},"face":"happy",
     "sfx":[{"name":"boing","at":2.0,"volume":0.5}]}]},
   {"set":"dining_room","cast":{"grandpa":[-3.4,3.9,0,0],"sage":[0.2,3.9,0,0],"mom":[3.8,3.9,0,0]},
-   "props":[{"id":"plate","type":"plate","at":[0.2,1.6,2.16],"scale":0.8},{"id":"phone","type":"phone","at":[1.6,1.2,2.17],"scale":1.0,"image":"assets/textures/s14/phone_ok.png"}],"shots":[
+   "props":[{"id":"plate","type":"plate","at":[0.2,1.6,2.16],"scale":0.8},{"id":"phone","type":"phone","at":[1.6,1.2,2.17],"scale":1.0,"image":"textures/s14/phone_ok.png"}],"shots":[
    {"speaker":"grandpa","line":"Sage isn't here? ...FREE FOOD!","camera":"medium:grandpa","no_cuts":True,"anims":{"grandpa":"sit_eat","mom":"sit","sage":"hidden"},"face":"happy",
     "prop_moves":{"plate":{"to":[-3.0,0,0],"at":0.9,"dur":0.5}}},
    {"speaker":"sage","vo":True,"line":"So I texted Mom.","camera":"medium:mom","no_cuts":True,"prop_moves":{"phone":{"to":[0.8,-0.3,1.6],"rot":[70,0,0],"at":0.1,"dur":0.7}},

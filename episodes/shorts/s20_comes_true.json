@@ -330,7 +330,7 @@
        "dur": 0.9
       },
       {
-       "img": "assets/textures/s11/dollar.png",
+       "img": "textures/s11/dollar.png",
        "at": 0.4,
        "x": 0.2,
        "y": 0.35,
@@ -339,7 +339,7 @@
        "tilt": 12
       },
       {
-       "img": "assets/textures/s11/dollar.png",
+       "img": "textures/s11/dollar.png",
        "at": 0.55,
        "x": 0.35,
        "y": 0.43,
@@ -348,7 +348,7 @@
        "tilt": -15
       },
       {
-       "img": "assets/textures/s11/dollar.png",
+       "img": "textures/s11/dollar.png",
        "at": 0.7,
        "x": 0.5,
        "y": 0.51,
@@ -357,7 +357,7 @@
        "tilt": 12
       },
       {
-       "img": "assets/textures/s11/dollar.png",
+       "img": "textures/s11/dollar.png",
        "at": 0.85,
        "x": 0.6499999999999999,
        "y": 0.35,
@@ -366,7 +366,7 @@
        "tilt": -15
       },
       {
-       "img": "assets/textures/s11/dollar.png",
+       "img": "textures/s11/dollar.png",
        "at": 1.0,
        "x": 0.8,
        "y": 0.43,

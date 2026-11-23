@@ -19,7 +19,7 @@ ep={"id":"s25_elf_spy","title":"Our Elf on the Shelf Is SPYING for Mom! 🎄","f
    {"speaker":"mom","line":"SAGE!","camera":"medium:mom","no_cuts":True,"move":"punch","anims":A(mom="point",sage="reach_caught"),"face":"angry","sfx":[{"name":"vine_boom","at":0.0}]},
    {"speaker":"sage","vo":True,"line":"Our elf on the shelf... reports EVERYTHING to Mom. LIVE.","camera":EC,"no_cuts":True,"move":"push","anims":A(elf="brag",sage="still"),"faces":{"elf":"smug"}}]},
   {"set":"dining_room","cast":{"grandpa":[-3.4,3.9,0,0],"pip":[3.8,3.9,0,0],"elf":[-8.2,8.7,3.3,15]},
-   "props":[{"id":"gphone","type":"phone","at":[-3.0,1.4,2.17],"scale":1.0,"image":"assets/textures/s14/phone_ok.png"}],"shots":[
+   "props":[{"id":"gphone","type":"phone","at":[-3.0,1.4,2.17],"scale":1.0,"image":"textures/s14/phone_ok.png"}],"shots":[
    {"speaker":"elf","line":"Update: Grandpa is watching cat videos. Again.","camera":EC,"no_cuts":True,"anims":{"elf":"talk","grandpa":"sit","pip":"sit"},"face":"smug","sfx":DING,"fx":news("UPDATE")},
    {"speaker":"grandpa","line":"...Snitch.","camera":"closeup:grandpa","no_cuts":True,"move":"push","anims":{"grandpa":"sit","elf":"idle","pip":"sit"},"face":"angry","sfx":[{"name":"vine_boom","at":0.5,"volume":0.6}]},
    {"speaker":"elf","line":"Also... Pip drew on the wall.","camera":EC,"no_cuts":True,"anims":{"elf":"point","grandpa":"sit","pip":"sit"},"face":"smug","sfx":DING},

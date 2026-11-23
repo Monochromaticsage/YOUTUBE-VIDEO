@@ -281,7 +281,7 @@
      "face": "happy",
      "fx": [
       {
-       "img": "assets/textures/s11/dollar.png",
+       "img": "textures/s11/dollar.png",
        "at": 1.0,
        "x": 0.5,
        "y": 0.66,

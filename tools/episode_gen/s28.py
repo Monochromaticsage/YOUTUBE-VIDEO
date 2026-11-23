@@ -25,7 +25,7 @@ ep={"id":"s28_goldie_broke","title":"The Richest Kid in School Lost ALL His Mone
     "sfx":[{"name":"sad_trombone","at":2.0,"volume":0.4}]}]},
   {"set":"living_room_clear","cast":{"grandpa":[1.6,1.2,0,-20],"goldie":[-1.6,1.0,0,20]},"shots":[
    {"speaker":"grandpa","line":"Here, kiddo. A whole dollar. Don't spend it all at once.","camera":"medium:grandpa","no_cuts":True,"anims":{"grandpa":"reach_to","goldie":"sad"},"face":"happy",
-    "fx":[{"img":"assets/textures/s11/dollar.png","at":1.0,"x":0.5,"y":0.66,"size":320,"dur":1.6,"tilt":-6}]},
+    "fx":[{"img":"textures/s11/dollar.png","at":1.0,"x":0.5,"y":0.66,"size":320,"dur":1.6,"tilt":-6}]},
    {"speaker":"goldie","line":"Thank you... GRANDPA!","camera":"at:0,-6.0,4.2,0,1.1,3.4,32","no_cuts":True,"anims":{"goldie":"hug","grandpa":"hug"},"face":"cry","faces":{"grandpa":"happy"},
     "sfx":[{"name":"sparkle","at":0.5,"volume":0.5}]}]},
   {"set":"living_room_clear","cast":{"pip":[1.4,1.2,0,-20],"goldie":[-1.4,1.0,0,20]},"shots":[

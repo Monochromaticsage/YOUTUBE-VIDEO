@@ -70,7 +70,7 @@
      ],
      "rot": 15,
      "scale": 1.0,
-     "image": "assets/textures/s14/phone_ok.png"
+     "image": "textures/s14/phone_ok.png"
     },
     {
      "id": "homework",
@@ -463,7 +463,7 @@
      "face": "smug",
      "fx": [
       {
-       "img": "assets/textures/s11/dollar.png",
+       "img": "textures/s11/dollar.png",
        "at": 0.3,
        "x": 0.3,
        "y": 0.62,
@@ -472,7 +472,7 @@
        "tilt": -12
       },
       {
-       "img": "assets/textures/s11/dollar.png",
+       "img": "textures/s11/dollar.png",
        "at": 0.6,
        "x": 0.72,
        "y": 0.7,
@@ -602,7 +602,7 @@
      ],
      "rot": 15,
      "scale": 1.0,
-     "image": "assets/textures/s14/phone_ok.png",
+     "image": "textures/s14/phone_ok.png",
      "hidden": true
     },
     {
@@ -903,7 +903,7 @@
      ],
      "rot": 15,
      "scale": 1.0,
-     "image": "assets/textures/s14/phone_ok.png"
+     "image": "textures/s14/phone_ok.png"
     },
     {
      "id": "homework",

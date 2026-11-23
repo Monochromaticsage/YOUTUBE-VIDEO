@@ -19,7 +19,7 @@ ep={"id":"s22_bacon_speaks","title":"The Quiet Kid FINALLY Spoke... 😳","forma
    {"_beat":"silence","duration":1.2,"camera":"closeup:bacon","no_cuts":True,"move":"push","anims":A(),"faces":{"bacon":"neutral"},"sfx":[{"name":"tick_tock","at":0.0,"volume":0.5}]},
    {"speaker":"sage","vo":True,"line":"Bacon has NEVER said a single word. Not one. Ever.","camera":"wide","no_cuts":True,"anims":A(),"faces":{"sage":"sus"}},
    {"speaker":"goldie","line":"I'll give you a HUNDRED dollars to talk.","camera":"medium:goldie","no_cuts":True,"anims":A(goldie="brag"),"face":"smug",
-    "fx":[{"img":"assets/textures/s11/dollar.png","at":0.8,"x":0.5,"y":0.66,"size":330,"dur":1.4,"tilt":-8}]},
+    "fx":[{"img":"textures/s11/dollar.png","at":0.8,"x":0.5,"y":0.66,"size":330,"dur":1.4,"tilt":-8}]},
    {"_beat":"bacon shrugs","duration":1.0,"camera":"closeup:bacon","no_cuts":True,"anims":A(bacon="shrug"),"faces":{"bacon":"neutral"},"sfx":[{"name":"sad_trombone","at":0.2,"volume":0.4}]},
    {"speaker":"noob","line":"Maybe he's a robot. Beep boop?","camera":"medium:noob","no_cuts":True,"anims":A(noob="sit_talk"),"face":"sus"},
    {"speaker":"sage","line":"Come on, Bacon. Just ONE word.","camera":"medium:sage","no_cuts":True,"anims":A(sage="sit_talk"),"face":"sad"},

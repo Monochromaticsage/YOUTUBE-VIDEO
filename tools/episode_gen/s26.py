@@ -27,7 +27,7 @@ ep={"id":"s26_body_swap","title":"I Swapped Bodies With My Little Sister 😱","
     "sfx":[{"name":"vine_boom","at":0.0}],"fx":[{"text":"DESTROYED","color":"#ff3b30","size":110,"at":0.2,"x":0.5,"y":0.72,"dur":1.0,"anim":"shake"}]}]},
   {"set":"classroom_bright","cast":{"sage":[-3,1.6,0,0],"ms_brick":[1.8,9.3,0,0]},"shots":[
    {"speaker":"ms_brick","line":"Sage... an A-PLUS?! Who are you?!","camera":"medium:ms_brick","no_cuts":True,"move":"punch","anims":{"ms_brick":"shocked","sage":"sit_thumbs_up"},"face":"shocked",
-    "fx":[{"img":"assets/textures/test_aplus.png","at":0.4,"x":0.5,"y":0.66,"size":340,"dur":1.6,"tilt":-6}],"sfx":[{"name":"sparkle","at":0.4}]}]},
+    "fx":[{"img":"textures/test_aplus.png","at":0.4,"x":0.5,"y":0.66,"size":340,"dur":1.6,"tilt":-6}],"sfx":[{"name":"sparkle","at":0.4}]}]},
   {"set":"living_room_clear","cast":{"mom":[1.6,1.2,0,-20],"pip":[-1.4,1.0,0,20],"sage":[-3.6,2.8,0,25]},"shots":[
    {"speaker":"mom","voice_as":"grandpa","line":"Pip. Bedtime. Seven o'clock.","camera":"medium:mom","no_cuts":True,"anims":{"mom":"point","pip":"idle","sage":"idle"},"face":"neutral"},
    {"speaker":"pip","voice_as":"sage","line":"SEVEN?! ...Wait. Why does Mom sound like GRANDPA?","camera":"closeup:pip","no_cuts":True,"move":"shake","anims":{"pip":"shocked","mom":"idle","sage":"idle"},"face":"shocked"}]},

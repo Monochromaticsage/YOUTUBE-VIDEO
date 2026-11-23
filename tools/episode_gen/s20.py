@@ -30,7 +30,7 @@ ep={"id":"s20_comes_true","title":"Whatever You Say Comes TRUE... 10 Seconds Lat
    {"speaker":"goldie","line":"Pfft. I'm so rich... I could SWIM in money.","camera":"medium:goldie","no_cuts":True,"anims":A(goldie="brag"),"face":"smug"},
    {"_beat":"money rain","duration":1.3,"camera":"medium:goldie","no_cuts":True,"move":"shake","anims":A(goldie="celebrate"),"faces":{"goldie":"happy"},
     "sfx":[{"name":"cash","at":0.1},{"name":"cash","at":0.5}],
-    "fx":later()[:1]+[{"img":"assets/textures/s11/dollar.png","at":0.4+0.15*i,"x":0.2+0.15*i,"y":0.35+0.08*(i%3),"size":260,"dur":0.9,"tilt":(-15 if i%2 else 12)} for i in range(5)]},
+    "fx":later()[:1]+[{"img":"textures/s11/dollar.png","at":0.4+0.15*i,"x":0.2+0.15*i,"y":0.35+0.08*(i%3),"size":260,"dur":0.9,"tilt":(-15 if i%2 else 12)} for i in range(5)]},
    {"speaker":"ms_brick","line":"Settle DOWN! You kids are driving me... BANANAS!","camera":"medium:ms_brick","no_cuts":True,"anims":A(ms_brick="angry"),"face":"angry"},
    {"_beat":"BANANAS","duration":1.1,"camera":"medium:ms_brick","no_cuts":True,"move":"punch","fx":[{"e":"🍌","at":0.08*i,"x":x,"y":y,"size":150,"dur":1.0-0.08*i,"anim":"pop"} for i,(x,y) in enumerate([(0.25,0.35),(0.75,0.3),(0.5,0.18),(0.18,0.6),(0.82,0.58)])],"anims":A(ms_brick="shocked"),"faces":{"ms_brick":"shocked"},
     "sfx":[{"name":"pop","at":0.08*i,"volume":0.6} for i in range(5)]},

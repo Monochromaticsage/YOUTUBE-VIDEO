@@ -160,7 +160,7 @@
      "face": "smug",
      "fx": [
       {
-       "img": "assets/textures/s11/dollar.png",
+       "img": "textures/s11/dollar.png",
        "at": 0.8,
        "x": 0.5,
        "y": 0.66,

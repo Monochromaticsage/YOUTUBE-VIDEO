@@ -22,7 +22,7 @@ ep={"id":"s19_pause_time","title":"I Can PAUSE Time... But My Sister Didn't Free
   {"set":"classroom_bright","cast":{"ms_brick":[1.8,9.3,0,0],"goldie":[3,1.6,0,0],"sage":[0.4,-0.6,0,25],"bacon":[-3,1.6,0,0],"pip":[-7.5,8.5,0,25]},
    "props":[nose("goldie")],"shots":[
    {"speaker":"sage","line":"Goldie's A-plus test? ...Mine now.","camera":"medium:sage","no_cuts":True,"anims":{"sage":"reach_to","goldie":"frozen_sit","bacon":"frozen_sit","ms_brick":"frozen_point","pip":"still"},
-    "face":"smug","faces":{"goldie":"smug","ms_brick":"angry"},"fx":[{"img":"assets/textures/test_aplus.png","at":0.9,"x":0.7,"y":0.62,"size":330,"dur":1.4,"tilt":8}],"sfx":[{"name":"cash","at":0.9,"volume":0.4}]},
+    "face":"smug","faces":{"goldie":"smug","ms_brick":"angry"},"fx":[{"img":"textures/test_aplus.png","at":0.9,"x":0.7,"y":0.62,"size":330,"dur":1.4,"tilt":8}],"sfx":[{"name":"cash","at":0.9,"volume":0.4}]},
    {"speaker":"sage","line":"And for Goldie... a clown nose.","camera":"closeup:goldie","no_cuts":True,"anims":{"goldie":"frozen_sit","bacon":"frozen_sit","ms_brick":"frozen_point","sage":"still","pip":"still"},
     "faces":{"goldie":"smug"},"show_at":{},"fx":[],"sfx":[{"name":"boing","at":1.4,"volume":0.6}]},
    {"_beat":"nose on","duration":0.8,"camera":"closeup:goldie","no_cuts":True,"move":"punch","show":["nose_goldie"],"anims":{"goldie":"frozen_sit","bacon":"frozen_sit","ms_brick":"frozen_point","sage":"still","pip":"still"},
@@ -39,7 +39,7 @@ ep={"id":"s19_pause_time","title":"I Can PAUSE Time... But My Sister Didn't Free
    {"speaker":"mom","line":"—NOW! And WHY do you have a clown nose?!","camera":W,"no_cuts":True,"show":["nose_sage"],"anims":{"mom":"point","sage":"shocked","pip":"still"},"face":"angry","faces":{"sage":"shocked","pip":"smug"},
     "sfx":[{"name":"boing","at":1.2,"volume":0.6}]},
    {"speaker":"sage","line":"Wait— WHAT?! And my test is an F again?!","camera":"closeup:sage","no_cuts":True,"move":"shake","anims":{"sage":"shocked","mom":"cross_arms","pip":"still"},"face":"shocked",
-    "fx":[{"img":"assets/textures/test_f.png","at":1.0,"x":0.72,"y":0.66,"size":320,"dur":1.6,"tilt":-8}],"sfx":[{"name":"record_scratch","at":0.0,"volume":0.6}]},
+    "fx":[{"img":"textures/test_f.png","at":1.0,"x":0.72,"y":0.66,"size":320,"dur":1.6,"tilt":-8}],"sfx":[{"name":"record_scratch","at":0.0,"volume":0.6}]},
    {"speaker":"sage","vo":True,"line":"Then I saw her... Pip never froze. Not even once.","camera":"at:3.9,-1.8,3.0,3.9,3.6,2.6,34","no_cuts":True,"move":"push","anims":{"pip":"brag","sage":"shocked","mom":"cross_arms"},"faces":{"pip":"smug"},
     "sfx":[{"name":"vine_boom","at":1.6}]},
    {"speaker":"pip","line":"My turn.","camera":"at:3.9,-1.8,3.0,3.9,3.6,2.6,34","no_cuts":True,"anims":{"pip":"snap","sage":"frozen_shock","mom":"frozen_point"},"face":"evil"},

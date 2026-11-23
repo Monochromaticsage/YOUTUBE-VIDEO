@@ -9,7 +9,7 @@ POOF_SFX=[{"name":"pop","at":0.0,"volume":0.8},{"name":"whoosh","at":0.05,"volum
 cast1={"grandpa":[-2.7,3.9,0,0],"sage":[0.2,3.9,0,0],"pip":[3.1,3.9,0,0],"mom":[1.65,6.5,0,0]}
 def props(hide=()):
     P=[{"id":"turkey","type":"turkey","at":[1.65,1.8,2.16],"scale":0.7},
-       {"id":"phone","type":"phone","at":[0.2,1.3,2.17],"rot":15,"scale":1.0,"image":"assets/textures/s14/phone_ok.png"},
+       {"id":"phone","type":"phone","at":[0.2,1.3,2.17],"rot":15,"scale":1.0,"image":"textures/s14/phone_ok.png"},
        {"id":"homework","type":"paper_stack","at":[3.6,1.0,2.16],"rot":-10,"scale":0.14}]
     for p in P:
         if p["id"] in hide: p["hidden"]=True
@@ -44,7 +44,7 @@ ep={"id":"s18_thankful","title":"Whatever You're Thankful For... DISAPPEARS! ðŸ¦
     "sfx":[{"name":"airhorn","at":0.1,"volume":0.45}]}]},
   {"set":"hallway","cast":{"goldie":[0.6,1,0,0]},"shots":[
    {"speaker":"goldie","line":"Ha! I'm thankful for my MONEY!","camera":"medium:goldie","no_cuts":True,"anims":{"goldie":"brag"},"face":"smug",
-    "fx":[{"img":"assets/textures/s11/dollar.png","at":0.3,"x":0.3,"y":0.62,"size":300,"dur":1.6,"tilt":-12},{"img":"assets/textures/s11/dollar.png","at":0.6,"x":0.72,"y":0.7,"size":300,"dur":1.3,"tilt":10}]},
+    "fx":[{"img":"textures/s11/dollar.png","at":0.3,"x":0.3,"y":0.62,"size":300,"dur":1.6,"tilt":-12},{"img":"textures/s11/dollar.png","at":0.6,"x":0.72,"y":0.7,"size":300,"dur":1.3,"tilt":10}]},
    {"_beat":"POOF money","duration":1.0,"camera":"closeup:goldie","no_cuts":True,"move":"punch","anims":{"goldie":"shocked"},"faces":{"goldie":"shocked"},
     "sfx":POOF_SFX+[{"name":"sad_trombone","at":0.3,"volume":0.5}],"fx":poof(0.5,0.65)+[{"text":"$0.00","color":"#ff3b30","size":130,"at":0.2,"x":0.5,"y":0.72,"dur":0.8,"anim":"shake"}]},
    {"speaker":"goldie","line":"...Mom? Can I borrow a dollar?","camera":"closeup:goldie","no_cuts":True,"move":"push","anims":{"goldie":"sad"},"face":"sad"}]},

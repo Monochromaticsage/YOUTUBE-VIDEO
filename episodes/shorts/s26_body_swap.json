@@ -264,7 +264,7 @@
      "face": "shocked",
      "fx": [
       {
-       "img": "assets/textures/test_aplus.png",
+       "img": "textures/test_aplus.png",
        "at": 0.4,
        "x": 0.5,
        "y": 0.66,
