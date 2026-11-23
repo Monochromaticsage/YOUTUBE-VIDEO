@@ -700,6 +700,9 @@ def main():
                 rt.matrix_parent_inverse = Matrix.Identity(4)
                 rt.location = pd.get("local", (-0.5, -0.45, -1.55))
                 rt.rotation_euler = tuple(math.radians(a) for a in pd.get("local_rot", (90, 0, 0)))
+                if not pd.get("hidden"):  # exists only from this scene on (not in earlier scenes)
+                    _prop_vis(pd["id"], False, 1)
+                    _prop_vis(pd["id"], True, frame)
             if pd.get("hidden"):
                 _prop_vis(pd["id"], False, 1)
         scene_rigs = {}
