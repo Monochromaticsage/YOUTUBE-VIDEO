@@ -506,7 +506,7 @@
       3.1
      ],
      "length": 3.0,
-     "color": "#ffd23f"
+     "color": "#1f1f24"
     }
    ],
    "shots": [
@@ -537,7 +537,7 @@
     {
      "_beat": "REVEAL",
      "duration": 1.6,
-     "camera": "back:sage",
+     "camera": "at:-0.1,8.8,4.4,0.3,1.2,3.1,32",
      "no_cuts": true,
      "move": "zoom",
      "anims": {
@@ -698,7 +698,8 @@
        "y": 0.3,
        "dur": 1.0
       }
-     ]
+     ],
+     "no_cuts": true
     },
     {
      "_beat": "MOM DOWN",
@@ -805,10 +806,10 @@
      0
     ],
     "mom": [
-     6,
-     3,
+     -4.8,
+     3.0,
      0,
-     0
+     -30
     ]
    },
    "props": [
@@ -897,12 +898,6 @@
      "line": "Sage... homework.",
      "camera": "medium:mom",
      "no_cuts": true,
-     "walk": {
-      "mom": [
-       2,
-       3.2
-      ]
-     },
      "anims": {
       "mom": "point",
       "sage": "sit"
