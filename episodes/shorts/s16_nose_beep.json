@@ -131,7 +131,8 @@
      },
      "faces": {
       "sage": "sad"
-     }
+     },
+     "no_cuts": true
     }
    ]
   },
@@ -657,7 +658,7 @@
      "id": "cake",
      "type": "cake",
      "at": [
-      1.8,
+      4.6,
       1.4,
       2.16
      ],
@@ -712,7 +713,7 @@
      "line": "No beep. Then I saw it... she was holding her nose the WHOLE time.",
      "camera": "closeup:pip",
      "no_cuts": true,
-     "move": "zoom",
+     "move": "push",
      "anims": {
       "pip": "sit_pinch_nose",
       "sage": "sit"

@@ -427,7 +427,7 @@
     {
      "speaker": "sage",
      "line": "Can I have one?",
-     "camera": "closeup:sage",
+     "camera": "medium:sage",
      "no_cuts": true,
      "anims": {
       "sage": "talk"

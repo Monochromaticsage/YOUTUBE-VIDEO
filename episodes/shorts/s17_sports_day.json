@@ -161,7 +161,7 @@
      "speaker": "sage",
      "vo": true,
      "line": "Sack race? She hopped like a kangaroo.",
-     "camera": "wide",
+     "camera": "at:0,-10,4.6,0,2.5,2.4,30",
      "no_cuts": true,
      "move": "pan",
      "walk": {
@@ -479,7 +479,7 @@
     {
      "speaker": "noob",
      "line": "I'm out. Forever.",
-     "camera": "closeup:noob",
+     "camera": "high:noob",
      "no_cuts": true,
      "anims": {
       "noob": "lie",
@@ -536,7 +536,7 @@
     {
      "_beat": "RACE",
      "duration": 1.8,
-     "camera": "wide",
+     "camera": "at:0,-10,4.6,0,2.5,2.4,30",
      "no_cuts": true,
      "move": "pan",
      "walk": {
@@ -643,7 +643,7 @@
     {
      "_beat": "TRIP",
      "duration": 1.0,
-     "camera": "two:sage,mom",
+     "camera": "at:0.4,-7,4.2,0.4,1.2,1.6,30",
      "no_cuts": true,
      "move": "shake",
      "anims": {
@@ -664,7 +664,7 @@
     {
      "_beat": "MOM WINS",
      "duration": 1.6,
-     "camera": "wide",
+     "camera": "at:0,-10,4.6,0,2.5,2.4,30",
      "no_cuts": true,
      "move": "pan",
      "hide": [
