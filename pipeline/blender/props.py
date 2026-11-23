@@ -630,6 +630,18 @@ def _potato_dog(root, n, pd):
     return 1.3, 4.0
 
 
+def _baby_bottle(root, n, pd):
+    """A baby bottle (milk, pink cap and teat)."""
+    _kid(root, f"{n}_body", cyl_mesh("bb", 0.28, 0.9, 16), (0, 0, 0), M("#f4fbff", rough=0.15, tex=False), bevel=0)
+    _kid(root, f"{n}_milk", cyl_mesh("bm", 0.25, 0.6, 16), (0, 0, 0.02), M("#ffffff", rough=0.5, tex=False), bevel=0)
+    _kid(root, f"{n}_cap", cyl_mesh("bc", 0.3, 0.18, 16), (0, 0, 0.9), M("#ff8fb1", rough=0.4, tex=False), bevel=0)
+    _kid(root, f"{n}_teat", cyl_mesh("bt", 0.12, 0.25, 12, 0.06), (0, 0, 1.08), M("#ffd8a8", rough=0.5, tex=False), bevel=0)
+    return 1.3, 3.0
+
+
+STORY_PROPS["baby_bottle"] = _baby_bottle
+
+
 STORY_PROPS.update({"pencil": _pencil, "flat_pizza": _flat_pizza, "car_sq": _car_sq, "potato_dog": _potato_dog})
 
 

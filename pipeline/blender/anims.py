@@ -832,6 +832,20 @@ def pencil_down(rig, f0, f1, fps):
         pose(rig, f, arm_r=(-55 - 8 * a, 6 * a, 0), head=(-18, 0, 3 if a else -3), torso=(8, 0, 0), **SEAT)
     pose(rig, f1 - 1, arm_r=(-55, 0, 0), head=(-18, 0, 0), torso=(8, 0, 0), **SEAT)
 
+
+def backflip(rig, f0, f1, fps):
+    """Jumps and does a full backflip, lands, then arms up like a gymnast. Repeats if there's time."""
+    f = f0
+    while f + 16 < f1:
+        pose(rig, f, offset=(0, 0, 0), leg_l=(-20, 0, 0), leg_r=(-20, 0, 0), arm_l=(0, -20, 0), arm_r=(0, 20, 0))
+        for k in range(1, 9):
+            t = k / 8
+            pose(rig, f + 2 * k, offset=(0, 0, 3.2 * math.sin(math.pi * t)), tilt=(-360 * t, 0),
+                 arm_l=(-170, 0, 0), arm_r=(-170, 0, 0), leg_l=(-60, 0, 0), leg_r=(-60, 0, 0))
+        pose(rig, f + 18, arm_l=(0, -150, 0), arm_r=(0, 150, 0), head=(8, 0, 0))
+        f += 26
+    pose(rig, f1 - 1, arm_l=(0, -150, 0), arm_r=(0, 150, 0))
+
 ANIMS = {f.__name__: f for f in [
     idle, talk, shocked, scared, angry, laugh, sad, cry, wave, point, facepalm, think, dance, jump,
     fall, lie, sit, run_in_place, walk_in_left, walk_in_right, walk_out_left, walk_out_right,
@@ -842,7 +856,7 @@ ANIMS = {f.__name__: f for f in [
     lean_whisper, yell_back, sneeze, sit_sneeze, sneeze_build, sit_write, sit_up_scream, hold_feather,
     still, raise_hand, raise_hand_start, spin, chicken_dance, sit_eat, sit_reach_freeze, sit_thumbs_up, tilt_glass,
     resist_raise, arms_up, raise_hand_l, raise_hand_start_l, reach_to, reach_caught, sit_eat_chips,
-    eyes_closed_smile, pencil_up, pencil_down]}
+    eyes_closed_smile, pencil_up, pencil_down, backflip]}
 
 
 def walk_to(rig, f0, start, end, fps, speed=6.5, run=False, max_frames=None):
