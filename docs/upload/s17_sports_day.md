@@ -1,6 +1,6 @@
 # Upload pack: Mom Joined My School's SPORTS DAY! 🏃‍♀️🏆
 
-- **Video:** `output/s17_sports_day.mp4` (seamless loop)
+- **Video:** `output/s17_sports_day.mp4` (36 s; seamless loop: "NEVER tell my mom that—" cuts straight into "Parents are allowed to join sports day", on the same shot)
 - **Thumbnail:** `branding/s17_sports_day_thumbnail.jpg`
 - **Settings:** Not made for kids · Film & Animation · Altered content: Yes · Comments on · Related video: My Sister Copied EVERYTHING I Did
 
