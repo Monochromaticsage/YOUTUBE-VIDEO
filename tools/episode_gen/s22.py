@@ -1,0 +1,41 @@
+import json
+DEEP={"voice_id":"nPczCjzI2devNBz1zQrb","pitch":0.9}
+BW="at:3,-6.5,5.2,3,3.0,3.3,30"
+cast={"bacon":[3,1.6,0,0],"sage":[-3,1.6,0,0],"goldie":[8,1.6,0,0],"noob":[-8,1.6,0,0],"ms_brick":[1.8,9.3,0,0]}
+def props(n="2,847"):
+    return [{"id":"sign_old","type":"sign","text":f"DAYS SINCE BACON\nSAID A WORD: {n}","size":0.55,"color":"#263238","board":"#fff59d","at":[5.2,11.3,6.6]},
+            {"id":"sign_zero","type":"sign","text":"DAYS SINCE BACON\nSAID A WORD: 0","size":0.55,"color":"#d32f2f","board":"#fff59d","at":[5.2,11.25,6.6],"hidden":True}]
+def A(**k):
+    d={"bacon":"sit","sage":"sit","goldie":"sit","noob":"sit","ms_brick":"idle"}; d.update(k); return d
+ep={"id":"s22_bacon_speaks","title":"The Quiet Kid FINALLY Spoke... 😳","format":"short","mood":"bright","grade":"bright",
+ "fog":False,"dof":False,"handheld":0.35,"caption_style":"word","caption_pos":"top","cut_every":1.25,"sting":False,"cta":{"at":16},
+ "music":"tension_loop","music_volume":0.12,"loop":True,
+ "_loop":"Bacon (deep voice): '...and THAT is why I never talk.' -> same shot -> Ms. Brick: 'Bacon... do you have anything to say?' (silence)",
+ "_secret":"The sign behind Bacon says DAYS SINCE BACON SAID A WORD: 2,847 in the first second",
+ "_pinned_comment":"What did you THINK Bacon's voice sounded like? 😂👇",
+ "scenes":[
+  {"set":"classroom_bright","cast":cast,"props":props(),"shots":[
+   {"_beat":"HOOK (loop point)","speaker":"ms_brick","line":"Bacon... do you have anything to say?","camera":BW,"no_cuts":True,"move":"none","anims":A(ms_brick="talk"),"face":"neutral","faces":{"bacon":"neutral"}},
+   {"_beat":"silence","duration":1.2,"camera":"closeup:bacon","no_cuts":True,"move":"push","anims":A(),"faces":{"bacon":"neutral"},"sfx":[{"name":"tick_tock","at":0.0,"volume":0.5}]},
+   {"speaker":"sage","vo":True,"line":"Bacon has NEVER said a single word. Not one. Ever.","camera":"wide","no_cuts":True,"anims":A(),"faces":{"sage":"sus"}},
+   {"speaker":"goldie","line":"I'll give you a HUNDRED dollars to talk.","camera":"medium:goldie","no_cuts":True,"anims":A(goldie="brag"),"face":"smug",
+    "fx":[{"img":"assets/textures/s11/dollar.png","at":0.8,"x":0.5,"y":0.66,"size":330,"dur":1.4,"tilt":-8}]},
+   {"_beat":"bacon shrugs","duration":1.0,"camera":"closeup:bacon","no_cuts":True,"anims":A(bacon="shrug"),"faces":{"bacon":"neutral"},"sfx":[{"name":"sad_trombone","at":0.2,"volume":0.4}]},
+   {"speaker":"noob","line":"Maybe he's a robot. Beep boop?","camera":"medium:noob","no_cuts":True,"anims":A(noob="sit_talk"),"face":"sus"},
+   {"speaker":"sage","line":"Come on, Bacon. Just ONE word.","camera":"medium:sage","no_cuts":True,"anims":A(sage="sit_talk"),"face":"sad"},
+   {"_beat":"he inhales","duration":1.2,"camera":"closeup:bacon","no_cuts":True,"move":"push","anims":A(bacon="sit_up_scream" if False else "sit"),"faces":{"bacon":"neutral"},
+    "sfx":[{"name":"riser","at":0.0,"volume":0.6}]},
+   {"speaker":"bacon","line":"In a world... where nobody listens... one boy... had something to say.",**DEEP,"camera":"closeup:bacon","no_cuts":True,"move":"push","anims":A(bacon="sit_talk"),"face":"neutral",
+    "show":["sign_zero"],"hide":["sign_old"],"sfx":[{"name":"vine_boom","at":0.1}]},
+   {"_beat":"everyone shocked","duration":1.4,"camera":"wide","no_cuts":True,"move":"shake","anims":A(sage="sit_shocked",goldie="sit_shocked",noob="sit_shocked",ms_brick="fall",bacon="sit"),
+    "faces":{"sage":"shocked","goldie":"shocked","noob":"shocked","ms_brick":"dead"},"sfx":[{"name":"glass_crash","at":0.1,"volume":0.5},{"name":"oof_thud","at":0.7}]},
+   {"speaker":"noob","line":"In a world...","pitch":1.45,"camera":"medium:noob","no_cuts":True,"anims":A(noob="sit_talk",sage="sit_shocked",goldie="sit_shocked",ms_brick="lie"),"face":"happy"},
+   {"speaker":"bacon","line":"...May I go to the bathroom?",**DEEP,"camera":"closeup:bacon","no_cuts":True,"move":"punch","anims":A(bacon="raise_hand",ms_brick="lie"),"face":"neutral",
+    "sfx":[{"name":"boing","at":2.0,"volume":0.5}]},
+   {"speaker":"sage","vo":True,"line":"He came back ten minutes later. We had questions.","camera":"wide","no_cuts":True,"anims":A(ms_brick="idle"),"faces":{"sage":"sus","goldie":"sus","noob":"sus"}},
+   {"speaker":"goldie","line":"Why don't you EVER talk?!","camera":"medium:goldie","no_cuts":True,"anims":A(goldie="sit_point"),"face":"angry"}]},
+  {"set":"classroom_bright","cast":cast,"props":props(),"_beat":"LOOP: identical to scene 1","shots":[
+   {"_beat":"LOOP","speaker":"bacon","line":"Because every time I do... THIS happens. And that is why... I never talk.",**DEEP,"camera":BW,"no_cuts":True,"move":"none","pad":0.0,"anims":A(bacon="sit_talk"),"faces":{"bacon":"neutral"}}]}
+ ]}
+json.dump(ep,open("/home/user/YOUTUBE-VIDEO/episodes/shorts/s22_bacon_speaks.json","w"),indent=1,ensure_ascii=False)
+print("ok")

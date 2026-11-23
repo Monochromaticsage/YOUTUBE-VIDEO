@@ -896,6 +896,36 @@ def pull_rope(rig, f0, f1, fps):
              leg_l=(-20, 0, 0), leg_r=(15, 0, 0))
     pose(rig, f1 - 1, tilt=(-14, 0), arm_l=(-80, 0, 0), arm_r=(-80, 0, 0))
 
+def frozen_point(rig, f0, f1, fps):
+    """Paused mid-yell: pointing, leaning in, perfectly still (time-stop stories)."""
+    pt = dict(arm_r=(-90, 0, 0), arm_l=(-15, -10, 0), torso=(-6, 0, 0), head=(4, 0, -6))
+    pose(rig, f0, **pt)
+    pose(rig, f1 - 1, **pt)
+
+
+def frozen_sit(rig, f0, f1, fps):
+    """Seated and paused: no breathing, no head bob."""
+    s = dict(offset=(0, 0.4, -0.95), leg_l=(-90, 0, 0), leg_r=(-90, 0, 0), arm_l=(-40, 0, 0), arm_r=(-40, 0, 0))
+    pose(rig, f0, **s)
+    pose(rig, f1 - 1, **s)
+
+
+def frozen_shock(rig, f0, f1, fps):
+    """Paused mid-panic: both arms flung up, leaning back."""
+    p_ = dict(arm_l=(0, -130, 0), arm_r=(0, 130, 0), torso=(6, 0, 0), head=(8, 0, 0), leg_l=(10, 0, 0))
+    pose(rig, f0, **p_)
+    pose(rig, f1 - 1, **p_)
+
+
+def dab(rig, f0, f1, fps):
+    """The dab: one arm flung up and out, face tucked into the other elbow. Held, with a little bounce."""
+    d = dict(arm_l=(0, -125, 0), arm_r=(-115, -55, 0), head=(-22, 0, 18), torso=(0, 0, 8))
+    pose(rig, f0)
+    pose(rig, min(f0 + 4, f1 - 1), offset=(0, 0, 0.12), **d)
+    pose(rig, min(f0 + 7, f1 - 1), **d)
+    pose(rig, f1 - 1, **d)
+
+
 ANIMS = {f.__name__: f for f in [
     idle, talk, shocked, scared, angry, laugh, sad, cry, wave, point, facepalm, think, dance, jump,
     fall, lie, sit, run_in_place, walk_in_left, walk_in_right, walk_out_left, walk_out_right,
@@ -907,7 +937,7 @@ ANIMS = {f.__name__: f for f in [
     still, raise_hand, raise_hand_start, spin, chicken_dance, sit_eat, sit_reach_freeze, sit_thumbs_up, tilt_glass,
     resist_raise, arms_up, raise_hand_l, raise_hand_start_l, reach_to, reach_caught, sit_eat_chips,
     eyes_closed_smile, pencil_up, pencil_down, backflip, snap, trip, pinch_nose, sit_pinch_nose, tie_headband,
-    pull_rope]}
+    pull_rope, frozen_point, frozen_sit, frozen_shock, dab]}
 
 
 def walk_to(rig, f0, start, end, fps, speed=6.5, run=False, max_frames=None):

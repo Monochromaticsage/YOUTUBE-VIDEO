@@ -1,0 +1,560 @@
+{
+ "id": "s29_teacher_kid",
+ "title": "Our Teacher Turned Into a KID! 😱",
+ "format": "short",
+ "mood": "bright",
+ "grade": "bright",
+ "fog": false,
+ "dof": false,
+ "handheld": 0.35,
+ "caption_style": "word",
+ "caption_pos": "top",
+ "cut_every": 1.25,
+ "sting": false,
+ "cta": {
+  "at": 16
+ },
+ "music": "quirky_loop",
+ "music_volume": 0.13,
+ "loop": true,
+ "_loop": "Noob: 'More juice, Ms. Brick?' -> same shot -> Ms. Brick: 'Hmm. This juice tastes... funny—' POOF",
+ "_secret": "Noob is ALREADY holding up the juice box and grinning in the first second",
+ "_pinned_comment": "If YOUR teacher turned into a kid, what would you do? 😂👇",
+ "scenes": [
+  {
+   "set": "classroom_bright",
+   "cast": {
+    "ms_brick": [
+     0.0,
+     5.4,
+     0,
+     0
+    ],
+    "ms_brick_kid": [
+     0.0,
+     5.4,
+     0,
+     0
+    ],
+    "sage": [
+     -3,
+     1.6,
+     0,
+     0
+    ],
+    "noob": [
+     3,
+     1.6,
+     0,
+     0
+    ],
+    "goldie": [
+     8,
+     1.6,
+     0,
+     0
+    ]
+   },
+   "shots": [
+    {
+     "_beat": "HOOK (loop point)",
+     "speaker": "ms_brick",
+     "line": "Hmm. This juice tastes... funny—",
+     "camera": "at:0.0,-6.6,5.4,0.0,5.6,3.6,30",
+     "no_cuts": true,
+     "move": "none",
+     "anims": {
+      "ms_brick": "tilt_glass",
+      "ms_brick_kid": "hidden",
+      "sage": "sit",
+      "noob": "sit_thumbs_up",
+      "goldie": "sit"
+     },
+     "face": "sus",
+     "faces": {
+      "noob": "smug"
+     },
+     "fx": [
+      {
+       "e": "🧃",
+       "at": 0.0,
+       "x": 0.66,
+       "y": 0.45,
+       "size": 130,
+       "dur": 1.6
+      }
+     ]
+    },
+    {
+     "_beat": "POOF",
+     "duration": 0.8,
+     "camera": "at:0.0,-6.6,5.4,0.0,5.6,3.6,30",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "ms_brick": "hidden",
+      "ms_brick_kid": "shocked",
+      "sage": "sit_shocked",
+      "noob": "sit_shocked",
+      "goldie": "sit"
+     },
+     "faces": {
+      "ms_brick_kid": "shocked",
+      "sage": "shocked",
+      "noob": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "pop",
+       "at": 0.0,
+       "volume": 0.8
+      },
+      {
+       "name": "glitch",
+       "at": 0.05,
+       "volume": 0.5
+      }
+     ],
+     "fx": [
+      {
+       "flash": "#ffffff",
+       "at": 0.0,
+       "dur": 0.15,
+       "x": 0.5,
+       "y": 0.5
+      },
+      {
+       "e": "💨",
+       "at": 0.0,
+       "x": 0.5,
+       "y": 0.55,
+       "size": 240,
+       "dur": 0.7,
+       "anim": "pop"
+      }
+     ]
+    },
+    {
+     "speaker": "ms_brick_kid",
+     "line": "Why is everything so BIG?!",
+     "camera": "closeup:ms_brick_kid",
+     "no_cuts": true,
+     "move": "shake",
+     "anims": {
+      "ms_brick": "hidden",
+      "ms_brick_kid": "look_up",
+      "sage": "sit",
+      "noob": "sit",
+      "goldie": "sit"
+     },
+     "face": "shocked"
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "Our teacher drank Noob's mystery juice... and turned into a KID.",
+     "camera": "medium:noob",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "ms_brick": "hidden",
+      "ms_brick_kid": "idle",
+      "sage": "sit",
+      "noob": "sit_thumbs_up",
+      "goldie": "sit"
+     },
+     "faces": {
+      "noob": "happy"
+     }
+    },
+    {
+     "speaker": "noob",
+     "line": "I call it... Juice of Youth. Patent pending.",
+     "camera": "medium:noob",
+     "no_cuts": true,
+     "anims": {
+      "ms_brick": "hidden",
+      "ms_brick_kid": "idle",
+      "sage": "sit",
+      "noob": "sit_talk",
+      "goldie": "sit"
+     },
+     "face": "smug"
+    }
+   ]
+  },
+  {
+   "set": "classroom_bright",
+   "cast": {
+    "ms_brick_kid": [
+     -8,
+     1.6,
+     0,
+     0
+    ],
+    "sage": [
+     -3,
+     1.6,
+     0,
+     0
+    ],
+    "goldie": [
+     0.0,
+     5.4,
+     0,
+     0
+    ],
+    "noob": [
+     3,
+     1.6,
+     0,
+     0
+    ]
+   },
+   "shots": [
+    {
+     "speaker": "ms_brick_kid",
+     "line": "Homework? No thanks! I'm FIVE!",
+     "camera": "medium:ms_brick_kid",
+     "no_cuts": true,
+     "anims": {
+      "ms_brick_kid": "sit_point",
+      "sage": "sit",
+      "goldie": "idle",
+      "noob": "sit"
+     },
+     "face": "evil",
+     "sfx": [
+      {
+       "name": "whoosh",
+       "at": 1.2,
+       "volume": 0.5
+      }
+     ],
+     "fx": [
+      {
+       "e": "✈️",
+       "at": 1.2,
+       "x": 0.7,
+       "y": 0.4,
+       "size": 140,
+       "dur": 0.9
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "So Goldie had to be the teacher.",
+     "camera": "medium:goldie",
+     "no_cuts": true,
+     "anims": {
+      "goldie": "cross_arms",
+      "ms_brick_kid": "sit",
+      "sage": "sit",
+      "noob": "sit"
+     },
+     "faces": {
+      "goldie": "smug"
+     }
+    },
+    {
+     "speaker": "goldie",
+     "line": "Okay class. New rule... RECESS. FOREVER.",
+     "camera": "medium:goldie",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "goldie": "point",
+      "ms_brick_kid": "sit",
+      "sage": "sit",
+      "noob": "sit"
+     },
+     "face": "happy"
+    },
+    {
+     "_beat": "class cheers",
+     "duration": 1.0,
+     "camera": "wide",
+     "no_cuts": true,
+     "move": "shake",
+     "anims": {
+      "goldie": "celebrate",
+      "ms_brick_kid": "sit_thumbs_up",
+      "sage": "sit_thumbs_up",
+      "noob": "sit_thumbs_up"
+     },
+     "faces": {
+      "goldie": "happy",
+      "ms_brick_kid": "happy",
+      "sage": "happy",
+      "noob": "happy"
+     },
+     "sfx": [
+      {
+       "name": "airhorn",
+       "at": 0.1,
+       "volume": 0.4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "classroom_bright",
+   "cast": {
+    "ms_brick_kid": [
+     -8,
+     1.6,
+     0,
+     0
+    ],
+    "sage": [
+     -3,
+     1.6,
+     0,
+     0
+    ]
+   },
+   "shots": [
+    {
+     "speaker": "ms_brick_kid",
+     "line": "Psst. Sage. Wanna trade lunches?",
+     "camera": "medium:ms_brick_kid",
+     "no_cuts": true,
+     "anims": {
+      "ms_brick_kid": "lean_whisper",
+      "sage": "sit"
+     },
+     "face": "happy"
+    },
+    {
+     "speaker": "sage",
+     "line": "Ms. Brick... you're a GROWN-UP!",
+     "camera": "medium:sage",
+     "no_cuts": true,
+     "anims": {
+      "sage": "sit_talk",
+      "ms_brick_kid": "sit"
+     },
+     "face": "shocked"
+    },
+    {
+     "speaker": "ms_brick_kid",
+     "line": "Not TODAY!",
+     "camera": "closeup:ms_brick_kid",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "ms_brick_kid": "sit_thumbs_up",
+      "sage": "sit"
+     },
+     "face": "evil"
+    }
+   ]
+  },
+  {
+   "set": "classroom_bright",
+   "cast": {
+    "ms_brick": [
+     0.0,
+     5.4,
+     0,
+     0
+    ],
+    "ms_brick_kid": [
+     0.0,
+     5.4,
+     0,
+     0
+    ],
+    "sage": [
+     -3,
+     1.6,
+     0,
+     0
+    ],
+    "noob": [
+     3,
+     1.6,
+     0,
+     0
+    ],
+    "goldie": [
+     8,
+     1.6,
+     0,
+     0
+    ]
+   },
+   "shots": [
+    {
+     "speaker": "noob",
+     "line": "Don't worry. It wears off in one hour.",
+     "camera": "medium:noob",
+     "no_cuts": true,
+     "anims": {
+      "ms_brick": "hidden",
+      "ms_brick_kid": "idle",
+      "sage": "sit",
+      "noob": "sit_talk",
+      "goldie": "sit"
+     },
+     "face": "happy"
+    },
+    {
+     "_beat": "POOF back",
+     "duration": 0.8,
+     "camera": "at:0.0,-6.6,5.4,0.0,5.6,3.6,30",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "ms_brick": "angry",
+      "ms_brick_kid": "hidden",
+      "sage": "sit_shocked",
+      "noob": "sit_shocked",
+      "goldie": "sit"
+     },
+     "faces": {
+      "ms_brick": "angry",
+      "sage": "shocked",
+      "noob": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "pop",
+       "at": 0.0,
+       "volume": 0.8
+      },
+      {
+       "name": "glitch",
+       "at": 0.05,
+       "volume": 0.5
+      }
+     ],
+     "fx": [
+      {
+       "flash": "#ffffff",
+       "at": 0.0,
+       "dur": 0.15,
+       "x": 0.5,
+       "y": 0.5
+      },
+      {
+       "e": "💨",
+       "at": 0.0,
+       "x": 0.5,
+       "y": 0.55,
+       "size": 240,
+       "dur": 0.7,
+       "anim": "pop"
+      }
+     ]
+    },
+    {
+     "speaker": "ms_brick",
+     "line": "DETENTION. ALL OF YOU. Especially GOLDIE.",
+     "camera": "medium:ms_brick",
+     "no_cuts": true,
+     "move": "shake",
+     "anims": {
+      "ms_brick": "point",
+      "ms_brick_kid": "hidden",
+      "sage": "sit",
+      "noob": "sit",
+      "goldie": "sit"
+     },
+     "face": "angry",
+     "sfx": [
+      {
+       "name": "vine_boom",
+       "at": 0.1
+      }
+     ]
+    },
+    {
+     "speaker": "ms_brick",
+     "line": "...Wow. I'm thirsty.",
+     "camera": "medium:ms_brick",
+     "no_cuts": true,
+     "anims": {
+      "ms_brick": "idle",
+      "ms_brick_kid": "hidden",
+      "sage": "sit",
+      "noob": "sit",
+      "goldie": "sit"
+     },
+     "face": "neutral"
+    }
+   ]
+  },
+  {
+   "set": "classroom_bright",
+   "cast": {
+    "ms_brick": [
+     0.0,
+     5.4,
+     0,
+     0
+    ],
+    "ms_brick_kid": [
+     0.0,
+     5.4,
+     0,
+     0
+    ],
+    "sage": [
+     -3,
+     1.6,
+     0,
+     0
+    ],
+    "noob": [
+     3,
+     1.6,
+     0,
+     0
+    ],
+    "goldie": [
+     8,
+     1.6,
+     0,
+     0
+    ]
+   },
+   "_beat": "LOOP: identical to scene 1",
+   "shots": [
+    {
+     "_beat": "LOOP",
+     "speaker": "noob",
+     "line": "More juice, Ms. Brick?",
+     "camera": "at:0.0,-6.6,5.4,0.0,5.6,3.6,30",
+     "no_cuts": true,
+     "move": "none",
+     "pad": 0.0,
+     "anims": {
+      "ms_brick": "tilt_glass",
+      "ms_brick_kid": "hidden",
+      "sage": "sit",
+      "noob": "sit_thumbs_up",
+      "goldie": "sit"
+     },
+     "face": "smug",
+     "faces": {
+      "ms_brick": "sus"
+     },
+     "fx": [
+      {
+       "e": "🧃",
+       "at": 0.4,
+       "x": 0.66,
+       "y": 0.45,
+       "size": 130,
+       "dur": 1.6
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

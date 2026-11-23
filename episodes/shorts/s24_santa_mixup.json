@@ -1,0 +1,753 @@
+{
+ "id": "s24_santa_mixup",
+ "title": "Santa Mixed Up EVERYONE'S Presents! 🎁",
+ "format": "short",
+ "mood": "bright",
+ "grade": "bright",
+ "fog": false,
+ "dof": false,
+ "handheld": 0.35,
+ "caption_style": "word",
+ "caption_pos": "top",
+ "cut_every": 1.25,
+ "sting": false,
+ "cta": {
+  "at": 16
+ },
+ "music": "happy_loop",
+ "music_volume": 0.13,
+ "loop": true,
+ "_loop": "Pip: 'Here. Open yours.' -> same shot -> Sage: 'A... UNICORN dress?'",
+ "_secret": "Pip is already holding a crayon in the first second (she wrote Santa's list)",
+ "_pinned_comment": "What's the WORST present you ever got? 🎁👇",
+ "scenes": [
+  {
+   "set": "living_room_clear",
+   "cast": {
+    "sage": [
+     -1.4,
+     1.0,
+     0,
+     15
+    ],
+    "pip": [
+     1.6,
+     1.6,
+     0,
+     -15
+    ]
+   },
+   "props": [
+    {
+     "id": "tree",
+     "type": "xmas_tree",
+     "at": [
+      -4.6,
+      4.6,
+      0
+     ],
+     "scale": 0.85
+    },
+    {
+     "id": "g1",
+     "type": "present",
+     "at": [
+      -3.0,
+      3.2,
+      0
+     ],
+     "color": "#1e88e5",
+     "ribbon": "#ffffff",
+     "size": 1.0
+    },
+    {
+     "id": "g2",
+     "type": "present",
+     "at": [
+      -5.6,
+      2.6,
+      0
+     ],
+     "color": "#43a047",
+     "ribbon": "#e53935",
+     "size": 0.8
+    },
+    {
+     "id": "g3",
+     "type": "present",
+     "at": [
+      3.4,
+      3.6,
+      0
+     ],
+     "color": "#e53935",
+     "ribbon": "#ffd54f",
+     "size": 0.9
+    },
+    {
+     "id": "crayon",
+     "type": "pencil",
+     "attach": "pip:arm_l",
+     "local": [
+      0.5,
+      -0.45,
+      -1.55
+     ],
+     "local_rot": [
+      90,
+      0,
+      0
+     ]
+    }
+   ],
+   "shots": [
+    {
+     "_beat": "HOOK (loop point)",
+     "speaker": "sage",
+     "line": "A... UNICORN dress?",
+     "camera": "at:0,-7.8,4.3,0,2.0,3.0,30",
+     "no_cuts": true,
+     "move": "none",
+     "anims": {
+      "sage": "shocked",
+      "pip": "idle"
+     },
+     "face": "shocked",
+     "faces": {
+      "pip": "smug"
+     },
+     "sfx": [
+      {
+       "name": "whoosh",
+       "at": 0.0,
+       "volume": 0.4
+      },
+      {
+       "name": "pop",
+       "at": 0.25,
+       "volume": 0.6
+      }
+     ],
+     "fx": [
+      {
+       "e": "🦄",
+       "at": 0.3,
+       "x": 0.3,
+       "y": 0.42,
+       "size": 170,
+       "dur": 1.4,
+       "anim": "pop"
+      },
+      {
+       "e": "👗",
+       "at": 0.45,
+       "x": 0.42,
+       "y": 0.55,
+       "size": 170,
+       "dur": 1.4,
+       "anim": "pop"
+      }
+     ]
+    },
+    {
+     "speaker": "pip",
+     "line": "And I got a... VIDEO GAME?",
+     "camera": "at:2.7,-3.0,3.7,1.6,1.6,3.3,34",
+     "no_cuts": true,
+     "anims": {
+      "pip": "shrug",
+      "sage": "shocked"
+     },
+     "face": "smug",
+     "fx": [
+      {
+       "e": "🎮",
+       "at": 0.3,
+       "x": 0.72,
+       "y": 0.45,
+       "size": 170,
+       "dur": 1.4,
+       "anim": "pop"
+      }
+     ],
+     "sfx": [
+      {
+       "name": "whoosh",
+       "at": 0.0,
+       "volume": 0.4
+      },
+      {
+       "name": "pop",
+       "at": 0.25,
+       "volume": 0.6
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "This Christmas... Santa mixed up EVERYONE'S presents.",
+     "camera": "at:-1.8,-8.5,5.0,-1.8,3.0,3.4,30",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "sage": "facepalm",
+      "pip": "idle"
+     },
+     "faces": {
+      "sage": "sad"
+     }
+    }
+   ]
+  },
+  {
+   "set": "living_room_clear",
+   "cast": {
+    "grandpa": [
+     -1.6,
+     1.0,
+     0,
+     20
+    ],
+    "mom": [
+     1.6,
+     1.2,
+     0,
+     -20
+    ]
+   },
+   "props": [
+    {
+     "id": "tree",
+     "type": "xmas_tree",
+     "at": [
+      -4.6,
+      4.6,
+      0
+     ],
+     "scale": 0.85
+    },
+    {
+     "id": "g1",
+     "type": "present",
+     "at": [
+      -3.0,
+      3.2,
+      0
+     ],
+     "color": "#1e88e5",
+     "ribbon": "#ffffff",
+     "size": 1.0
+    },
+    {
+     "id": "g2",
+     "type": "present",
+     "at": [
+      -5.6,
+      2.6,
+      0
+     ],
+     "color": "#43a047",
+     "ribbon": "#e53935",
+     "size": 0.8
+    },
+    {
+     "id": "g3",
+     "type": "present",
+     "at": [
+      3.4,
+      3.6,
+      0
+     ],
+     "color": "#e53935",
+     "ribbon": "#ffd54f",
+     "size": 0.9
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "grandpa",
+     "line": "A baby bottle?",
+     "camera": "medium:grandpa",
+     "no_cuts": true,
+     "anims": {
+      "grandpa": "think",
+      "mom": "idle"
+     },
+     "face": "sus",
+     "fx": [
+      {
+       "e": "🍼",
+       "at": 0.3,
+       "x": 0.7,
+       "y": 0.5,
+       "size": 170,
+       "dur": 1.4,
+       "anim": "pop"
+      }
+     ],
+     "sfx": [
+      {
+       "name": "whoosh",
+       "at": 0.0,
+       "volume": 0.4
+      },
+      {
+       "name": "pop",
+       "at": 0.25,
+       "volume": 0.6
+      }
+     ]
+    },
+    {
+     "speaker": "grandpa",
+     "line": "...Actually. I'll keep it.",
+     "camera": "closeup:grandpa",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "grandpa": "nod",
+      "mom": "idle"
+     },
+     "face": "happy"
+    },
+    {
+     "speaker": "mom",
+     "line": "Gold sneakers? These are GOLDIE'S.",
+     "camera": "medium:mom",
+     "no_cuts": true,
+     "anims": {
+      "mom": "shrug",
+      "grandpa": "idle"
+     },
+     "face": "sus",
+     "fx": [
+      {
+       "e": "👟",
+       "at": 0.3,
+       "x": 0.3,
+       "y": 0.5,
+       "size": 170,
+       "dur": 1.4,
+       "anim": "pop"
+      }
+     ],
+     "sfx": [
+      {
+       "name": "whoosh",
+       "at": 0.0,
+       "volume": 0.4
+      },
+      {
+       "name": "pop",
+       "at": 0.25,
+       "volume": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "hallway",
+   "cast": {
+    "goldie": [
+     0.6,
+     1,
+     0,
+     0
+    ]
+   },
+   "shots": [
+    {
+     "speaker": "goldie",
+     "line": "A BANANA? I asked for a YACHT!",
+     "camera": "medium:goldie",
+     "no_cuts": true,
+     "move": "shake",
+     "anims": {
+      "goldie": "angry"
+     },
+     "face": "angry",
+     "fx": [
+      {
+       "e": "🍌",
+       "at": 0.3,
+       "x": 0.72,
+       "y": 0.5,
+       "size": 170,
+       "dur": 1.4,
+       "anim": "pop"
+      }
+     ],
+     "sfx": [
+      {
+       "name": "whoosh",
+       "at": 0.0,
+       "volume": 0.4
+      },
+      {
+       "name": "pop",
+       "at": 0.25,
+       "volume": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "living_room_window",
+   "cast": {
+    "noob": [
+     0,
+     1,
+     0,
+     0
+    ]
+   },
+   "shots": [
+    {
+     "speaker": "noob",
+     "line": "A YACHT?! ...But I asked for a banana.",
+     "camera": "medium:noob",
+     "no_cuts": true,
+     "anims": {
+      "noob": "sad"
+     },
+     "face": "sad",
+     "fx": [
+      {
+       "e": "🛥️",
+       "at": 0.3,
+       "x": 0.7,
+       "y": 0.42,
+       "size": 170,
+       "dur": 1.4,
+       "anim": "pop"
+      }
+     ],
+     "sfx": [
+      {
+       "name": "whoosh",
+       "at": 0.0,
+       "volume": 0.4
+      },
+      {
+       "name": "pop",
+       "at": 0.25,
+       "volume": 0.6
+      },
+      {
+       "name": "sad_trombone",
+       "at": 1.6,
+       "volume": 0.4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "classroom_bright",
+   "cast": {
+    "ms_brick": [
+     1.8,
+     9.3,
+     0,
+     0
+    ]
+   },
+   "shots": [
+    {
+     "speaker": "ms_brick",
+     "line": "'How to Be FUN.' ...By Noob?",
+     "camera": "medium:ms_brick",
+     "no_cuts": true,
+     "anims": {
+      "ms_brick": "think"
+     },
+     "face": "sus",
+     "fx": [
+      {
+       "text": "HOW TO BE FUN",
+       "color": "#ffd23f",
+       "size": 100,
+       "at": 0.2,
+       "x": 0.5,
+       "y": 0.7,
+       "dur": 1.6
+      }
+     ],
+     "sfx": [
+      {
+       "name": "whoosh",
+       "at": 0.0,
+       "volume": 0.4
+      },
+      {
+       "name": "pop",
+       "at": 0.25,
+       "volume": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "living_room_clear",
+   "cast": {
+    "sage": [
+     -1.4,
+     1.0,
+     0,
+     15
+    ],
+    "pip": [
+     1.6,
+     1.6,
+     0,
+     -15
+    ]
+   },
+   "props": [
+    {
+     "id": "tree",
+     "type": "xmas_tree",
+     "at": [
+      -4.6,
+      4.6,
+      0
+     ],
+     "scale": 0.85
+    },
+    {
+     "id": "g1",
+     "type": "present",
+     "at": [
+      -3.0,
+      3.2,
+      0
+     ],
+     "color": "#1e88e5",
+     "ribbon": "#ffffff",
+     "size": 1.0
+    },
+    {
+     "id": "g2",
+     "type": "present",
+     "at": [
+      -5.6,
+      2.6,
+      0
+     ],
+     "color": "#43a047",
+     "ribbon": "#e53935",
+     "size": 0.8
+    },
+    {
+     "id": "g3",
+     "type": "present",
+     "at": [
+      3.4,
+      3.6,
+      0
+     ],
+     "color": "#e53935",
+     "ribbon": "#ffd54f",
+     "size": 0.9
+    },
+    {
+     "id": "crayon",
+     "type": "pencil",
+     "attach": "pip:arm_l",
+     "local": [
+      0.5,
+      -0.45,
+      -1.55
+     ],
+     "local_rot": [
+      90,
+      0,
+      0
+     ]
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "Then I found Santa's list. Written in... CRAYON.",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "sage": "hold_photo",
+      "pip": "idle"
+     },
+     "faces": {
+      "sage": "sus"
+     },
+     "fx": [
+      {
+       "text": "SANTA'S LIST",
+       "color": "#e53935",
+       "size": 110,
+       "at": 0.6,
+       "x": 0.5,
+       "y": 0.68,
+       "dur": 1.8,
+       "anim": "shake"
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "line": "Pip?! This is YOUR handwriting!",
+     "camera": "medium:sage",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "sage": "point",
+      "pip": "idle"
+     },
+     "face": "angry",
+     "sfx": [
+      {
+       "name": "record_scratch",
+       "at": 0.0,
+       "volume": 0.5
+      }
+     ]
+    },
+    {
+     "speaker": "pip",
+     "line": "Santa looked tired. I helped.",
+     "camera": "at:2.7,-3.0,3.7,1.6,1.6,3.3,34",
+     "no_cuts": true,
+     "anims": {
+      "pip": "brag",
+      "sage": "point"
+     },
+     "face": "smug"
+    },
+    {
+     "speaker": "pip",
+     "line": "...You're welcome.",
+     "camera": "at:2.7,-3.0,3.7,1.6,1.6,3.3,34",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "pip": "nod",
+      "sage": "facepalm"
+     },
+     "face": "evil",
+     "sfx": [
+      {
+       "name": "sting",
+       "at": 0.2,
+       "volume": 0.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "living_room_clear",
+   "cast": {
+    "sage": [
+     -1.4,
+     1.0,
+     0,
+     15
+    ],
+    "pip": [
+     1.6,
+     1.6,
+     0,
+     -15
+    ]
+   },
+   "props": [
+    {
+     "id": "tree",
+     "type": "xmas_tree",
+     "at": [
+      -4.6,
+      4.6,
+      0
+     ],
+     "scale": 0.85
+    },
+    {
+     "id": "g1",
+     "type": "present",
+     "at": [
+      -3.0,
+      3.2,
+      0
+     ],
+     "color": "#1e88e5",
+     "ribbon": "#ffffff",
+     "size": 1.0
+    },
+    {
+     "id": "g2",
+     "type": "present",
+     "at": [
+      -5.6,
+      2.6,
+      0
+     ],
+     "color": "#43a047",
+     "ribbon": "#e53935",
+     "size": 0.8
+    },
+    {
+     "id": "g3",
+     "type": "present",
+     "at": [
+      3.4,
+      3.6,
+      0
+     ],
+     "color": "#e53935",
+     "ribbon": "#ffd54f",
+     "size": 0.9
+    },
+    {
+     "id": "crayon",
+     "type": "pencil",
+     "attach": "pip:arm_l",
+     "local": [
+      0.5,
+      -0.45,
+      -1.55
+     ],
+     "local_rot": [
+      90,
+      0,
+      0
+     ]
+    }
+   ],
+   "_beat": "LOOP: identical to scene 1",
+   "shots": [
+    {
+     "_beat": "LOOP",
+     "speaker": "pip",
+     "line": "Here. Open yours.",
+     "camera": "at:0,-7.8,4.3,0,2.0,3.0,30",
+     "no_cuts": true,
+     "move": "none",
+     "pad": 0.0,
+     "anims": {
+      "pip": "reach_to",
+      "sage": "idle"
+     },
+     "faces": {
+      "pip": "smug",
+      "sage": "neutral"
+     }
+    }
+   ]
+  }
+ ]
+}

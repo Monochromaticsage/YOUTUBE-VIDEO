@@ -1,0 +1,58 @@
+import json
+W="at:1.1,-8.6,4.4,1.1,2.5,3.0,27"
+FREEZE=[{"name":"freeze","at":0.0,"volume":0.7}]
+def freeze_fx(): return [{"flash":"#bfe6ff","at":0.0,"dur":0.2,"x":0.5,"y":0.5},{"e":"⏸️","at":0.05,"x":0.5,"y":0.5,"size":260,"dur":0.6,"anim":"pop"}]
+nose=lambda who,h=True: {"id":f"nose_{who}","type":"nose_light","attach":f"{who}:head","local":[0,-0.68,0.48],"local_rot":[0,0,0],"hidden":h}
+cast_lr={"sage":[-1.6,1.0,0,20],"mom":[1.6,1.3,0,-20],"pip":[3.9,3.6,0,-20]}
+ep={"id":"s19_pause_time","title":"I Can PAUSE Time... But My Sister Didn't Freeze 😳","format":"short","mood":"bright","grade":"bright",
+ "fog":False,"dof":False,"handheld":0.35,"caption_style":"word","caption_pos":"top","cut_every":1.25,"sting":False,"cta":{"at":16},
+ "music":"mystery_loop","music_volume":0.12,"loop":True,
+ "_loop":"Pip: '...and unpause.' -> same wide shot -> Mom: 'Sage! Clean your room, RIGHT NOW—'",
+ "_secret":"Sage ALREADY has the clown nose in the first second, and Pip is moving in the background of every 'frozen' shot",
+ "_pinned_comment":"Rewatch and find Pip moving in EVERY frozen scene 👀👇",
+ "scenes":[
+  {"set":"living_room_clear","cast":cast_lr,"props":[nose("sage",False)],"shots":[
+   {"_beat":"HOOK (loop point)","speaker":"mom","line":"Sage! Clean your room, RIGHT NOW—","camera":W,"no_cuts":True,"move":"none",
+    "anims":{"mom":"frozen_point","sage":"idle","pip":"idle"},"face":"angry","faces":{"sage":"sad","pip":"smug"}},
+   {"_beat":"FREEZE","duration":1.0,"camera":"closeup:sage","no_cuts":True,"move":"punch","hide":["nose_sage"],"anims":{"sage":"snap","mom":"frozen_point","pip":"still"},
+    "faces":{"sage":"smug","mom":"angry"},"sfx":FREEZE,"fx":freeze_fx()+[{"text":"PAUSED","color":"#4fc3ff","size":130,"at":0.1,"x":0.5,"y":0.72,"dur":0.8,"anim":"shake"}]},
+   {"speaker":"sage","line":"Ha! I can pause time.","camera":"medium:sage","no_cuts":True,"anims":{"sage":"brag","mom":"frozen_point","pip":"still"},"face":"smug","faces":{"mom":"angry"}},
+   {"speaker":"sage","vo":True,"line":"When I pause... everyone freezes. EXCEPT me.","camera":W,"no_cuts":True,"move":"push",
+    "anims":{"sage":"wave","mom":"frozen_point","pip":"look_up"},"faces":{"sage":"happy","mom":"angry","pip":"smug"}}]},
+  {"set":"classroom_bright","cast":{"ms_brick":[1.8,9.3,0,0],"goldie":[3,1.6,0,0],"sage":[0.4,-0.6,0,25],"bacon":[-3,1.6,0,0],"pip":[-7.5,8.5,0,25]},
+   "props":[nose("goldie")],"shots":[
+   {"speaker":"sage","line":"Goldie's A-plus test? ...Mine now.","camera":"medium:sage","no_cuts":True,"anims":{"sage":"reach_to","goldie":"frozen_sit","bacon":"frozen_sit","ms_brick":"frozen_point","pip":"still"},
+    "face":"smug","faces":{"goldie":"smug","ms_brick":"angry"},"fx":[{"img":"assets/textures/test_aplus.png","at":0.9,"x":0.7,"y":0.62,"size":330,"dur":1.4,"tilt":8}],"sfx":[{"name":"cash","at":0.9,"volume":0.4}]},
+   {"speaker":"sage","line":"And for Goldie... a clown nose.","camera":"closeup:goldie","no_cuts":True,"anims":{"goldie":"frozen_sit","bacon":"frozen_sit","ms_brick":"frozen_point","sage":"still","pip":"still"},
+    "faces":{"goldie":"smug"},"show_at":{},"fx":[],"sfx":[{"name":"boing","at":1.4,"volume":0.6}]},
+   {"_beat":"nose on","duration":0.8,"camera":"closeup:goldie","no_cuts":True,"move":"punch","show":["nose_goldie"],"anims":{"goldie":"frozen_sit","bacon":"frozen_sit","ms_brick":"frozen_point","sage":"still","pip":"still"},
+    "faces":{"goldie":"smug"},"sfx":[{"name":"boing","at":0.0,"volume":0.6}]},
+   {"speaker":"sage","vo":True,"line":"Nobody could stop me.","camera":"wide","no_cuts":True,"move":"push","anims":{"goldie":"frozen_sit","bacon":"frozen_sit","ms_brick":"frozen_point","sage":"celebrate","pip":"wave"},
+    "faces":{"goldie":"smug","sage":"happy","pip":"smug"}}]},
+  {"set":"dining_room","cast":{"grandpa":[-3.4,3.9,0,0],"sage":[0.2,3.9,0,0]},"props":[{"id":"choc","type":"chocolate","at":[0.9,1.4,2.16],"scale":0.9}],"shots":[
+   {"speaker":"sage","line":"Mom's secret chocolate? Don't mind if I do.","camera":"medium:sage","no_cuts":True,"anims":{"sage":"sit_eat","grandpa":"frozen_sit"},"face":"happy","faces":{"grandpa":"shocked"},
+    "hide":[],"sfx":[{"name":"pop","at":1.6,"volume":0.4}]},
+   {"speaker":"sage","line":"Grandpa? Frozen mid-sneeze. Beautiful.","camera":"closeup:grandpa","no_cuts":True,"hide":["choc"],"anims":{"grandpa":"frozen_sit","sage":"sit_eat"},"faces":{"grandpa":"shocked"},
+    "fx":[{"e":"🤧","at":0.3,"x":0.75,"y":0.45,"size":150,"dur":1.5}]}]},
+  {"set":"living_room_clear","cast":cast_lr,"props":[nose("sage")],"shots":[
+   {"speaker":"sage","line":"Okay... unpause.","camera":"closeup:sage","no_cuts":True,"anims":{"sage":"snap","mom":"frozen_point","pip":"still"},"face":"smug","sfx":[{"name":"whoosh","at":0.7,"volume":0.5}]},
+   {"speaker":"mom","line":"—NOW! And WHY do you have a clown nose?!","camera":W,"no_cuts":True,"show":["nose_sage"],"anims":{"mom":"point","sage":"shocked","pip":"still"},"face":"angry","faces":{"sage":"shocked","pip":"smug"},
+    "sfx":[{"name":"boing","at":1.2,"volume":0.6}]},
+   {"speaker":"sage","line":"Wait— WHAT?! And my test is an F again?!","camera":"closeup:sage","no_cuts":True,"move":"shake","anims":{"sage":"shocked","mom":"cross_arms","pip":"still"},"face":"shocked",
+    "fx":[{"img":"assets/textures/test_f.png","at":1.0,"x":0.72,"y":0.66,"size":320,"dur":1.6,"tilt":-8}],"sfx":[{"name":"record_scratch","at":0.0,"volume":0.6}]},
+   {"speaker":"sage","vo":True,"line":"Then I saw her... Pip never froze. Not even once.","camera":"at:3.9,-1.8,3.0,3.9,3.6,2.6,34","no_cuts":True,"move":"push","anims":{"pip":"brag","sage":"shocked","mom":"cross_arms"},"faces":{"pip":"smug"},
+    "sfx":[{"name":"vine_boom","at":1.6}]},
+   {"speaker":"pip","line":"My turn.","camera":"at:3.9,-1.8,3.0,3.9,3.6,2.6,34","no_cuts":True,"anims":{"pip":"snap","sage":"frozen_shock","mom":"frozen_point"},"face":"evil"},
+   {"_beat":"FREEZE 2","duration":0.9,"camera":W,"no_cuts":True,"move":"punch","anims":{"pip":"still","sage":"frozen_shock","mom":"frozen_point"},"faces":{"sage":"shocked","mom":"angry","pip":"smug"},
+    "sfx":FREEZE,"fx":freeze_fx()},
+   {"speaker":"pip","line":"Keep the nose. It suits you.","camera":"medium:sage","no_cuts":True,"anims":{"pip":"still","sage":"frozen_shock","mom":"frozen_point"},"faces":{"sage":"shocked","mom":"angry"}}]},
+  {"set":"living_room_clear","cast":cast_lr,"props":[nose("sage",False)],"_beat":"LOOP: identical to scene 1","shots":[
+   {"_beat":"LOOP","speaker":"pip","line":"...and unpause.","camera":W,"no_cuts":True,"move":"none","pad":0.0,"anims":{"mom":"frozen_point","sage":"idle","pip":"snap"},"faces":{"mom":"angry","sage":"sad","pip":"smug"}}]}
+ ]}
+for sc in ep["scenes"]:
+    for sh in sc["shots"]:
+        sh.pop("show_at",None)
+        if sh.get("fx")==[]: sh.pop("fx")
+        if sh.get("hide")==[]: sh.pop("hide")
+json.dump(ep,open("/home/user/YOUTUBE-VIDEO/episodes/shorts/s19_pause_time.json","w"),indent=1,ensure_ascii=False)
+print("ok")

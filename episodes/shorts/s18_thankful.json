@@ -1,0 +1,944 @@
+{
+ "id": "s18_thankful",
+ "title": "Whatever You're Thankful For... DISAPPEARS! 🦃",
+ "format": "short",
+ "mood": "bright",
+ "grade": "bright",
+ "fog": false,
+ "dof": false,
+ "handheld": 0.35,
+ "caption_style": "word",
+ "caption_pos": "top",
+ "cut_every": 1.25,
+ "sting": false,
+ "cta": {
+  "at": 16
+ },
+ "music": "quirky_loop",
+ "music_volume": 0.13,
+ "loop": true,
+ "_loop": "Mom: 'Sage. Your turn.' -> same wide shot -> Sage: 'I'm thankful for my phone.'",
+ "_secret": "Pip brought her homework to Thanksgiving dinner (it's on the table in the first second)",
+ "_pinned_comment": "What are YOU thankful for? (careful...) 👇",
+ "scenes": [
+  {
+   "set": "dining_room",
+   "cast": {
+    "grandpa": [
+     -2.7,
+     3.9,
+     0,
+     0
+    ],
+    "sage": [
+     0.2,
+     3.9,
+     0,
+     0
+    ],
+    "pip": [
+     3.1,
+     3.9,
+     0,
+     0
+    ],
+    "mom": [
+     1.65,
+     6.5,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "turkey",
+     "type": "turkey",
+     "at": [
+      1.65,
+      1.8,
+      2.16
+     ],
+     "scale": 0.7
+    },
+    {
+     "id": "phone",
+     "type": "phone",
+     "at": [
+      0.2,
+      1.3,
+      2.17
+     ],
+     "rot": 15,
+     "scale": 1.0,
+     "image": "assets/textures/s14/phone_ok.png"
+    },
+    {
+     "id": "homework",
+     "type": "paper_stack",
+     "at": [
+      3.6,
+      1.0,
+      2.16
+     ],
+     "rot": -10,
+     "scale": 0.14
+    }
+   ],
+   "shots": [
+    {
+     "_beat": "HOOK (loop point)",
+     "speaker": "sage",
+     "line": "I'm thankful for my phone.",
+     "camera": "at:0.3,-8.8,6.4,0.3,3.8,3.7,34",
+     "no_cuts": true,
+     "move": "none",
+     "anims": {
+      "grandpa": "sit",
+      "sage": "sit_talk",
+      "pip": "sit",
+      "mom": "idle"
+     },
+     "face": "happy",
+     "faces": {
+      "pip": "smug"
+     }
+    },
+    {
+     "_beat": "POOF",
+     "duration": 0.8,
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "move": "punch",
+     "hide": [
+      "phone"
+     ],
+     "anims": {
+      "grandpa": "sit",
+      "sage": "sit_shocked",
+      "pip": "sit",
+      "mom": "idle"
+     },
+     "faces": {
+      "sage": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "pop",
+       "at": 0.0,
+       "volume": 0.8
+      },
+      {
+       "name": "whoosh",
+       "at": 0.05,
+       "volume": 0.5
+      }
+     ],
+     "fx": [
+      {
+       "e": "💨",
+       "at": 0.0,
+       "x": 0.5,
+       "y": 0.7,
+       "size": 220,
+       "dur": 0.7,
+       "anim": "pop"
+      },
+      {
+       "flash": "#ffffff",
+       "at": 0.0,
+       "dur": 0.12,
+       "x": 0.5,
+       "y": 0.5
+      },
+      {
+       "text": "POOF!",
+       "color": "#ffffff",
+       "size": 120,
+       "at": 0.0,
+       "x": 0.5,
+       "y": 0.42,
+       "dur": 0.7,
+       "anim": "shake"
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "This Thanksgiving... whatever you say you're thankful for... DISAPPEARS.",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "grandpa": "sit",
+      "sage": "sit",
+      "pip": "sit",
+      "mom": "idle"
+     },
+     "faces": {
+      "sage": "sad"
+     }
+    },
+    {
+     "speaker": "grandpa",
+     "line": "Pfft. Nonsense. I'm thankful for my TEETH.",
+     "camera": "medium:grandpa",
+     "no_cuts": true,
+     "anims": {
+      "grandpa": "sit_talk",
+      "sage": "sit",
+      "pip": "sit",
+      "mom": "idle"
+     },
+     "face": "smug"
+    },
+    {
+     "_beat": "POOF teeth",
+     "duration": 0.9,
+     "camera": "closeup:grandpa",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "grandpa": "sit_shocked",
+      "sage": "sit",
+      "pip": "sit",
+      "mom": "idle"
+     },
+     "faces": {
+      "grandpa": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "pop",
+       "at": 0.0,
+       "volume": 0.8
+      },
+      {
+       "name": "whoosh",
+       "at": 0.05,
+       "volume": 0.5
+      }
+     ],
+     "fx": [
+      {
+       "e": "🦷",
+       "at": 0.0,
+       "x": 0.5,
+       "y": 0.62,
+       "size": 150,
+       "dur": 0.35
+      },
+      {
+       "e": "💨",
+       "at": 0.3,
+       "x": 0.5,
+       "y": 0.62,
+       "size": 220,
+       "dur": 0.7,
+       "anim": "pop"
+      },
+      {
+       "flash": "#ffffff",
+       "at": 0.0,
+       "dur": 0.12,
+       "x": 0.5,
+       "y": 0.5
+      }
+     ]
+    },
+    {
+     "speaker": "grandpa",
+     "line": "Mmph! Mmph-mmph!",
+     "camera": "closeup:grandpa",
+     "no_cuts": true,
+     "move": "shake",
+     "anims": {
+      "grandpa": "sit_shocked",
+      "sage": "sit",
+      "pip": "sit",
+      "mom": "idle"
+     },
+     "face": "angry"
+    },
+    {
+     "speaker": "pip",
+     "line": "My turn! I'm thankful for... HOMEWORK.",
+     "camera": "closeup:pip",
+     "no_cuts": true,
+     "anims": {
+      "grandpa": "sit",
+      "sage": "sit",
+      "pip": "sit_talk",
+      "mom": "idle"
+     },
+     "face": "smug"
+    },
+    {
+     "_beat": "POOF homework",
+     "duration": 0.8,
+     "camera": "medium:pip",
+     "no_cuts": true,
+     "move": "punch",
+     "hide": [
+      "homework"
+     ],
+     "anims": {
+      "grandpa": "sit",
+      "sage": "sit",
+      "pip": "sit_thumbs_up",
+      "mom": "idle"
+     },
+     "faces": {
+      "pip": "happy"
+     },
+     "sfx": [
+      {
+       "name": "pop",
+       "at": 0.0,
+       "volume": 0.8
+      },
+      {
+       "name": "whoosh",
+       "at": 0.05,
+       "volume": 0.5
+      }
+     ],
+     "fx": [
+      {
+       "e": "💨",
+       "at": 0.0,
+       "x": 0.5,
+       "y": 0.72,
+       "size": 220,
+       "dur": 0.7,
+       "anim": "pop"
+      },
+      {
+       "flash": "#ffffff",
+       "at": 0.0,
+       "dur": 0.12,
+       "x": 0.5,
+       "y": 0.5
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "And every homework... in the WHOLE world... disappeared.",
+     "camera": "medium:pip",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "grandpa": "sit",
+      "sage": "sit",
+      "pip": "sit_thumbs_up",
+      "mom": "idle"
+     },
+     "faces": {
+      "pip": "smug"
+     }
+    }
+   ]
+  },
+  {
+   "set": "classroom_bright",
+   "cast": {
+    "ms_brick": [
+     1.8,
+     9.3,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "papers",
+     "type": "paper_stack",
+     "at": [
+      1.8,
+      7.6,
+      2.3
+     ],
+     "scale": 0.6
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "ms_brick",
+     "line": "NO! My three hundred papers!",
+     "camera": "medium:ms_brick",
+     "no_cuts": true,
+     "move": "shake",
+     "hide": [
+      "papers"
+     ],
+     "anims": {
+      "ms_brick": "scared"
+     },
+     "face": "scared",
+     "sfx": [
+      {
+       "name": "pop",
+       "at": 0.0,
+       "volume": 0.8
+      },
+      {
+       "name": "whoosh",
+       "at": 0.05,
+       "volume": 0.5
+      }
+     ],
+     "fx": [
+      {
+       "e": "💨",
+       "at": 0.0,
+       "x": 0.5,
+       "y": 0.72,
+       "size": 220,
+       "dur": 0.7,
+       "anim": "pop"
+      },
+      {
+       "flash": "#ffffff",
+       "at": 0.0,
+       "dur": 0.12,
+       "x": 0.5,
+       "y": 0.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "living_room_clear",
+   "cast": {
+    "noob": [
+     0,
+     1,
+     0,
+     0
+    ]
+   },
+   "shots": [
+    {
+     "speaker": "noob",
+     "line": "PIP! FOR! PRESIDENT!",
+     "camera": "medium:noob",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "noob": "celebrate"
+     },
+     "face": "happy",
+     "sfx": [
+      {
+       "name": "airhorn",
+       "at": 0.1,
+       "volume": 0.45
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "hallway",
+   "cast": {
+    "goldie": [
+     0.6,
+     1,
+     0,
+     0
+    ]
+   },
+   "shots": [
+    {
+     "speaker": "goldie",
+     "line": "Ha! I'm thankful for my MONEY!",
+     "camera": "medium:goldie",
+     "no_cuts": true,
+     "anims": {
+      "goldie": "brag"
+     },
+     "face": "smug",
+     "fx": [
+      {
+       "img": "assets/textures/s11/dollar.png",
+       "at": 0.3,
+       "x": 0.3,
+       "y": 0.62,
+       "size": 300,
+       "dur": 1.6,
+       "tilt": -12
+      },
+      {
+       "img": "assets/textures/s11/dollar.png",
+       "at": 0.6,
+       "x": 0.72,
+       "y": 0.7,
+       "size": 300,
+       "dur": 1.3,
+       "tilt": 10
+      }
+     ]
+    },
+    {
+     "_beat": "POOF money",
+     "duration": 1.0,
+     "camera": "closeup:goldie",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "goldie": "shocked"
+     },
+     "faces": {
+      "goldie": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "pop",
+       "at": 0.0,
+       "volume": 0.8
+      },
+      {
+       "name": "whoosh",
+       "at": 0.05,
+       "volume": 0.5
+      },
+      {
+       "name": "sad_trombone",
+       "at": 0.3,
+       "volume": 0.5
+      }
+     ],
+     "fx": [
+      {
+       "e": "💨",
+       "at": 0.0,
+       "x": 0.5,
+       "y": 0.65,
+       "size": 220,
+       "dur": 0.7,
+       "anim": "pop"
+      },
+      {
+       "flash": "#ffffff",
+       "at": 0.0,
+       "dur": 0.12,
+       "x": 0.5,
+       "y": 0.5
+      },
+      {
+       "text": "$0.00",
+       "color": "#ff3b30",
+       "size": 130,
+       "at": 0.2,
+       "x": 0.5,
+       "y": 0.72,
+       "dur": 0.8,
+       "anim": "shake"
+      }
+     ]
+    },
+    {
+     "speaker": "goldie",
+     "line": "...Mom? Can I borrow a dollar?",
+     "camera": "closeup:goldie",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "goldie": "sad"
+     },
+     "face": "sad"
+    }
+   ]
+  },
+  {
+   "set": "dining_room",
+   "cast": {
+    "grandpa": [
+     -2.7,
+     3.9,
+     0,
+     0
+    ],
+    "sage": [
+     0.2,
+     3.9,
+     0,
+     0
+    ],
+    "pip": [
+     3.1,
+     3.9,
+     0,
+     0
+    ],
+    "mom": [
+     1.65,
+     6.5,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "turkey",
+     "type": "turkey",
+     "at": [
+      1.65,
+      1.8,
+      2.16
+     ],
+     "scale": 0.7
+    },
+    {
+     "id": "phone",
+     "type": "phone",
+     "at": [
+      0.2,
+      1.3,
+      2.17
+     ],
+     "rot": 15,
+     "scale": 1.0,
+     "image": "assets/textures/s14/phone_ok.png",
+     "hidden": true
+    },
+    {
+     "id": "homework",
+     "type": "paper_stack",
+     "at": [
+      3.6,
+      1.0,
+      2.16
+     ],
+     "rot": -10,
+     "scale": 0.14,
+     "hidden": true
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "mom",
+     "line": "Okay! ENOUGH! Nobody say ANYTHING else!",
+     "camera": "medium:mom",
+     "no_cuts": true,
+     "anims": {
+      "grandpa": "sit",
+      "sage": "sit",
+      "pip": "sit",
+      "mom": "point"
+     },
+     "face": "angry"
+    },
+    {
+     "speaker": "pip",
+     "line": "I'm thankful for... Grandpa's cooking.",
+     "camera": "closeup:pip",
+     "no_cuts": true,
+     "anims": {
+      "grandpa": "sit",
+      "sage": "sit",
+      "pip": "sit_talk",
+      "mom": "idle"
+     },
+     "face": "smug"
+    },
+    {
+     "_beat": "POOF turkey",
+     "duration": 0.8,
+     "camera": "at:0.3,-8.8,6.4,0.3,3.8,3.7,34",
+     "no_cuts": true,
+     "move": "none",
+     "hide": [
+      "turkey"
+     ],
+     "anims": {
+      "grandpa": "sit_shocked",
+      "sage": "sit",
+      "pip": "sit",
+      "mom": "idle"
+     },
+     "faces": {
+      "grandpa": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "pop",
+       "at": 0.0,
+       "volume": 0.8
+      },
+      {
+       "name": "whoosh",
+       "at": 0.05,
+       "volume": 0.5
+      }
+     ],
+     "fx": [
+      {
+       "e": "💨",
+       "at": 0.0,
+       "x": 0.55,
+       "y": 0.6,
+       "size": 220,
+       "dur": 0.7,
+       "anim": "pop"
+      },
+      {
+       "flash": "#ffffff",
+       "at": 0.0,
+       "dur": 0.12,
+       "x": 0.5,
+       "y": 0.5
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "Honestly... nobody was sad about that one.",
+     "camera": "at:0.3,-8.8,6.4,0.3,3.8,3.7,34",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "grandpa": "sit_shocked",
+      "sage": "sit_thumbs_up",
+      "pip": "sit_thumbs_up",
+      "mom": "celebrate"
+     },
+     "faces": {
+      "sage": "happy",
+      "pip": "happy",
+      "mom": "happy",
+      "grandpa": "angry"
+     }
+    },
+    {
+     "speaker": "mom",
+     "line": "Ahem. I'm thankful for... some peace and quiet.",
+     "camera": "medium:mom",
+     "no_cuts": true,
+     "anims": {
+      "grandpa": "sit",
+      "sage": "sit",
+      "pip": "sit",
+      "mom": "eyes_closed_smile"
+     },
+     "face": "happy"
+    },
+    {
+     "_beat": "POOF everyone",
+     "duration": 1.1,
+     "camera": "at:0.3,-8.8,6.4,0.3,3.8,3.7,34",
+     "no_cuts": true,
+     "move": "none",
+     "anims": {
+      "grandpa": "hidden",
+      "sage": "hidden",
+      "pip": "hidden",
+      "mom": "shocked"
+     },
+     "faces": {
+      "mom": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "pop",
+       "at": 0.0
+      },
+      {
+       "name": "pop",
+       "at": 0.15
+      },
+      {
+       "name": "pop",
+       "at": 0.3
+      }
+     ],
+     "fx": [
+      {
+       "e": "💨",
+       "at": 0.0,
+       "x": 0.22,
+       "y": 0.55,
+       "size": 200,
+       "dur": 0.7
+      },
+      {
+       "e": "💨",
+       "at": 0.15,
+       "x": 0.45,
+       "y": 0.55,
+       "size": 200,
+       "dur": 0.7
+      },
+      {
+       "e": "💨",
+       "at": 0.3,
+       "x": 0.66,
+       "y": 0.55,
+       "size": 200,
+       "dur": 0.7
+      }
+     ]
+    },
+    {
+     "speaker": "mom",
+     "line": "Ahhh. Finally.",
+     "camera": "closeup:mom",
+     "no_cuts": true,
+     "anims": {
+      "grandpa": "hidden",
+      "sage": "hidden",
+      "pip": "hidden",
+      "mom": "eyes_closed_smile"
+     },
+     "face": "happy",
+     "sfx": [
+      {
+       "name": "tick_tock",
+       "at": 0.6,
+       "volume": 0.4
+      }
+     ]
+    },
+    {
+     "speaker": "mom",
+     "line": "...Okay, that's TOO quiet. I'm thankful for my FAMILY!",
+     "camera": "closeup:mom",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "grandpa": "hidden",
+      "sage": "hidden",
+      "pip": "hidden",
+      "mom": "shocked"
+     },
+     "face": "scared"
+    },
+    {
+     "_beat": "everyone pops back",
+     "duration": 0.9,
+     "camera": "at:0.3,-8.8,6.4,0.3,3.8,3.7,34",
+     "no_cuts": true,
+     "move": "none",
+     "anims": {
+      "grandpa": "sit_shocked",
+      "sage": "sit_shocked",
+      "pip": "sit_shocked",
+      "mom": "celebrate"
+     },
+     "faces": {
+      "sage": "shocked",
+      "pip": "shocked",
+      "grandpa": "shocked",
+      "mom": "happy"
+     },
+     "sfx": [
+      {
+       "name": "sparkle",
+       "at": 0.0
+      }
+     ],
+     "fx": [
+      {
+       "e": "✨",
+       "at": 0.0,
+       "x": 0.5,
+       "y": 0.45,
+       "size": 220,
+       "dur": 0.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "dining_room",
+   "cast": {
+    "grandpa": [
+     -2.7,
+     3.9,
+     0,
+     0
+    ],
+    "sage": [
+     0.2,
+     3.9,
+     0,
+     0
+    ],
+    "pip": [
+     3.1,
+     3.9,
+     0,
+     0
+    ],
+    "mom": [
+     1.65,
+     6.5,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "turkey",
+     "type": "turkey",
+     "at": [
+      1.65,
+      1.8,
+      2.16
+     ],
+     "scale": 0.7
+    },
+    {
+     "id": "phone",
+     "type": "phone",
+     "at": [
+      0.2,
+      1.3,
+      2.17
+     ],
+     "rot": 15,
+     "scale": 1.0,
+     "image": "assets/textures/s14/phone_ok.png"
+    },
+    {
+     "id": "homework",
+     "type": "paper_stack",
+     "at": [
+      3.6,
+      1.0,
+      2.16
+     ],
+     "rot": -10,
+     "scale": 0.14
+    }
+   ],
+   "_beat": "LOOP: identical to scene 1",
+   "shots": [
+    {
+     "_beat": "LOOP",
+     "speaker": "mom",
+     "line": "Sage. Your turn.",
+     "camera": "at:0.3,-8.8,6.4,0.3,3.8,3.7,34",
+     "no_cuts": true,
+     "move": "none",
+     "pad": 0.0,
+     "anims": {
+      "grandpa": "sit",
+      "sage": "sit",
+      "pip": "sit",
+      "mom": "talk"
+     },
+     "face": "happy",
+     "faces": {
+      "pip": "smug"
+     }
+    }
+   ]
+  }
+ ]
+}

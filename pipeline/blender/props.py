@@ -770,6 +770,81 @@ STORY_PROPS.update({"nose_light": _nose_light, "headband": _headband, "rope": _r
 STORY_PROPS.update({"pencil": _pencil, "flat_pizza": _flat_pizza, "car_sq": _car_sq, "potato_dog": _potato_dog})
 
 
+def _turkey(root, n, pd):
+    """A roast turkey on a platter (Thanksgiving)."""
+    _kid(root, f"{n}_plate", cyl_mesh("tp", 1.5, 0.1, 24), (0, 0, 0), M("#ffffff", tex=False), bevel=0)
+    _kid(root, f"{n}_body", cyl_mesh("tb", 0.95, 0.85, 20, r_top=0.7), (0, 0, 0.1), M("#b8692e", rough=0.45, tex=False), bevel=0.2)
+    for sx in (-1, 1):
+        _kid(root, f"{n}_leg{sx}", cyl_mesh("tl", 0.22, 0.9, 10, r_top=0.12), (sx * 0.55, -0.6, 0.45), M("#a55a24", rough=0.45, tex=False),
+             bevel=0.08, rot=(-70, 0, sx * -15))
+        _kid(root, f"{n}_bone{sx}", cyl_mesh("tk", 0.08, 0.25, 8), (sx * 0.62, -1.35, 0.72), M("#fff8e7", tex=False), bevel=0.03, rot=(-70, 0, 0))
+    for k in range(6):  # garnish
+        a = k * math.pi / 3
+        _kid(root, f"{n}_g{k}", box_mesh("tg", (0.25, 0.25, 0.15)), (1.25 * math.cos(a), 1.25 * math.sin(a), 0.12), M("#4caf50", tex=False), bevel=0.06)
+    return 1.1, 5.0
+
+
+def _present(root, n, pd):
+    """A wrapped gift box with ribbon (pd: color, ribbon, size)."""
+    c, r, z = pd.get("color", "#e53935"), pd.get("ribbon", "#ffd54f"), float(pd.get("size", 1.0))
+    _kid(root, f"{n}_box", box_mesh("pb", (z, z, z * 0.85)), (0, 0, 0), M(c, rough=0.4, tex=False), bevel=0.04)
+    _kid(root, f"{n}_r1", box_mesh("pr1", (z * 1.02, z * 0.16, z * 0.87)), (0, 0, 0), M(r, rough=0.3, tex=False), bevel=0.01)
+    _kid(root, f"{n}_r2", box_mesh("pr2", (z * 0.16, z * 1.02, z * 0.87)), (0, 0, 0), M(r, rough=0.3, tex=False), bevel=0.01)
+    for sx in (-1, 1):
+        _kid(root, f"{n}_bow{sx}", box_mesh("pbw", (z * 0.35, z * 0.14, z * 0.25)), (sx * z * 0.18, 0, z * 0.88), M(r, rough=0.3, tex=False),
+             bevel=0.05, rot=(0, sx * 25, 0))
+    return z, 3.5 * z
+
+
+def _xmas_tree(root, n, pd):
+    """A Christmas tree with baubles, lights and a star."""
+    _kid(root, f"{n}_pot", cyl_mesh("xp", 0.7, 0.7, 16, r_top=0.85), (0, 0, 0), M("#c62828", tex=False), bevel=0.05)
+    _kid(root, f"{n}_trunk", cyl_mesh("xt", 0.2, 0.6, 10), (0, 0, 0.7), M("#6d4c41", tex=False), bevel=0)
+    tiers = [(1.9, 1.6, 1.1), (1.5, 1.5, 2.2), (1.05, 1.4, 3.3), (0.6, 1.2, 4.3)]
+    for k, (r, h, z) in enumerate(tiers):
+        _kid(root, f"{n}_t{k}", cyl_mesh("xc", r, h, 18, r_top=0.08), (0, 0, z), M("#2e7d32", rough=0.8, tex=False), bevel=0)
+    cols = ["#e53935", "#fdd835", "#1e88e5", "#ffffff", "#ab47bc"]
+    i = 0
+    for k, (r, h, z) in enumerate(tiers):
+        for j in range(7 - k):
+            a = j * 2 * math.pi / (7 - k) + k * 0.6
+            rr = r * 0.62
+            _kid(root, f"{n}_b{i}", box_mesh("xb", (0.22, 0.22, 0.22)), (rr * math.cos(a), rr * math.sin(a), z + h * 0.35),
+                 M(cols[i % len(cols)], rough=0.2, tex=False), bevel=0.1)
+            i += 1
+    star = [(0.42 * math.cos(math.pi / 2 + k * math.pi / 5) * (1 if k % 2 == 0 else 0.45),
+             0.42 * math.sin(math.pi / 2 + k * math.pi / 5) * (1 if k % 2 == 0 else 0.45)) for k in range(10)]
+    st = _kid(root, f"{n}_star", _tri_mesh("xs", star, 0.12), (0, 0.06, 5.75), M("#ffd600", rough=0.2, tex=False), bevel=0, rot=(90, 0, 0))
+    return 6.0, 9.0
+
+
+def _sunglasses(root, n, pd):
+    """Cool-dad sunglasses; attach to the head (local about (0, -0.66, 0.66))."""
+    m = M("#111111", rough=0.15, tex=False)
+    for sx in (-1, 1):
+        _kid(root, f"{n}_lens{sx}", box_mesh("sl", (0.42, 0.05, 0.26)), (sx * 0.25, 0, 0), m, bevel=0.04)
+    _kid(root, f"{n}_bridge", box_mesh("sb", (0.14, 0.04, 0.05)), (0, 0, 0.08), m, bevel=0)
+    _kid(root, f"{n}_bar", box_mesh("sr", (1.2, 0.04, 0.05)), (0, 0, 0.12), m, bevel=0)
+    return 0.3, 2.0
+
+
+STORY_PROPS.update({"turkey": _turkey, "present": _present, "xmas_tree": _xmas_tree, "sunglasses": _sunglasses})
+
+
+def _coins(root, n, pd):
+    """A little pile of shiny gold coins (pd["count"])."""
+    g = M("#ffc107", rough=0.15, tex=False)
+    k = int(pd.get("count", 5))
+    for i in range(k):
+        a = i * 2.1
+        r = 0.0 if i < 2 else 0.55
+        _kid(root, f"{n}_c{i}", cyl_mesh("cn", 0.4, 0.1, 18), (r * math.cos(a), r * math.sin(a), 0.11 * (i if i < 3 else 0)), g, bevel=0.02)
+    return 0.4, 2.5
+
+
+STORY_PROPS["coins"] = _coins
+
+
 def scene_prop(pd, origin):
     """pd: {"id": "vase", "type": "vase", "at": [x, y, z], "rot": deg, "scale": 1.0}"""
     from mathutils import Vector

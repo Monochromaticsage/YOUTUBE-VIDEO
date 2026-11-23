@@ -123,6 +123,12 @@ def build(ep, cast, build_dir, force=False):
                 wav = os.path.join(audio_dir, f"shot_{i:03d}.wav")
                 spec = dict(cast.get(speaker, {}))
                 spec.update(ep.get("characters", {}).get(speaker, {}))
+                if shot.get("voice_as"):  # body swaps: speak with another character's voice
+                    other = cast.get(shot["voice_as"], {})
+                    spec.update({k: other[k] for k in ("voice_id", "pitch", "speed", "voice_settings") if k in other})
+                for k in ("voice_id", "pitch"):  # one-off voice for a single line
+                    if k in shot:
+                        spec[k] = shot[k]
                 custom = shot.get("audio_file")  # your own recorded line
                 if custom:
                     to_wav(custom, wav, spec.get("speed", 1.0), spec.get("pitch", 1.0))
