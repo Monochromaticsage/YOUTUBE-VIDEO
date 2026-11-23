@@ -686,6 +686,9 @@ def main():
     for si, sc in enumerate(ep["scenes"]):
         origin = (si * SCENE_SPACING, 0, 0)
         marks = sets.build_set(sc.get("set", "stage"), origin, os.path.join(ROOT, "assets"))
+        for pid_, pd_ in list(PROPS.items()):  # hand/head-attached props from the last scene must not ride along
+            if pd_["root"].parent is not None:
+                _prop_vis(pid_, False, frame)
         PROPS.clear()
         for pd in sc.get("props", []):
             PROPS[pd["id"]] = props.scene_prop(pd, origin)
