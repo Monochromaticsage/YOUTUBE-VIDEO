@@ -846,6 +846,56 @@ def backflip(rig, f0, f1, fps):
         f += 26
     pose(rig, f1 - 1, arm_l=(0, -150, 0), arm_r=(0, 150, 0))
 
+
+def snap(rig, f0, f1, fps):
+    """Raises a hand beside the head and snaps her fingers, smug."""
+    pose(rig, f0)
+    pose(rig, min(f0 + 4, f1 - 1), arm_r=(-20, 120, 0), head=(4, 6, 0))
+    pose(rig, min(f0 + 7, f1 - 1), arm_r=(-20, 135, 0), head=(4, 6, 0), offset=(0, 0, 0.05))
+    pose(rig, min(f0 + 10, f1 - 1), arm_r=(-20, 120, 0), head=(4, 6, 0))
+    pose(rig, f1 - 1, arm_r=(-20, 110, 0), head=(4, 4, 0))
+
+
+def trip(rig, f0, f1, fps):
+    """Rushes forward, trips on nothing and lurches toward the counter with arms flailing."""
+    pose(rig, f0, offset=(0, 0, 0))
+    m = f0 + int((f1 - f0) * 0.5)
+    pose(rig, m, offset=(0, 0.6, 0.1), leg_l=(-40, 0, 0), leg_r=(30, 0, 0), arm_l=(-60, 0, 0), arm_r=(-60, 0, 0))
+    pose(rig, f1 - 1, offset=(0, 1.3, -0.3), tilt=(28, 0), arm_l=(-120, -20, 0), arm_r=(-120, 20, 0), head=(-10, 0, 0),
+         leg_l=(30, 0, 0), leg_r=(-20, 0, 0))
+
+
+def pinch_nose(rig, f0, f1, fps):
+    """Holds her nose shut with one hand (looking innocent)."""
+    pn = dict(arm_r=(-150, -38, 0), head=(-4, 0, 0))
+    pose(rig, f0, **pn)
+    for i, f in _loop(f0 + 6, f1, 10):
+        pose(rig, f, arm_r=(-150, -38, 0), head=(-4, 0, 4 if i % 2 else -4))
+    pose(rig, f1 - 1, **pn)
+
+
+def sit_pinch_nose(rig, f0, f1, fps):
+    pn = dict(arm_r=(-150, -38, 0), head=(-4, 0, 0), **SEAT)
+    pose(rig, f0, **pn)
+    pose(rig, f1 - 1, **pn)
+
+
+def tie_headband(rig, f0, f1, fps):
+    """Both hands behind the head tying a headband, game face on."""
+    for i, f in _loop(f0, f1, 6):
+        a = i % 2
+        pose(rig, f, arm_l=(-150, 30 + 6 * a, 0), arm_r=(-150, -30 - 6 * a, 0), head=(6, 0, 0), torso=(-2, 0, 0))
+    pose(rig, f1 - 1, arm_l=(-150, 30, 0), arm_r=(-150, -30, 0), head=(6, 0, 0))
+
+
+def pull_rope(rig, f0, f1, fps):
+    """Leans back hauling on a rope with both hands."""
+    for i, f in _loop(f0, f1, 6):
+        a = i % 2
+        pose(rig, f, offset=(0, 0.2 * a, 0), tilt=(-14 - 4 * a, 0), arm_l=(-80, 0, 0), arm_r=(-80, 0, 0),
+             leg_l=(-20, 0, 0), leg_r=(15, 0, 0))
+    pose(rig, f1 - 1, tilt=(-14, 0), arm_l=(-80, 0, 0), arm_r=(-80, 0, 0))
+
 ANIMS = {f.__name__: f for f in [
     idle, talk, shocked, scared, angry, laugh, sad, cry, wave, point, facepalm, think, dance, jump,
     fall, lie, sit, run_in_place, walk_in_left, walk_in_right, walk_out_left, walk_out_right,
@@ -856,7 +906,8 @@ ANIMS = {f.__name__: f for f in [
     lean_whisper, yell_back, sneeze, sit_sneeze, sneeze_build, sit_write, sit_up_scream, hold_feather,
     still, raise_hand, raise_hand_start, spin, chicken_dance, sit_eat, sit_reach_freeze, sit_thumbs_up, tilt_glass,
     resist_raise, arms_up, raise_hand_l, raise_hand_start_l, reach_to, reach_caught, sit_eat_chips,
-    eyes_closed_smile, pencil_up, pencil_down, backflip]}
+    eyes_closed_smile, pencil_up, pencil_down, backflip, snap, trip, pinch_nose, sit_pinch_nose, tie_headband,
+    pull_rope]}
 
 
 def walk_to(rig, f0, start, end, fps, speed=6.5, run=False, max_frames=None):

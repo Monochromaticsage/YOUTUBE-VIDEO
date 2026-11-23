@@ -1,0 +1,643 @@
+{
+ "id": "s15_noob_youtuber",
+ "title": "Everyone Thinks Noob Is a FAMOUS YouTuber! 🍌📸",
+ "format": "short",
+ "mood": "bright",
+ "grade": "bright",
+ "fog": false,
+ "dof": false,
+ "handheld": 0.35,
+ "caption_style": "word",
+ "caption_pos": "top",
+ "cut_every": 1.25,
+ "sting": false,
+ "cta": {
+  "at": 18
+ },
+ "music": "happy_loop",
+ "music_volume": 0.13,
+ "loop": true,
+ "_loop": "ends on the same hallway shot of Noob filming with the banana: 'he's been filming this whole time—' -> 'My best friend Noob films everything...'",
+ "_secret": "the banana has a tiny red LIVE light in the first second",
+ "_pinned_comment": "Would YOU subscribe to Noob? 🍌👇",
+ "characters": {
+  "sage": {
+   "crop_top": false,
+   "shirt": "#f06292",
+   "hoodie": "#f06292",
+   "pants": "#3d5a99",
+   "sleeves": true
+  }
+ },
+ "scenes": [
+  {
+   "set": "hallway",
+   "cast": {
+    "noob": [
+     0.4,
+     1.0,
+     0,
+     -10
+    ],
+    "sage": [
+     -3.0,
+     1.2,
+     0,
+     15
+    ]
+   },
+   "props": [
+    {
+     "id": "banana",
+     "type": "banana",
+     "attach": "noob:arm_r",
+     "local": [
+      -0.5,
+      -0.45,
+      -1.6
+     ],
+     "local_rot": [
+      90,
+      0,
+      0
+     ]
+    }
+   ],
+   "shots": [
+    {
+     "_beat": "HOOK (loop point)",
+     "speaker": "sage",
+     "vo": true,
+     "line": "My best friend Noob films everything... with a BANANA. And now everyone thinks he's a famous YouTuber.",
+     "cameras": [
+      "at:-1.0,-6.0,5.0,-1.0,1.0,3.6,30",
+      "closeup:noob",
+      "medium:sage"
+     ],
+     "moves": [
+      "none",
+      "push",
+      "push"
+     ],
+     "anims": {
+      "noob": "film_selfie",
+      "sage": "cross_arms"
+     },
+     "faces": {
+      "noob": "happy",
+      "sage": "sus"
+     }
+    },
+    {
+     "speaker": "noob",
+     "line": "WHAT'S UP GUYS, NOOB HERE! Smash that like!",
+     "camera": "closeup:noob",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "noob": "film_selfie",
+      "sage": "facepalm"
+     },
+     "face": "happy",
+     "fx": [
+      {
+       "e": "👍",
+       "at": 1.6,
+       "x": 0.7,
+       "y": 0.5,
+       "size": 170,
+       "dur": 0.9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "hallway",
+   "cast": {
+    "noob": [
+     0.4,
+     1.0,
+     0,
+     -10
+    ],
+    "bacon": [
+     -3.4,
+     1.6,
+     0,
+     20
+    ],
+    "goldie": [
+     3.6,
+     1.4,
+     0,
+     -20
+    ],
+    "pip": [
+     -1.6,
+     2.8,
+     0,
+     10
+    ],
+    "sage": [
+     -6.2,
+     1.4,
+     0,
+     25
+    ]
+   },
+   "props": [
+    {
+     "id": "banana",
+     "type": "banana",
+     "attach": "noob:arm_r",
+     "local": [
+      -0.5,
+      -0.45,
+      -1.6
+     ],
+     "local_rot": [
+      90,
+      0,
+      0
+     ]
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "bacon",
+     "line": "NOOB! NOOB! NOOB!",
+     "camera": "wide",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "noob": "film_selfie",
+      "bacon": "celebrate",
+      "goldie": "celebrate",
+      "pip": "jump",
+      "sage": "facepalm"
+     },
+     "face": "happy",
+     "faces": {
+      "goldie": "happy",
+      "pip": "happy",
+      "noob": "happy"
+     },
+     "sfx": [
+      {
+       "name": "airhorn",
+       "at": 0.2,
+       "volume": 0.4
+      }
+     ]
+    },
+    {
+     "speaker": "goldie",
+     "line": "Noob! Can I be in your video?!",
+     "camera": "closeup:goldie",
+     "no_cuts": true,
+     "anims": {
+      "goldie": "talk",
+      "noob": "film_selfie"
+     },
+     "face": "happy"
+    },
+    {
+     "speaker": "noob",
+     "line": "Only if you do the chicken dance.",
+     "camera": "closeup:noob",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "noob": "film_selfie",
+      "goldie": "idle"
+     },
+     "face": "smug"
+    },
+    {
+     "_beat": "CHICKEN",
+     "duration": 2.0,
+     "camera": "medium:goldie",
+     "no_cuts": true,
+     "anims": {
+      "goldie": "chicken_dance",
+      "noob": "film_selfie",
+      "bacon": "point_laugh",
+      "pip": "point_laugh"
+     },
+     "faces": {
+      "goldie": "happy"
+     },
+     "sfx": [
+      {
+       "name": "boing",
+       "at": 0.3
+      },
+      {
+       "name": "boing",
+       "at": 1.1
+      }
+     ],
+     "fx": [
+      {
+       "e": "🐔",
+       "at": 0.3,
+       "x": 0.72,
+       "y": 0.45,
+       "size": 180,
+       "dur": 1.4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "classroom_bright",
+   "cast": {
+    "ms_brick": [
+     1.8,
+     9.3,
+     0,
+     0
+    ],
+    "noob": [
+     -0.8,
+     0.8,
+     0,
+     0
+    ],
+    "sage": [
+     -6.5,
+     1.6,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "banana",
+     "type": "banana",
+     "attach": "noob:arm_r",
+     "local": [
+      -0.5,
+      -0.45,
+      -1.6
+     ],
+     "local_rot": [
+      90,
+      0,
+      0
+     ]
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "ms_brick",
+     "line": "Noob! No phones in class!",
+     "camera": "medium:ms_brick",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "ms_brick": "point",
+      "noob": "film_selfie",
+      "sage": "sit"
+     },
+     "face": "angry"
+    },
+    {
+     "speaker": "noob",
+     "line": "It's a banana.",
+     "camera": "closeup:noob",
+     "no_cuts": true,
+     "anims": {
+      "noob": "film_selfie",
+      "ms_brick": "idle"
+     },
+     "face": "neutral"
+    },
+    {
+     "speaker": "ms_brick",
+     "line": "...Carry on. Can I do a dance for the vlog?",
+     "camera": "medium:ms_brick",
+     "no_cuts": true,
+     "anims": {
+      "ms_brick": "nod",
+      "noob": "film_selfie",
+      "sage": "sit_shocked"
+     },
+     "face": "love"
+    },
+    {
+     "_beat": "DANCE",
+     "duration": 1.8,
+     "camera": "medium:ms_brick",
+     "no_cuts": true,
+     "move": "shake",
+     "anims": {
+      "ms_brick": "dance",
+      "noob": "film_selfie",
+      "sage": "sit_faceplant"
+     },
+     "faces": {
+      "ms_brick": "happy"
+     },
+     "sfx": [
+      {
+       "name": "record_scratch",
+       "at": 0.1
+      }
+     ],
+     "fx": [
+      {
+       "text": "CRINGE",
+       "color": "#ff5a5a",
+       "size": 110,
+       "at": 0.6,
+       "x": 0.5,
+       "y": 0.7,
+       "dur": 1.0,
+       "anim": "shake"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "dining_room",
+   "cast": {
+    "grandpa": [
+     0.6,
+     4.4,
+     0,
+     0
+    ],
+    "noob": [
+     3.6,
+     4.4,
+     0,
+     -10
+    ],
+    "sage": [
+     6.2,
+     4.4,
+     0,
+     -15
+    ]
+   },
+   "props": [
+    {
+     "id": "banana",
+     "type": "banana",
+     "attach": "noob:arm_r",
+     "local": [
+      -0.5,
+      -0.45,
+      -1.6
+     ],
+     "local_rot": [
+      90,
+      0,
+      0
+     ]
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "grandpa",
+     "line": "Free cookies for the famous YouTuber!",
+     "camera": "medium:grandpa",
+     "anims": {
+      "grandpa": "point",
+      "noob": "film_selfie",
+      "sage": "idle"
+     },
+     "face": "happy",
+     "fx": [
+      {
+       "e": "🍪",
+       "at": 0.6,
+       "x": 0.7,
+       "y": 0.5,
+       "size": 170,
+       "dur": 1.2,
+       "burst": true
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "line": "Can I have one?",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "anims": {
+      "sage": "talk"
+     },
+     "face": "happy"
+    },
+    {
+     "speaker": "grandpa",
+     "line": "No.",
+     "camera": "closeup:grandpa",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "grandpa": "cross_arms"
+     },
+     "face": "neutral",
+     "sfx": [
+      {
+       "name": "sad_trombone",
+       "at": 0.5,
+       "volume": 0.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "stage",
+   "cast": {
+    "noob": [
+     0,
+     1.4,
+     0,
+     0
+    ],
+    "ms_brick": [
+     -5.5,
+     0.4,
+     0,
+     0
+    ],
+    "goldie": [
+     5,
+     0.4,
+     0,
+     0
+    ],
+    "bacon": [
+     8.5,
+     1.2,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "banana",
+     "type": "banana",
+     "attach": "noob:arm_r",
+     "local": [
+      -0.5,
+      -0.45,
+      -1.6
+     ],
+     "local_rot": [
+      90,
+      0,
+      0
+     ]
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "noob",
+     "line": "Don't forget to SUBSCRIBE!",
+     "camera": "wide",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "noob": "film_selfie",
+      "ms_brick": "celebrate",
+      "goldie": "celebrate",
+      "bacon": "celebrate"
+     },
+     "face": "happy",
+     "fx": [
+      {
+       "img": "textures/s15/subscribe.png",
+       "size": 160,
+       "at": 0.4,
+       "x": 0.5,
+       "y": 0.66,
+       "dur": 1.6
+      }
+     ],
+     "sfx": [
+      {
+       "name": "airhorn",
+       "at": 0.3,
+       "volume": 0.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "hallway",
+   "cast": {
+    "noob": [
+     0.4,
+     1.0,
+     0,
+     -10
+    ],
+    "sage": [
+     -3.0,
+     1.2,
+     0,
+     15
+    ]
+   },
+   "props": [
+    {
+     "id": "banana",
+     "type": "banana",
+     "attach": "noob:arm_r",
+     "local": [
+      -0.5,
+      -0.45,
+      -1.6
+     ],
+     "local_rot": [
+      90,
+      0,
+      0
+     ]
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "sage",
+     "line": "Noob. It's a BANANA. You've never posted ANYTHING.",
+     "camera": "closeup:sage",
+     "anims": {
+      "sage": "talk",
+      "noob": "film_selfie"
+     },
+     "face": "angry"
+    },
+    {
+     "_beat": "LIVE",
+     "duration": 1.8,
+     "camera": "closeup:noob",
+     "no_cuts": true,
+     "move": "zoom",
+     "anims": {
+      "noob": "hold_photo",
+      "sage": "shocked"
+     },
+     "faces": {
+      "noob": "smug"
+     },
+     "sfx": [
+      {
+       "name": "vine_boom",
+       "at": 0.3
+      }
+     ],
+     "fx": [
+      {
+       "img": "textures/s15/banana_live.png",
+       "size": 720,
+       "at": 0.2,
+       "x": 0.5,
+       "y": 0.58,
+       "dur": 1.6
+      }
+     ]
+    },
+    {
+     "speaker": "noob",
+     "line": "Hi guys.",
+     "camera": "extreme:noob",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "noob": "wave",
+      "sage": "shocked"
+     },
+     "face": "smug"
+    },
+    {
+     "_beat": "LOOP: same shot as the opening",
+     "speaker": "sage",
+     "vo": true,
+     "line": "Turns out... he's been filming this whole time—",
+     "camera": "at:-1.0,-6.0,5.0,-1.0,1.0,3.6,30",
+     "no_cuts": true,
+     "move": "none",
+     "pad": 0.0,
+     "anims": {
+      "noob": "film_selfie",
+      "sage": "cross_arms"
+     },
+     "faces": {
+      "noob": "happy",
+      "sage": "sus"
+     }
+    }
+   ]
+  }
+ ]
+}

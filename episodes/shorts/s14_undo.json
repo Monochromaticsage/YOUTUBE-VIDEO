@@ -1,0 +1,872 @@
+{
+ "id": "s14_undo",
+ "title": "My Little Sister Can UNDO Anything! ↩️",
+ "format": "short",
+ "mood": "bright",
+ "grade": "bright",
+ "fog": false,
+ "dof": false,
+ "handheld": 0.35,
+ "caption_style": "word",
+ "caption_pos": "top",
+ "cut_every": 1.25,
+ "sting": false,
+ "cta": {
+  "at": 18
+ },
+ "music": "quirky_loop",
+ "music_volume": 0.13,
+ "loop": true,
+ "_loop": "ends with Mom's phone falling off the counter (cut at impact) -> opens on the cracked phone hitting the floor",
+ "_secret": "tally note on the kitchen wall already says DAY 47 in the first second",
+ "_pinned_comment": "How many times has Pip replayed today? 👀👇",
+ "characters": {
+  "sage": {
+   "crop_top": false,
+   "shirt": "#ffb74d",
+   "hoodie": "#ffb74d",
+   "pants": "#3d5a99",
+   "sleeves": true
+  }
+ },
+ "scenes": [
+  {
+   "set": "dining_room",
+   "cast": {
+    "sage": [
+     4.2,
+     4.8,
+     0,
+     0
+    ],
+    "pip": [
+     1.8,
+     4.8,
+     0,
+     10
+    ],
+    "mom": [
+     14,
+     4,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "phone",
+     "type": "phone",
+     "image": "textures/s14/phone_ok.png",
+     "at": [
+      5.8,
+      7.6,
+      3.3
+     ],
+     "rot": 10,
+     "cam_dist": 3.0
+    },
+    {
+     "id": "crack",
+     "type": "phone",
+     "image": "textures/s14/phone_cracked.png",
+     "at": [
+      5.8,
+      6.0,
+      0.02
+     ],
+     "rot": 35,
+     "hidden": true,
+     "cam_dist": 3.0
+    },
+    {
+     "id": "note",
+     "type": "poster",
+     "image": "textures/s14/note_47.png",
+     "w": 1.1,
+     "h": 1.1,
+     "at": [
+      2.6,
+      9.5,
+      5.6
+     ]
+    }
+   ],
+   "shots": [
+    {
+     "_beat": "HOOK (loop point: phone hits the floor)",
+     "speaker": "sage",
+     "vo": true,
+     "line": "My little sister can undo ANYTHING...",
+     "cameras": [
+      "at:4.0,-2.6,6.6,4.4,5.8,2.4,30",
+      "prop:crack"
+     ],
+     "moves": [
+      "none",
+      "push"
+     ],
+     "show": [
+      "crack"
+     ],
+     "hide": [
+      "phone"
+     ],
+     "anims": {
+      "sage": "shocked",
+      "pip": "idle",
+      "mom": "hidden"
+     },
+     "faces": {
+      "sage": "shocked",
+      "pip": "smug"
+     },
+     "sfx": [
+      {
+       "name": "glass_crash",
+       "at": 0.0,
+       "volume": 0.8
+      }
+     ]
+    },
+    {
+     "speaker": "pip",
+     "line": "Undo.",
+     "camera": "medium:pip",
+     "no_cuts": true,
+     "anims": {
+      "pip": "snap",
+      "sage": "shocked"
+     },
+     "face": "smug",
+     "sfx": [
+      {
+       "name": "pop",
+       "at": 0.15
+      },
+      {
+       "name": "whoosh",
+       "at": 0.3
+      }
+     ],
+     "fx": [
+      {
+       "img": "textures/s14/rewind.png",
+       "size": 1920,
+       "at": 0.25,
+       "x": 0.5,
+       "y": 0.5,
+       "dur": 0.7
+      },
+      {
+       "flash": true,
+       "at": 0.8,
+       "dur": 0.25,
+       "x": 0.5,
+       "y": 0.5
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "...but only MY mistakes.",
+     "camera": "prop:phone",
+     "no_cuts": true,
+     "move": "push",
+     "show": [
+      "phone"
+     ],
+     "hide": [
+      "crack"
+     ],
+     "anims": {
+      "pip": "idle",
+      "sage": "idle"
+     },
+     "faces": {
+      "sage": "happy"
+     }
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "Spilled milk? Undo.",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "anims": {
+      "sage": "shocked",
+      "pip": "snap"
+     },
+     "faces": {
+      "sage": "shocked"
+     },
+     "fx": [
+      {
+       "e": "🥛",
+       "at": 0.1,
+       "x": 0.62,
+       "y": 0.55,
+       "size": 180,
+       "dur": 0.6,
+       "anim": "spin"
+      },
+      {
+       "e": "💦",
+       "at": 0.5,
+       "x": 0.5,
+       "y": 0.65,
+       "size": 220,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s14/rewind.png",
+       "size": 1920,
+       "at": 0.9,
+       "x": 0.5,
+       "y": 0.5,
+       "dur": 0.7
+      },
+      {
+       "flash": true,
+       "at": 1.4500000000000002,
+       "dur": 0.25,
+       "x": 0.5,
+       "y": 0.5
+      }
+     ],
+     "sfx": [
+      {
+       "name": "boing",
+       "at": 0.4
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "Failed my test? Undo.",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "anims": {
+      "sage": "talk",
+      "pip": "snap"
+     },
+     "faces": {
+      "sage": "happy"
+     },
+     "fx": [
+      {
+       "img": "textures/test_f.png",
+       "size": 560,
+       "at": 0.1,
+       "x": 0.5,
+       "y": 0.6,
+       "dur": 1.0,
+       "tilt": -5
+      },
+      {
+       "img": "textures/s14/rewind.png",
+       "size": 1920,
+       "at": 1.0,
+       "x": 0.5,
+       "y": 0.5,
+       "dur": 0.7
+      },
+      {
+       "flash": true,
+       "at": 1.55,
+       "dur": 0.25,
+       "x": 0.5,
+       "y": 0.5
+      },
+      {
+       "img": "textures/test_aplus.png",
+       "size": 560,
+       "at": 1.4,
+       "x": 0.5,
+       "y": 0.6,
+       "dur": 1.0,
+       "tilt": 4
+      }
+     ]
+    },
+    {
+     "speaker": "pip",
+     "line": "That's five cookies.",
+     "camera": "closeup:pip",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "pip": "point",
+      "sage": "idle"
+     },
+     "face": "smug",
+     "fx": [
+      {
+       "e": "🍪",
+       "at": 0.4,
+       "x": 0.7,
+       "y": 0.5,
+       "size": 150,
+       "dur": 1.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "living_room",
+   "cast": {
+    "pip": [
+     -2.6,
+     2.6,
+     0,
+     15
+    ],
+    "sage": [
+     1.4,
+     2.8,
+     0,
+     -15
+    ],
+    "mom": [
+     11,
+     2.5,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "vase",
+     "type": "vase",
+     "at": [
+      -4.8,
+      1.8,
+      2.63
+     ]
+    },
+    {
+     "id": "shards",
+     "type": "shards",
+     "at": [
+      -5.2,
+      0.9,
+      0
+     ],
+     "hidden": true
+    },
+    {
+     "id": "scribble",
+     "type": "poster",
+     "image": "textures/s14/scribble.png",
+     "w": 4.5,
+     "h": 3.0,
+     "at": [
+      -1.8,
+      9.55,
+      5.2
+     ],
+     "hidden": true,
+     "cam_dist": 7
+    },
+    {
+     "id": "cake",
+     "type": "cake",
+     "at": [
+      3.4,
+      4.3,
+      1.45
+     ],
+     "scale": 0.7
+    },
+    {
+     "id": "marker_p",
+     "type": "marker",
+     "attach": "pip:arm_r"
+    },
+    {
+     "id": "marker_s",
+     "type": "marker",
+     "attach": "sage:arm_r",
+     "hidden": true
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "But HER mistakes? She keeps those.",
+     "camera": "medium:pip",
+     "anims": {
+      "pip": "point_laugh",
+      "sage": "cross_arms",
+      "mom": "hidden"
+     },
+     "faces": {
+      "pip": "evil",
+      "sage": "sus"
+     }
+    },
+    {
+     "_beat": "CHAOS",
+     "duration": 2.4,
+     "camera": "wide",
+     "no_cuts": true,
+     "move": "shake",
+     "prop_moves": {
+      "vase": {
+       "at": 0.2,
+       "dur": 0.3,
+       "to": [
+        -0.7,
+        -0.9,
+        -2.55
+       ],
+       "rot": [
+        0,
+        100,
+        0
+       ]
+      }
+     },
+     "show": [
+      "scribble"
+     ],
+     "hide": [
+      "cake"
+     ],
+     "anims": {
+      "pip": "dance",
+      "sage": "shocked",
+      "mom": "hidden"
+     },
+     "faces": {
+      "pip": "happy",
+      "sage": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "glass_crash",
+       "at": 0.5,
+       "volume": 0.8
+      },
+      {
+       "name": "pop",
+       "at": 1.1
+      },
+      {
+       "name": "boing",
+       "at": 1.7
+      }
+     ],
+     "fx": [
+      {
+       "e": "💥",
+       "at": 0.5,
+       "x": 0.25,
+       "y": 0.6,
+       "size": 220,
+       "dur": 0.6
+      },
+      {
+       "e": "🖍️",
+       "at": 1.1,
+       "x": 0.5,
+       "y": 0.35,
+       "size": 180,
+       "dur": 0.7
+      },
+      {
+       "e": "🎂",
+       "at": 1.7,
+       "x": 0.7,
+       "y": 0.5,
+       "size": 180,
+       "dur": 0.7,
+       "anim": "spin"
+      }
+     ]
+    },
+    {
+     "speaker": "pip",
+     "line": "Oops.",
+     "camera": "closeup:pip",
+     "no_cuts": true,
+     "anims": {
+      "pip": "shrug",
+      "sage": "shocked"
+     },
+     "face": "happy"
+    },
+    {
+     "speaker": "sage",
+     "line": "Pip! UNDO THAT!",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "move": "punch",
+     "hide": [
+      "vase"
+     ],
+     "show": [
+      "shards"
+     ],
+     "anims": {
+      "sage": "angry",
+      "pip": "idle"
+     },
+     "face": "angry"
+    },
+    {
+     "speaker": "pip",
+     "line": "Nah.",
+     "camera": "closeup:pip",
+     "no_cuts": true,
+     "anims": {
+      "pip": "shrug",
+      "sage": "angry"
+     },
+     "face": "smug"
+    },
+    {
+     "_beat": "MOM",
+     "duration": 1.3,
+     "camera": "medium:mom",
+     "no_cuts": true,
+     "walk": {
+      "mom": [
+       5.4,
+       2.8
+      ]
+     },
+     "anims": {
+      "mom": "shocked",
+      "pip": "idle",
+      "sage": "idle"
+     },
+     "faces": {
+      "mom": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "record_scratch",
+       "at": 0.1
+      }
+     ]
+    },
+    {
+     "speaker": "pip",
+     "line": "Undo.",
+     "camera": "two:sage,pip",
+     "no_cuts": true,
+     "hide": [
+      "marker_p"
+     ],
+     "show": [
+      "marker_s"
+     ],
+     "anims": {
+      "pip": "snap",
+      "sage": "shocked",
+      "mom": "shocked"
+     },
+     "faces": {
+      "pip": "happy",
+      "sage": "shocked",
+      "mom": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "pop",
+       "at": 0.15
+      },
+      {
+       "name": "whoosh",
+       "at": 0.3
+      }
+     ],
+     "fx": [
+      {
+       "img": "textures/s14/rewind.png",
+       "size": 1920,
+       "at": 0.2,
+       "x": 0.5,
+       "y": 0.5,
+       "dur": 0.7
+      },
+      {
+       "flash": true,
+       "at": 0.75,
+       "dur": 0.25,
+       "x": 0.5,
+       "y": 0.5
+      },
+      {
+       "e": "🎂",
+       "at": 1.0,
+       "x": 0.3,
+       "y": 0.45,
+       "size": 140,
+       "dur": 1.0
+      }
+     ]
+    },
+    {
+     "speaker": "mom",
+     "line": "SAGE! What did you DO?!",
+     "camera": "medium:mom",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "mom": "point",
+      "sage": "shocked",
+      "pip": "wave"
+     },
+     "face": "angry",
+     "faces": {
+      "pip": "happy",
+      "sage": "cry"
+     }
+    },
+    {
+     "speaker": "sage",
+     "line": "It wasn't ME!",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "sage": "shocked",
+      "pip": "wave",
+      "mom": "angry"
+     },
+     "face": "cry"
+    },
+    {
+     "speaker": "mom",
+     "line": "You're HOLDING the marker! GROUNDED!",
+     "camera": "medium:mom",
+     "no_cuts": true,
+     "anims": {
+      "mom": "point",
+      "sage": "sad",
+      "pip": "wave"
+     },
+     "face": "angry",
+     "faces": {
+      "pip": "happy"
+     },
+     "sfx": [
+      {
+       "name": "vine_boom",
+       "at": 0.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "bedroom",
+   "cast": {
+    "pip": [
+     -2.8,
+     4.2,
+     0,
+     15
+    ],
+    "sage": [
+     2.2,
+     3.4,
+     0,
+     -15
+    ]
+   },
+   "props": [
+    {
+     "id": "tally",
+     "type": "poster",
+     "image": "textures/s14/tally_48.png",
+     "w": 5.0,
+     "h": 3.6,
+     "at": [
+      -3.6,
+      9.5,
+      5.4
+     ],
+     "cam_dist": 7
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "sage",
+     "line": "Pip... how many times have we lived TODAY?",
+     "camera": "closeup:sage",
+     "anims": {
+      "sage": "scared",
+      "pip": "idle"
+     },
+     "face": "scared"
+    },
+    {
+     "_beat": "TALLY",
+     "duration": 1.4,
+     "camera": "prop:tally",
+     "no_cuts": true,
+     "move": "zoom",
+     "anims": {
+      "sage": "scared",
+      "pip": "idle"
+     },
+     "sfx": [
+      {
+       "name": "vine_boom",
+       "at": 0.3
+      }
+     ]
+    },
+    {
+     "speaker": "pip",
+     "line": "This is number forty-eight.",
+     "camera": "closeup:pip",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "pip": "idle",
+      "sage": "scared"
+     },
+     "face": "evil",
+     "sfx": [
+      {
+       "name": "heartbeat",
+       "at": 0.2,
+       "volume": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "dining_room",
+   "cast": {
+    "sage": [
+     4.2,
+     4.8,
+     0,
+     0
+    ],
+    "pip": [
+     1.8,
+     4.8,
+     0,
+     10
+    ],
+    "mom": [
+     14,
+     4,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "phone",
+     "type": "phone",
+     "image": "textures/s14/phone_ok.png",
+     "at": [
+      5.8,
+      7.6,
+      3.3
+     ],
+     "rot": 10,
+     "cam_dist": 3.0
+    },
+    {
+     "id": "crack",
+     "type": "phone",
+     "image": "textures/s14/phone_cracked.png",
+     "at": [
+      5.8,
+      6.0,
+      0.02
+     ],
+     "rot": 35,
+     "hidden": true,
+     "cam_dist": 3.0
+    },
+    {
+     "id": "note",
+     "type": "poster",
+     "image": "textures/s14/note_47.png",
+     "w": 1.1,
+     "h": 1.1,
+     "at": [
+      2.6,
+      9.5,
+      5.6
+     ]
+    }
+   ],
+   "_beat": "LOOP: identical to scene 1",
+   "shots": [
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "I ran to tell Mom... but I tripped. Right into her phone—",
+     "camera": "at:4.0,-2.6,6.6,4.4,5.8,2.4,30",
+     "no_cuts": true,
+     "move": "none",
+     "pad": 0.0,
+     "walk": {
+      "sage": {
+       "to": [
+        4.2,
+        4.8
+       ],
+       "at": 0
+      }
+     },
+     "anims": {
+      "sage": "trip",
+      "pip": "idle",
+      "mom": "hidden"
+     },
+     "faces": {
+      "sage": "shocked",
+      "pip": "smug"
+     }
+    },
+    {
+     "_beat": "LOOP: phone falls, cut at impact",
+     "duration": 0.45,
+     "camera": "at:4.0,-2.6,6.6,4.4,5.8,2.4,30",
+     "no_cuts": true,
+     "move": "none",
+     "prop_moves": {
+      "phone": {
+       "at": 0.0,
+       "dur": 0.42,
+       "to": [
+        0,
+        -1.6,
+        -3.28
+       ],
+       "rot": [
+        80,
+        0,
+        30
+       ]
+      }
+     },
+     "anims": {
+      "sage": "shocked",
+      "pip": "idle",
+      "mom": "hidden"
+     },
+     "faces": {
+      "sage": "shocked",
+      "pip": "smug"
+     }
+    }
+   ]
+  }
+ ]
+}

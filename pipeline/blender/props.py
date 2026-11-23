@@ -642,6 +642,131 @@ def _baby_bottle(root, n, pd):
 STORY_PROPS["baby_bottle"] = _baby_bottle
 
 
+def _cable(root, n, pd):
+    """A long charging cable lying along +X with a plug at the end: {"length": 6}."""
+    L = float(pd.get("length", 6.0))
+    blk = M(pd.get("color", "#1f1f24"), rough=0.5, tex=False)
+    _kid(root, f"{n}_wire", box_mesh("cw", (L, 0.12, 0.12)), (L / 2, 0, 0.06), blk, bevel=0.04)
+    _kid(root, f"{n}_plug", box_mesh("cp", (0.5, 0.3, 0.3)), (0, 0, 0.15), M("#f5f5f5", tex=False), bevel=0.05)
+    _kid(root, f"{n}_bolt", box_mesh("cb", (0.12, 0.31, 0.12)), (0, 0, 0.18), M("#ffd23f", tex=False), bevel=0)
+    return 0.3, 4.0
+
+
+STORY_PROPS["cable"] = _cable
+
+
+def _phone(root, n, pd):
+    """A smartphone lying flat, screen up (pd["image"] for the screen)."""
+    _kid(root, f"{n}_body", box_mesh("ph", (0.62, 1.15, 0.08)), (0, 0, 0.04), M("#1c1c22", rough=0.3, tex=False), bevel=0.04)
+    _img_quad(root, n, pd.get("image"), 0.54, 1.02, (0, 0, 0.085), horizontal=True, glow=1.2)
+    return 0.1, 2.5
+
+
+def _cake(root, n, pd):
+    """A two-layer birthday cake with candles."""
+    _kid(root, f"{n}_plate", cyl_mesh("cp", 1.2, 0.08, 20), (0, 0, 0), M("#ffffff", tex=False), bevel=0)
+    _kid(root, f"{n}_l1", cyl_mesh("c1", 0.95, 0.6, 20), (0, 0, 0.08), M("#ffb3c7", rough=0.6, tex=False), bevel=0)
+    _kid(root, f"{n}_l2", cyl_mesh("c2", 0.65, 0.45, 20), (0, 0, 0.68), M("#fff0f5", rough=0.6, tex=False), bevel=0)
+    for k in range(5):
+        a = k * 2 * math.pi / 5
+        _kid(root, f"{n}_cherry{k}", box_mesh("cc", (0.16, 0.16, 0.16)), (0.8 * math.cos(a), 0.8 * math.sin(a), 0.72), M("#d32f2f", tex=False), bevel=0.06)
+    for k in range(3):
+        x = (k - 1) * 0.3
+        _kid(root, f"{n}_candle{k}", box_mesh("cn", (0.08, 0.08, 0.4)), (x, 0, 1.33), M("#64b5f6", tex=False), bevel=0)
+        _kid(root, f"{n}_flame{k}", box_mesh("cf", (0.08, 0.08, 0.14)), (x, 0, 1.6), M("#ffd23f", tex=False), bevel=0.03)
+    return 1.7, 4.0
+
+
+def _marker(root, n, pd):
+    """A fat marker pointing along -Z (fits a fist like the pencil)."""
+    c = pd.get("color", "#8e24aa")
+    _kid(root, f"{n}_body", box_mesh("mb", (0.3, 0.3, 1.2)), (0, 0, -0.35), M("#f5f5f5", tex=False), bevel=0.06)
+    _kid(root, f"{n}_cap", box_mesh("mc", (0.32, 0.32, 0.4)), (0, 0, -1.1), M(c, tex=False), bevel=0.06)
+    _kid(root, f"{n}_band", box_mesh("mn", (0.31, 0.31, 0.15)), (0, 0, 0.3), M(c, tex=False), bevel=0.03)
+    return 0.4, 3.0
+
+
+def _poster(root, n, pd):
+    """A picture stuck flat on a wall, facing -Y (pd["image"], "w", "h")."""
+    w, h = float(pd.get("w", 2.0)), float(pd.get("h", 1.5))
+    _kid(root, f"{n}_back", box_mesh("pb", (w + 0.12, 0.04, h + 0.12)), (0, 0.03, 0), M(pd.get("frame", "#ffffff"), tex=False), bevel=0)
+    _img_quad(root, n, pd.get("image"), w, h, (0, -0.01, 0), glow=0.95)
+    return 0.0, max(w, h) * 1.6
+
+
+STORY_PROPS.update({"phone": _phone, "cake": _cake, "marker": _marker, "poster": _poster})
+
+
+def _banana(root, n, pd):
+    """A banana held like a camera (points along -Z out of a fist), with a tiny red LIVE dot."""
+    y = M("#ffd93b", rough=0.5, tex=False)
+    for k in range(5):
+        a = math.radians(-12 + k * 6)
+        _kid(root, f"{n}_seg{k}", box_mesh("bn", (0.34, 0.34, 0.42)), (0.08 * k * k * 0.25, 0, -0.1 - k * 0.38), y, bevel=0.12,
+             rot=(0, math.degrees(a), 0))
+    _kid(root, f"{n}_tip", box_mesh("bt", (0.16, 0.16, 0.18)), (0.5, 0, -2.0), M("#5d4037", tex=False), bevel=0.04)
+    _kid(root, f"{n}_stem", box_mesh("bs", (0.14, 0.14, 0.25)), (0, 0, 0.15), M("#7a5c2e", tex=False), bevel=0.03)
+    _kid(root, f"{n}_live", box_mesh("bl", (0.1, 0.06, 0.1)), (0.2, -0.18, -0.6), M("#ff1f1f", rough=0.2, tex=False), bevel=0.02)
+    return 0.4, 3.0
+
+
+STORY_PROPS["banana"] = _banana
+
+
+def _nose_light(root, n, pd):
+    """A glowing red lie-detector nose (attach to "<name>:head")."""
+    _kid(root, f"{n}_bulb", box_mesh("nl", (0.32, 0.22, 0.26)), (0, 0, 0), glow(pd.get("color", "#ff2020"), 6.0), bevel=0.08)
+    return 0.3, 2.0
+
+
+def _headband(root, n, pd):
+    """A sporty headband (attach to "<name>:head")."""
+    _kid(root, f"{n}_band", box_mesh("hb", (1.36, 1.31, 0.26)), (0, 0, 0), M(pd.get("color", "#e53935"), tex=False), bevel=0.06)
+    _kid(root, f"{n}_knot", box_mesh("hk", (0.3, 0.2, 0.5)), (0.3, 0.7, -0.15), M(pd.get("color", "#e53935"), tex=False), bevel=0.06,
+         rot=(20, 0, 30))
+    return 0.3, 2.0
+
+
+def _rope(root, n, pd):
+    """A long tug-of-war rope along +X with a red flag in the middle."""
+    L = float(pd.get("length", 14))
+    _kid(root, f"{n}_rope", box_mesh("rp", (L, 0.22, 0.22)), (0, 0, 0), M("#c9a46a", rough=0.9, tex=False), bevel=0.06)
+    _kid(root, f"{n}_flag", box_mesh("rf", (0.3, 0.1, 0.8)), (0, 0, -0.5), M("#e53935", tex=False), bevel=0.02)
+    return 0.3, 8.0
+
+
+def _baton(root, n, pd):
+    _kid(root, f"{n}_b", box_mesh("bt", (0.25, 0.25, 1.1)), (0, 0, -0.4), M(pd.get("color", "#ffd23f"), rough=0.3, tex=False), bevel=0.06)
+    return 0.3, 2.0
+
+
+def _trophy(root, n, pd):
+    """A shiny gold trophy."""
+    gold = M("#ffcc33", rough=0.2, tex=False)
+    _kid(root, f"{n}_base", box_mesh("tb", (0.9, 0.9, 0.35)), (0, 0, 0.18), M("#5d4037", tex=False), bevel=0.05)
+    _kid(root, f"{n}_stem", box_mesh("ts", (0.22, 0.22, 0.6)), (0, 0, 0.65), gold, bevel=0.04)
+    _kid(root, f"{n}_cup", cyl_mesh("tc", 0.55, 0.8, 16, 0.3), (0, 0, 0.95), gold, bevel=0, rot=(180, 0, 0))
+    for x in (-0.65, 0.65):
+        _kid(root, f"{n}_h{x}", box_mesh("th", (0.15, 0.12, 0.5)), (x, 0, 1.5), gold, bevel=0.04)
+    return 1.8, 4.0
+
+
+def _medal(root, n, pd):
+    """A champion medal on a ribbon, lying flat."""
+    _kid(root, f"{n}_rib", box_mesh("mr", (0.3, 1.2, 0.03)), (0, 0.5, 0.02), M("#1e63e9", tex=False), bevel=0)
+    _kid(root, f"{n}_disc", cyl_mesh("md", 0.35, 0.06, 18), (0, 0, 0.02), M("#ffcc33", rough=0.2, tex=False), bevel=0)
+    return 0.1, 2.5
+
+
+def _ball(root, n, pd):
+    _kid(root, f"{n}_ball", box_mesh("bl", (0.7, 0.7, 0.7)), (0, 0, 0.35), M(pd.get("color", "#e53935"), rough=0.4, tex=False), bevel=0.3)
+    return 0.7, 3.0
+
+
+STORY_PROPS.update({"nose_light": _nose_light, "headband": _headband, "rope": _rope, "baton": _baton, "trophy": _trophy,
+                    "medal": _medal, "ball": _ball})
+
+
 STORY_PROPS.update({"pencil": _pencil, "flat_pizza": _flat_pizza, "car_sq": _car_sq, "potato_dog": _potato_dog})
 
 

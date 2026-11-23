@@ -1,0 +1,1083 @@
+{
+ "id": "s13_battery",
+ "title": "In This World, Everyone's BATTERY % Shows Above Their Head! 🔋",
+ "format": "short",
+ "mood": "bright",
+ "grade": "bright",
+ "fog": false,
+ "dof": false,
+ "handheld": 0.35,
+ "caption_style": "word",
+ "caption_pos": "top",
+ "cut_every": 1.25,
+ "sting": false,
+ "cta": {
+  "at": 20
+ },
+ "music": "quirky_loop",
+ "music_volume": 0.13,
+ "loop": true,
+ "_loop": "ends in the same bedroom shot with Sage at 2%: 'And every single morning... I wake up at—' -> 'Two percent.'",
+ "_secret": "Goldie's charging cable is already lying on Sage's bed in the first second",
+ "_pinned_comment": "What % are YOU at right now? 🔋👇",
+ "characters": {
+  "sage": {
+   "crop_top": false,
+   "shirt": "#90caf9",
+   "hoodie": "#90caf9",
+   "pants": "#3d5a99",
+   "sleeves": true
+  }
+ },
+ "scenes": [
+  {
+   "set": "bedroom",
+   "cast": {
+    "sage": [
+     -9,
+     3.6,
+     0.7,
+     0
+    ],
+    "mom": [
+     6,
+     3,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "cable",
+     "type": "cable",
+     "at": [
+      -8.4,
+      4.6,
+      1.66
+     ],
+     "length": 5.5,
+     "rot": 25
+    }
+   ],
+   "shots": [
+    {
+     "_beat": "HOOK (loop point)",
+     "speaker": "sage",
+     "vo": true,
+     "line": "Two percent. That's my battery. In this world, everyone's battery shows above their head... and mine is ALWAYS at two percent.",
+     "cameras": [
+      "at:-8.2,-3.2,4.8,-9,4.2,3.0,32",
+      "closeup:sage"
+     ],
+     "moves": [
+      "none",
+      "push"
+     ],
+     "anims": {
+      "sage": "sit",
+      "mom": "hidden"
+     },
+     "faces": {
+      "sage": "sad"
+     },
+     "fx": [
+      {
+       "img": "textures/s13/bat_2.png",
+       "size": 150,
+       "at": 0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2_dim.png",
+       "size": 150,
+       "at": 0.5,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2.png",
+       "size": 150,
+       "at": 1.0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2_dim.png",
+       "size": 150,
+       "at": 1.5,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2.png",
+       "size": 150,
+       "at": 2.0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2_dim.png",
+       "size": 150,
+       "at": 2.5,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2.png",
+       "size": 150,
+       "at": 3.0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2_dim.png",
+       "size": 150,
+       "at": 3.5,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2.png",
+       "size": 150,
+       "at": 4.0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2_dim.png",
+       "size": 150,
+       "at": 4.5,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2.png",
+       "size": 150,
+       "at": 5.0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2_dim.png",
+       "size": 150,
+       "at": 5.5,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2.png",
+       "size": 150,
+       "at": 6.0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2_dim.png",
+       "size": 150,
+       "at": 6.5,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2.png",
+       "size": 150,
+       "at": 7.0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2_dim.png",
+       "size": 150,
+       "at": 7.5,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      }
+     ]
+    },
+    {
+     "speaker": "mom",
+     "line": "GOOD MORNING, SUNSHINE!",
+     "camera": "medium:mom",
+     "walk": {
+      "mom": [
+       -4.5,
+       3.2
+      ]
+     },
+     "anims": {
+      "mom": "wave",
+      "sage": "sit"
+     },
+     "face": "happy",
+     "fx": [
+      {
+       "img": "textures/s13/bat_100.png",
+       "size": 150,
+       "at": 0,
+       "x": 0.5,
+       "y": 0.28,
+       "dur": 2.2
+      }
+     ],
+     "sfx": [
+      {
+       "name": "sparkle",
+       "at": 0.3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "classroom_bright",
+   "cast": {
+    "ms_brick": [
+     1.8,
+     9.3,
+     0,
+     0
+    ],
+    "sage": [
+     -3,
+     1.6,
+     0,
+     0
+    ],
+    "noob": [
+     3,
+     1.6,
+     0,
+     0
+    ],
+    "bacon": [
+     -8,
+     1.6,
+     0,
+     0
+    ],
+    "goldie": [
+     8,
+     1.6,
+     0,
+     0
+    ]
+   },
+   "shots": [
+    {
+     "speaker": "ms_brick",
+     "line": "Good morning, class! POP QUIZ!",
+     "camera": "medium:ms_brick",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "ms_brick": "point",
+      "sage": "sit",
+      "noob": "sit_faceplant",
+      "bacon": "sit",
+      "goldie": "sit"
+     },
+     "face": "happy",
+     "fx": [
+      {
+       "img": "textures/s13/bat_100.png",
+       "size": 150,
+       "at": 0,
+       "x": 0.5,
+       "y": 0.28,
+       "dur": 2.0
+      }
+     ],
+     "sfx": [
+      {
+       "name": "vine_boom",
+       "at": 1.2
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "One pop quiz... and the whole class drained.",
+     "cameras": [
+      "closeup:bacon",
+      "closeup:goldie",
+      "closeup:sage"
+     ],
+     "moves": [
+      "push",
+      "push",
+      "push"
+     ],
+     "anims": {
+      "ms_brick": "idle",
+      "sage": "sit_slide_down",
+      "noob": "sit_faceplant",
+      "bacon": "sit_slide_down",
+      "goldie": "sit"
+     },
+     "faces": {
+      "sage": "sad",
+      "bacon": "dead",
+      "goldie": "sad"
+     },
+     "fx": [
+      {
+       "img": "textures/s13/bat_80.png",
+       "size": 150,
+       "at": 0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.4
+      },
+      {
+       "img": "textures/s13/bat_40.png",
+       "size": 150,
+       "at": 0.4,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.4
+      },
+      {
+       "img": "textures/s13/bat_10.png",
+       "size": 150,
+       "at": 0.8,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_60.png",
+       "size": 150,
+       "at": 1.3,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.4
+      },
+      {
+       "img": "textures/s13/bat_20.png",
+       "size": 150,
+       "at": 1.7,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2.png",
+       "size": 150,
+       "at": 2.2,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 1.4
+      }
+     ],
+     "sfx": [
+      {
+       "name": "sad_trombone",
+       "at": 0.3,
+       "volume": 0.6
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "line": "Noob! How are you at a HUNDRED?!",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "anims": {
+      "sage": "sit_talk",
+      "noob": "sit_faceplant"
+     },
+     "face": "shocked",
+     "fx": [
+      {
+       "img": "textures/s13/bat_2.png",
+       "size": 150,
+       "at": 0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2_dim.png",
+       "size": 150,
+       "at": 0.5,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2.png",
+       "size": 150,
+       "at": 1.0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2_dim.png",
+       "size": 150,
+       "at": 1.5,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2.png",
+       "size": 150,
+       "at": 2.0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.3999999999999999
+      }
+     ]
+    },
+    {
+     "speaker": "noob",
+     "line": "...Sleep mode.",
+     "camera": "closeup:noob",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "noob": "sit_faceplant",
+      "sage": "sit"
+     },
+     "face": "neutral",
+     "fx": [
+      {
+       "img": "textures/s13/bat_100.png",
+       "size": 150,
+       "at": 0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 1.8
+      },
+      {
+       "e": "💤",
+       "at": 0.3,
+       "x": 0.7,
+       "y": 0.45,
+       "size": 150,
+       "dur": 1.2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "hallway",
+   "cast": {
+    "sage": [
+     -1.2,
+     1,
+     0,
+     0
+    ],
+    "goldie": [
+     1.8,
+     1,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "gcable",
+     "type": "cable",
+     "at": [
+      -1.2,
+      1.75,
+      3.1
+     ],
+     "length": 3.0,
+     "color": "#ffd23f"
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "Goldie was ALWAYS at a hundred. Suspiciously full.",
+     "camera": "medium:goldie",
+     "anims": {
+      "goldie": "brag",
+      "sage": "cross_arms"
+     },
+     "faces": {
+      "goldie": "smug",
+      "sage": "sus"
+     },
+     "fx": [
+      {
+       "img": "textures/s13/bat_100.png",
+       "size": 150,
+       "at": 0,
+       "x": 0.5,
+       "y": 0.28,
+       "dur": 3.0
+      }
+     ]
+    },
+    {
+     "_beat": "REVEAL",
+     "duration": 1.6,
+     "camera": "back:sage",
+     "no_cuts": true,
+     "move": "zoom",
+     "anims": {
+      "goldie": "idle",
+      "sage": "idle"
+     },
+     "sfx": [
+      {
+       "name": "vine_boom",
+       "at": 0.3
+      }
+     ],
+     "fx": [
+      {
+       "text": "?!",
+       "color": "#ffd23f",
+       "size": 120,
+       "at": 0.3,
+       "x": 0.5,
+       "y": 0.6,
+       "dur": 1.2,
+       "anim": "shake"
+      }
+     ]
+    },
+    {
+     "speaker": "goldie",
+     "line": "What? Sharing is caring.",
+     "camera": "closeup:goldie",
+     "no_cuts": true,
+     "anims": {
+      "goldie": "shrug",
+      "sage": "idle"
+     },
+     "face": "smug",
+     "fx": [
+      {
+       "img": "textures/s13/bat_100.png",
+       "size": 150,
+       "at": 0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 2.0
+      }
+     ]
+    },
+    {
+     "_beat": "LOW",
+     "duration": 1.4,
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "move": "shake",
+     "anims": {
+      "sage": "stumble",
+      "goldie": "idle"
+     },
+     "faces": {
+      "sage": "dead"
+     },
+     "fx": [
+      {
+       "img": "textures/s13/bat_low.png",
+       "size": 190,
+       "at": 0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 1.4
+      }
+     ],
+     "sfx": [
+      {
+       "name": "notification",
+       "at": 0.1
+      },
+      {
+       "name": "notification",
+       "at": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "living_room",
+   "cast": {
+    "mom": [
+     3.2,
+     3.2,
+     0,
+     -15
+    ],
+    "pip": [
+     1.0,
+     3.0,
+     0,
+     15
+    ],
+    "grandpa": [
+     -2.4,
+     6.7,
+     0.75,
+     0
+    ]
+   },
+   "shots": [
+    {
+     "speaker": "pip",
+     "line": "Mom? Why? Why? Why? WHY?",
+     "camera": "two:pip,mom",
+     "anims": {
+      "pip": "talk",
+      "mom": "sweat",
+      "grandpa": "sit"
+     },
+     "face": "happy",
+     "faces": {
+      "mom": "scared",
+      "grandpa": "dead"
+     },
+     "fx": [
+      {
+       "img": "textures/s13/bat_80.png",
+       "size": 150,
+       "at": 0.3,
+       "x": 0.62,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_60.png",
+       "size": 150,
+       "at": 0.8,
+       "x": 0.62,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_40.png",
+       "size": 150,
+       "at": 1.3,
+       "x": 0.62,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_20.png",
+       "size": 150,
+       "at": 1.8,
+       "x": 0.62,
+       "y": 0.3,
+       "dur": 0.6
+      },
+      {
+       "img": "textures/s13/bat_3.png",
+       "size": 150,
+       "at": 2.4,
+       "x": 0.62,
+       "y": 0.3,
+       "dur": 1.0
+      }
+     ]
+    },
+    {
+     "_beat": "MOM DOWN",
+     "duration": 1.3,
+     "camera": "medium:mom",
+     "no_cuts": true,
+     "move": "shake",
+     "anims": {
+      "mom": "fall",
+      "pip": "idle",
+      "grandpa": "sit"
+     },
+     "faces": {
+      "mom": "dead"
+     },
+     "fx": [
+      {
+       "img": "textures/s13/bat_low.png",
+       "size": 150,
+       "at": 0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 1.3
+      }
+     ],
+     "sfx": [
+      {
+       "name": "oof_thud",
+       "at": 0.4
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "And Grandpa? He just naps.",
+     "camera": "closeup:grandpa",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "grandpa": "sit",
+      "mom": "lie",
+      "pip": "idle"
+     },
+     "faces": {
+      "grandpa": "dead"
+     },
+     "fx": [
+      {
+       "img": "textures/s13/bat_charge40.png",
+       "size": 150,
+       "at": 0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 1.0
+      },
+      {
+       "img": "textures/s13/bat_charge.png",
+       "size": 150,
+       "at": 1.0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 1.2
+      }
+     ],
+     "sfx": [
+      {
+       "name": "sparkle",
+       "at": 1.0
+      }
+     ]
+    },
+    {
+     "speaker": "grandpa",
+     "line": "I'm READY.",
+     "camera": "closeup:grandpa",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "grandpa": "sit",
+      "mom": "lie"
+     },
+     "face": "smug",
+     "fx": [
+      {
+       "img": "textures/s13/bat_100.png",
+       "size": 150,
+       "at": 0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 1.4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "bedroom",
+   "cast": {
+    "sage": [
+     -9,
+     3.6,
+     0.7,
+     0
+    ],
+    "mom": [
+     6,
+     3,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "cable",
+     "type": "cable",
+     "at": [
+      -8.4,
+      4.6,
+      1.66
+     ],
+     "length": 5.5,
+     "rot": 25
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "So that night... I plugged MYSELF in.",
+     "camera": "closeup:sage",
+     "anims": {
+      "sage": "sit",
+      "mom": "hidden"
+     },
+     "faces": {
+      "sage": "smug"
+     },
+     "fx": [
+      {
+       "img": "textures/s13/bat_2.png",
+       "size": 150,
+       "at": 0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.8
+      },
+      {
+       "img": "textures/s13/bat_charge40.png",
+       "size": 150,
+       "at": 0.8,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.6
+      },
+      {
+       "img": "textures/s13/bat_charge.png",
+       "size": 150,
+       "at": 1.4,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 1.4
+      }
+     ],
+     "sfx": [
+      {
+       "name": "sparkle",
+       "at": 1.4
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "line": "YES! A HUNDRED PERCENT!",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "sage": "sit_shocked",
+      "mom": "hidden"
+     },
+     "face": "happy",
+     "fx": [
+      {
+       "img": "textures/s13/bat_100.png",
+       "size": 150,
+       "at": 0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 1.8
+      }
+     ]
+    },
+    {
+     "speaker": "mom",
+     "line": "Sage... homework.",
+     "camera": "medium:mom",
+     "no_cuts": true,
+     "walk": {
+      "mom": [
+       2,
+       3.2
+      ]
+     },
+     "anims": {
+      "mom": "point",
+      "sage": "sit"
+     },
+     "face": "smug",
+     "sfx": [
+      {
+       "name": "record_scratch",
+       "at": 0.05
+      }
+     ]
+    },
+    {
+     "_beat": "DRAIN",
+     "duration": 1.2,
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "move": "shake",
+     "anims": {
+      "sage": "sit_slide_down",
+      "mom": "idle"
+     },
+     "faces": {
+      "sage": "cry"
+     },
+     "fx": [
+      {
+       "img": "textures/s13/bat_50.png",
+       "size": 150,
+       "at": 0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.3
+      },
+      {
+       "img": "textures/s13/bat_10.png",
+       "size": 150,
+       "at": 0.3,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.3
+      },
+      {
+       "img": "textures/s13/bat_2.png",
+       "size": 150,
+       "at": 0.6,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.6
+      }
+     ],
+     "sfx": [
+      {
+       "name": "sad_trombone",
+       "at": 0.1,
+       "volume": 0.7
+      }
+     ]
+    },
+    {
+     "_beat": "LOOP: same shot as the opening",
+     "speaker": "sage",
+     "vo": true,
+     "line": "And every single morning... I wake up at—",
+     "camera": "at:-8.2,-3.2,4.8,-9,4.2,3.0,32",
+     "no_cuts": true,
+     "move": "none",
+     "pad": 0.0,
+     "anims": {
+      "sage": "sit",
+      "mom": "hidden"
+     },
+     "faces": {
+      "sage": "sad"
+     },
+     "fx": [
+      {
+       "img": "textures/s13/bat_2.png",
+       "size": 150,
+       "at": 0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2_dim.png",
+       "size": 150,
+       "at": 0.5,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2.png",
+       "size": 150,
+       "at": 1.0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2_dim.png",
+       "size": 150,
+       "at": 1.5,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2.png",
+       "size": 150,
+       "at": 2.0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2_dim.png",
+       "size": 150,
+       "at": 2.5,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2.png",
+       "size": 150,
+       "at": 3.0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2_dim.png",
+       "size": 150,
+       "at": 3.5,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2.png",
+       "size": 150,
+       "at": 4.0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2_dim.png",
+       "size": 150,
+       "at": 4.5,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2.png",
+       "size": 150,
+       "at": 5.0,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      },
+      {
+       "img": "textures/s13/bat_2_dim.png",
+       "size": 150,
+       "at": 5.5,
+       "x": 0.5,
+       "y": 0.3,
+       "dur": 0.5
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,891 @@
+{
+ "id": "s17_sports_day",
+ "title": "Mom Joined My School's SPORTS DAY! 🏃‍♀️🏆",
+ "format": "short",
+ "mood": "bright",
+ "grade": "bright",
+ "fog": false,
+ "dof": false,
+ "handheld": 0.35,
+ "caption_style": "word",
+ "caption_pos": "top",
+ "cut_every": 1.25,
+ "sting": false,
+ "cta": {
+  "at": 20
+ },
+ "music": "happy_loop",
+ "music_volume": 0.13,
+ "loop": true,
+ "_loop": "ends on the same headband shot: 'So, one rule... NEVER tell my mom that—' -> 'parents are allowed to join sports day.'",
+ "_secret": "a champion medal from last year is lying by Mom's feet in the first second",
+ "_pinned_comment": "Would YOU want your mom at sports day? 😳👇",
+ "characters": {
+  "sage": {
+   "crop_top": false,
+   "shirt": "#4db6ac",
+   "hoodie": "#4db6ac",
+   "pants": "#3d5a99",
+   "sleeves": true
+  }
+ },
+ "scenes": [
+  {
+   "set": "playground",
+   "cast": {
+    "mom": [
+     1.4,
+     1.0,
+     0,
+     -10
+    ],
+    "sage": [
+     -1.6,
+     1.2,
+     0,
+     15
+    ]
+   },
+   "props": [
+    {
+     "id": "band",
+     "type": "headband",
+     "attach": "mom:head",
+     "local": [
+      0,
+      0,
+      0.95
+     ],
+     "local_rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "id": "medal",
+     "type": "medal",
+     "at": [
+      3.4,
+      0.2,
+      0.02
+     ],
+     "rot": 30
+    }
+   ],
+   "shots": [
+    {
+     "_beat": "HOOK (loop point)",
+     "speaker": "sage",
+     "vo": true,
+     "line": "Parents are allowed to join sports day. My mom... took it personally.",
+     "cameras": [
+      "at:0.0,-6.8,5.0,0.0,1.2,3.7,30",
+      "closeup:mom"
+     ],
+     "moves": [
+      "none",
+      "push"
+     ],
+     "anims": {
+      "mom": "tie_headband",
+      "sage": "facepalm"
+     },
+     "faces": {
+      "mom": "angry",
+      "sage": "sad"
+     }
+    },
+    {
+     "speaker": "mom",
+     "line": "LET'S! GOOO!",
+     "camera": "closeup:mom",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "mom": "celebrate",
+      "sage": "facepalm"
+     },
+     "face": "angry",
+     "sfx": [
+      {
+       "name": "airhorn",
+       "at": 0.2,
+       "volume": 0.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "playground",
+   "cast": {
+    "mom": [
+     -9,
+     1.0,
+     0,
+     0
+    ],
+    "bacon": [
+     -9,
+     3.0,
+     0,
+     0
+    ],
+    "goldie": [
+     -9,
+     4.8,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "band",
+     "type": "headband",
+     "attach": "mom:head",
+     "local": [
+      0,
+      0,
+      0.95
+     ],
+     "local_rot": [
+      0,
+      0,
+      0
+     ]
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "Sack race? She hopped like a kangaroo.",
+     "camera": "wide",
+     "no_cuts": true,
+     "move": "pan",
+     "walk": {
+      "mom": {
+       "to": [
+        9,
+        1.0
+       ],
+       "run": true
+      },
+      "bacon": {
+       "to": [
+        -3,
+        3.0
+       ]
+      },
+      "goldie": {
+       "to": [
+        -4,
+        4.8
+       ]
+      }
+     },
+     "anims": {
+      "mom": "jump",
+      "bacon": "idle",
+      "goldie": "idle"
+     },
+     "faces": {
+      "mom": "happy",
+      "bacon": "shocked",
+      "goldie": "shocked"
+     },
+     "fx": [
+      {
+       "e": "🦘",
+       "at": 0.6,
+       "x": 0.7,
+       "y": 0.45,
+       "size": 190,
+       "dur": 1.4
+      }
+     ],
+     "sfx": [
+      {
+       "name": "boing",
+       "at": 0.3
+      },
+      {
+       "name": "boing",
+       "at": 0.8
+      },
+      {
+       "name": "boing",
+       "at": 1.3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "playground",
+   "cast": {
+    "mom": [
+     5.2,
+     1.4,
+     0,
+     -80
+    ],
+    "noob": [
+     -1.2,
+     1.4,
+     0,
+     80
+    ],
+    "bacon": [
+     -3.0,
+     1.4,
+     0,
+     80
+    ],
+    "goldie": [
+     -4.8,
+     1.4,
+     0,
+     80
+    ],
+    "pip": [
+     -6.6,
+     1.4,
+     0,
+     80
+    ]
+   },
+   "props": [
+    {
+     "id": "band",
+     "type": "headband",
+     "attach": "mom:head",
+     "local": [
+      0,
+      0,
+      0.95
+     ],
+     "local_rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "id": "rope",
+     "type": "rope",
+     "at": [
+      -0.4,
+      1.0,
+      2.6
+     ],
+     "length": 12.5
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "Tug of war? Mom versus... the WHOLE class.",
+     "camera": "wide",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "mom": "idle",
+      "noob": "pull_rope",
+      "bacon": "pull_rope",
+      "goldie": "pull_rope",
+      "pip": "pull_rope"
+     },
+     "faces": {
+      "mom": "smug",
+      "noob": "angry",
+      "bacon": "angry",
+      "goldie": "angry",
+      "pip": "angry"
+     }
+    },
+    {
+     "speaker": "mom",
+     "line": "Is that all you've got?",
+     "camera": "closeup:mom",
+     "no_cuts": true,
+     "anims": {
+      "mom": "idle"
+     },
+     "face": "smug",
+     "fx": [
+      {
+       "e": "☕",
+       "at": 0.2,
+       "x": 0.68,
+       "y": 0.55,
+       "size": 160,
+       "dur": 1.6
+      }
+     ]
+    },
+    {
+     "_beat": "YANK",
+     "duration": 1.5,
+     "camera": "wide",
+     "no_cuts": true,
+     "move": "shake",
+     "prop_moves": {
+      "rope": {
+       "at": 0.1,
+       "dur": 0.4,
+       "to": [
+        2.5,
+        0,
+        0
+       ]
+      }
+     },
+     "anims": {
+      "mom": "pull_rope",
+      "noob": "fall",
+      "bacon": "fall",
+      "goldie": "fall",
+      "pip": "fall"
+     },
+     "faces": {
+      "noob": "dead",
+      "bacon": "dead",
+      "goldie": "dead",
+      "pip": "dead"
+     },
+     "sfx": [
+      {
+       "name": "whoosh",
+       "at": 0.1
+      },
+      {
+       "name": "oof_thud",
+       "at": 0.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "playground",
+   "cast": {
+    "mom": [
+     2.0,
+     1.4,
+     0,
+     0
+    ],
+    "ms_brick": [
+     -5.0,
+     2.4,
+     0,
+     15
+    ],
+    "noob": [
+     -1.8,
+     0.8,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "band",
+     "type": "headband",
+     "attach": "mom:head",
+     "local": [
+      0,
+      0,
+      0.95
+     ],
+     "local_rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "id": "ball1",
+     "type": "ball",
+     "at": [
+      -6,
+      -2,
+      3
+     ],
+     "scale": 0.6
+    },
+    {
+     "id": "ball2",
+     "type": "ball",
+     "color": "#1e88e5",
+     "at": [
+      -7,
+      -1,
+      3.5
+     ],
+     "scale": 0.6
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "Dodgeball? She caught EVERYTHING.",
+     "camera": "medium:mom",
+     "no_cuts": true,
+     "prop_moves": {
+      "ball1": {
+       "at": 0.4,
+       "dur": 0.4,
+       "to": [
+        7.6,
+        3.2,
+        0.4
+       ]
+      },
+      "ball2": {
+       "at": 1.2,
+       "dur": 0.4,
+       "to": [
+        8.6,
+        2.2,
+        0
+       ]
+      }
+     },
+     "anims": {
+      "mom": "hold_photo",
+      "ms_brick": "scared",
+      "noob": "lie"
+     },
+     "faces": {
+      "mom": "smug",
+      "ms_brick": "scared"
+     },
+     "sfx": [
+      {
+       "name": "pop",
+       "at": 0.8
+      },
+      {
+       "name": "pop",
+       "at": 1.6
+      }
+     ]
+    },
+    {
+     "speaker": "noob",
+     "line": "I'm out. Forever.",
+     "camera": "closeup:noob",
+     "no_cuts": true,
+     "anims": {
+      "noob": "lie",
+      "mom": "hold_photo"
+     },
+     "face": "dead"
+    }
+   ]
+  },
+  {
+   "set": "playground",
+   "cast": {
+    "mom": [
+     -8,
+     1.0,
+     0,
+     0
+    ],
+    "goldie": [
+     -8,
+     3.0,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "band",
+     "type": "headband",
+     "attach": "mom:head",
+     "local": [
+      0,
+      0,
+      0.95
+     ],
+     "local_rot": [
+      0,
+      0,
+      0
+     ]
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "goldie",
+     "line": "Bet you can't beat ME!",
+     "camera": "closeup:goldie",
+     "anims": {
+      "goldie": "brag",
+      "mom": "idle"
+     },
+     "face": "smug"
+    },
+    {
+     "_beat": "RACE",
+     "duration": 1.8,
+     "camera": "wide",
+     "no_cuts": true,
+     "move": "pan",
+     "walk": {
+      "mom": {
+       "to": [
+        9,
+        1.0
+       ],
+       "run": true
+      },
+      "goldie": {
+       "to": [
+        -2,
+        3.0
+       ]
+      }
+     },
+     "anims": {
+      "mom": "idle",
+      "goldie": "idle"
+     },
+     "faces": {
+      "mom": "happy",
+      "goldie": "cry"
+     },
+     "sfx": [
+      {
+       "name": "whoosh",
+       "at": 0.2
+      }
+     ],
+     "fx": [
+      {
+       "text": "LAP 2!",
+       "color": "#ffd23f",
+       "size": 120,
+       "at": 0.6,
+       "x": 0.5,
+       "y": 0.68,
+       "dur": 1.0,
+       "anim": "shake"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "playground",
+   "cast": {
+    "sage": [
+     -1.4,
+     1.2,
+     0,
+     15
+    ],
+    "mom": [
+     2.2,
+     1.2,
+     0,
+     -15
+    ]
+   },
+   "props": [
+    {
+     "id": "band",
+     "type": "headband",
+     "attach": "mom:head",
+     "local": [
+      0,
+      0,
+      0.95
+     ],
+     "local_rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "id": "baton_s",
+     "type": "baton",
+     "attach": "sage:arm_r"
+    },
+    {
+     "id": "baton_m",
+     "type": "baton",
+     "attach": "mom:arm_r",
+     "hidden": true
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "mom",
+     "line": "PASS IT! PASS IT!",
+     "camera": "medium:mom",
+     "no_cuts": true,
+     "move": "punch",
+     "anims": {
+      "mom": "point",
+      "sage": "run_in_place"
+     },
+     "face": "angry"
+    },
+    {
+     "_beat": "TRIP",
+     "duration": 1.0,
+     "camera": "two:sage,mom",
+     "no_cuts": true,
+     "move": "shake",
+     "anims": {
+      "sage": "fall",
+      "mom": "shocked"
+     },
+     "faces": {
+      "sage": "dead",
+      "mom": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "oof_thud",
+       "at": 0.4
+      }
+     ]
+    },
+    {
+     "_beat": "MOM WINS",
+     "duration": 1.6,
+     "camera": "wide",
+     "no_cuts": true,
+     "move": "pan",
+     "hide": [
+      "baton_s"
+     ],
+     "show": [
+      "baton_m"
+     ],
+     "walk": {
+      "mom": {
+       "to": [
+        10,
+        1.2
+       ],
+       "run": true
+      }
+     },
+     "anims": {
+      "sage": "lie",
+      "mom": "idle"
+     },
+     "faces": {
+      "mom": "happy"
+     },
+     "sfx": [
+      {
+       "name": "airhorn",
+       "at": 1.0,
+       "volume": 0.5
+      }
+     ],
+     "fx": [
+      {
+       "text": "WINNER!",
+       "color": "#ffd23f",
+       "size": 130,
+       "at": 0.9,
+       "x": 0.5,
+       "y": 0.66,
+       "dur": 0.8,
+       "anim": "shake"
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "line": "I want to disappear.",
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "anims": {
+      "sage": "lie"
+     },
+     "face": "cry"
+    }
+   ]
+  },
+  {
+   "set": "playground",
+   "cast": {
+    "ms_brick": [
+     -1.6,
+     1.2,
+     0,
+     15
+    ],
+    "mom": [
+     1.8,
+     1.2,
+     0,
+     -15
+    ]
+   },
+   "props": [
+    {
+     "id": "band",
+     "type": "headband",
+     "attach": "mom:head",
+     "local": [
+      0,
+      0,
+      0.95
+     ],
+     "local_rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "id": "trophy",
+     "type": "trophy",
+     "at": [
+      0.1,
+      0.2,
+      0
+     ],
+     "hidden": true,
+     "cam_dist": 6
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "ms_brick",
+     "line": "And the trophy for best student goes to... Sage's MOM!",
+     "camera": "medium:ms_brick",
+     "anims": {
+      "ms_brick": "talk",
+      "mom": "idle"
+     },
+     "face": "happy"
+    },
+    {
+     "speaker": "mom",
+     "line": "FINALLY!",
+     "camera": "medium:mom",
+     "no_cuts": true,
+     "move": "punch",
+     "show": [
+      "trophy"
+     ],
+     "prop_moves": {
+      "trophy": {
+       "at": 0.1,
+       "dur": 0.3,
+       "pop": true
+      }
+     },
+     "anims": {
+      "mom": "celebrate",
+      "ms_brick": "celebrate"
+     },
+     "face": "happy",
+     "sfx": [
+      {
+       "name": "sparkle",
+       "at": 0.2
+      },
+      {
+       "name": "airhorn",
+       "at": 0.4,
+       "volume": 0.4
+      }
+     ],
+     "fx": [
+      {
+       "e": "🏆",
+       "at": 0.3,
+       "x": 0.7,
+       "y": 0.45,
+       "size": 180,
+       "dur": 1.2,
+       "burst": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "playground",
+   "cast": {
+    "mom": [
+     1.4,
+     1.0,
+     0,
+     -10
+    ],
+    "sage": [
+     -1.6,
+     1.2,
+     0,
+     15
+    ]
+   },
+   "props": [
+    {
+     "id": "band",
+     "type": "headband",
+     "attach": "mom:head",
+     "local": [
+      0,
+      0,
+      0.95
+     ],
+     "local_rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "id": "medal",
+     "type": "medal",
+     "at": [
+      3.4,
+      0.2,
+      0.02
+     ],
+     "rot": 30
+    }
+   ],
+   "_beat": "LOOP: identical to scene 1",
+   "shots": [
+    {
+     "_beat": "LOOP",
+     "speaker": "sage",
+     "vo": true,
+     "line": "So, one rule... NEVER tell my mom that—",
+     "camera": "at:0.0,-6.8,5.0,0.0,1.2,3.7,30",
+     "no_cuts": true,
+     "move": "none",
+     "pad": 0.0,
+     "anims": {
+      "mom": "tie_headband",
+      "sage": "facepalm"
+     },
+     "faces": {
+      "mom": "angry",
+      "sage": "sad"
+     }
+    }
+   ]
+  }
+ ]
+}

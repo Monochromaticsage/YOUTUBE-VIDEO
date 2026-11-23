@@ -1,0 +1,813 @@
+{
+ "id": "s16_nose_beep",
+ "title": "In This World, When You LIE, Your Nose BEEPS! 🔔",
+ "format": "short",
+ "mood": "bright",
+ "grade": "bright",
+ "fog": false,
+ "dof": false,
+ "handheld": 0.35,
+ "caption_style": "word",
+ "caption_pos": "top",
+ "cut_every": 1.25,
+ "sting": false,
+ "cta": {
+  "at": 18
+ },
+ "music": "quirky_loop",
+ "music_volume": 0.13,
+ "loop": true,
+ "_loop": "ends at breakfast, same shot as the opening: 'I will never lie again.' BEEP -> 'I brushed my teeth.' BEEP",
+ "_secret": "Pip is pinching her nose shut in the very first second",
+ "_pinned_comment": "What lie would make YOUR nose beep the loudest? 🔔👇",
+ "characters": {
+  "sage": {
+   "crop_top": false,
+   "shirt": "#a5d6a7",
+   "hoodie": "#a5d6a7",
+   "pants": "#3d5a99",
+   "sleeves": true
+  }
+ },
+ "scenes": [
+  {
+   "set": "dining_room",
+   "cast": {
+    "sage": [
+     -1.8,
+     3.9,
+     0,
+     0
+    ],
+    "pip": [
+     1.8,
+     3.9,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "nose_sage",
+     "type": "nose_light",
+     "attach": "sage:head",
+     "local": [
+      0,
+      -0.68,
+      0.48
+     ],
+     "local_rot": [
+      0,
+      0,
+      0
+     ],
+     "hidden": true
+    }
+   ],
+   "shots": [
+    {
+     "_beat": "HOOK (loop point)",
+     "speaker": "sage",
+     "line": "I brushed my teeth.",
+     "camera": "at:0,-5.5,5.6,0,3.9,3.0,30",
+     "no_cuts": true,
+     "move": "none",
+     "anims": {
+      "sage": "sit_talk",
+      "pip": "sit_pinch_nose"
+     },
+     "face": "happy",
+     "faces": {
+      "pip": "smug"
+     }
+    },
+    {
+     "_beat": "BEEP",
+     "duration": 0.8,
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "move": "punch",
+     "show": [
+      "nose_sage"
+     ],
+     "anims": {
+      "sage": "sit_shocked",
+      "pip": "sit_pinch_nose"
+     },
+     "faces": {
+      "sage": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "beep",
+       "at": 0.0,
+       "volume": 0.6
+      }
+     ],
+     "fx": [
+      {
+       "text": "BEEP!",
+       "color": "#ff3b30",
+       "size": 120,
+       "at": 0.0,
+       "x": 0.5,
+       "y": 0.68,
+       "dur": 0.7,
+       "anim": "shake"
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "In this world, when you lie, your nose beeps. And the bigger the lie... the LOUDER it gets.",
+     "camera": "closeup:sage",
+     "hide": [
+      "nose_sage"
+     ],
+     "anims": {
+      "sage": "sit",
+      "pip": "sit_pinch_nose"
+     },
+     "faces": {
+      "sage": "sad"
+     }
+    }
+   ]
+  },
+  {
+   "set": "hallway",
+   "cast": {
+    "goldie": [
+     0.6,
+     1,
+     0,
+     -10
+    ],
+    "sage": [
+     -2.8,
+     1.2,
+     0,
+     15
+    ]
+   },
+   "props": [
+    {
+     "id": "nose_goldie",
+     "type": "nose_light",
+     "attach": "goldie:head",
+     "local": [
+      0,
+      -0.68,
+      0.48
+     ],
+     "local_rot": [
+      0,
+      0,
+      0
+     ],
+     "hidden": true
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "goldie",
+     "line": "These shoes are made of REAL gold.",
+     "camera": "medium:goldie",
+     "anims": {
+      "goldie": "brag",
+      "sage": "cross_arms"
+     },
+     "face": "smug",
+     "faces": {
+      "sage": "sus"
+     }
+    },
+    {
+     "_beat": "beep",
+     "duration": 0.6,
+     "camera": "closeup:goldie",
+     "no_cuts": true,
+     "show": [
+      "nose_goldie"
+     ],
+     "anims": {
+      "goldie": "shocked"
+     },
+     "faces": {
+      "goldie": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "beep",
+       "at": 0.0,
+       "volume": 0.6
+      }
+     ],
+     "fx": [
+      {
+       "text": "beep",
+       "color": "#ff8a80",
+       "size": 80,
+       "at": 0.0,
+       "x": 0.5,
+       "y": 0.68,
+       "dur": 0.5
+      }
+     ]
+    },
+    {
+     "speaker": "goldie",
+     "line": "I'm the RICHEST kid in the WORLD!",
+     "camera": "closeup:goldie",
+     "no_cuts": true,
+     "hide": [
+      "nose_goldie"
+     ],
+     "anims": {
+      "goldie": "brag"
+     },
+     "face": "smug"
+    },
+    {
+     "_beat": "BEEP BEEP",
+     "duration": 1.0,
+     "camera": "closeup:goldie",
+     "no_cuts": true,
+     "move": "shake",
+     "show": [
+      "nose_goldie"
+     ],
+     "anims": {
+      "goldie": "sweat"
+     },
+     "faces": {
+      "goldie": "scared"
+     },
+     "sfx": [
+      {
+       "name": "beep",
+       "at": 0.0,
+       "volume": 0.6
+      },
+      {
+       "name": "beep",
+       "at": 0.35,
+       "volume": 0.6
+      }
+     ],
+     "fx": [
+      {
+       "text": "BEEP-BEEP!",
+       "color": "#ff3b30",
+       "size": 120,
+       "at": 0.0,
+       "x": 0.5,
+       "y": 0.68,
+       "dur": 0.9,
+       "anim": "shake"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "classroom_bright",
+   "cast": {
+    "ms_brick": [
+     1.8,
+     9.3,
+     0,
+     0
+    ],
+    "sage": [
+     -3,
+     1.6,
+     0,
+     0
+    ],
+    "noob": [
+     3,
+     1.6,
+     0,
+     0
+    ],
+    "bacon": [
+     -8,
+     1.6,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "nose_ms_brick",
+     "type": "nose_light",
+     "attach": "ms_brick:head",
+     "local": [
+      0,
+      -0.68,
+      0.48
+     ],
+     "local_rot": [
+      0,
+      0,
+      0
+     ],
+     "hidden": true
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "ms_brick",
+     "line": "Good morning, class. I LOVE my job.",
+     "camera": "medium:ms_brick",
+     "no_cuts": true,
+     "anims": {
+      "ms_brick": "talk",
+      "sage": "sit",
+      "noob": "sit",
+      "bacon": "sit"
+     },
+     "face": "happy"
+    },
+    {
+     "_beat": "FIRE ALARM",
+     "duration": 2.0,
+     "camera": "wide",
+     "no_cuts": true,
+     "move": "shake",
+     "show": [
+      "nose_ms_brick"
+     ],
+     "anims": {
+      "ms_brick": "scared",
+      "sage": "sit_shocked",
+      "noob": "sit_shocked",
+      "bacon": "sit_shocked"
+     },
+     "faces": {
+      "ms_brick": "scared",
+      "sage": "shocked",
+      "noob": "shocked",
+      "bacon": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "alarm",
+       "at": 0.0,
+       "volume": 0.7
+      }
+     ],
+     "fx": [
+      {
+       "flash": "#ff3030",
+       "at": 0.0,
+       "dur": 0.3,
+       "x": 0.5,
+       "y": 0.5
+      },
+      {
+       "flash": "#ff3030",
+       "at": 0.5,
+       "dur": 0.3,
+       "x": 0.5,
+       "y": 0.5
+      },
+      {
+       "flash": "#ff3030",
+       "at": 1.0,
+       "dur": 0.3,
+       "x": 0.5,
+       "y": 0.5
+      },
+      {
+       "text": "EVACUATE!",
+       "color": "#ff3b30",
+       "size": 120,
+       "at": 0.3,
+       "x": 0.5,
+       "y": 0.68,
+       "dur": 1.6,
+       "anim": "shake"
+      }
+     ]
+    },
+    {
+     "speaker": "ms_brick",
+     "line": "...Noob! What's the answer?",
+     "camera": "medium:ms_brick",
+     "no_cuts": true,
+     "hide": [
+      "nose_ms_brick"
+     ],
+     "anims": {
+      "ms_brick": "point",
+      "noob": "sit"
+     },
+     "face": "angry"
+    },
+    {
+     "speaker": "noob",
+     "line": "I don't know.",
+     "camera": "closeup:noob",
+     "no_cuts": true,
+     "anims": {
+      "noob": "sit_talk"
+     },
+     "face": "neutral"
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "Noob never beeps. Because he never knows ANYTHING.",
+     "camera": "closeup:noob",
+     "no_cuts": true,
+     "anims": {
+      "noob": "sit",
+      "sage": "sit"
+     },
+     "faces": {
+      "noob": "happy"
+     },
+     "fx": [
+      {
+       "e": "✅",
+       "at": 0.4,
+       "x": 0.7,
+       "y": 0.45,
+       "size": 150,
+       "dur": 1.2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "dining_room",
+   "cast": {
+    "grandpa": [
+     -4.0,
+     3.9,
+     0,
+     0
+    ],
+    "mom": [
+     0.2,
+     3.9,
+     0,
+     0
+    ],
+    "sage": [
+     3.8,
+     3.9,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "nose_grandpa",
+     "type": "nose_light",
+     "attach": "grandpa:head",
+     "local": [
+      0,
+      -0.68,
+      0.48
+     ],
+     "local_rot": [
+      0,
+      0,
+      0
+     ],
+     "hidden": true
+    },
+    {
+     "id": "nose_mom",
+     "type": "nose_light",
+     "attach": "mom:head",
+     "local": [
+      0,
+      -0.68,
+      0.48
+     ],
+     "local_rot": [
+      0,
+      0,
+      0
+     ],
+     "hidden": true
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "grandpa",
+     "line": "When I was young... I was a famous BOXER.",
+     "camera": "medium:grandpa",
+     "anims": {
+      "grandpa": "sit_talk",
+      "mom": "sit",
+      "sage": "sit"
+     },
+     "face": "smug"
+    },
+    {
+     "_beat": "MORSE",
+     "duration": 1.4,
+     "camera": "closeup:grandpa",
+     "no_cuts": true,
+     "show": [
+      "nose_grandpa"
+     ],
+     "anims": {
+      "grandpa": "sit_shocked"
+     },
+     "faces": {
+      "grandpa": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "beep",
+       "at": 0.0,
+       "volume": 0.6
+      },
+      {
+       "name": "beep",
+       "at": 0.25,
+       "volume": 0.6
+      },
+      {
+       "name": "beep",
+       "at": 0.5,
+       "volume": 0.6
+      },
+      {
+       "name": "beep",
+       "at": 0.95,
+       "volume": 0.6
+      }
+     ],
+     "fx": [
+      {
+       "text": "BEEP BEEP BEEP... BEEP",
+       "color": "#ff3b30",
+       "size": 80,
+       "at": 0.0,
+       "x": 0.5,
+       "y": 0.68,
+       "dur": 1.3
+      }
+     ]
+    },
+    {
+     "speaker": "mom",
+     "line": "Sage. I'm not mad.",
+     "camera": "medium:mom",
+     "no_cuts": true,
+     "hide": [
+      "nose_grandpa"
+     ],
+     "anims": {
+      "mom": "sit_talk",
+      "grandpa": "sit",
+      "sage": "sit"
+     },
+     "face": "smug"
+    },
+    {
+     "_beat": "SIREN",
+     "duration": 2.2,
+     "camera": "wide",
+     "no_cuts": true,
+     "move": "shake",
+     "show": [
+      "nose_mom"
+     ],
+     "anims": {
+      "mom": "sit",
+      "grandpa": "sit_shocked",
+      "sage": "sit_shocked"
+     },
+     "faces": {
+      "mom": "angry",
+      "grandpa": "shocked",
+      "sage": "scared"
+     },
+     "sfx": [
+      {
+       "name": "siren",
+       "at": 0.0,
+       "volume": 0.8
+      }
+     ],
+     "fx": [
+      {
+       "text": "WEE-OO! WEE-OO!",
+       "color": "#ff3b30",
+       "size": 110,
+       "at": 0.1,
+       "x": 0.5,
+       "y": 0.68,
+       "dur": 2.0,
+       "anim": "shake"
+      },
+      {
+       "flash": "#ff3030",
+       "at": 0.2,
+       "dur": 0.3,
+       "x": 0.5,
+       "y": 0.5
+      },
+      {
+       "flash": "#3060ff",
+       "at": 0.8,
+       "dur": 0.3,
+       "x": 0.5,
+       "y": 0.5
+      },
+      {
+       "flash": "#ff3030",
+       "at": 1.4,
+       "dur": 0.3,
+       "x": 0.5,
+       "y": 0.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "dining_room",
+   "cast": {
+    "sage": [
+     -1.8,
+     3.9,
+     0,
+     0
+    ],
+    "pip": [
+     1.8,
+     3.9,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "cake",
+     "type": "cake",
+     "at": [
+      1.8,
+      1.4,
+      2.16
+     ],
+     "scale": 0.55
+    }
+   ],
+   "shots": [
+    {
+     "speaker": "pip",
+     "line": "I didn't eat the cake.",
+     "camera": "closeup:pip",
+     "anims": {
+      "pip": "sit_pinch_nose",
+      "sage": "sit"
+     },
+     "face": "happy",
+     "fx": [
+      {
+       "e": "🎂",
+       "at": 0.2,
+       "x": 0.68,
+       "y": 0.45,
+       "size": 140,
+       "dur": 1.4
+      }
+     ]
+    },
+    {
+     "_beat": "SILENCE",
+     "duration": 1.0,
+     "camera": "closeup:sage",
+     "no_cuts": true,
+     "move": "push",
+     "anims": {
+      "sage": "sit_shocked",
+      "pip": "sit_pinch_nose"
+     },
+     "faces": {
+      "sage": "shocked"
+     },
+     "sfx": [
+      {
+       "name": "tick_tock",
+       "at": 0.0,
+       "volume": 0.5
+      }
+     ]
+    },
+    {
+     "speaker": "sage",
+     "vo": true,
+     "line": "No beep. Then I saw it... she was holding her nose the WHOLE time.",
+     "camera": "closeup:pip",
+     "no_cuts": true,
+     "move": "zoom",
+     "anims": {
+      "pip": "sit_pinch_nose",
+      "sage": "sit"
+     },
+     "faces": {
+      "pip": "smug"
+     },
+     "sfx": [
+      {
+       "name": "vine_boom",
+       "at": 1.4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "set": "dining_room",
+   "cast": {
+    "sage": [
+     -1.8,
+     3.9,
+     0,
+     0
+    ],
+    "pip": [
+     1.8,
+     3.9,
+     0,
+     0
+    ]
+   },
+   "props": [
+    {
+     "id": "nose_sage",
+     "type": "nose_light",
+     "attach": "sage:head",
+     "local": [
+      0,
+      -0.68,
+      0.48
+     ],
+     "local_rot": [
+      0,
+      0,
+      0
+     ],
+     "hidden": true
+    }
+   ],
+   "_beat": "LOOP: identical to scene 1",
+   "shots": [
+    {
+     "_beat": "LOOP",
+     "speaker": "sage",
+     "line": "From now on... I will NEVER lie again.",
+     "camera": "at:0,-5.5,5.6,0,3.9,3.0,30",
+     "no_cuts": true,
+     "move": "none",
+     "pad": 0.0,
+     "anims": {
+      "sage": "sit_talk",
+      "pip": "sit_pinch_nose"
+     },
+     "face": "happy",
+     "faces": {
+      "pip": "smug"
+     }
+    },
+    {
+     "_beat": "LOOP BEEP (cut mid-beep)",
+     "duration": 0.3,
+     "camera": "at:0,-5.5,5.6,0,3.9,3.0,30",
+     "no_cuts": true,
+     "move": "none",
+     "show": [
+      "nose_sage"
+     ],
+     "anims": {
+      "sage": "sit_shocked",
+      "pip": "sit_pinch_nose"
+     },
+     "faces": {
+      "sage": "shocked",
+      "pip": "smug"
+     },
+     "sfx": [
+      {
+       "name": "beep",
+       "at": 0.0,
+       "volume": 0.6
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
