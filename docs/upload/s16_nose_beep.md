@@ -1,6 +1,6 @@
 # Upload pack: In This World, When You LIE, Your Nose BEEPS! 🔔
 
-- **Video:** `output/s16_nose_beep.mp4` (seamless loop)
+- **Video:** `output/s16_nose_beep.mp4` (44 s; seamless loop: "I will NEVER lie again" cuts mid-beep straight into "I brushed my teeth."... BEEP)
 - **Thumbnail:** `branding/s16_nose_beep_thumbnail.jpg`
 - **Settings:** Not made for kids · Film & Animation · Altered content: Yes · Comments on · Related video: My Sister Copied EVERYTHING I Did
 
