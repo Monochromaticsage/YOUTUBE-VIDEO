@@ -1,0 +1,51 @@
+{
+ "id": "s21_invisible",
+ "out": "s21_invisible_recut",
+ "lines": {
+  "2": "I turned invisible this morning. Nobody noticed... well, ALMOST nobody."
+ },
+ "fx": {
+  "0": [
+   {
+    "text": "ONE person can see me...",
+    "color": "#ffd23f",
+    "size": 70,
+    "x": 0.5,
+    "y": 0.72,
+    "anim": "pop",
+    "at": 0.0,
+    "dur": 1.9
+   },
+   {
+    "e": "👀",
+    "at": 0.15,
+    "x": 0.5,
+    "y": 0.63,
+    "size": 150,
+    "dur": 1.75,
+    "anim": "pop"
+   }
+  ],
+  "9": [
+   {
+    "text": "keep watching...",
+    "color": "#ffffff",
+    "size": 92,
+    "x": 0.5,
+    "y": 0.72,
+    "anim": "pop",
+    "at": 0.8,
+    "dur": 2.0
+   },
+   {
+    "e": "👀",
+    "at": 0.9500000000000001,
+    "x": 0.5,
+    "y": 0.63,
+    "size": 150,
+    "dur": 1.85,
+    "anim": "pop"
+   }
+  ]
+ }
+}

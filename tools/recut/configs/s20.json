@@ -1,0 +1,52 @@
+{
+ "id": "s20_comes_true",
+ "out": "s20_comes_true_recut",
+ "lines": {
+  "1": "Careful what you say here... it comes TRUE. Ten seconds later.",
+  "8": "So everyone got VERY careful... except my little sister."
+ },
+ "fx": {
+  "0": [
+   {
+    "text": "Wait for the LAST wish...",
+    "color": "#ffd23f",
+    "size": 68,
+    "x": 0.5,
+    "y": 0.72,
+    "anim": "pop",
+    "at": 0.0,
+    "dur": 1.9
+   },
+   {
+    "e": "😳",
+    "at": 0.15,
+    "x": 0.5,
+    "y": 0.63,
+    "size": 150,
+    "dur": 1.75,
+    "anim": "pop"
+   }
+  ],
+  "12": [
+   {
+    "text": "Pip's turn is coming...",
+    "color": "#ffd23f",
+    "size": 73,
+    "x": 0.5,
+    "y": 0.72,
+    "anim": "pop",
+    "at": 0.8,
+    "dur": 2.0
+   },
+   {
+    "e": "😬",
+    "at": 0.9500000000000001,
+    "x": 0.5,
+    "y": 0.63,
+    "size": 150,
+    "dur": 1.85,
+    "anim": "pop"
+   }
+  ]
+ }
+}

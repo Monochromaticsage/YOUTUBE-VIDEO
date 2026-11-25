@@ -1,0 +1,51 @@
+{
+ "id": "s22_bacon_speaks",
+ "out": "s22_bacon_speaks_recut",
+ "lines": {
+  "2": "Bacon has NEVER said a word. And when he finally did... we were NOT ready."
+ },
+ "fx": {
+  "0": [
+   {
+    "text": "Wait till he TALKS...",
+    "color": "#ffd23f",
+    "size": 80,
+    "x": 0.5,
+    "y": 0.72,
+    "anim": "pop",
+    "at": 0.0,
+    "dur": 2.4
+   },
+   {
+    "e": "😳",
+    "at": 0.15,
+    "x": 0.5,
+    "y": 0.63,
+    "size": 150,
+    "dur": 2.25,
+    "anim": "pop"
+   }
+  ],
+  "12": [
+   {
+    "text": "but WHY won't he talk?",
+    "color": "#ffd23f",
+    "size": 78,
+    "x": 0.5,
+    "y": 0.72,
+    "anim": "pop",
+    "at": 0.6,
+    "dur": 2.4
+   },
+   {
+    "e": "👀",
+    "at": 0.75,
+    "x": 0.5,
+    "y": 0.63,
+    "size": 150,
+    "dur": 2.25,
+    "anim": "pop"
+   }
+  ]
+ }
+}

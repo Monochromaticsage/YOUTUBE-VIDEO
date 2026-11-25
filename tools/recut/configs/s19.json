@@ -1,0 +1,64 @@
+{
+ "id": "s19_pause_time",
+ "out": "s19_pause_time_recut",
+ "lines": {
+  "3": "When I pause time... everyone freezes. Well... ALMOST everyone.",
+  "7": "Nobody could stop me... or so I thought."
+ },
+ "fx": {
+  "0": [
+   {
+    "text": "Someone DIDN'T freeze...",
+    "color": "#ffd23f",
+    "size": 70,
+    "x": 0.5,
+    "y": 0.72,
+    "anim": "pop",
+    "at": 0.0,
+    "dur": 2.6
+   },
+   {
+    "e": "👀",
+    "at": 0.15,
+    "x": 0.5,
+    "y": 0.63,
+    "size": 150,
+    "dur": 2.45,
+    "anim": "pop"
+   }
+  ],
+  "9": [
+   {
+    "text": "spotted them yet?",
+    "color": "#ffffff",
+    "size": 92,
+    "x": 0.5,
+    "y": 0.72,
+    "anim": "pop",
+    "at": 0.6,
+    "dur": 2.0
+   },
+   {
+    "e": "👀",
+    "at": 0.75,
+    "x": 0.5,
+    "y": 0.63,
+    "size": 150,
+    "dur": 1.85,
+    "anim": "pop"
+   }
+  ],
+  "12": [
+   {
+    "text": "WHO did this?!",
+    "color": "#ffd23f",
+    "size": 90,
+    "x": 0.5,
+    "y": 0.72,
+    "anim": "pop",
+    "at": 0.8,
+    "dur": 2.0
+   }
+  ]
+ }
+}
