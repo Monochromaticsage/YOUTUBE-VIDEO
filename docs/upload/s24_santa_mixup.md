@@ -11,9 +11,9 @@ Someone Mixed Up EVERYONE'S Christmas Presents... 🎁👀
 
 **Description**
 ```
-Santa mixed up EVERYONE'S presents 🎁
-I got a unicorn dress. Grandpa got a baby bottle (he kept it). Goldie got a banana 🍌
-Then I found Santa's list... written in CRAYON 🖍️
+This Christmas, EVERYONE got the wrong present 🎁
+It wasn't an accident... someone did this on purpose 👀
+Can you guess WHO before the end? 🤔
 
 Watch the first second again... 👀
 
@@ -29,7 +29,7 @@ plutonex tales, roblox animation, roblox story, funny animation, animated story,
 
 **Pinned comment**
 ```
-What's the WORST present you ever got? 🎁👇
+Did you guess WHO did it before the end? 🎁👀👇
 ```
 
 **Secret for replies:** Pip is already holding a crayon in the first second (she wrote Santa's list). When someone spots it, reply with a 👀 and a question back to keep the thread going.
