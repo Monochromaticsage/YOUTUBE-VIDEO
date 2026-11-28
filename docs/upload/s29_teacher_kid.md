@@ -11,9 +11,9 @@ Our Teacher Turned Into a KID... Wait Till It Wears Off 😱
 
 **Description**
 ```
-Our teacher drank Noob's mystery juice... and turned into a KID 😱🧃
-She refused homework. Goldie became the teacher. RECESS FOREVER 🎉
-Then the juice wore off...
+Our teacher drank a mystery juice... and turned into a KID 😱🧃
+For ONE hour. And we made the most of it 😂
+But wait till it WEARS OFF... ⏰
 
 Watch the first second again... 👀
 
@@ -29,7 +29,7 @@ plutonex tales, roblox animation, roblox story, funny animation, animated story,
 
 **Pinned comment**
 ```
-If YOUR teacher turned into a kid, what would you do? 😂👇
+Who's in the MOST trouble when it wore off? 😳⏰👇
 ```
 
 **Secret for replies:** Noob is ALREADY holding up the juice box and grinning in the first second. When someone spots it, reply with a 👀 and a question back to keep the thread going.
