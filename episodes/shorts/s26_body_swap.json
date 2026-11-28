@@ -1,6 +1,6 @@
 {
  "id": "s26_body_swap",
- "title": "I Swapped Bodies With My Little Sister 😱",
+ "title": "I Swapped Bodies With My Sister... But We Weren't the Only Ones 😱",
  "format": "short",
  "mood": "bright",
  "grade": "bright",
@@ -61,7 +61,28 @@
      "faces": {
       "sage": "shocked",
       "grandpa": "angry"
-     }
+     },
+     "fx": [
+      {
+       "text": "We're NOT the only ones who swapped...",
+       "color": "#ffd23f",
+       "size": 44,
+       "at": 0.0,
+       "x": 0.5,
+       "y": 0.72,
+       "dur": 1.9,
+       "anim": "pop"
+      },
+      {
+       "e": "👀",
+       "at": 0.15,
+       "x": 0.5,
+       "y": 0.63,
+       "size": 150,
+       "dur": 1.75,
+       "anim": "pop"
+      }
+     ]
     },
     {
      "speaker": "sage",
@@ -79,7 +100,7 @@
     {
      "speaker": "sage",
      "vo": true,
-     "line": "My little sister and I bumped heads... and SWAPPED bodies.",
+     "line": "My little sister and I bumped heads and SWAPPED bodies. But we weren't the only ones...",
      "camera": "at:0.4,-8.2,4.6,0.4,2.2,3.2,29",
      "no_cuts": true,
      "move": "push",
@@ -271,6 +292,25 @@
        "size": 340,
        "dur": 1.6,
        "tilt": -6
+      },
+      {
+       "text": "listen to Mom's voice...",
+       "color": "#ffffff",
+       "size": 70,
+       "at": 0.5,
+       "x": 0.5,
+       "y": 0.72,
+       "dur": 1.8,
+       "anim": "pop"
+      },
+      {
+       "e": "👂",
+       "at": 0.65,
+       "x": 0.5,
+       "y": 0.63,
+       "size": 150,
+       "dur": 1.6500000000000001,
+       "anim": "pop"
       }
      ],
      "sfx": [
@@ -489,5 +529,6 @@
     }
    ]
   }
- ]
+ ],
+ "_retention": true
 }

@@ -1,6 +1,6 @@
 {
  "id": "s29_teacher_kid",
- "title": "Our Teacher Turned Into a KID! 😱",
+ "title": "Our Teacher Turned Into a KID... Wait Till It Wears Off 😱",
  "format": "short",
  "mood": "bright",
  "grade": "bright",
@@ -82,6 +82,25 @@
        "y": 0.45,
        "size": 130,
        "dur": 1.6
+      },
+      {
+       "text": "Wait till it WEARS OFF...",
+       "color": "#ffd23f",
+       "size": 68,
+       "at": 0.0,
+       "x": 0.5,
+       "y": 0.72,
+       "dur": 1.9,
+       "anim": "pop"
+      },
+      {
+       "e": "⏰",
+       "at": 0.15,
+       "x": 0.5,
+       "y": 0.63,
+       "size": 150,
+       "dur": 1.75,
+       "anim": "pop"
       }
      ]
     },
@@ -152,7 +171,7 @@
     {
      "speaker": "sage",
      "vo": true,
-     "line": "Our teacher drank Noob's mystery juice... and turned into a KID.",
+     "line": "Our teacher drank Noob's mystery juice... and turned into a KID. For ONE hour.",
      "camera": "medium:noob",
      "no_cuts": true,
      "move": "push",
@@ -326,7 +345,28 @@
       "ms_brick_kid": "lean_whisper",
       "sage": "sit"
      },
-     "face": "happy"
+     "face": "happy",
+     "fx": [
+      {
+       "text": "the hour is almost up...",
+       "color": "#ffffff",
+       "size": 70,
+       "at": 0.4,
+       "x": 0.5,
+       "y": 0.72,
+       "dur": 1.8,
+       "anim": "pop"
+      },
+      {
+       "e": "⏰",
+       "at": 0.55,
+       "x": 0.5,
+       "y": 0.63,
+       "size": 150,
+       "dur": 1.6500000000000001,
+       "anim": "pop"
+      }
+     ]
     },
     {
      "speaker": "sage",
@@ -556,5 +596,6 @@
     }
    ]
   }
- ]
+ ],
+ "_retention": true
 }

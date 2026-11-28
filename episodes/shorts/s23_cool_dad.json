@@ -1,6 +1,6 @@
 {
  "id": "s23_cool_dad",
- "title": "My Dad Tried to Be COOL at My School 😎",
+ "title": "My Dad Tried to Be COOL at My School... Wait for Lunch 😳",
  "format": "short",
  "mood": "bright",
  "grade": "bright",
@@ -91,12 +91,33 @@
      "face": "happy",
      "faces": {
       "sage": "sad"
-     }
+     },
+     "fx": [
+      {
+       "text": "Wait till lunch...",
+       "color": "#ffd23f",
+       "size": 92,
+       "at": 0.0,
+       "x": 0.5,
+       "y": 0.72,
+       "dur": 1.8,
+       "anim": "pop"
+      },
+      {
+       "e": "😳",
+       "at": 0.15,
+       "x": 0.5,
+       "y": 0.63,
+       "size": 150,
+       "dur": 1.6500000000000001,
+       "anim": "pop"
+      }
+     ]
     },
     {
      "speaker": "sage",
      "vo": true,
-     "line": "This is my dad. He came to school today... to be COOL.",
+     "line": "This is my dad. He came to school to be COOL. It did NOT go how I expected.",
      "camera": "medium:dad",
      "no_cuts": true,
      "anims": {
@@ -312,7 +333,28 @@
       "dad": "cross_arms",
       "sage": "idle"
      },
-     "face": "smug"
+     "face": "smug",
+     "fx": [
+      {
+       "text": "wait for it...",
+       "color": "#ffffff",
+       "size": 92,
+       "at": 0.4,
+       "x": 0.5,
+       "y": 0.72,
+       "dur": 1.8,
+       "anim": "pop"
+      },
+      {
+       "e": "👀",
+       "at": 0.55,
+       "x": 0.5,
+       "y": 0.63,
+       "size": 150,
+       "dur": 1.6500000000000001,
+       "anim": "pop"
+      }
+     ]
     },
     {
      "speaker": "noob",
@@ -625,5 +667,6 @@
     }
    ]
   }
- ]
+ ],
+ "_retention": true
 }

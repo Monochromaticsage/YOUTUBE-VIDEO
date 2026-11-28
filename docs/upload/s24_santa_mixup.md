@@ -1,4 +1,4 @@
-# Upload pack: Santa Mixed Up EVERYONE'S Presents! 🎁
+# Upload pack: Someone Mixed Up EVERYONE'S Christmas Presents... 🎁👀
 
 - **Video:** `media/shorts/s24_santa_mixup.mp4` (seamless loop: Pip: 'Here. Open yours.' -> same shot -> Sage: 'A... UNICORN dress?')
 - **Thumbnail:** `branding/s24_santa_mixup_thumbnail.jpg`
@@ -6,7 +6,7 @@
 
 **Title**
 ```
-Santa Mixed Up EVERYONE'S Presents! 🎁
+Someone Mixed Up EVERYONE'S Christmas Presents... 🎁👀
 ```
 
 **Description**

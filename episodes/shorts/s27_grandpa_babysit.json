@@ -1,6 +1,6 @@
 {
  "id": "s27_grandpa_babysit",
- "title": "Grandpa Babysat Us for ONE Day 😂",
+ "title": "Grandpa Fell Asleep Babysitting Us... Or DID He? 👀",
  "format": "short",
  "mood": "bright",
  "grade": "bright",
@@ -79,7 +79,28 @@
      "face": "angry",
      "faces": {
       "grandpa": "happy"
-     }
+     },
+     "fx": [
+      {
+       "text": "Watch Grandpa's EYES...",
+       "color": "#ffd23f",
+       "size": 73,
+       "at": 0.0,
+       "x": 0.5,
+       "y": 0.72,
+       "dur": 1.9,
+       "anim": "pop"
+      },
+      {
+       "e": "👀",
+       "at": 0.15,
+       "x": 0.5,
+       "y": 0.63,
+       "size": 150,
+       "dur": 1.75,
+       "anim": "pop"
+      }
+     ]
     },
     {
      "speaker": "grandpa",
@@ -138,7 +159,7 @@
     {
      "speaker": "sage",
      "vo": true,
-     "line": "Grandpa babysat us for ONE day. He lasted two seconds.",
+     "line": "Grandpa babysat us for ONE day. He lasted two seconds... or did he?",
      "camera": "at:0.0,-9.4,4.8,0.0,2.0,3.2,27",
      "no_cuts": true,
      "anims": {
@@ -326,6 +347,25 @@
        "y": 0.72,
        "dur": 1.0,
        "anim": "shake"
+      },
+      {
+       "text": "keep watching Grandpa...",
+       "color": "#ffffff",
+       "size": 70,
+       "at": 0.2,
+       "x": 0.5,
+       "y": 0.72,
+       "dur": 1.6,
+       "anim": "pop"
+      },
+      {
+       "e": "👀",
+       "at": 0.35,
+       "x": 0.5,
+       "y": 0.63,
+       "size": 150,
+       "dur": 1.4500000000000002,
+       "anim": "pop"
       }
      ]
     },
@@ -580,5 +620,6 @@
     }
    ]
   }
- ]
+ ],
+ "_retention": true
 }

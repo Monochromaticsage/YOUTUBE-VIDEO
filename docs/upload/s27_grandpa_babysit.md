@@ -1,4 +1,4 @@
-# Upload pack: Grandpa Babysat Us for ONE Day 😂
+# Upload pack: Grandpa Fell Asleep Babysitting Us... Or DID He? 👀
 
 - **Video:** `media/shorts/s27_grandpa_babysit.mp4` (seamless loop: Mom: '...Okay. I'm leaving again.' -> same shot -> Mom: 'Grandpa's in charge. Be GOOD.')
 - **Thumbnail:** `branding/s27_grandpa_babysit_thumbnail.jpg`
@@ -6,7 +6,7 @@
 
 **Title**
 ```
-Grandpa Babysat Us for ONE Day 😂
+Grandpa Fell Asleep Babysitting Us... Or DID He? 👀
 ```
 
 **Description**

@@ -1,6 +1,6 @@
 {
  "id": "s24_santa_mixup",
- "title": "Santa Mixed Up EVERYONE'S Presents! 🎁",
+ "title": "Someone Mixed Up EVERYONE'S Christmas Presents... 🎁👀",
  "format": "short",
  "mood": "bright",
  "grade": "bright",
@@ -146,6 +146,25 @@
        "size": 170,
        "dur": 1.4,
        "anim": "pop"
+      },
+      {
+       "text": "Wait till you see WHO did it...",
+       "color": "#ffd23f",
+       "size": 54,
+       "at": 0.0,
+       "x": 0.5,
+       "y": 0.72,
+       "dur": 1.8,
+       "anim": "pop"
+      },
+      {
+       "e": "🎅",
+       "at": 0.15,
+       "x": 0.5,
+       "y": 0.63,
+       "size": 150,
+       "dur": 1.6500000000000001,
+       "anim": "pop"
       }
      ]
     },
@@ -186,7 +205,7 @@
     {
      "speaker": "sage",
      "vo": true,
-     "line": "This Christmas... Santa mixed up EVERYONE'S presents.",
+     "line": "This Christmas... everyone got the WRONG present. And I was gonna find out WHY.",
      "camera": "at:-1.8,-8.5,5.0,-1.8,3.0,3.4,30",
      "no_cuts": true,
      "move": "push",
@@ -422,6 +441,25 @@
        "y": 0.42,
        "size": 170,
        "dur": 1.4,
+       "anim": "pop"
+      },
+      {
+       "text": "but WHO mixed them up?",
+       "color": "#ffffff",
+       "size": 77,
+       "at": 0.4,
+       "x": 0.5,
+       "y": 0.72,
+       "dur": 1.8,
+       "anim": "pop"
+      },
+      {
+       "e": "🤔",
+       "at": 0.55,
+       "x": 0.5,
+       "y": 0.63,
+       "size": 150,
+       "dur": 1.6500000000000001,
        "anim": "pop"
       }
      ],
@@ -749,5 +787,6 @@
     }
    ]
   }
- ]
+ ],
+ "_retention": true
 }

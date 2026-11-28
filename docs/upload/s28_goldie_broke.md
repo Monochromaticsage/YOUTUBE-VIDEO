@@ -1,4 +1,4 @@
-# Upload pack: The Richest Kid in School Lost ALL His Money 😳
+# Upload pack: The Richest Kid Lost ALL His Money... Then Moved Into OUR House 😳
 
 - **Video:** `media/shorts/s28_goldie_broke.mp4` (seamless loop: Mom: 'Goldie! Your dad's here to pick you up!' -> same shot -> Goldie: 'So... can I live here now?')
 - **Thumbnail:** `branding/s28_goldie_broke_thumbnail.jpg`
@@ -6,7 +6,7 @@
 
 **Title**
 ```
-The Richest Kid in School Lost ALL His Money 😳
+The Richest Kid Lost ALL His Money... Then Moved Into OUR House 😳
 ```
 
 **Description**

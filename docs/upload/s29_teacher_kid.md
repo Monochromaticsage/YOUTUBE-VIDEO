@@ -1,4 +1,4 @@
-# Upload pack: Our Teacher Turned Into a KID! 😱
+# Upload pack: Our Teacher Turned Into a KID... Wait Till It Wears Off 😱
 
 - **Video:** `media/shorts/s29_teacher_kid.mp4` (seamless loop: Noob: 'More juice, Ms. Brick?' -> same shot -> Ms. Brick: 'Hmm. This juice tastes... funny—' POOF)
 - **Thumbnail:** `branding/s29_teacher_kid_thumbnail.jpg`
@@ -6,7 +6,7 @@
 
 **Title**
 ```
-Our Teacher Turned Into a KID! 😱
+Our Teacher Turned Into a KID... Wait Till It Wears Off 😱
 ```
 
 **Description**

@@ -1,4 +1,4 @@
-# Upload pack: I Swapped Bodies With My Little Sister 😱
+# Upload pack: I Swapped Bodies With My Sister... But We Weren't the Only Ones 😱
 
 - **Video:** `media/shorts/s26_body_swap.mp4` (seamless loop: Sage: 'So we bumped heads again to swap back—' BONK -> same shot -> (Pip's body, Sage's voice): 'Wait... why am I so SHORT?')
 - **Thumbnail:** `branding/s26_body_swap_thumbnail.jpg`
@@ -6,7 +6,7 @@
 
 **Title**
 ```
-I Swapped Bodies With My Little Sister 😱
+I Swapped Bodies With My Sister... But We Weren't the Only Ones 😱
 ```
 
 **Description**

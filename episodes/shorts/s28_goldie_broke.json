@@ -1,6 +1,6 @@
 {
  "id": "s28_goldie_broke",
- "title": "The Richest Kid in School Lost ALL His Money 😳",
+ "title": "The Richest Kid Lost ALL His Money... Then Moved Into OUR House 😳",
  "format": "short",
  "mood": "bright",
  "grade": "bright",
@@ -65,7 +65,28 @@
      "face": "sad",
      "faces": {
       "sage": "sus"
-     }
+     },
+     "fx": [
+      {
+       "text": "Wait till the END...",
+       "color": "#ffd23f",
+       "size": 85,
+       "at": 0.0,
+       "x": 0.5,
+       "y": 0.72,
+       "dur": 1.9,
+       "anim": "pop"
+      },
+      {
+       "e": "💰",
+       "at": 0.15,
+       "x": 0.5,
+       "y": 0.63,
+       "size": 150,
+       "dur": 1.75,
+       "anim": "pop"
+      }
+     ]
     },
     {
      "speaker": "sage",
@@ -89,7 +110,7 @@
     {
      "speaker": "sage",
      "vo": true,
-     "line": "Goldie. The richest kid in school. Lost ALL his money.",
+     "line": "Goldie. The richest kid in school. Lost ALL his money... or so he THOUGHT.",
      "camera": "medium:goldie",
      "no_cuts": true,
      "move": "push",
@@ -350,6 +371,25 @@
        "x": 0.5,
        "y": 0.78,
        "dur": 1.2
+      },
+      {
+       "text": "but where DID the money go?",
+       "color": "#ffffff",
+       "size": 62,
+       "at": 0.4,
+       "x": 0.5,
+       "y": 0.72,
+       "dur": 1.8,
+       "anim": "pop"
+      },
+      {
+       "e": "🤔",
+       "at": 0.55,
+       "x": 0.5,
+       "y": 0.63,
+       "size": 150,
+       "dur": 1.6500000000000001,
+       "anim": "pop"
       }
      ]
     },
@@ -550,5 +590,6 @@
     }
    ]
   }
- ]
+ ],
+ "_retention": true
 }

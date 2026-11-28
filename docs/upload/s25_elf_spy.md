@@ -1,4 +1,4 @@
-# Upload pack: Our Elf on the Shelf Is SPYING for Mom! 🎄
+# Upload pack: Our Elf on the Shelf Is a SNITCH... Wait for the LAST Report 😳
 
 - **Video:** `media/shorts/s25_elf_spy.mp4` (seamless loop: Elf: 'Stay tuned... for MORE breaking news.' -> same kitchen shot -> Sage reaches for the cookie jar, Elf: 'BREAKING NEWS...')
 - **Thumbnail:** `branding/s25_elf_spy_thumbnail.jpg`
@@ -6,7 +6,7 @@
 
 **Title**
 ```
-Our Elf on the Shelf Is SPYING for Mom! 🎄
+Our Elf on the Shelf Is a SNITCH... Wait for the LAST Report 😳
 ```
 
 **Description**
