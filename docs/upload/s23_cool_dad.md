@@ -12,8 +12,8 @@ My Dad Tried to Be COOL at My School... Wait for Lunch 😳
 **Description**
 ```
 My dad came to school to be COOL 😎
-He dabbed. He called Goldie's chain 'bussin'. He asked the teacher for a bathroom pass 💀
-Then he challenged Noob to a dance battle...
+It went EXACTLY how you'd expect... until lunch 👀
+Stay till the end — nobody saw that coming 😳
 
 Watch the first second again... 👀
 
@@ -29,7 +29,7 @@ plutonex tales, roblox animation, roblox story, funny animation, animated story,
 
 **Pinned comment**
 ```
-Is YOUR dad like this? 😎👇
+What happened at lunch?! 😳 Wrong answers only 👇
 ```
 
 **Secret for replies:** Ms. Brick is ALREADY wearing sunglasses in the background of the first second. When someone spots it, reply with a 👀 and a question back to keep the thread going.
