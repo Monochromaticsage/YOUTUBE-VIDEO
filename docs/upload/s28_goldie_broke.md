@@ -12,8 +12,8 @@ The Richest Kid Lost ALL His Money... Then Moved Into OUR House 😳
 **Description**
 ```
 Goldie, the richest kid in school, lost ALL his money 😳💸
-Now he lives at my house. He's never used a spoon. Grandpa gave him a whole dollar 🥹
-Then we found out where the money went...
+Now he lives at MY house...
+But where did the money actually go? Wait till the end 👀
 
 Watch the first second again... 👀
 
@@ -29,7 +29,7 @@ plutonex tales, roblox animation, roblox story, funny animation, animated story,
 
 **Pinned comment**
 ```
-Should Goldie stay? YES or NO 👇
+Where did you THINK the money went? 💰👀👇
 ```
 
 **Secret for replies:** Gold coins are ALREADY peeking out of our couch in the first second (that's where his money was). When someone spots it, reply with a 👀 and a question back to keep the thread going.
