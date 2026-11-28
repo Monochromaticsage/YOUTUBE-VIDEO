@@ -12,8 +12,8 @@ Our Elf on the Shelf Is a SNITCH... Wait for the LAST Report 😳
 **Description**
 ```
 Our Elf on the Shelf is SPYING for Mom 🎄🕵️
-Cookies, cat videos, drawing on the wall... he reports EVERYTHING. Live.
-Until he reported on MOM 😳🍪
+He reports EVERYTHING... about EVERYONE. Live.
+Wait for the LAST breaking news 😳
 
 Watch the first second again... 👀
 
@@ -29,7 +29,7 @@ plutonex tales, roblox animation, roblox story, funny animation, animated story,
 
 **Pinned comment**
 ```
-Does YOUR elf snitch too? 🎄👇
+Did you see the last report coming? 😳🎄👇
 ```
 
 **Secret for replies:** The elf is staring straight at YOU (the camera) in the first second. When someone spots it, reply with a 👀 and a question back to keep the thread going.
