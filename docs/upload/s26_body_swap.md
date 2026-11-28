@@ -12,8 +12,8 @@ I Swapped Bodies With My Sister... But We Weren't the Only Ones 😱
 **Description**
 ```
 I swapped bodies with my little sister 😱
-She got my A-plus test. I got NAP TIME. And a 7 o'clock bedtime 💀
-Then Mom started talking like Grandpa...
+But we weren't the ONLY ones who swapped... 👀
+Can you figure out who before the end? 🤔
 
 Watch the first second again... 👀
 
@@ -29,7 +29,7 @@ plutonex tales, roblox animation, roblox story, funny animation, animated story,
 
 **Pinned comment**
 ```
-Who would YOU swap bodies with? 👇
+Who ELSE swapped? Did you catch it before the end? 👀👇
 ```
 
 **Secret for replies:** Grandpa in the background is pointing and scolding exactly like Mom in the first second (he already swapped with Mom). When someone spots it, reply with a 👀 and a question back to keep the thread going.
