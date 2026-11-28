@@ -11,9 +11,9 @@ Grandpa Fell Asleep Babysitting Us... Or DID He? 👀
 
 **Description**
 ```
-Grandpa babysat us for ONE day. He lasted two seconds 💤
-Pizza for breakfast. Noob as a butler. My sister faking Grandpa's voice on the phone 😂
-But Grandpa was hiding something...
+Grandpa babysat us for ONE day. He fell asleep in two seconds 💤
+...or did he? 👀
+Watch Grandpa's eyes till the very end 😳
 
 Watch the first second again... 👀
 
@@ -29,7 +29,7 @@ plutonex tales, roblox animation, roblox story, funny animation, animated story,
 
 **Pinned comment**
 ```
-Who's the WORST babysitter in your family? 😂👇
+Was Grandpa REALLY asleep? 👀 Tell me when you figured it out 👇
 ```
 
 **Secret for replies:** There's already a pizza slice on the shelf behind Grandpa in the first second (the pizza was HIS idea). When someone spots it, reply with a 👀 and a question back to keep the thread going.
